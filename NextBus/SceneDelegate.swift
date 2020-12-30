@@ -6,31 +6,65 @@
 //  Copyright © 2019 Julian Schiavo. All rights reserved.
 //
 
+import BackgroundTasks
 import UIKit
-import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var homeViewController = HomeViewController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
+        
+//        guard let folder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") else {
+//            fatalError("Failed to find app group folder")
+//        }
+//        let directoryContents = try! FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+//
+//        for url in directoryContents {
+//            try! FileManager.default.removeItem(at: url)
+//        }
+        
         // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
+        guard let windowScene = scene as? UIWindowScene else { return }
+        
+        let navController = UINavigationController(rootViewController: homeViewController)
+        navController.navigationBar.tintColor = .white
+        navController.navigationBar.prefersLargeTitles = true
+        
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.configureWithOpaqueBackground()
+        barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        barAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.preferredFont(for: .largeTitle, weight: .heavy).rounded]
+        barAppearance.backgroundColor = .systemPink
+        navController.navigationBar.standardAppearance = barAppearance
+        navController.navigationBar.compactAppearance = barAppearance
+        navController.navigationBar.scrollEdgeAppearance = barAppearance
+        
+        
+        
+        window = UIWindow(windowScene: windowScene)
+        window?.tintColor = .systemPink
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+    }
+    
+    // Schedule a background task to update route and stop data
+    func scheduleUpdateDataBackgroundTask() {
+        let request = BGProcessingTaskRequest(identifier: "com.julianschiavo.nextbus.tasks.updatedata")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60) // Fetch no earlier than 15 minutes from now
+        request.requiresNetworkConnectivity = true
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Failed to schedule update data background task: \(error)")
         }
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -54,9 +88,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        scheduleUpdateDataBackgroundTask()
     }
 
 

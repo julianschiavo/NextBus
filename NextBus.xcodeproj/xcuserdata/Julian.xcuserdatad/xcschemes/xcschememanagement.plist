@@ -4,10 +4,63 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>IntentsExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>IntentsExtensionUI.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>NextBus.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>UI Tests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Watch App (Notification).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B94BA48623325D0D00AFE03E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B95C1841233F20BE0094B3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B95C184A233F20BE0094B3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B96F785923E67DEE004C3EE2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9F28E1923B448C9003A35CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

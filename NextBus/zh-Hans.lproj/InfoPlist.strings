@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  NextBus
+
+  Created by Julian Schiavo on 20/1/2020.
+  Copyright © 2020 Julian Schiavo. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "下班车";
+"CFBundleName" = "下班车";

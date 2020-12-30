@@ -6,24 +6,38 @@
 //  Copyright © 2019 Julian Schiavo. All rights reserved.
 //
 
+import BackgroundTasks
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Register launch handlers for background tasks
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.julianschiavo.nextbus.tasks.updatedata", using: nil) { task in
+            task.expirationHandler = {
+                // Cancel all the URL requests before the session is terminated
+                APIManager.shared.lowPriorityURLSession.invalidateAndCancel()
+                APIManager.shared.highPriorityURLSession.invalidateAndCancel()
+                task.setTaskCompleted(success: false)
+            }
+            
+            // As background sessions have limited execution time, fetch non-cached data before re-fetching cached data
+            APIManager.shared.start {
+                APIManager.shared.updateData(priority: .normal) { error in
+                    task.setTaskCompleted(success: error == nil)
+                }
+            }
+        }
+        
         return true
     }
 
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
