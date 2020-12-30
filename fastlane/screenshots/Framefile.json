@@ -1,0 +1,52 @@
+{
+  "device_frame_version": "latest",
+  "default": {
+    "title": {
+        "fonts": [
+            {
+                "font": "SF-Pro-Rounded-Heavy.otf",
+                "supported": ["en-US"]
+            },
+            {
+                "font": "PingFang.ttc",
+                "supported": ["zh-Hans", "zh-Hant"]
+            }
+        ]
+    },
+    "background": "./background.png",
+    "padding": "4%",
+    "show_complete_frame": false,
+    "font_scale_factor": 0.25
+  },
+  "data": [{
+      "filter": "01",
+      "title": {
+        "color": "#FF9F0A"
+      }
+    },
+    {
+      "filter": "02",
+      "title": {
+        "color": "#34C759"
+      }
+    },
+    {
+      "filter": "03",
+      "title": {
+        "color": "#3498DB"
+      }
+    },
+    {
+      "filter": "04",
+      "title": {
+        "color": "#FF375F"
+      }
+    },
+    {
+      "filter": "05",
+      "title": {
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}
