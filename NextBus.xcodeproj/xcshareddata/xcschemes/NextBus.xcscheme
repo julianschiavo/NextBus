@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B94BA48623325D0D00AFE03E"
-               BuildableName = "Next Bus.app"
+               BuildableName = "NextBus.app"
                BlueprintName = "NextBus"
                ReferencedContainer = "container:NextBus.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B94BA48623325D0D00AFE03E"
-            BuildableName = "Next Bus.app"
+            BuildableName = "NextBus.app"
             BlueprintName = "NextBus"
             ReferencedContainer = "container:NextBus.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B94BA48623325D0D00AFE03E"
-            BuildableName = "Next Bus.app"
+            BuildableName = "NextBus.app"
             BlueprintName = "NextBus"
             ReferencedContainer = "container:NextBus.xcodeproj">
          </BuildableReference>

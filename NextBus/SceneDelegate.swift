@@ -7,6 +7,7 @@
 //
 
 import BackgroundTasks
+import SwiftUI
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -31,18 +32,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         guard let windowScene = scene as? UIWindowScene else { return }
         
-        let navController = UINavigationController(rootViewController: homeViewController)
-        navController.navigationBar.tintColor = .white
-        navController.navigationBar.prefersLargeTitles = true
+        let navController = UIHostingController(rootView: Main())
+//        navController.navigationBar.tintColor = .white
+//        navController.navigationBar.prefersLargeTitles = true
         
         let barAppearance = UINavigationBarAppearance()
         barAppearance.configureWithOpaqueBackground()
         barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         barAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.preferredFont(for: .largeTitle, weight: .heavy).rounded]
         barAppearance.backgroundColor = .systemPink
-        navController.navigationBar.standardAppearance = barAppearance
-        navController.navigationBar.compactAppearance = barAppearance
-        navController.navigationBar.scrollEdgeAppearance = barAppearance
+//        navController.navigationBar.standardAppearance = barAppearance
+//        navController.navigationBar.compactAppearance = barAppearance
+//        navController.navigationBar.scrollEdgeAppearance = barAppearance
         
         
         

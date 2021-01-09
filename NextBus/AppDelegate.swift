@@ -12,23 +12,29 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    override init() {
+        super.init()
+//        UIColor.classInit
+//        UITableView.appearance().backgroundColor = .appBackground
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Register launch handlers for background tasks
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.julianschiavo.nextbus.tasks.updatedata", using: nil) { task in
             task.expirationHandler = {
                 // Cancel all the URL requests before the session is terminated
-                APIManager.shared.lowPriorityURLSession.invalidateAndCancel()
-                APIManager.shared.highPriorityURLSession.invalidateAndCancel()
+//                APIManager.shared.lowPriorityURLSession.invalidateAndCancel()
+//                APIManager.shared.highPriorityURLSession.invalidateAndCancel()
                 task.setTaskCompleted(success: false)
             }
             
             // As background sessions have limited execution time, fetch non-cached data before re-fetching cached data
-            APIManager.shared.start {
-                APIManager.shared.updateData(priority: .normal) { error in
-                    task.setTaskCompleted(success: error == nil)
-                }
-            }
+//            APIManager.shared.start {
+//                APIManager.shared.updateData(priority: .normal) { error in
+//                    task.setTaskCompleted(success: error == nil)
+//                }
+//            }
         }
         
         return true

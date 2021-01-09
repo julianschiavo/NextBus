@@ -17,7 +17,7 @@ struct FavoritesView: View {
         var stop: Stop
         
         var description: String {
-            Localizations.routeOriginAndDestination(origin: stop.name, destination: direction.destination(for: route))
+            Localizations.routeOriginAndDestination(origin: stop.localizedName, destination: direction.destination(for: route))
         }
     }
     
@@ -63,15 +63,15 @@ struct FavoritesView: View {
 }
 
 #if DEBUG
-struct FavoritesView_Previews: PreviewProvider {
-    static let favorites = [(Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"), Direction.inbound, Stop(id: "1", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 1, longitude: 1)),
-                         (Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: true, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"), Direction.inbound, Stop(id: "2", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 2, longitude: 2))]
-
-    static var previews: some View {
-        Group {
-            FavoritesView(previewFavorites: favorites)
-            FavoritesView()
-        }
-    }
-}
+//struct FavoritesView_Previews: PreviewProvider {
+//    static let favorites = [(Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"), Direction.inbound, Stop(id: "1", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 1, longitude: 1)),
+//                         (Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: true, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"), Direction.inbound, Stop(id: "2", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 2, longitude: 2))]
+//
+//    static var previews: some View {
+//        Group {
+//            FavoritesView(previewFavorites: favorites)
+//            FavoritesView()
+//        }
+//    }
+//}
 #endif

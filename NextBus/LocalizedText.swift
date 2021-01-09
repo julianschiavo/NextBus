@@ -14,10 +14,16 @@ enum LanguageCode: String {
     case traditionalChinese = "zh-Hant"
 }
 
-struct LocalizedText {
+struct LocalizedText: Codable, Equatable, Hashable {
     var english: String
     var simplifiedChinese: String
     var traditionalChinese: String
+    
+    init(_ string: String) {
+        self.english = string
+        self.simplifiedChinese = string
+        self.traditionalChinese = string
+    }
     
     init(en english: String, sc simplifiedChinese: String, tc traditionalChinese: String) {
         self.english = english

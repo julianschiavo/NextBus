@@ -49,6 +49,8 @@ enum Localizations {
     }
     static let detailsArrivingSoonHeader = NSLocalizedString("Arriving Soon",
                                                           comment: "Header title for the list of buses arriving soon")
+    static let detailsAtPrefix = NSLocalizedString("At ", comment: "Prefix for the bus arrival time (e.g. At 11 PM)")
+    static let detailsInPrefix = NSLocalizedString("In ", comment: "Prefix for the bus arrival time (e.g. In 5 minutes)")
     static let detailsMapHeader =       NSLocalizedString("Map",
                                                           comment: "Header title for the map showing where the bus stop is")
     static let detailsMapFooter =       NSLocalizedString("Tap for directions to the stop.",

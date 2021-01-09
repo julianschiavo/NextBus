@@ -39,7 +39,7 @@ struct RouteDetailView: View {
         APIManager.shared.fetchETA(for: route, in: direction, stop: stop, priority: .normal) { result in
             switch result {
             case let .success(etas):
-                self.etas = etas.contents.sorted {
+                self.etas = etas.sorted {
                     guard let firstDate = $0.date, let secondDate = $1.date else { return false }
                     return firstDate < secondDate
                 }
@@ -65,7 +65,7 @@ struct RouteDetailView: View {
             VStack(alignment: .leading) {
                 Text(Localizations.routeTitle(routeName: route.name))
                     .title()
-                Text(Localizations.routeOriginAndDestination(origin: stop.name, destination: direction.destination(for: route)))
+                Text(Localizations.routeOriginAndDestination(origin: stop.localizedName, destination: direction.destination(for: route)))
                     .subtitle()
             }
             Spacer()
@@ -87,7 +87,7 @@ struct RouteDetailView: View {
             
             Section(header: ListSectionHeader(imageName: "clock", text: Localizations.detailsArrivingSoonHeader)) {
                 if etas != nil && etas?.isEmpty == false {
-                    ForEach(etas!, id: \.index) { eta in
+                    ForEach(etas!) { eta in
                         ETAView(eta: eta)
                     }
                 } else {
@@ -150,15 +150,15 @@ struct RouteDetailView: View {
 }
 
 #if DEBUG
-struct RouteDetailView_Previews: PreviewProvider {
-    static let route = Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination")
-    static let direction = Direction.inbound
-    static let stop = Stop(id: "1", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 1, longitude: 1)
-    
-    static var previews: some View {
-        Group {
-            RouteDetailView(route: route, direction: direction, stop: stop)
-        }
-    }
-}
+//struct RouteDetailView_Previews: PreviewProvider {
+//    static let route = Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination")
+//    static let direction = Direction.inbound
+//    static let stop = Stop(id: "1", index: nil, generated: Date(), englishName: "Stop", simplifiedChineseName: "Stop", traditionalChineseName: "Stop", normalFare: nil, holidayFare: nil, specialDeparturesOnly: false, latitude: 1, longitude: 1)
+//    
+//    static var previews: some View {
+//        Group {
+//            RouteDetailView(route: route, direction: direction, stop: stop)
+//        }
+//    }
+//}
 #endif

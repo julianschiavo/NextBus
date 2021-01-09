@@ -20,11 +20,11 @@ struct StopCell: View {
         var text: Text
         if let index = stop.index {
             let indexText = Text("\(index): ").bold()
-            let stopNameText = Text(stop.name)
+            let stopNameText = Text(stop.localizedName)
             let joinedText = indexText + stopNameText
             text = joinedText.font(font)
         } else {
-            text = Text(stop.name).font(font)
+            text = Text(stop.localizedName).font(font)
         }
         
         return NavigationLink(destination: RouteDetailView(route: route, direction: direction, stop: stop)) {

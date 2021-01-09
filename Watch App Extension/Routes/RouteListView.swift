@@ -24,11 +24,11 @@ struct RouteListView: View {
     
     var body: some View {
         let items = routes.map { route -> [Item] in
-            if route.isOneWay {
-                return [Item(route: route, direction: .oneWay)]
-            } else {
+//            if route.isOneWay {
+//                return [Item(route: route, direction: .oneWay)]
+//            } else {
                 return [Item(route: route, direction: .inbound), Item(route: route, direction: .outbound)]
-            }
+//            }
         }.flatMap { $0 }
         
         return List {
@@ -49,13 +49,13 @@ struct RouteListView: View {
     }
 }
 
-#if DEBUG
-struct RouteListView_Previews: PreviewProvider {
-    static let routes = [Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
-                         Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: false, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin2", simplifiedChineseOrigin: "Origin2", traditionalChineseOrigin: "Origin2", englishDestination: "Destination2", simplifiedChineseDestination: "Destination2", traditionalChineseDestination: "Destination2")]
-    
-    static var previews: some View {
-        return RouteListView(routes: routes)
-    }
-}
-#endif
+//#if DEBUG
+//struct RouteListView_Previews: PreviewProvider {
+//    static let routes = [Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
+//                         Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: false, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin2", simplifiedChineseOrigin: "Origin2", traditionalChineseOrigin: "Origin2", englishDestination: "Destination2", simplifiedChineseDestination: "Destination2", traditionalChineseDestination: "Destination2")]
+//    
+//    static var previews: some View {
+//        return RouteListView(routes: routes)
+//    }
+//}
+//#endif

@@ -26,7 +26,7 @@ struct ETAView: View {
     
     var body: some View {
         var title: Text
-        let description = Text(eta.remark).font(.subheadline).foregroundColor(.secondary)
+        let description = Text(eta.localizedRemark).font(.subheadline).foregroundColor(.secondary)
         
         if let date = eta.date, let formattedDate = dateFormatter.string(for: date), let relativeDate = relativeFormatter.string(for: date) {
             title = Text("\(formattedDate) (\(relativeDate))")
@@ -37,7 +37,7 @@ struct ETAView: View {
         
         return VStack {
             title
-            if !eta.remark.isEmpty { description }
+            if !eta.localizedRemark.isEmpty { description }
         }
         .padding([.top, .bottom])
         .onReceive(timer) { _ in self.shouldReload.toggle() }

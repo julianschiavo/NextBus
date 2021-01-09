@@ -10,11 +10,11 @@ import Foundation
 import SwiftUI
 import WatchKit
 
-class HostingController: WKHostingController<HomeView> {
+class HostingController: WKHostingController<Text> {
     
 //    let routeDataManager = RouteDataManager()
     
-    override var body: HomeView {
+    override var body: Text {
 //        guard let folder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") else {
 //            fatalError("Failed to find app group folder")
 //        }
@@ -24,6 +24,6 @@ class HostingController: WKHostingController<HomeView> {
 //            try! FileManager.default.removeItem(at: url)
 //        }
         
-        return HomeView()
+        return Text("WIP")
     }
 }

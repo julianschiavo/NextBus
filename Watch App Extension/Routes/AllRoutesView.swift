@@ -51,18 +51,18 @@ struct AllRoutesView: View {
         }
     }
 }
-
-#if DEBUG
-struct AllRoutesView_Previews: PreviewProvider {
-    static let routes = [Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
-                         Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: true, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
-                         Route(companyID: .nlb, id: "3", name: "N39", isOneWay: false, isSpecial: false, isOvernight: true, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination")]
-    
-    static var previews: some View {
-        Group {
-            AllRoutesView(previewRoutes: routes)
-            AllRoutesView(previewRoutes: [])
-        }
-    }
-}
-#endif
+//
+//#if DEBUG
+//struct AllRoutesView_Previews: PreviewProvider {
+//    static let routes = [Route(companyID: .nwfb, id: "1", name: "1", isOneWay: false, isSpecial: false, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
+//                         Route(companyID: .nwfb, id: "2", name: "133X", isOneWay: true, isSpecial: true, isOvernight: false, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination"),
+//                         Route(companyID: .nlb, id: "3", name: "N39", isOneWay: false, isSpecial: false, isOvernight: true, generated: Date(), englishOrigin: "Origin", simplifiedChineseOrigin: "Origin", traditionalChineseOrigin: "Origin", englishDestination: "Destination", simplifiedChineseDestination: "Destination", traditionalChineseDestination: "Destination")]
+//    
+//    static var previews: some View {
+//        Group {
+//            AllRoutesView(previewRoutes: routes)
+//            AllRoutesView(previewRoutes: [])
+//        }
+//    }
+//}
+//#endif
