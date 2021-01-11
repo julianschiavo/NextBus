@@ -16,7 +16,7 @@ struct DirectionsButton: View {
     
     var body: some View {
         Button(action: openInMaps) {
-            Label("Directions", systemImage: "figure.walk.circle")
+            Label("Directions", systemImage: "figure.walk.circle.fill")
                 .alignedHorizontally(to: .leading)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 12)

@@ -9,8 +9,10 @@
 import Combine
 import Foundation
 
-enum SimpleKey {
+enum SimpleKey: Identifiable {
     case all
+    
+    var id: String { "all" }
 }
 
 /// A type that can load data from some source and throw errors
@@ -65,9 +67,6 @@ extension NetworkLoader {
             }
             return
         }
-        if key.hashValue == ModelID<Any>.placeholder.hashValue {
-            return
-        }
         prepare()
         loadData(key: key)
     }
@@ -108,9 +107,6 @@ extension CachedNetworkLoader {
             if let simpleKey = SimpleKey.all as? Key {
                 load(key: simpleKey)
             }
-            return
-        }
-        if key.hashValue == ModelID<Any>.placeholder.hashValue {
             return
         }
         prepare()

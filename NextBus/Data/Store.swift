@@ -10,56 +10,156 @@ import Combine
 import Foundation
 
 class Store: ObservableObject {
-    @Published var favorites = [Favorite]() {
-        didSet {
-            setFavorites(favorites)
-        }
-    }
+    @Published var favorites: Favorites
+    @Published var recentlyViewed: RecentlyViewed
     
-    let appGroupFolderURL: URL
+    @Published var __favorites = OrderedSet<RouteStop>()
+    @Published var __recentlyViewed = OrderedSet<RouteStop>()
     
-    private var decoder = JSONDecoder()
+    private let appGroupFolderURL: URL
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         guard let folder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") else {
             fatalError("Failed to find app group folder")
         }
         appGroupFolderURL = folder
-        updateFavorites()
+        self.favorites = Favorites(appGroupFolderURL: appGroupFolderURL)
+        self.recentlyViewed = RecentlyViewed(appGroupFolderURL: appGroupFolderURL)
+        
+        self.favorites.$all
+            .receive(on: DispatchQueue.main)
+            .sink { all in
+                self.__favorites = all
+            }
+            .store(in: &cancellables)
+        self.recentlyViewed.$all
+            .receive(on: DispatchQueue.main)
+            .sink { all in
+                self.__recentlyViewed = all
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Favorites
     
-    lazy private var favoritesURL = appGroupFolderURL.appendingPathComponent("UserFavorites").appendingPathExtension("json")
-    
-    func isFavorite(route: Route, stop: Stop) -> Bool {
-        let favorite = Favorite(route: route, stop: stop)
-        return favorites.contains(favorite)
-    }
-    
-    func setFavorite(_ isFavorite: Bool, favorite: Favorite) {
-        if isFavorite {
-            favorites.append(favorite)
-        } else {
-            favorites.removeAll { $0 == favorite }
+    class Favorites: ObservableObject {
+        @Published var all = OrderedSet<RouteStop>() {
+            didSet {
+                save()
+            }
+        }
+        
+        private let decoder = JSONDecoder()
+        private let encoder = JSONEncoder()
+        private let url: URL
+        
+        fileprivate init(appGroupFolderURL: URL) {
+            self.url = appGroupFolderURL
+                .appendingPathComponent("UserFavorites")
+                .appendingPathExtension("json")
+            self.all = OrderedSet(self.load())
+        }
+        
+        func contains(route: Route, stop: Stop) -> Bool {
+            contains(RouteStop(route: route, stop: stop))
+        }
+        
+        func contains(_ routeStop: RouteStop) -> Bool {
+            all.contains(routeStop)
+        }
+        
+        func set(_ isFavorite: Bool, route: Route, stop: Stop) {
+            set(isFavorite, routeStop: RouteStop(route: route, stop: stop))
+        }
+        
+        func set(_ isFavorite: Bool, routeStop: RouteStop) {
+            if isFavorite {
+                all.append(routeStop)
+            } else {
+                all.remove(routeStop)
+            }
+        }
+        
+        private func load() -> [RouteStop] {
+            guard let data = FileManager.default.contents(atPath: url.path),
+                  let favorites = try? decoder.decode([RouteStop].self, from: data)
+            else { return [] }
+            return favorites
+                .sorted {
+                    $0.route.localizedName.localizedStandardCompare(
+                        $1.route.localizedName
+                    ) == .orderedAscending
+                }
+        }
+        
+        private func save() {
+            guard let data = try? encoder.encode(Array(all)) else { return }
+            try? data.write(to: url, options: [.atomic])
         }
     }
     
-    private func getFavorites() -> [Favorite] {
-        guard let data = FileManager.default.contents(atPath: favoritesURL.path),
-              let favorites = try? decoder.decode([Favorite].self, from: data)
-        else { return [] }
-        return favorites
-    }
+    // MARK: - Recently Viewed
     
-    private func updateFavorites() {
-        DispatchQueue.main.async {
-            self.favorites = self.getFavorites()
+    class RecentlyViewed: ObservableObject {
+        @Published var all = OrderedSet<RouteStop>() {
+            didSet {
+                save()
+            }
         }
-    }
-    
-    private func setFavorites(_ favorites: [Favorite]) {
-        guard let data = try? JSONEncoder().encode(favorites) else { return }
-        try? data.write(to: favoritesURL, options: [.atomic])
+        
+        private let decoder = JSONDecoder()
+        private let encoder = JSONEncoder()
+        private let url: URL
+        
+        fileprivate init(appGroupFolderURL: URL) {
+            self.url = appGroupFolderURL
+                .appendingPathComponent("RecentlyViewed")
+                .appendingPathExtension("json")
+            self.all = OrderedSet(self.load())
+        }
+        
+        func add(route: Route, stop: Stop) {
+            add(RouteStop(route: route, stop: stop))
+        }
+        
+        func add(_ routeStop: RouteStop) {
+            guard !contains(routeStop) else { return }
+            if all.count == 4 {
+                all.removeLast()
+            }
+            all.insert(routeStop, at: 0)
+            
+        }
+        
+        
+        func contains(route: Route, stop: Stop) -> Bool {
+            contains(RouteStop(route: route, stop: stop))
+        }
+        
+        func contains(_ routeStop: RouteStop) -> Bool {
+            all.contains(routeStop)
+        }
+        
+        func remove(route: Route, stop: Stop) {
+            remove(RouteStop(route: route, stop: stop))
+        }
+        
+        func remove(_ routeStop: RouteStop) {
+            guard contains(routeStop) else { return }
+            all.remove(routeStop)
+        }
+        
+        private func load() -> [RouteStop] {
+            guard let data = FileManager.default.contents(atPath: url.path),
+                  let all = try? decoder.decode([RouteStop].self, from: data)
+            else { return [] }
+            return all
+        }
+        
+        private func save() {
+            guard let data = try? encoder.encode(Array(all)) else { return }
+            try? data.write(to: url, options: [.atomic])
+        }
     }
 }

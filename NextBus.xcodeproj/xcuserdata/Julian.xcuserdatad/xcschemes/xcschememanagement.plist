@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Clip.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>IntentsExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,7 +22,7 @@
 		<key>Mac.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>NextBus.xcscheme_^#shared#^_</key>
 		<dict>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>B95C184A233F20BE0094B3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B96A668625AADD850058AF17</key>
 		<dict>
 			<key>primary</key>
 			<true/>

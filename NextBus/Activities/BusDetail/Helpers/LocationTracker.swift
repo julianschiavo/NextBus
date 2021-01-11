@@ -14,8 +14,7 @@ class LocationTracker: NSObject, ObservableObject, ThrowsErrors, CLLocationManag
     @Published var error: IdentifiableError?
     
     var hasPermission: Bool {
-//        locationManager.authorizationStatus == .authorizedWhenInUse
-        false
+        locationManager.authorizationStatus == .authorizedWhenInUse
     }
     
     var hasRequestedPermission: Bool {

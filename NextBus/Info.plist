@@ -27,9 +27,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationUsageDescription</key>
-	<string>Your location is used to show you where you are in relation to a bus stop.</string>
+	<string>See nearby bus stops and get directions to the closest stop.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is used to show you where you are in relation to a bus stop.</string>
+	<string>See nearby bus stops and get directions to the closest stop.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>GetUpcomingBusesIntent</string>

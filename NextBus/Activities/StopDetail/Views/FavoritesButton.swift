@@ -22,11 +22,11 @@ struct FavoritesButton: View {
                 .padding(.horizontal, 12)
                 .background(Color.quaternaryBackground)
         }
-        .onChange(of: store.favorites) { _ in }
+        .onChange(of: store.favorites.all) { _ in }
     }
     
     @ViewBuilder private func label() -> some View {
-        if store.isFavorite(route: route, stop: stop) {
+        if store.favorites.contains(route: route, stop: stop) {
             Text("Remove Favorite")
         } else {
             Text("Add to Favorites")
@@ -34,18 +34,18 @@ struct FavoritesButton: View {
     }
     
     @ViewBuilder private func icon() -> some View {
-        if store.isFavorite(route: route, stop: stop) {
-            Image(systemName: "heart.fill")
+        if store.favorites.contains(route: route, stop: stop) {
+            Image(systemName: "heart.slash.fill")
         } else {
             Image(systemName: "heart")
         }
     }
     
     private func add() {
-        if store.isFavorite(route: route, stop: stop) {
-            store.setFavorite(false, favorite: Favorite(route: route, stop: stop))
+        if store.favorites.contains(route: route, stop: stop) {
+            store.favorites.set(false, route: route, stop: stop)
         } else {
-            store.setFavorite(true, favorite: Favorite(route: route, stop: stop))
+            store.favorites.set(true, route: route, stop: stop)
         }
     }
 }

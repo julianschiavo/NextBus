@@ -21,9 +21,9 @@ import SwiftUI
 import Combine
 
 public extension View {
-    func navigationBarSearch(_ searchText: Binding<String>) -> some View {
+    func navigationBarSearch(_ searchText: Binding<String>, toolbar: () -> UIToolbar? = { nil }) -> some View {
         overlay(
-            SearchBar(text: searchText)
+            SearchBar(text: searchText, toolbar: toolbar())
                 .frame(width: 0, height: 0)
         )
     }
@@ -31,6 +31,7 @@ public extension View {
 
 fileprivate struct SearchBar: UIViewControllerRepresentable {
     @Binding var text: String
+    let toolbar: UIToolbar?
     
     func makeUIViewController(context: Context) -> SearchBarWrapperController {
         SearchBarWrapperController()
@@ -38,20 +39,24 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
     
     func updateUIViewController(_ controller: SearchBarWrapperController, context: Context) {
         controller.searchController = context.coordinator.searchController
+        controller.searchController?.searchBar.text = text
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(text: $text)
+        Coordinator(text: $text, toolbar: toolbar)
     }
     
     class Coordinator: NSObject, UISearchResultsUpdating {
         @Binding var text: String
+        let toolbar: UIToolbar?
+        
         let searchController: UISearchController
         
         private var subscription: AnyCancellable?
         
-        init(text: Binding<String>) {
+        init(text: Binding<String>, toolbar: UIToolbar?) {
             self._text = text
+            self.toolbar = toolbar
             self.searchController = UISearchController(searchResultsController: nil)
             
             super.init()
@@ -61,9 +66,8 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
             searchController.obscuresBackgroundDuringPresentation = false
             
             searchController.searchBar.text = self.text
-            subscription = self.text.publisher.sink { _ in
-                self.searchController.searchBar.text = self.text
-            }
+            searchController.searchBar.keyboardType = .numberPad
+            searchController.searchBar.inputAccessoryView = toolbar
         }
         
         deinit {
@@ -79,6 +83,8 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
     }
     
     class SearchBarWrapperController: UIViewController {
+        private var didShowSearchBar = false
+        
         var searchController: UISearchController? {
             didSet {
                 parent?.navigationItem.searchController = searchController
@@ -91,6 +97,9 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
         
         override func viewDidAppear(_ animated: Bool) {
             parent?.navigationItem.searchController = searchController
+            parent?.navigationItem.hidesSearchBarWhenScrolling = false
+            guard !didShowSearchBar else { return }
+            didShowSearchBar = true
             UIView.performWithoutAnimation {
                 searchController?.isActive = true
                 searchController?.isActive = false

@@ -22,7 +22,7 @@ struct Token: Identifiable {
     // MARK: - Presets
     
     static func tokens(route: Route, stop: Stop? = nil) -> [Token] {
-        var tokens = [Token]()
+        let tokens = [Token]()
 //        if let fare = route.fare ?? stop?.normalFare {
 //            tokens.append(.price(fare))
 //        }

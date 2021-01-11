@@ -79,15 +79,49 @@ public struct OrderedSet<E: Hashable>: Equatable, Collection {
         }
     }
     
+    /// Inserts a new element at the specified position.
+    ///
+    /// The new element is inserted before the element currently at the specified
+    /// index. If you pass the collection's `endIndex` property as the `index`
+    /// parameter, the new element is appended to the collection.
+    ///
+    ///     var numbers = [1, 2, 3, 4, 5]
+    ///     numbers.insert(100, at: 3)
+    ///     numbers.insert(200, at: numbers.endIndex)
+    ///
+    ///     print(numbers)
+    ///     // Prints "[1, 2, 3, 100, 4, 5, 200]"
+    ///
+    /// - Parameter newElement: The new element to insert into the collection.
+    /// - Parameter i: The position at which to insert the new element.
+    ///   `index` must be a valid index of the collection or equal to its `endIndex`
+    ///   property.
+    ///
+    /// - returns: True if the item was inserted.
+    @discardableResult
+    public mutating func insert(_ newElement: Element, at i: Int) -> Bool {
+        let inserted = set.insert(newElement).inserted
+        if inserted {
+            array.insert(newElement, at: i)
+        }
+        return inserted
+    }
+    
+    /// Removes an element from the ordered set.
+    public mutating func remove(_ element: Element) {
+        set.remove(element)
+        array.removeAll { $0 == element }
+    }
+    
     /// Remove and return the element at the beginning of the ordered set.
-    public mutating func removeFirst() -> Element {
+    @discardableResult public mutating func removeFirst() -> Element {
         let firstElement = array.removeFirst()
         set.remove(firstElement)
         return firstElement
     }
     
     /// Remove and return the element at the end of the ordered set.
-    public mutating func removeLast() -> Element {
+    @discardableResult public mutating func removeLast() -> Element {
         let lastElement = array.removeLast()
         set.remove(lastElement)
         return lastElement

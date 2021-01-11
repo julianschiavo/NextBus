@@ -37,7 +37,7 @@ struct StopMap: View {
         .background(Color.quaternaryBackground)
         .onAppear {
             let location = CLLocation(latitude: latitude, longitude: longitude)
-            let regionRadius: CLLocationDistance = 400
+            let regionRadius: CLLocationDistance = 350
             withAnimation {
                 region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             }

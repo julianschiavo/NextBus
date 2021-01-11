@@ -11,20 +11,28 @@ import SwiftUI
 struct RouteRow: View {
     let route: Route
     
+    @State private var isShareSheetPresented = false
+    
     var body: some View {
-        NavigationLink(destination: BusDetail(route: route, direction: .inbound)) {
-            HStack {
+        NavigationLink(destination: BusDetail(route: route)) {
+            HStack(alignment: .top, spacing: 12) {
                 name
                 info
             }
+        }
+        .sheet(isPresented: $isShareSheetPresented) {
+            RouteShareSheet(route: route)
+        }
+        .contextMenu {
+            ShareButton(isPresented: $isShareSheetPresented)
         }
     }
     
     private var name: some View {
         Text(route.localizedName)
-            .font(.title2, weight: .bold)
+            .font(.title3, weight: .bold)
             .foregroundColor(route.companyID.textColor)
-            .padding(7)
+            .padding(6)
             .background(route.companyID.color)
             .cornerRadius(12)
     }

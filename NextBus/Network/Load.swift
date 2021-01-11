@@ -8,8 +8,10 @@
 
 import SwiftUI
 
+typealias GenericLoader = Loader
+
 /// A view that loads content using a `Loader` before displaying the content using a custom `View`
-struct Load<Loader: NextBus.Loader, Value, Content: View, PlaceholderContent: View>: View {
+struct Load<Loader: GenericLoader, Value, Content: View, PlaceholderContent: View>: View {
     
     /// The loader sub
     @ObservedObject private var loader: Loader

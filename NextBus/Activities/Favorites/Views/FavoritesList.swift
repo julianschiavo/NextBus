@@ -12,7 +12,13 @@ struct FavoritesList: View {
     @EnvironmentObject private var store: Store
     
     var body: some View {
-        if store.favorites.isEmpty {
+        contents
+            .navigationTitle("Favorites")
+            .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    @ViewBuilder var contents: some View {
+        if store.favorites.all.isEmpty {
             placeholder
         } else {
             list
@@ -20,10 +26,10 @@ struct FavoritesList: View {
     }
     
     private var list: some View {
-        List(store.favorites) { favorite in
+        List(store.favorites.all) { favorite in
             FavoriteRow(favorite: favorite)
         }
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(SidebarListStyle())
     }
     
     private var placeholder: some View {

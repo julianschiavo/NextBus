@@ -60,7 +60,7 @@ struct StopList: View, Loadable {
         Group {
             ForEach(stops) { stop in
                 NavigationLink(destination: StopDetail(route: route, stop: stop)) {
-                    StopRow(stop: stop)
+                    StopRow(route: route, stop: stop)
                 }
             }
         }

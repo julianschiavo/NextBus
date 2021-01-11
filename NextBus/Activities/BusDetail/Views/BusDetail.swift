@@ -10,9 +10,9 @@ import SwiftUI
 
 struct BusDetail: View {
     let route: Route
-    let direction: Direction
     
     @State private var reload = false
+    @State private var isShareSheetPresented = false
     
     var body: some View {
         List {
@@ -22,15 +22,19 @@ struct BusDetail: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(Localizations.routeTitle(routeName: route.localizedName))
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: reload) { _ in
-            return
+        .sheet(isPresented: $isShareSheetPresented) {
+            RouteShareSheet(route: route)
         }
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ShareButton(isPresented: $isShareSheetPresented)
                 Button(action: reloadWithAnimation) {
                     Image(systemName: "arrow.clockwise")
                 }
             }
+        }
+        .onChange(of: reload) { _ in
+            return
         }
     }
     

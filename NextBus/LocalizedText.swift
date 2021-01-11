@@ -45,6 +45,20 @@ struct LocalizedText: Codable, Equatable, Hashable {
         }
     }
     
+    static var kmbLanguageCode: String {
+        guard let preferredLanguage = Locale.preferredLanguages.first else { return "en" }
+        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
+        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
+        
+        if preferredLanguage.contains(simplifiedChineseCode) {
+            return "sc"
+        } else if preferredLanguage.contains(traditionalChineseCode) {
+            return "tc"
+        } else {
+            return "en"
+        }
+    }
+    
     static var nlbLanguageCode: String {
         guard let preferredLanguage = Locale.preferredLanguages.first else { return "en" }
         let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue

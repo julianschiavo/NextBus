@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SharedCache {
-    associatedtype Key: Hashable
+    associatedtype Key: Hashable & Identifiable
     associatedtype Value
     
     static var shared: Cache<Key, Value> { get }

@@ -15,6 +15,8 @@ struct StopDetail: View {
     private let stop: Stop
     private let tokens: [Token]
     
+    @State private var isShareSheetPresented = false
+    
     @State private var reload = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -33,15 +35,24 @@ struct StopDetail: View {
         }
         .navigationTitle(stop.localizedName)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            store.recentlyViewed.add(route: route, stop: stop)
+        }
         .onChange(of: reload) { _ in
             return
         }
         .onReceive(timer) { _ in
             reloadWithAnimation()
         }
+        .sheet(isPresented: $isShareSheetPresented) {
+            RouteShareSheet(route: route, stop: stop)
+        }
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                #if !APPCLIP
                 FavoritesButton(route: route, stop: stop)
+                #endif
+                ShareButton(isPresented: $isShareSheetPresented)
                 Button(action: reloadWithAnimation) {
                     Image(systemName: "arrow.clockwise")
                 }
@@ -74,9 +85,13 @@ struct StopDetail: View {
     private var info: some View {
         Layer(.secondary, title: "Info", systemImage: "info.circle.fill") {
             VStack(spacing: 0) {
+                #if !APPCLIP
                 FavoritesButton(route: route, stop: stop)
                 Divider()
                 ScheduleButton(route: route, stop: stop)
+                Divider()
+                #endif
+                ShareButton(isPresented: $isShareSheetPresented)
             }
         }
     }

@@ -15,7 +15,6 @@ struct ETARow: View {
     
     init(eta: ETA) {
         self.eta = eta
-        formatter.dateTimeStyle = .numeric
         formatter.formattingContext = .beginningOfSentence
     }
     
@@ -23,6 +22,11 @@ struct ETARow: View {
         VStack(alignment: .leading) {
             countdown
             time
+            if !eta.localizedRemark.isEmpty {
+                Text(eta.localizedRemark)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
         .alignedHorizontally(to: .leading)
         .padding(.vertical, 8)

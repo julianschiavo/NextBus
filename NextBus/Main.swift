@@ -13,9 +13,9 @@ struct Main: View {
     
     var body: some View {
         TabView {
-            FavoritesTab()
+            DashboardTab()
                 .tabItem {
-                    Label("Favorites", systemImage: "heart.fill")
+                    Label("Dashboard", systemImage: "star.fill")
                 }
             RoutesTab()
                 .tabItem {

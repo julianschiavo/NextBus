@@ -11,7 +11,7 @@ import SwiftUI
 /// A `View` that loads content using a `Loader`
 protocol Loadable: View {
     associatedtype Content: View
-    associatedtype Loader: NextBus.Loader
+    associatedtype Loader: GenericLoader
     associatedtype Placeholder: View
     associatedtype Value
     

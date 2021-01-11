@@ -9,29 +9,33 @@
 import Foundation
 
 // Adapted From https://www.swiftbysundell.com/articles/caching-in-swift/
-class Cache<Key: Hashable, Value>: HasLogger {
+class Cache<Key: Hashable & Identifiable, Value>: HasLogger {
     
     private var lastUpdateDictionary = [Key: Date]()
     
+    final private func keyObject(_ key: Key) -> WrappedKey {
+        wrap(key.id)
+    }
+    
     final func insert(_ value: Value, forKey key: Key) {
-        _cache.setObject(wrap(value), forKey: wrap(key))
+        _cache.setObject(wrap(value), forKey: keyObject(key))
     }
     
     final func value(forKey key: Key) -> Value? {
-        _cache.object(forKey: wrap(key))?.value
+        _cache.object(forKey: keyObject(key))?.value
     }
     
     final func removeValue(forKey key: Key) {
-        _cache.removeObject(forKey: wrap(key))
+        _cache.removeObject(forKey: keyObject(key))
     }
     
     final subscript(key: Key) -> Value? {
         get {
             if let value = value(forKey: key) {
-                logEvent(named: "Served", key: key)
+                logEvent(named: "Served", key: key.id)
                 return value
             } else {
-                logEvent(named: "Missed", key: key)
+                logEvent(named: "Missed", key: key.id)
                 return nil
             }
         }
@@ -44,7 +48,7 @@ class Cache<Key: Hashable, Value>: HasLogger {
                 return
             }
             
-            logEvent(named: "Update", key: key)
+            logEvent(named: "Update", key: key.id)
             insert(value, forKey: key)
             lastUpdateDictionary[key] = Date()
         }
@@ -56,7 +60,7 @@ class Cache<Key: Hashable, Value>: HasLogger {
         let expirationDate = lastUpdate.addingTimeInterval(600)
         let range = lastUpdate...expirationDate
         let isStale = !range.contains(now)
-        logEvent(named: isStale ? "Staled" : "Fresh", key: key)
+        logEvent(named: isStale ? "Staled" : "Fresh", key: key.id)
         return isStale
     }
     
@@ -65,16 +69,16 @@ class Cache<Key: Hashable, Value>: HasLogger {
     private final let _cache = NSCache<WrappedKey, WrappedValue>()
     
     private final class WrappedKey: NSObject {
-        let key: Key
-        
-        init(_ key: Key) {
+        let key: Key.ID
+
+        init(_ key: Key.ID) {
             self.key = key
         }
-        
+
         override var hash: Int {
             key.hashValue
         }
-        
+
         override func isEqual(_ object: Any?) -> Bool {
             guard let value = object as? Self else { return false }
             return value.key == key
@@ -89,7 +93,7 @@ class Cache<Key: Hashable, Value>: HasLogger {
         }
     }
     
-    private final func wrap(_ key: Key) -> WrappedKey {
+    private final func wrap(_ key: Key.ID) -> WrappedKey {
         WrappedKey(key)
     }
     
@@ -101,7 +105,7 @@ class Cache<Key: Hashable, Value>: HasLogger {
     
     static var category: String { "Cache" }
     
-    private func logEvent(named eventName: String, key: Key) {
+    private func logEvent(named eventName: String, key: Key.ID) {
         logger.info("\(eventName, align: .left(columns: 7), privacy: .public) \(Value.self, align: .left(columns: 25), privacy: .public) ID: \(String(describing: key), privacy: .private(mask: .hash))")
     }
 }

@@ -26,7 +26,6 @@ struct Layers<Content: View>: View {
             .padding(.horizontal, 10)
             .padding(.top, 5)
             .padding(.bottom, 15)
-            
         }
         .background(Color.background)
     }

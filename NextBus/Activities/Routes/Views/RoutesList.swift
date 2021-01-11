@@ -26,7 +26,9 @@ struct RoutesList: View, Loadable {
             }
         }
         .listStyle(SidebarListStyle())
-        .navigationBarSearch($searchText)
+        .navigationBarSearch($searchText) {
+            RouteSearchToolbar(searchText: $searchText)
+        }
     }
     
     private func sectionList(with companyRoutes: [CompanyRoutes]) -> some View {
