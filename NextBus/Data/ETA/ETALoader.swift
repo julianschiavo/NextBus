@@ -15,15 +15,21 @@ class ETALoaderVariant {
     func decode(_ data: Data) throws -> [ETA] { [] }
 }
 
-class ETALoader: NetworkLoader {
-    typealias Key = ETARequest
+protocol ETAPublisherBuilder {
+    init(key: RouteStop)
+    func create() -> AnyPublisher<[ETA], Error>
+}
+
+class ETALoader: Loader {
+    typealias Key = RouteStop
+    typealias PublisherBuilder = ETAPublisherBuilder
     
     @Published var object: [ETA]?
     @Published var error: IdentifiableError?
     
     var cancellable: AnyCancellable?
     
-    private var variant: ETALoaderVariant?
+    private var builder: ETAPublisherBuilder?
     
     required init() {
         
@@ -33,33 +39,24 @@ class ETALoader: NetworkLoader {
         cancel()
     }
     
-    private func createVariantIfNeeded(for request: ETARequest) {
-        guard variant == nil else { return }
-        switch request.route.companyID {
+    private func createVariantIfNeeded(for routeStop: RouteStop) {
+        guard builder == nil else { return }
+        switch routeStop.route.company {
         case .ctb, .nwfb:
-            variant = CTBNWFB.ETALoader(key: request)
+            builder = CTBNWFB.ETAPublisherBuilder(key: routeStop)
         case .gmb:
-            variant = GMB.ETALoader(key: request)
-        case .kmb, .kmbCTB, .kmbNWFB:
-            variant = KMB.ETALoader(key: request)
+            builder = GMB.ETAPublisherBuilder(key: routeStop)
+        case .kmb, .kmbCTB, .kmbNWFB, .lwb, .lwbCTB:
+            builder = KMB.ETAPublisherBuilder(key: routeStop)
         case .nlb:
-            variant = NLB.ETALoader(key: request)
+            builder = NLB.ETAPublisherBuilder(key: routeStop)
         default:
             return
         }
     }
     
-    func createRequest(for request: ETARequest) -> URLRequest {
-        createVariantIfNeeded(for: request)
-        return variant?.createRequest() ?? URLRequest(url: URL(fileURLWithPath: ""))
-    }
-    
-    func decode(_ data: Data, key: ETARequest) throws -> [ETA] {
-        try variant?.decode(data) ?? []
-    }
-    
-    func cancel() {
-        cancellable?.cancel()
-        cancellable = nil
+    func createPublisher(key routeStop: RouteStop) -> AnyPublisher<[ETA], Error>? {
+        createVariantIfNeeded(for: routeStop)
+        return builder?.create()
     }
 }

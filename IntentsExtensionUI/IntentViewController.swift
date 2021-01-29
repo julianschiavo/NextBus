@@ -7,31 +7,37 @@
 //
 
 import IntentsUI
+import SwiftUI
 
-// As an example, this extension's Info.plist has been configured to handle interactions for INSendMessageIntent.
-// You will want to replace this or add other intents as appropriate.
-// The intents whose interactions you wish to handle must be declared in the extension's Info.plist.
+@objc(IntentViewController)
+class IntentViewController: UIHostingController<SimpleBusInfoView>, INUIHostedViewControlling {
 
-// You can test this example integration by saying things to Siri like:
-// "Send a message using <myApp>"
+    private let info = SimpleBusInfo()
 
-class IntentViewController: UIViewController, INUIHostedViewControlling {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(rootView: SimpleBusInfoView(info: info))
     }
-        
-    // MARK: - INUIHostedViewControlling
-    
-    // Prepare your view controller for the interaction to handle.
+
+    @objc required dynamic init?(coder aDecoder: NSCoder) {
+        super.init(rootView: SimpleBusInfoView(info: info))
+    }
+
     func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
-        // Do configuration here, including preparing views and calculating a desired size for presentation.
-        completion(true, parameters, self.desiredSize)
+        guard let response = interaction.intentResponse as? GetUpcomingBusesIntentResponse,
+              let inRoute = response.route,
+              let route = Route.from(inRoute),
+              let inStop = response.stop,
+              let stop = Stop.from(inStop)
+        else {
+            completion(false, [], .zero)
+            return
+        }
+
+        info.route = route
+        info.stop = stop
+
+        var size = extensionContext?.hostedViewMaximumAllowedSize ?? .zero
+        size.height = 300
+        completion(true, parameters, size)
     }
-    
-    var desiredSize: CGSize {
-        return self.extensionContext!.hostedViewMaximumAllowedSize
-    }
-    
 }

@@ -23,13 +23,13 @@ import Combine
 public extension View {
     func navigationBarSearch(_ searchText: Binding<String>, toolbar: () -> UIToolbar? = { nil }) -> some View {
         overlay(
-            SearchBar(text: searchText, toolbar: toolbar())
+            SearchController(text: searchText, toolbar: toolbar())
                 .frame(width: 0, height: 0)
         )
     }
 }
 
-fileprivate struct SearchBar: UIViewControllerRepresentable {
+fileprivate struct SearchController: UIViewControllerRepresentable {
     @Binding var text: String
     let toolbar: UIToolbar?
     
@@ -67,6 +67,8 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
             
             searchController.searchBar.text = self.text
             searchController.searchBar.keyboardType = .numberPad
+            searchController.searchBar.returnKeyType = .search
+            searchController.searchBar.enablesReturnKeyAutomatically = true
             searchController.searchBar.inputAccessoryView = toolbar
         }
         
@@ -91,19 +93,22 @@ fileprivate struct SearchBar: UIViewControllerRepresentable {
             }
         }
         
+        override func viewDidLoad() {
+            parent?.navigationItem.hidesSearchBarWhenScrolling = false
+        }
+        
         override func viewWillAppear(_ animated: Bool) {
             parent?.navigationItem.searchController = searchController
         }
         
         override func viewDidAppear(_ animated: Bool) {
             parent?.navigationItem.searchController = searchController
-            parent?.navigationItem.hidesSearchBarWhenScrolling = false
-            guard !didShowSearchBar else { return }
-            didShowSearchBar = true
-            UIView.performWithoutAnimation {
-                searchController?.isActive = true
-                searchController?.isActive = false
-            }
+//            guard !didShowSearchBar else { return }
+//            didShowSearchBar = true
+//            UIView.performWithoutAnimation {
+//                searchController?.isActive = true
+//                searchController?.isActive = false
+//            }
         }
     }
 }

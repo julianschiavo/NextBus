@@ -22,7 +22,7 @@ fileprivate extension Route {
 
         let outbound = Route(
             _id: route.name,
-            companyID: route.companyID,
+            company: route.companyID,
             name: name,
             category: .bus,
             servicePeriod: route.name.contains("N") ? .night : .allDay,
@@ -63,7 +63,7 @@ extension CTBNWFB {
     }
 
     struct _Route: Hashable, Codable {
-        var companyID: CompanyID
+        var companyID: Company
         var name: String
 
         var originEN: String

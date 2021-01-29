@@ -5,6 +5,9 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>appclips:nextbus.schiavo.me</string>
+		<string>applinks:nextbus.schiavo.me</string>
+		<string>appclips:appclip.schiavo.me</string>
+		<string>applinks:appclip.schiavo.me</string>
 	</array>
 	<key>com.apple.developer.parent-application-identifiers</key>
 	<array>

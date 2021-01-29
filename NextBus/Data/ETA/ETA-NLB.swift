@@ -11,6 +11,7 @@ import Foundation
 fileprivate extension ETA {
     static func from(_ eta: NLB._ETA) -> ETA {
         ETA(
+            id: UUID().uuidString,
             date: eta.date,
             generated: eta.generated,
             remark: LocalizedText(eta.remark)

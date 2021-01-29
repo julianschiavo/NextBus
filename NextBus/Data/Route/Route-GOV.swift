@@ -8,33 +8,39 @@
 
 import Foundation
 
-fileprivate extension Route {
+extension Route {
     static func from(_ route: GOV.RawRoute) -> [Route] {
         let name = LocalizedText(en: route.nameEN,
                                  sc: route.nameSC,
                                  tc: route.nameTC)
-        let origin = LocalizedText(en: route.originEN.replacingOccurrences(of: "</br>", with: "").capitalized,
+        let origin = LocalizedText(en: route.originEN.capitalized,
                                    sc: route.originSC,
                                    tc: route.originTC)
-        let destination = LocalizedText(en: route.destinationEN.replacingOccurrences(of: "</br>", with: "").capitalized,
+        let destination = LocalizedText(en: route.destinationEN.capitalized,
                                         sc: route.destinationSC,
                                         tc: route.destinationTC)
         
+        let isOneWay = route.nameEN.contains("Circular")
+        
         let inbound = Route(
             _id: String(route.id),
-            companyID: route.companyID,
+            company: route.companyID,
             name: name,
             category: route.category,
             servicePeriod: route.servicePeriod,
-            direction: .inbound,
+            direction: isOneWay ? .single : .inbound,
             fare: Double(route.fare) ?? 0,
             origin: origin,
             destination: destination,
             lastUpdated: Date()
         )
         
+        if isOneWay {
+            return [inbound]
+        }
+        
         var outbound = inbound
-        outbound.direction = .inbound
+        outbound.direction = .outbound
         let iDestination = outbound.origin
         outbound.origin = outbound.destination
         outbound.destination = iDestination
@@ -46,7 +52,7 @@ fileprivate extension Route {
 extension GOV {
     struct RawRoute: Codable, Hashable, Identifiable {
         var id: Int
-        var companyID: CompanyID
+        var companyID: Company
         
         var nameEN: String
         var nameSC: String
@@ -67,7 +73,7 @@ extension GOV {
         
         var lastUpdated: String
         
-        var route: [Route] {
+        var routes: [Route] {
             Route.from(self)
         }
         

@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct CompanyRoutes: Identifiable {
-    var id: CompanyID { company }
-    var company: CompanyID
+struct CompanyRoutes: Codable, Hashable, Identifiable {
+    var id: Company { company }
+    var company: Company
     var routes: [Route]
 }

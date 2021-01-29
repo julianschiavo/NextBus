@@ -21,7 +21,13 @@ enum Direction: String, Codable, Hashable, Identifiable {
         }
     }
     
-    var id: String { name }
+    var id: String {
+        switch self {
+        case .single: return "S"
+        case .inbound: return "I"
+        case .outbound: return "O"
+        }
+    }
     
     // official mdb file, used for gmb eta
     var sequence: String {
@@ -42,7 +48,24 @@ enum Direction: String, Codable, Hashable, Identifiable {
         }
     }
     
-    // MARK: - Intents
+    // MARK: - Intent
+    
+    var intent: INDirection {
+        switch self {
+        case .single: return .oneWay
+        case .inbound: return .inbound
+        case .outbound: return .outbound
+        }
+    }
+    
+    static func from(_ intent: INDirection) -> Self {
+        switch intent {
+        case .oneWay, .unknown: return .single
+        case .inbound: return .inbound
+        case .outbound: return .outbound
+        }
+    }
+    
 //    
 //    static func from(intentObject: INDirection) -> Direction {
 //        switch intentObject {

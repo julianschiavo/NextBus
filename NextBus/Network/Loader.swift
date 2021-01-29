@@ -9,10 +9,10 @@
 import Combine
 import Foundation
 
-enum SimpleKey: Identifiable {
+enum SimpleKey: String, Codable, Identifiable {
     case all
     
-    var id: String { "all" }
+    var id: String { rawValue }
 }
 
 /// A type that can load data from some source and throw errors
@@ -26,19 +26,41 @@ protocol Loader: ObservableObject, ThrowsErrors {
     /// The loaded object
     var object: Object? { get set }
     
-    func load(key: Key?)
+    /// An ongoing request
+    var cancellable: AnyCancellable? { get set }
+    
+    func load(key: Key)
+    func createPublisher(key: Key) -> AnyPublisher<Object, Error>?
     func loadData(key: Key)
     func loadCompleted(key: Key, object: Object)
     func cancel()
 }
 
 extension Loader {
-    func prepare() {
-        cancel()
+    func load(key: Key) {
+        loadData(key: key)
+    }
+
+    func loadData(key: Key) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.cancellable = self.createPublisher(key: key)?
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] completion in
+                    self?.catchCompletionError(completion)
+                } receiveValue: { [weak self] object in
+                    self?.object = object
+                    self?.loadCompleted(key: key, object: object)
+                }
+        }
+    }
+
+    func loadCompleted(key: Key, object: Object) {
+
     }
     
-    func loadCompleted(key: Key, object: Object) {
-        
+    func cancel() {
+        cancellable?.cancel()
+        cancellable = nil
     }
 }
 
@@ -48,10 +70,7 @@ extension Loader where Key == SimpleKey {
     }
 }
 
-protocol NetworkLoader: Loader {
-    /// An ongoing request
-    var cancellable: AnyCancellable? { get set }
-    
+protocol SimpleNetworkLoader: Loader {
     /// Creates a `URLRequest` for a network loading request
     func createRequest(for key: Key) -> URLRequest
     
@@ -59,69 +78,52 @@ protocol NetworkLoader: Loader {
     func decode(_ data: Data, key: Key) throws -> Object
 }
 
-extension NetworkLoader {
-    func load(key: Key?) {
-        guard let key = key else {
-            if let simpleKey = SimpleKey.all as? Key {
-                load(key: simpleKey)
-            }
-            return
-        }
-        prepare()
-        loadData(key: key)
-    }
-    
-    func loadData(key: Key) {
+extension SimpleNetworkLoader {
+    func createPublisher(key: Key) -> AnyPublisher<Object, Error>? {
         let request = createRequest(for: key)
-        
-        cancellable = URLSession.shared
+        return URLSession.shared
             .dataTaskPublisher(for: request)
             .retry(3)
             .tryMap { data, response in
                 try self.decode(data, key: key)
             }
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                self?.catchCompletionError(completion)
-            } receiveValue: { [weak self] object in
-                self?.object = object
-            }
+            .eraseToAnyPublisher()
     }
 }
 
-//extension NetworkLoader where Object == Decodable {
-//    func decode(_ data: Data, key: Key) throws -> Object {
-//        let decoder = JSONDecoder()
-//        return try decoder.decode(Object.self, from: data)
-//    }
-//}
-
-protocol CachedNetworkLoader: NetworkLoader where Key == Cache.Key, Object == Cache.Value {
-    associatedtype Cache: SharedCache
+protocol CachedLoader: Loader where Key == Cache.Key, Object == Cache.Value {
+    associatedtype Cache: AnySingularCache
     var cache: Cache.Type { get }
 }
 
-extension CachedNetworkLoader {
-    func load(key: Key?) {
-        guard let key = key else {
-            if let simpleKey = SimpleKey.all as? Key {
-                load(key: simpleKey)
-            }
-            return
-        }
-        prepare()
+extension CachedLoader {
+    func load(key: Key) {
         loadCachedData(key: key)
-        if cache.isStale(key) {
+        if cache.isValueStale(key) {
             loadData(key: key)
         }
     }
     
     private func loadCachedData(key: Key) {
         guard let object = cache[key] else { return }
-        self.object = object
+        DispatchQueue.main.async {
+            self.object = object
+        }
+    }
+    
+    func getCachedData(key: Key, completion: @escaping (Object?) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            completion(self.cache[key])
+        }
     }
     
     func loadCompleted(key: Key, object: Object) {
         cache[key] = object
+    }
+}
+
+extension CachedLoader where Key == SimpleKey {
+    func load() {
+        load(key: .all)
     }
 }

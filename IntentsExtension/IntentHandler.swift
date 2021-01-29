@@ -12,7 +12,9 @@ class IntentHandler: INExtension {
     
     override func handler(for intent: INIntent) -> Any {
         if intent is GetUpcomingBusesIntent {
-//            return GetUpcomingBusesIntentHandler()
+            return GetUpcomingBusesIntentHandler()
+        } else if intent is SelectRouteStopIntent {
+            return SelectRouteStopIntentHandler()
         }
         
         // This is the default implementation.  If you want different objects to handle different intents,

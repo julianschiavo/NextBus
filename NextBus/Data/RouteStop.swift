@@ -7,17 +7,33 @@
 //
 
 import Foundation
+import Intents
 
 struct RouteStop: Codable, Equatable, Identifiable, Hashable {
-    var companyID: CompanyID
+    var companyID: Company
     var route: Route
     var stop: Stop
     
     var id: String { route.id + stop.id }
     
     init(route: Route, stop: Stop) {
-        self.companyID = route.companyID
+        self.companyID = route.company
         self.route = route
         self.stop = stop
+    }
+    
+    var intent: INRouteStop {
+        let intent = INRouteStop(identifier: id, display: route.localizedName + " from " + stop.localizedName)
+        intent.route = route.intent
+        intent.stop = stop.intent
+        return intent
+    }
+    
+    static func from(_ intent: INRouteStop) -> Self? {
+        guard let inRoute = intent.route,
+              let route = Route.from(inRoute),
+              let inStop = intent.stop,
+              let stop = Stop.from(inStop) else { return nil }
+        return RouteStop(route: route, stop: stop)
     }
 }

@@ -23,31 +23,37 @@ struct Stop: Codable, Hashable, Identifiable, Reorderable {
     
     var lastUpdated: Date
     
-    // MARK: - Intents
+    // MARK: - Intent
     
-//    static func from(intentObject: INStop) -> Stop? {
-//        guard let identifier = intentObject.identifier,
-//            let name = intentObject.name,
-//            let indexNSNumber = intentObject.index,
-//            let index = Int(exactly: indexNSNumber),
-//            let specialDeparturesOnlyNSNumber = intentObject.specialDeparturesOnly,
-//            let specialDeparturesOnly = Bool(exactly: specialDeparturesOnlyNSNumber),
-//            let latitudeNSNumber = intentObject.latitude,
-//            let latitude = Double(exactly: latitudeNSNumber),
-//            let longitudeNSNumber = intentObject.longitude,
-//            let longitude = Double(exactly: longitudeNSNumber) else { return nil }
-//        return Stop(id: identifier, index: index, generated: Date(), englishName: name, simplifiedChineseName: name, traditionalChineseName: name, normalFare: intentObject.normalFare, holidayFare: intentObject.holidayFare, specialDeparturesOnly: specialDeparturesOnly, latitude: latitude, longitude: longitude)
-//    }
-//    
-//    var intentObject: INStop {
-//        let object = INStop(identifier: id, display: name)
-//        object.index = (index ?? 0) as NSNumber
-//        object.name = name
-//        object.normalFare = normalFare
-//        object.holidayFare = holidayFare
-//        object.specialDeparturesOnly = NSNumber(value: specialDeparturesOnly)
-//        object.latitude = latitude as NSNumber
-//        object.longitude = longitude as NSNumber
-//        return object
-//    }
+    var intent: INStop {
+        let intent = INStop(identifier: id, display: localizedName)
+        intent.index = NSNumber(integerLiteral: index)
+        intent.name = localizedName
+        if let latitude = latitude {
+            intent.latitude = latitude as NSNumber
+        }
+        if let longitude = longitude {
+            intent.longitude = longitude as NSNumber
+        }
+        return intent
+    }
+    
+    static func from(_ intent: INStop) -> Self? {
+        guard let id = intent.identifier,
+              let name = intent.name,
+              let nsIndex = intent.index,
+              let index = Int(exactly: nsIndex)
+        else { return nil }
+        
+        var stop = Stop(id: id, index: index, name: LocalizedText(name), latitude: nil, longitude: nil, lastUpdated: Date())
+        if let nsLatitude = intent.latitude,
+           let latitude = Double(exactly: nsLatitude) {
+            stop.latitude = latitude
+        }
+        if let nsLongitude = intent.longitude,
+           let longitude = Double(exactly: nsLongitude) {
+            stop.longitude = longitude
+        }
+        return stop
+    }
 }

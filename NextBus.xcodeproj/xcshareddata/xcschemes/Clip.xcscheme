@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
-            value = "https://nextbus.schiavo.me/KMB/101inbound"
+            value = "https://appclip.schiavo.me/status?p=KMB&amp;p1=1014O"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

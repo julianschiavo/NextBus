@@ -10,9 +10,9 @@ import Foundation
 
 fileprivate extension Stop {
     static func from(_ stop: RawStop) -> Stop {
-        let name = LocalizedText(en: stop.nameEN.capitalized,
-                                 sc: stop.nameSC,
-                                 tc: stop.nameTC)
+        let name = LocalizedText(en: stop.nameEN.components(separatedBy: "/<br/>").first?.capitalized ?? stop.nameEN.capitalized,
+                                 sc: stop.nameSC.components(separatedBy: "/<br/>").first ?? stop.nameSC,
+                                 tc: stop.nameTC.components(separatedBy: "/<br/>").first ?? stop.nameTC)
         return Stop(
             id: String(stop.id),
             index: stop.index,

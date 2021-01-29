@@ -10,49 +10,61 @@ import SwiftUI
 
 @main
 struct Clip: App {
+    
     @StateObject private var store = Store()
     
-    @State private var companyID: CompanyID?
-    @State private var routeID: String?
-    @State private var stopID: String?
+    @State private var experience: Experience?
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                view
+                RoutesList()
                     .navigationTitle("Next Bus")
+            }
+            .sheet(item: $experience) { _ in
+                switch experience {
+                case .list:
+                    RoutesList()
+                case let .status(status):
+                    InvocatedStatusExperience(experience: status)
+                default:
+                    EmptyView()
+                }
             }
             .environmentObject(store)
             .navigationViewStyle(StackNavigationViewStyle())
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { userActivity in
-                handleInvocation(userActivity: userActivity)
+                guard let url = userActivity.webpageURL else { return }
+                handleInvocation(url: url)
+            }
+            .onOpenURL { url in
+                handleInvocation(url: url)
             }
         }
     }
     
-    @ViewBuilder private var view: some View {
-        if let companyID = companyID, let routeID = routeID {
-            InvocatedExperience(companyID: companyID, routeID: routeID, stopID: stopID)
-        } else {
-            RoutesList()
-        }
-    }
-    
-    private func handleInvocation(userActivity: NSUserActivity) {
-        guard let url = userActivity.webpageURL,
-              let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
-              let path = components.path?.split(separator: "/"),
-              let companyIDString = path[safe: 0]?.uppercased(),
-              let companyID = CompanyID(rawValue: String(companyIDString)),
-              let routeID = path[safe: 1]
-        else { return }
+    private func handleInvocation(url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+              let method = components.path.split(separator: "/").first else { return }
         
-        DispatchQueue.main.async {
-            self.companyID = companyID
-            self.routeID = String(routeID)
-            if let stopID = path[safe: 2] {
-                self.stopID = String(stopID)
-            }
+        switch method {
+        case "list":
+            experience = .list
+        case "status":
+            experience = createStatusExperience(components: components) ?? .list
+        default:
+            return
         }
+    }
+    
+    private func createStatusExperience(components: URLComponents) -> Experience? {
+        guard let queryItems = components.queryItems,
+              let companyItem = queryItems[safe: 0]?.value,
+              let company = Company(rawValue: companyItem),
+              let routeID = queryItems[safe: 1]?.value else { return nil }
+        
+        let stopID = queryItems[safe: 2]?.value
+        let status = StatusExperience(company: company, routeID: routeID, stopID: stopID)
+        return .status(status)
     }
 }

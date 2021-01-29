@@ -20,6 +20,8 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -27,13 +29,13 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>GetUpcomingBusesIntent</string>
-				<string>INSendMessageIntent</string>
+				<string>SelectRouteStopIntent</string>
 			</array>
 		</dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-ui-service</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>IntentViewController</string>
 	</dict>
 </dict>
 </plist>

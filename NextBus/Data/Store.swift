@@ -8,24 +8,33 @@
 
 import Combine
 import Foundation
+import SwiftUI
+import UserNotifications
 
 class Store: ObservableObject {
     @Published var favorites: Favorites
-    @Published var recentlyViewed: RecentlyViewed
+    @Published var recents: Recents
+    @Published var schedule: Schedule
     
-    @Published var __favorites = OrderedSet<RouteStop>()
-    @Published var __recentlyViewed = OrderedSet<RouteStop>()
+    @Published var __favorites: [RouteStop]?
+    @Published var __recents: [RouteStop]?
+    @Published var __scheduleBlocks: [ScheduleBlock]?
     
-    private let appGroupFolderURL: URL
+    static var appGroupFolderURL: URL = {
+        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") ??
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ??
+            URL(fileURLWithPath: "")
+    }()
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         guard let folder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") else {
             fatalError("Failed to find app group folder")
         }
-        appGroupFolderURL = folder
-        self.favorites = Favorites(appGroupFolderURL: appGroupFolderURL)
-        self.recentlyViewed = RecentlyViewed(appGroupFolderURL: appGroupFolderURL)
+        Store.appGroupFolderURL = folder
+        self.favorites = Favorites(appGroupFolderURL: Store.appGroupFolderURL)
+        self.recents = Recents(appGroupFolderURL: Store.appGroupFolderURL)
+        self.schedule = Schedule(appGroupFolderURL: Store.appGroupFolderURL)
         
         self.favorites.$all
             .receive(on: DispatchQueue.main)
@@ -33,10 +42,16 @@ class Store: ObservableObject {
                 self.__favorites = all
             }
             .store(in: &cancellables)
-        self.recentlyViewed.$all
+        self.recents.$all
             .receive(on: DispatchQueue.main)
             .sink { all in
-                self.__recentlyViewed = all
+                self.__recents = all
+            }
+            .store(in: &cancellables)
+        self.schedule.$all
+            .receive(on: DispatchQueue.main)
+            .sink { all in
+                self.__scheduleBlocks = all
             }
             .store(in: &cancellables)
     }
@@ -44,7 +59,7 @@ class Store: ObservableObject {
     // MARK: - Favorites
     
     class Favorites: ObservableObject {
-        @Published var all = OrderedSet<RouteStop>() {
+        @Published private(set) var all = [RouteStop]() {
             didSet {
                 save()
             }
@@ -58,7 +73,12 @@ class Store: ObservableObject {
             self.url = appGroupFolderURL
                 .appendingPathComponent("UserFavorites")
                 .appendingPathExtension("json")
-            self.all = OrderedSet(self.load())
+            DispatchQueue.global(qos: .userInteractive).async {
+                let all = self.load()
+                DispatchQueue.main.async {
+                    self.all = all
+                }
+            }
         }
         
         func contains(route: Route, stop: Stop) -> Bool {
@@ -66,7 +86,7 @@ class Store: ObservableObject {
         }
         
         func contains(_ routeStop: RouteStop) -> Bool {
-            all.contains(routeStop)
+            all.contains { $0.id == routeStop.id }
         }
         
         func set(_ isFavorite: Bool, route: Route, stop: Stop) {
@@ -74,18 +94,21 @@ class Store: ObservableObject {
         }
         
         func set(_ isFavorite: Bool, routeStop: RouteStop) {
-            if isFavorite {
-                all.append(routeStop)
-            } else {
-                all.remove(routeStop)
+            withAnimation {
+                if isFavorite {
+                    all.append(routeStop)
+                } else {
+                    all.removeAll { $0.id == routeStop.id }
+                }
             }
         }
         
-        private func load() -> [RouteStop] {
+        func load() -> [RouteStop] {
             guard let data = FileManager.default.contents(atPath: url.path),
                   let favorites = try? decoder.decode([RouteStop].self, from: data)
             else { return [] }
             return favorites
+                .removingDuplicates()
                 .sorted {
                     $0.route.localizedName.localizedStandardCompare(
                         $1.route.localizedName
@@ -94,15 +117,15 @@ class Store: ObservableObject {
         }
         
         private func save() {
-            guard let data = try? encoder.encode(Array(all)) else { return }
+            guard let data = try? encoder.encode(all) else { return }
             try? data.write(to: url, options: [.atomic])
         }
     }
     
     // MARK: - Recently Viewed
     
-    class RecentlyViewed: ObservableObject {
-        @Published var all = OrderedSet<RouteStop>() {
+    class Recents: ObservableObject {
+        @Published private(set) var all = [RouteStop]() {
             didSet {
                 save()
             }
@@ -116,7 +139,12 @@ class Store: ObservableObject {
             self.url = appGroupFolderURL
                 .appendingPathComponent("RecentlyViewed")
                 .appendingPathExtension("json")
-            self.all = OrderedSet(self.load())
+            DispatchQueue.global(qos: .userInteractive).async {
+                let all = self.load()
+                DispatchQueue.main.async {
+                    self.all = all
+                }
+            }
         }
         
         func add(route: Route, stop: Stop) {
@@ -125,20 +153,20 @@ class Store: ObservableObject {
         
         func add(_ routeStop: RouteStop) {
             guard !contains(routeStop) else { return }
-            if all.count == 4 {
-                all.removeLast()
+            withAnimation {
+                if all.count == 4 {
+                    all.removeLast()
+                }
+                all.insert(routeStop, at: 0)
             }
-            all.insert(routeStop, at: 0)
-            
         }
-        
         
         func contains(route: Route, stop: Stop) -> Bool {
             contains(RouteStop(route: route, stop: stop))
         }
         
         func contains(_ routeStop: RouteStop) -> Bool {
-            all.contains(routeStop)
+            all.contains { $0.id == routeStop.id }
         }
         
         func remove(route: Route, stop: Stop) {
@@ -147,19 +175,120 @@ class Store: ObservableObject {
         
         func remove(_ routeStop: RouteStop) {
             guard contains(routeStop) else { return }
-            all.remove(routeStop)
+            withAnimation {
+                all.removeAll { $0.id == routeStop.id }
+            }
         }
         
-        private func load() -> [RouteStop] {
+        func load() -> [RouteStop] {
             guard let data = FileManager.default.contents(atPath: url.path),
                   let all = try? decoder.decode([RouteStop].self, from: data)
             else { return [] }
-            return all
+            return all.removingDuplicates()
         }
         
         private func save() {
-            guard let data = try? encoder.encode(Array(all)) else { return }
+            guard let data = try? encoder.encode(all) else { return }
             try? data.write(to: url, options: [.atomic])
+        }
+    }
+    
+    // MARK: - Schedule
+    
+    class Schedule: ObservableObject {
+        @Published private(set) var all = [ScheduleBlock]() {
+            didSet {
+                save()
+            }
+        }
+        
+        private let decoder = JSONDecoder()
+        private let encoder = JSONEncoder()
+        private let url: URL
+        
+        fileprivate init(appGroupFolderURL: URL) {
+            self.url = appGroupFolderURL
+                .appendingPathComponent("Schedule")
+                .appendingPathExtension("json")
+            DispatchQueue.global(qos: .userInteractive).async {
+                let all = self.load()
+                DispatchQueue.main.async {
+                    self.all = all
+                }
+            }
+        }
+        
+        func add(_ block: ScheduleBlock) {
+            withAnimation {
+                all.insert(block, at: 0)
+            }
+        }
+        
+        func update(_ block: ScheduleBlock) {
+            withAnimation {
+                delete(block)
+                add(block)
+            }
+        }
+        
+        func delete(_ block: ScheduleBlock) {
+            withAnimation {
+                all.removeAll { $0.id == block.id }
+            }
+        }
+        
+        func delete(at offsets: IndexSet) {
+            withAnimation {
+                all.remove(atOffsets: offsets)
+            }
+        }
+        
+        func load() -> [ScheduleBlock] {
+            guard let data = FileManager.default.contents(atPath: url.path),
+                  let blocks = try? decoder.decode([ScheduleBlock].self, from: data)
+            else { return [] }
+            blocks.forEach {
+                scheduleNotifications(for: $0)
+            }
+            return blocks
+                .removingDuplicates()
+                .sorted {
+                    $0.startDate < $1.startDate
+                }
+        }
+        
+        private func save() {
+            guard let data = try? encoder.encode(all) else { return }
+            try? data.write(to: url, options: [.atomic])
+        }
+        
+        // MARK: - Notifications
+        
+        func scheduleNotifications(for block: ScheduleBlock) {
+            guard block.sendsNotifications else { return }
+            
+            let jsonEncoder = JSONEncoder()
+            let route = try? jsonEncoder.encode(block.route)
+            let stop = try? jsonEncoder.encode(block.stop)
+            
+            let content = UNMutableNotificationContent()
+            content.title = "It's time for \(block.name)."
+            content.body = "Press and hold to check when the \(block.route.localizedName) will arrive."
+            content.categoryIdentifier = "Schedule"
+            content.threadIdentifier = block.id.uuidString
+            content.userInfo["name"] = block.name
+            content.userInfo["route"] = route
+            content.userInfo["stop"] = stop
+            
+            let date = Calendar.current.dateComponents([.hour, .minute, .second], from: block.startDate)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: block.id.uuidString, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { _ in }
+        }
+        
+        func cancelNotifications(for block: ScheduleBlock) {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.id.uuidString])
         }
     }
 }

@@ -27,7 +27,7 @@ fileprivate extension Route {
         
         return Route(
             _id: route.id,
-            companyID: .nlb,
+            company: .nlb,
             name: name,
             category: .bus,
             servicePeriod: servicePeriod,

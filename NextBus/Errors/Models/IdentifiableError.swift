@@ -31,7 +31,7 @@ struct IdentifiableError: Error, Equatable, Identifiable {
         } else if nsError.domain.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             self.id = UUID().uuidString
         } else {
-            self.id = nsError.domain + String(nsError.code)
+            self.id = nsError.domain + String(nsError.code) + error.localizedDescription
         }
         
         self.error = error

@@ -7,17 +7,19 @@
 		<key>Clip.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>1</integer>
 		</dict>
 		<key>IntentsExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>9</integer>
 		</dict>
 		<key>IntentsExtensionUI.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Mac.xcscheme_^#shared#^_</key>
 		<dict>
@@ -29,24 +31,53 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>UI Tests.xcscheme_^#shared#^_</key>
+		<key>NotificationContent.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>10</integer>
+		</dict>
+		<key>UI Tests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Watch App (Notification).xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>WidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>WidgetExtensionMac.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B906F46025BEE4C5008540C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B927805825AE8AD200FB883B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B94BA48623325D0D00AFE03E</key>
 		<dict>
 			<key>primary</key>
@@ -58,6 +89,11 @@
 			<true/>
 		</dict>
 		<key>B95C184A233F20BE0094B3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B96A644625A980E60058AF17</key>
 		<dict>
 			<key>primary</key>
 			<true/>

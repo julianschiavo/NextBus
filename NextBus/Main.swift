@@ -9,18 +9,34 @@
 import SwiftUI
 
 struct Main: View {
-    @StateObject private var store = Store()
+    @State private var currentTab = 2
     
     var body: some View {
-        TabView {
-            DashboardTab()
+        TabView(selection: $currentTab) {
+            DashboardTab(currentTab: $currentTab)
+                .tag(1)
                 .tabItem {
-                    Label("Dashboard", systemImage: "star.fill")
+                    Image(systemName: "rectangle.grid.2x2.fill")
+                    Text("Dashboard")
+                }
+            DirectionsTab()
+                .tag(2)
+                .tabItem {
+                    Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
+                    Text("Directions")
                 }
             RoutesTab()
+                .tag(3)
                 .tabItem {
-                    Label("Routes", systemImage: "bus.fill")
+                    Image(systemName: "bus.fill")
+                    Text("Routes")
                 }
-        }.environmentObject(store)
+            ScheduleTab()
+                .tag(4)
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Schedule")
+                }
+        }
     }
 }

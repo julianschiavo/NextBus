@@ -35,7 +35,7 @@ fileprivate extension Route {
             
             let variantRoute = Route(
                 _id: String(route.id),
-                companyID: .gmb,
+                company: .gmb,
                 name: LocalizedText(""),
                 description: description,
                 category: .minibus,

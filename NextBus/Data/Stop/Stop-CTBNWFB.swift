@@ -47,7 +47,7 @@ extension CTBNWFB {
     }
 
     struct UnknownStop: Codable, Hashable {
-        var companyID: CompanyID
+        var companyID: Company
         var id: String
         
         var index: Int

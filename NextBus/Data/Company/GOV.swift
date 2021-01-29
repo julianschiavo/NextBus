@@ -10,4 +10,5 @@ import Foundation
 
 enum GOV {
     static let baseURL = URL(string: "https://nextbusapi.schiavo.me")!
+    static let directionsURL = URL(string: "https://www.hkemobility.gov.hk/api/em")!
 }

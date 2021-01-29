@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<false/>
 	<key>NSAppClip</key>
 	<dict>
 		<key>NSAppClipRequestEphemeralUserNotification</key>
@@ -33,6 +33,11 @@
 	<string>See nearby bus stops and get directions to the closest stop.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>See nearby bus stops and get directions to the closest stop.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>GetUpcomingBusesIntent</string>
+		<string>SelectRouteStopIntent</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

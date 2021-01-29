@@ -32,16 +32,30 @@ struct LocalizedText: Codable, Equatable, Hashable {
     }
     
     var current: String {
-        guard let preferredLanguage = Locale.preferredLanguages.first else { return english }
+//        guard let preferredLanguage = Locale.preferredLanguages.first else { return english }
+//        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
+//        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
+//
+//        if preferredLanguage.contains(simplifiedChineseCode) {
+//            return simplifiedChinese
+//        } else if preferredLanguage.contains(traditionalChineseCode) {
+//            return traditionalChinese
+//        } else {
+            return english
+//        }
+    }
+    
+    static var directionsLanguageCode: String {
+        guard let preferredLanguage = Locale.preferredLanguages.first else { return "EN" }
         let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
         let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
         
         if preferredLanguage.contains(simplifiedChineseCode) {
-            return simplifiedChinese
+            return "SC"
         } else if preferredLanguage.contains(traditionalChineseCode) {
-            return traditionalChinese
+            return "TC"
         } else {
-            return english
+            return "EN"
         }
     }
     
