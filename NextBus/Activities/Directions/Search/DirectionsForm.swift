@@ -12,9 +12,12 @@ import SwiftUI
 struct DirectionsForm: View {
     @EnvironmentObject private var locationTracker: LocationTracker
     
-    @Binding var origin: MKMapItem?
-    @Binding var destination: MKMapItem?
+    @Binding var origin: Waypoint?
+    @Binding var destination: Waypoint?
     let calculate: () -> Void
+    
+    @State private var originMapItem: MKMapItem?
+    @State private var destinationMapItem: MKMapItem?
     
     var body: some View {
         VStack {
@@ -32,20 +35,28 @@ struct DirectionsForm: View {
     }
     
     private var originTextField: some View {
-        LocationSearchBar(mapItem: $origin, placeholder: "From")
+        LocationSearchBar(mapItem: $originMapItem, placeholder: Localizable.fromPlaceholder)
             .background(Color.tertiaryBackground)
             .roundedBorder(10)
+            .onChange(of: originMapItem) { mapItem in
+                guard let mapItem = mapItem else { return }
+                origin = Waypoint(id: UUID().uuidString, index: 0, name: mapItem.name ?? "", latitude: mapItem.placemark.coordinate.latitude, longitude: mapItem.placemark.coordinate.longitude, mapItem: mapItem)
+            }
     }
     
     private var destinationTextField: some View {
-        LocationSearchBar(mapItem: $destination, placeholder: "To", onSearch: calculate)
+        LocationSearchBar(mapItem: $destinationMapItem, placeholder: Localizable.toPlaceholder, onSearch: calculate)
             .background(Color.tertiaryBackground)
             .roundedBorder(10)
+            .onChange(of: destinationMapItem) { mapItem in
+                guard let mapItem = mapItem else { return }
+                destination = Waypoint(id: UUID().uuidString, index: 0, name: mapItem.name ?? "", latitude: mapItem.placemark.coordinate.latitude, longitude: mapItem.placemark.coordinate.longitude, mapItem: mapItem)
+            }
     }
     
     private var button: some View {
         Button(action: calculate) {
-            Text("Go")
+            Text(Localizable.Directions.go)
                 .font(.headline, weight: .bold)
                 .foregroundColor(.primary)
                 .padding(10)

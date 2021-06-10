@@ -21,7 +21,8 @@ struct BusDetail: View {
         #elseif os(macOS)
         NavigationView {
             contents
-                .macMinFrame(width: 270)
+                .macMinFrame(width: 300)
+                .macMaxFrame(width: 500)
         }
         #endif
     }
@@ -32,7 +33,7 @@ struct BusDetail: View {
             list
         }
         .listStyle(InsetGroupedListStyle())
-        .navigationTitle(navigationTitle ?? Localizations.routeTitle(routeName: route.localizedName))
+        .navigationTitle(navigationTitle ?? Localizable.routeName(route.localizedName))
         .navigationTitleDisplayMode(.inline)
         .globalSheet($sheet)
         .toolbar {

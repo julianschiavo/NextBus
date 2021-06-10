@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ScheduleList: View {
     @EnvironmentObject private var store: Store
+    @EnvironmentObject var payBuddy: PayBuddy
     
     @Binding var sheet: Sheet?
     
@@ -33,9 +34,13 @@ struct ScheduleList: View {
     private var placeholder: some View {
         Card {
             Button {
-                sheet = .newSchedule(route: nil, stop: nil)
+                if payBuddy.hasPlus {
+                    sheet = .newSchedule(route: nil, stop: nil)
+                } else {
+                    sheet = .upgrade
+                }
             } label: {
-                Label("Add Schedule", systemImage: "plus")
+                Label(Localizable.Schedule.add, systemImage: "plus")
                     .font(.headline, weight: .semibold)
                     .padding(.vertical, 12)
                     .padding(.horizontal, 12)

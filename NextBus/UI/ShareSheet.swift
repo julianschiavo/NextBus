@@ -31,7 +31,7 @@ struct ShareSheet: View {
     var body: some View {
         VStack {
             _ShareSheet(items: items, activities: activities)
-            Button("Done") {
+            Button(Localizable.done) {
                 presentationMode.wrappedValue.dismiss()
             }
         }

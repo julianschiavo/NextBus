@@ -6,9 +6,10 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct InvocatedStatusExperience: View, Loadable {
+struct InvocatedStatusExperience: View, LoadableView {
     @Environment(\.presentationMode) var presentationMode
     
     let experience: StatusExperience
@@ -19,7 +20,7 @@ struct InvocatedStatusExperience: View, Loadable {
         loaderView
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
+                    Button(Localizable.done) {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -31,7 +32,7 @@ struct InvocatedStatusExperience: View, Loadable {
             if experience.stopID != nil {
                 InvocatedStatusExperienceStop(experience: experience, route: route)
             } else {
-                BusDetail(route: route, navigationTitle: "Next Bus")
+                BusDetail(route: route, navigationTitle: Localizable.appName)
             }
         } else {
             InvocationError()
@@ -43,11 +44,11 @@ struct InvocatedStatusExperience: View, Loadable {
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Route...")
+        ProgressView(Localizable.loadingRoute)
     }
 }
 
-private struct InvocatedStatusExperienceStop: View, Loadable {
+private struct InvocatedStatusExperienceStop: View, LoadableView {
     let experience: StatusExperience
     let route: Route
     
@@ -61,7 +62,7 @@ private struct InvocatedStatusExperienceStop: View, Loadable {
     
     @ViewBuilder func body(with stops: [Stop]) -> some View {
         if let stop = self.stop(from: stops) {
-            StopDetail(route: route, stop: stop, navigationTitle: "Next Bus")
+            StopDetail(route: route, stop: stop, navigationTitle: Localizable.appName)
         } else {
             InvocationError()
         }
@@ -72,6 +73,6 @@ private struct InvocatedStatusExperienceStop: View, Loadable {
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Stop...")
+        ProgressView(Localizable.loadingStop)
     }
 }

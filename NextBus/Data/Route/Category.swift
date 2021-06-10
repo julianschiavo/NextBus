@@ -11,13 +11,22 @@ import Foundation
 enum Category: Int, CaseIterable, Codable {
     case bus = 1
     case minibus = 2
+    case train = 3
+    case tram = 4
+    case ferry = 5
     
     var name: String {
         switch self {
         case .bus:
-            return "Bus"
+            return Localizable.Category.bus
         case .minibus:
-            return "Minibus"
+            return Localizable.Category.minibus
+        case .train:
+            return Localizable.Category.train
+        case .tram:
+            return Localizable.Category.tram
+        case .ferry:
+            return Localizable.Category.ferry
         }
     }
     
@@ -27,6 +36,12 @@ enum Category: Int, CaseIterable, Codable {
             return "bus.doubledecker.fill"
         case .minibus:
             return "bus.fill"
+        case .train:
+            return "tram.tunnel.fill"
+        case .tram:
+            return "tram.fill"
+        case .ferry:
+            return "drop.fill"
         }
     }
     
@@ -36,6 +51,8 @@ enum Category: Int, CaseIterable, Codable {
             return "bus"
         case .minibus:
             return "minibus"
+        default:
+            return ""
         }
     }
     
@@ -45,6 +62,7 @@ enum Category: Int, CaseIterable, Codable {
         switch self {
         case .bus: return .bus
         case .minibus: return .minibus
+        default: return .unknown
         }
     }
     
@@ -52,8 +70,7 @@ enum Category: Int, CaseIterable, Codable {
         switch intent {
         case .bus: return .bus
         case .minibus: return .minibus
-        default:
-            return .bus
+        default: return .bus
         }
     }
 }

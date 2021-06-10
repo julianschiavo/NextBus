@@ -30,7 +30,7 @@ class SpotlightBuddy {
         guard let url = StatusExperience(company: route.company, routeID: route.id, stopID: nil).toURL() else { return nil }
         let attributeSet = CSSearchableItemAttributeSet(contentType: .item)
         attributeSet.title = route.localizedName
-        attributeSet.contentDescription = route.localizedName + " to " + route.localizedDestination
+        attributeSet.contentDescription = route.localizedName + " " + Localizable.to(route.localizedDestination)
         attributeSet.supportsNavigation = true
         return CSSearchableItem(uniqueIdentifier: url.absoluteString, domainIdentifier: "com.julianschiavo.nextbus.route", attributeSet: attributeSet)
     }

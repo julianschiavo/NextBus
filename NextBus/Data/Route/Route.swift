@@ -47,7 +47,7 @@ struct Route: Identifiable, Hashable, Codable {
     // MARK: - Intent
     
     var intent: INRoute {
-        let intent = INRoute(identifier: id, display: localizedName + " towards " + localizedDestination)
+        let intent = INRoute(identifier: id, display: localizedName + " " + Localizable.to(localizedDestination))
         intent.internalID = _id
         intent.company = company.intent
         intent.name = localizedName

@@ -8,3 +8,5 @@
 
 "CFBundleDisplayName" = "下班車";
 "CFBundleName" = "下班車";
+"NSLocationUsageDescription" = "See nearby bus stops and get directions to the closest stop.";
+"NSLocationWhenInUseUsageDescription" = "See nearby bus stops and get directions to the closest stop.";

@@ -6,37 +6,31 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import MapKit
 import SwiftUI
 
-struct RoutingPicker: View, Loadable {
+struct RoutingPicker: View, LoadableView {
     @Environment(\.presentationMode) private var presentationMode
     
-    let origin: MKMapItem?
-    let destination: MKMapItem?
-    @Binding var selection: Directions?
+    let origin: Waypoint
+    let destination: Waypoint
+    @Binding var selection: Routing?
     
-    var key: DirectionsRequest {
-        DirectionsRequest(
-            originName: origin?.name,
-            originLatitude: origin?.placemark.coordinate.latitude,
-            originLongitude: origin?.placemark.coordinate.longitude,
-            destinationName: destination?.name,
-            destinationLatitude: destination?.placemark.coordinate.latitude,
-            destinationLongitude: destination?.placemark.coordinate.longitude
-        )
+    var key: RoutingRequest {
+        RoutingRequest(origin: origin, destination: destination)
     }
-    @StateObject var loader = DirectionsLoader()
+    @StateObject var loader = RoutingLoader()
     
     var body: some View {
         NavigationView {
             loaderView
                 .macMinFrame(width: 700, height: 500)
-                .navigationTitle("Which routing?")
+                .navigationTitle(Localizable.Directions.whichRoute)
                 .navigationTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
-                        Button("Done") {
+                        Button(Localizable.done) {
                             presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -45,7 +39,7 @@ struct RoutingPicker: View, Loadable {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func body(with options: [Directions]) -> some View {
+    func body(with options: [Routing]) -> some View {
         List {
             ForEach(options) { directions in
                 group(for: directions)
@@ -53,14 +47,14 @@ struct RoutingPicker: View, Loadable {
         }
     }
     
-    private func group(for directions: Directions) -> some View {
-        RoutingRowGroup(directions: directions) {
-            selection = directions
+    private func group(for routing: Routing) -> some View {
+        RoutingRowGroup(routing: routing) {
+            selection = routing
             presentationMode.wrappedValue.dismiss()
         }
     }
     
     func placeholder() -> some View {
-        ProgressView("Finding Directions...")
+        ProgressView(Localizable.Directions.findingDirections)
     }
 }

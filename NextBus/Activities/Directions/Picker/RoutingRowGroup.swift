@@ -16,11 +16,11 @@ struct RoutingRowGroup: View {
     
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
-            ForEach(routing.tracks) { track in
+            ForEach(routing.tracks.filter { !$0.isWalking }) { track in
                 RoutingTrackRow(track: track)
             }
         } label: {
-            RoutingRow(directions: directions, select: select)
+            RoutingRow(routing: routing, select: select)
                 .onTapGesture {
                     isExpanded.toggle()
                 }

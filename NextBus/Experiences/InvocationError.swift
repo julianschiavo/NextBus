@@ -24,13 +24,13 @@ struct InvocationError: View {
     }
     
     private var message: some View {
-        Label("Failed to load route.", systemImage: "exclamationmark.triangle.fill")
+        Label(Localizable.Clip.failedToLoadRoute, systemImage: "exclamationmark.triangle.fill")
             .font(.title, weight: .heavy)
     }
     
     private var continueButton: some View {
         HStack(alignment: .center) {
-            Text("Continue to All Routes")
+            Text(Localizable.Clip.continueToRoutes)
                 .font(.largeHeadline, weight: .semibold)
             Spacer()
             Image(systemName: "chevron.right")

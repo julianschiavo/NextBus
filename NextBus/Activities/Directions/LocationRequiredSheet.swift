@@ -39,19 +39,19 @@ struct LocationRequiredSheet: View {
     }
     
     private var title: some View {
-        Text("Enable Location for Directions")
+        Text(Localizable.Directions.locationRequiredTitle)
             .font(.title3, weight: .bold)
             .multilineTextAlignment(.center)
     }
     
     private var description: some View {
-        Text("Get public transport directions around Hong Kong—wherever you are.")
+        Text(Localizable.Directions.locationRequiredDescription)
             .font(.headline, weight: .regular)
             .multilineTextAlignment(.center)
     }
     
     private var disabledError: some View {
-        Text("Location access has been disabled. Enable it in the Settings app.")
+        Text(Localizable.Directions.locationRequiredError)
             .font(.headline, weight: .regular)
             .foregroundColor(.red)
             .multilineTextAlignment(.center)
@@ -61,7 +61,7 @@ struct LocationRequiredSheet: View {
         Button {
             locationTracker.requestPermission()
         } label: {
-            Text("Enable")
+            Text(Localizable.Directions.enable)
                 .foregroundColor(.primary)
                 .padding(10)
                 .frame(maxWidth: .infinity)

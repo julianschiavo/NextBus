@@ -8,10 +8,23 @@
 
 import Foundation
 
-enum LanguageCode: String {
-    case english = "en"
-    case simplifiedChinese = "zh-Hans"
-    case traditionalChinese = "zh-Hant"
+enum LanguageCode: CaseIterable {
+    case english
+    case simplifiedChinese
+    case traditionalChinese
+    
+    var identifiers: [String] {
+        switch self {
+        case .english: return ["en"]
+        case .simplifiedChinese: return ["zh-Hans", "zh-Hans-CN", "zh-Hans-SG", "zh-Hans-MO", "zh-Hans-HK"]
+        case .traditionalChinese: return ["zh-Hant", "zh-Hant-TW", "zh-Hant-MO", "zh-Hant-HK", "zh-Hant-CN", "zh-HK"]
+        }
+    }
+    
+    static var current: LanguageCode {
+        let code = Locale.preferredLanguages.first ?? ""
+        return allCases.first { $0.identifiers.contains(code) } ?? .english
+    }
 }
 
 struct LocalizedText: Codable, Equatable, Hashable {
@@ -32,58 +45,46 @@ struct LocalizedText: Codable, Equatable, Hashable {
     }
     
     var current: String {
-//        guard let preferredLanguage = Locale.preferredLanguages.first else { return english }
-//        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
-//        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
-//
-//        if preferredLanguage.contains(simplifiedChineseCode) {
-//            return simplifiedChinese
-//        } else if preferredLanguage.contains(traditionalChineseCode) {
-//            return traditionalChinese
-//        } else {
+        switch LanguageCode.current {
+        case .english:
             return english
-//        }
+        case .simplifiedChinese:
+            return simplifiedChinese
+        case .traditionalChinese:
+            return traditionalChinese
+        }
     }
     
     static var directionsLanguageCode: String {
-        guard let preferredLanguage = Locale.preferredLanguages.first else { return "EN" }
-        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
-        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
-        
-        if preferredLanguage.contains(simplifiedChineseCode) {
-            return "SC"
-        } else if preferredLanguage.contains(traditionalChineseCode) {
-            return "TC"
-        } else {
+        switch LanguageCode.current {
+        case .english:
             return "EN"
+        case .simplifiedChinese:
+            return "SC"
+        case .traditionalChinese:
+            return "TC"
         }
     }
     
     static var kmbLanguageCode: String {
-        guard let preferredLanguage = Locale.preferredLanguages.first else { return "en" }
-        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
-        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
-        
-        if preferredLanguage.contains(simplifiedChineseCode) {
-            return "sc"
-        } else if preferredLanguage.contains(traditionalChineseCode) {
-            return "tc"
-        } else {
+        switch LanguageCode.current {
+        case .english:
             return "en"
+        case .simplifiedChinese:
+            return "sc"
+        case .traditionalChinese:
+            return "tc"
         }
     }
     
     static var nlbLanguageCode: String {
-        guard let preferredLanguage = Locale.preferredLanguages.first else { return "en" }
-        let simplifiedChineseCode = LanguageCode.simplifiedChinese.rawValue
-        let traditionalChineseCode = LanguageCode.traditionalChinese.rawValue
-        
-        if preferredLanguage.contains(simplifiedChineseCode) {
-            return "cn"
-        } else if preferredLanguage.contains(traditionalChineseCode) {
-            return "zh"
-        } else {
+        switch LanguageCode.current {
+        case .english:
             return "en"
+        case .simplifiedChinese:
+            return "cn"
+        case .traditionalChinese:
+            return "zh"
         }
     }
 }

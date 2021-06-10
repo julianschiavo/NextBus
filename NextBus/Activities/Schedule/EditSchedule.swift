@@ -40,22 +40,22 @@ struct EditSchedule: View {
     }
     
     var body: some View {
-        NavigationView {
+        iOSNavigationView {
             Form {
                 mainSection
                 timeSection
                 settingsSection
                 deleteSection
             }
-            .navigationTitle("Edit Schedule")
+            .navigationTitle(Localizable.Schedule.edit)
             .toolbar {
                 ToolbarItemGroup(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(Localizable.cancel) {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
                 ToolbarItemGroup(placement: .confirmationAction) {
-                    Button("Save", action: save)
+                    Button(Localizable.save, action: save)
                         .disabled(name.isEmpty || route == nil || stop == nil)
                 }
             }
@@ -74,7 +74,7 @@ struct EditSchedule: View {
     
     private var mainSection: some View {
         Section {
-            TextField("Name", text: $name)
+            TextField(Localizable.name, text: $name)
             routePicker
             if route != nil {
                 stopPicker
@@ -99,10 +99,10 @@ struct EditSchedule: View {
             sheet = .pickRoute(route: $route)
         } label: {
             HStack {
-                Text("Route")
+                Text(Localizable.route)
                     .foregroundColor(.primary)
                 Spacer()
-                Text("Choose")
+                Text(Localizable.choose)
             }
         }
         .macCustomButton()
@@ -112,7 +112,7 @@ struct EditSchedule: View {
         Button {
             sheet = .pickRoute(route: $route)
         } label: {
-            Text("Change")
+            Text(Localizable.change)
                 .padding(6)
                 .background(Color.quaternaryBackground)
                 .cornerRadius(6)
@@ -139,10 +139,10 @@ struct EditSchedule: View {
             }
         } label: {
             HStack {
-                Text("Stop")
+                Text(Localizable.stop)
                     .foregroundColor(.primary)
                 Spacer()
-                Text("Choose")
+                Text(Localizable.choose)
             }
         }
         .macCustomButton()
@@ -154,7 +154,7 @@ struct EditSchedule: View {
                 sheet = .pickStop(route: route, stop: $stop)
             }
         } label: {
-            Text("Change")
+            Text(Localizable.change)
                 .padding(6)
                 .background(Color.quaternaryBackground)
                 .cornerRadius(6)
@@ -163,14 +163,14 @@ struct EditSchedule: View {
     }
     
     private var timeSection: some View {
-        Section(header: Text("Time")) {
+        Section(header: Text(Localizable.time)) {
             HStack {
-                Text("Starts")
+                Text(Localizable.starts)
                 Spacer()
                 DatePicker("", selection: $startDate, displayedComponents: .hourAndMinute)
             }
             HStack {
-                Text("Ends")
+                Text(Localizable.ends)
                 Spacer()
                 DatePicker("", selection: $endDate, displayedComponents: .hourAndMinute)
             }
@@ -179,9 +179,9 @@ struct EditSchedule: View {
     }
     
     private var settingsSection: some View {
-        Section(header: Text("Settings")) {
+        Section(header: Text(Localizable.settings)) {
             //            Toggle("Show on Schedule Widget", isOn: $showsOnWidget)
-            Toggle("Arrival Time Notifications", isOn: $sendsNotifications)
+            Toggle(Localizable.Schedule.arrivalTimeNotifications, isOn: $sendsNotifications)
         }
     }
     

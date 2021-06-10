@@ -14,24 +14,24 @@ struct Main: View {
     var body: some View {
         VStack {
             NavigationLink(destination: RoutesList()) {
-                Label("All Routes", systemImage: "bus.doubledecker.fill")
+                Label(Localizable.Routes.name, systemImage: "bus.doubledecker.fill")
                     .alignedHorizontally(to: .leading)
             }
             .foregroundColor(.yellow)
             
             NavigationLink(destination: FavoritesList()) {
-                Label("Favorites", systemImage: "heart.fill")
+                Label(Localizable.Dashboard.favorites, systemImage: "heart.fill")
                     .alignedHorizontally(to: .leading)
             }
             .foregroundColor(.red)
             
             NavigationLink(destination: RecentsList()) {
-                Label("Recents", systemImage: "clock.arrow.circlepath")
+                Label(Localizable.Dashboard.recents, systemImage: "clock.arrow.circlepath")
                     .alignedHorizontally(to: .leading)
             }
             .foregroundColor(.blue)
             .foregroundColor(.primary)
         }
-        .navigationTitle("Next Bus")
+        .navigationTitle(Localizable.appName)
     }
 }

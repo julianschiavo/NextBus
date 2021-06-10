@@ -23,7 +23,7 @@ struct ShareButton: View {
         Button {
             sheet = .shareSheet(route: route, stop: stop)
         } label: {
-            Label("Share", systemImage: "square.and.arrow.up")
+            Label(Localizable.share, systemImage: "square.and.arrow.up")
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)
                 .iOSPadding(.horizontal, 12)

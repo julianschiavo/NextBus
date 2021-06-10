@@ -43,11 +43,11 @@ struct StopDetail: View {
     }
     
     private var etas: some View {
-        Card("Arriving Soon", systemImage: "clock.fill") {
+        Card(Localizable.StopDetail.arrivingSoon, systemImage: "clock.fill") {
             if route.company.supportsETA {
                 ETAList(route: route, stop: stop, reload: $reload)
             } else {
-                Label("Arrival information is not yet available for this route.", systemImage: "exclamationmark.triangle.fill")
+                Label(Localizable.StopDetail.arrivalInformationNotAvailable, systemImage: "exclamationmark.triangle.fill")
                     .foregroundColor(.red)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -56,7 +56,7 @@ struct StopDetail: View {
     }
     
     private var info: some View {
-        Card("Info", systemImage: "info.circle.fill") {
+        Card(Localizable.StopDetail.info, systemImage: "info.circle.fill") {
             VStack(spacing: 0) {
                 FavoritesButton(route: route, stop: stop)
             }
@@ -65,7 +65,7 @@ struct StopDetail: View {
     
     @ViewBuilder private var map: some View {
         if let latitude = stop.latitude, let longitude = stop.longitude {
-            Card("Map", systemImage: "map.fill") {
+            Card(Localizable.StopDetail.map, systemImage: "map.fill") {
                 VStack(spacing: 0) {
                     StopMap(name: stop.localizedName, latitude: latitude, longitude: longitude)
                     Divider()

@@ -23,7 +23,7 @@ struct RouteStop: Codable, Equatable, Identifiable, Hashable {
     }
     
     var intent: INRouteStop {
-        let intent = INRouteStop(identifier: id, display: route.localizedName + " from " + stop.localizedName)
+        let intent = INRouteStop(identifier: id, display: route.localizedName + " " + Localizable.from(stop.localizedName))
         intent.route = route.intent
         intent.stop = stop.intent
         return intent

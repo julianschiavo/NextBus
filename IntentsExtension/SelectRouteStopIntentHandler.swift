@@ -123,12 +123,11 @@ class SelectRouteStopIntentHandler: NSObject, SelectRouteStopIntentHandling {
     
     private func prepareRouteCollection(completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
         routesLoader = RoutesLoader()
-        routesLoader.getCachedData(key: .all) { [weak self] cached in
-            guard let self = self else { return }
+        routesLoader.getCachedData(key: .key) { cached in
             if let cached = cached {
                 self.sendRouteOptionsCollection(cached, completion: completion)
             } else {
-                self.routesLoader.createPublisher(key: .all)?
+                self.routesLoader.createPublisher(key: .key)?
                     .sink { loaderCompletion in
                         switch loaderCompletion {
                         case let .failure(error):
@@ -165,8 +164,7 @@ class SelectRouteStopIntentHandler: NSObject, SelectRouteStopIntentHandling {
     
     private func prepareStopCollection(for route: Route, with completion: @escaping (INObjectCollection<INStop>?, Error?) -> Void) {
         stopsLoader = RouteStopsLoader()
-        stopsLoader.getCachedData(key: route) { [weak self] cached in
-            guard let self = self else { return }
+        stopsLoader.getCachedData(key: route) { cached in
             if let cached = cached {
                 let collection = INObjectCollection(items: cached.map(\.intent))
                 completion(collection, nil)

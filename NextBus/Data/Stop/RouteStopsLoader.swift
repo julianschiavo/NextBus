@@ -8,11 +8,12 @@
 
 import Combine
 import Foundation
+import Loadability
 
-class StopsCache: SerializableSingularCache {
+class StopsCache: SharedSerializableCache {
     typealias Key = Route
     typealias Value = [Stop]
-    static let shared = SerializableCache<Route, [Stop]>.load(name: "RouteStops")
+    static let shared = SerializableCache<Route, [Stop]>.load(name: "RouteStops", folderURL: Store.appGroupFolderURL)
 }
 
 protocol RouteStopsPublisherBuilder {

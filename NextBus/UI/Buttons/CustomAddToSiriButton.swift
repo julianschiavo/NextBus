@@ -18,7 +18,7 @@ struct CustomAddToSiriButton: View {
         Button {
             sheet = .addToSiri(route: route, stop: stop)
         } label: {
-            Label("Add to Siri", systemImage: "mic.fill")
+            Label(Localizable.addToSiri, systemImage: "mic.fill")
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)
                 .iOSPadding(.horizontal, 12)

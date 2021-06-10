@@ -13,7 +13,7 @@ struct RoutingStop: Codable, Equatable, Hashable, Identifiable {
     let index: Int
     let name: String
     
-    let routeName: String
+    let routingName: String
     
     let latitude: Double
     let longitude: Double
@@ -22,7 +22,7 @@ struct RoutingStop: Codable, Equatable, Hashable, Identifiable {
         case id = "STOP_ID"
         case index = "STOP_SEQ"
         case name = "STOP_NM"
-        case routeName = "ROUTE_NM"
+        case routingName = "ROUTE_NM"
         case latitude = "LAT"
         case longitude = "LNG"
     }

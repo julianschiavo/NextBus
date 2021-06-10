@@ -15,9 +15,9 @@ enum Direction: String, Codable, Hashable, Identifiable {
     
     var name: String {
         switch self {
-        case .single: return Localizations.oneWay
-        case .inbound: return Localizations.inbound
-        case .outbound: return Localizations.outbound
+        case .single: return Localizable.oneWay
+        case .inbound: return Localizable.inbound
+        case .outbound: return Localizable.outbound
         }
     }
     
@@ -65,21 +65,4 @@ enum Direction: String, Codable, Hashable, Identifiable {
         case .outbound: return .outbound
         }
     }
-    
-//    
-//    static func from(intentObject: INDirection) -> Direction {
-//        switch intentObject {
-//        case .oneWay: return .single
-//        case .inbound: return .inbound
-//        case .outbound, .unknown: return .outbound
-//        }
-//    }
-//    
-//    var intentObject: INDirection {
-//        switch self {
-//        case .single: return .oneWay
-//        case .inbound: return .inbound
-//        case .outbound: return .outbound
-//        }
-//    }
 }

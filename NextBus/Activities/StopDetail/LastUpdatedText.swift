@@ -12,7 +12,7 @@ struct LastUpdatedText: View {
     let date: Date
     
     var body: some View {
-        (Text(Localizations.detailsLastUpdatedFooter("")) + Text(date, style: .time))
+        (Text(Localizable.StopDetail.lastUpdated("")) + Text(date, style: .time))
             .font(.callout)
             .foregroundColor(.secondary)
             .alignedHorizontally(to: .leading)

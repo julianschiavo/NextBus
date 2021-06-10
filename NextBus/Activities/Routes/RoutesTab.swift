@@ -12,7 +12,7 @@ struct RoutesTab: View {
     var body: some View {
         NavigationView {
             RoutesList()
-                .navigationTitle("Routes")
+                .navigationTitle(Localizable.Routes.name)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

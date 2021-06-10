@@ -6,9 +6,10 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct RoutesList: View, Loadable {
+struct RoutesList: View, LoadableView {
     @StateObject var loader = RoutesLoader()
     
     @State private var searchText = ""
@@ -30,6 +31,7 @@ struct RoutesList: View, Loadable {
             }
         }
         .macMinFrame(width: 260)
+        .macMaxFrame(width: 500)
         .listStyle(SidebarListStyle())
         .navigationBarSearch($searchText) {
             RouteSearchToolbar(searchText: $searchText)
@@ -91,6 +93,6 @@ struct RoutesList: View, Loadable {
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Routes...")
+        ProgressView(Localizable.loadingRoutes)
     }
 }

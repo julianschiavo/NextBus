@@ -8,6 +8,7 @@
 
 import CoreSpotlight
 import SwiftUI
+import Purchases
 
 @main
 struct MacApp: App {
@@ -15,11 +16,16 @@ struct MacApp: App {
     
     @State private var experience: Experience?
     
+    init() {
+        Purchases.debugLogsEnabled = true
+        Purchases.configure(withAPIKey: "bKFVCyRdhomurfBWXgxdRbZOsjkkGjlF", appUserID: nil, observerMode: false, userDefaults: .shared)
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 Sidebar()
-                    .navigationTitle("Next Bus")
+                    .navigationTitle(Localizable.appName)
             }
             .environmentObject(store)
             .sheet(item: $experience) { _ in

@@ -9,10 +9,26 @@
 import Foundation
 import MapKit
 
-struct Routing: Codable, Equatable, Hashable, Identifiable {
-    let id = UUID()
+struct Routing: Equatable, Hashable, Identifiable {
+    var id = UUID()
+    let index: Int
+    
+    let origin: Waypoint
+    let destination: Waypoint
     
     var tracks: [RoutingTrack]
+    let travelTime: Int
+    let price: Double
+}
+
+extension Routing {
+    static func from(_ routing: RawRouting, origin: Waypoint, destination: Waypoint) -> Routing {
+        Routing(index: routing.timeSortedIndex, origin: origin, destination: destination, tracks: routing.tracks.map(\.track), travelTime: routing.travelTime, price: routing.price)
+    }
+}
+
+struct RawRouting: Codable {
+    let tracks: [RawRoutingTrack]
     let travelTime: Int
     let price: Double
     

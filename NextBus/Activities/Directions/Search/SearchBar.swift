@@ -75,7 +75,7 @@ struct SearchBar: View {
     var onEnter: () -> Void
     
     var body: some View {
-        TextField("Search for a place or address", text: $text) { isFocused in
+        TextField(Localizable.Directions.searchForLocation, text: $text) { isFocused in
             self.isFocused = isFocused
         } onCommit: {
             onEnter()

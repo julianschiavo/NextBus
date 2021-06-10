@@ -10,7 +10,7 @@ import MapKit
 
 class RoutingPath: MKPolyline {
     let track: RoutingTrack
-    let polylines: [MKPolyline]
+    var polylines: [MKPolyline]
     
     init(track: RoutingTrack, polylines: [MKPolyline]) {
         self.track = track

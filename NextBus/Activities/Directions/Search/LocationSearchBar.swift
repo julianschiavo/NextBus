@@ -10,7 +10,6 @@ import MapKit
 import SwiftUI
 
 struct LocationSearchBar: View {
-    @EnvironmentObject private var locationTracker: LocationTracker
     
     @Binding var mapItem: MKMapItem?
     let placeholder: String
@@ -25,19 +24,22 @@ struct LocationSearchBar: View {
     var body: some View {
         VStack {
             SearchBar(text: $text, placeholder: placeholder, isFocused: $isFocused, onEnter: onSearch)
+                .overlay(
+                    CurrentLocationButton(searchText: $text, mapItem: $mapItem)
+                        .aligned(to: .trailing)
+                        .padding(15)
+                        .padding(.trailing, text.isEmpty ? 0 : 25)
+                )
             if isFocused, !wasCompletionTapped, !searchBuddy.completions.isEmpty {
                 completions
             }
             if searchBuddy.isSearching {
-                ProgressView("Searching...")
+                ProgressView(Localizable.Directions.searching)
                     .padding(6)
             }
         }
         .background(Color.tertiaryBackground)
 //        .alert(errorBinding: $searchBuddy.error)
-        .onChange(of: locationTracker.location) { location in
-            searchBuddy.updateRegion(location.coordinate)
-        }
         .onChange(of: text) { query in
             if wasCompletionTapped {
                 searchBuddy.completions = []

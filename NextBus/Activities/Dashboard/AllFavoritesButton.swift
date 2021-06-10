@@ -12,7 +12,7 @@ struct AllFavoritesButton: View {
     var body: some View {
         NavigationLink(destination: FavoritesList()) {
             HStack {
-                Label("All Favorites", systemImage: "heart.fill")
+                Label(Localizable.Dashboard.allFavorites, systemImage: "heart.fill")
                 #if os(iOS)
                 Spacer()
                 chevron

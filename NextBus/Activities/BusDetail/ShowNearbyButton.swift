@@ -15,7 +15,7 @@ struct ShowNearbyButton: View {
         Button {
             locationTracker.requestPermission()
         } label: {
-            Label("Show Nearby Bus Stops", systemImage: "location.fill")
+            Label(Localizable.BusDetail.showNearbyBusStops, systemImage: "location.fill")
         }
     }
 }

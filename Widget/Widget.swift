@@ -9,11 +9,14 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Purchases
 
 @main
 struct Widget: WidgetBundle {
     init() {
         WidgetCenter.shared.reloadAllTimelines()
+        Purchases.debugLogsEnabled = true
+        Purchases.configure(withAPIKey: "bKFVCyRdhomurfBWXgxdRbZOsjkkGjlF", appUserID: nil, observerMode: false, userDefaults: .shared)
     }
     
     @WidgetBundleBuilder var body: some SwiftUI.Widget {

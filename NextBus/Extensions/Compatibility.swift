@@ -47,6 +47,9 @@ typealias GraphicalDatePickerStyle = DefaultDatePickerStyle
 /// navigation hierarchy.
 typealias iOSNavigationView = Group
 
+/// A `TabViewStyle` that implements a paged scrolling `TabView`.
+typealias PageTabViewStyle = DefaultTabViewStyle
+
 /// A navigation view style represented by a view stack that only shows a single top view at a time.
 typealias StackNavigationViewStyle = DoubleColumnNavigationViewStyle
 
@@ -138,6 +141,26 @@ extension View {
         #endif
     }
     
+    /// Positions this view within an invisible frame having the specified size
+    /// constraints.
+    @ViewBuilder func macFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
+        #if os(macOS)
+        frame(width: width, height: height)
+        #else
+        self
+        #endif
+    }
+    
+    /// Positions this view within an invisible frame having the specified size
+    /// constraints.
+    @ViewBuilder func macMaxFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
+        #if os(macOS)
+        frame(maxWidth: width, maxHeight: height)
+        #else
+        self
+        #endif
+    }
+    
     /// Sets the style for buttons within this view to a button style with a
     /// custom appearance and custom interaction behavior.
     @ViewBuilder func macCustomButton() -> some View {
@@ -187,6 +210,16 @@ extension View {
     @ViewBuilder func iOSBackground<Background: View>(_ background: Background, alignment: Alignment = .center) -> some View {
         #if os(iOS)
         self.background(background, alignment: alignment)
+        #else
+        self
+        #endif
+    }
+    
+    /// Positions this view within an invisible frame having the specified size
+    /// constraints.
+    @ViewBuilder func iOSMaxFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
+        #if os(iOS)
+        frame(maxWidth: width, maxHeight: height)
         #else
         self
         #endif

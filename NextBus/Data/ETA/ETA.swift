@@ -63,22 +63,4 @@ struct ETA: Codable, Hashable, Identifiable {
             message: intent.message
         )
     }
-    
-//    var intentObject: INETA {
-//        let dateFormatter = RelativeDateTimeFormatter()
-//        let formattedDate = dateFormatter.string(for: date) ?? ""
-//        let object = INETA(identifier: nil, display: "Arriving \(formattedDate)")
-//
-//        if let date = date {
-//            object.arrivalDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-//        }
-//
-//        object.direction = direction.intentObject
-//        object.index = (index ?? 0) as NSNumber
-//        object.destination = destination
-//        object.remark = remark
-//        object.message = message
-//        object.generated = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: generated)
-//        return object
-//    }
 }

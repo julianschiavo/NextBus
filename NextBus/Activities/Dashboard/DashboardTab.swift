@@ -11,11 +11,14 @@ import SwiftUI
 struct DashboardTab: View {
     @Binding var currentTab: Int
     
+    @State private var sheet: Sheet?
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 25) {
                     ShortcutsGrid(currentTab: $currentTab)
+                    UpgradeCard(sheet: $sheet)
                     #if os(iOS)
                     AddToSiriCard()
                     #endif
@@ -28,19 +31,21 @@ struct DashboardTab: View {
                 .padding(.bottom, 15)
             }
             .macMinFrame(width: 260)
-            .navigationTitle("Dashboard")
+            .macMaxFrame(width: 500)
+            .navigationTitle(Localizable.Dashboard.name)
+            .globalSheet($sheet)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var favoritesCard: some View {
-        Card("Favorites", systemImage: "heart.fill") {
+        Card(Localizable.Dashboard.favorites, systemImage: "heart.fill") {
             DashboardFavoritesList()
         }
     }
     
     private var recentsCard: some View {
-        Card("Recents", systemImage: "clock.arrow.circlepath") {
+        Card(Localizable.Dashboard.recents, systemImage: "clock.arrow.circlepath") {
             DashboardRecentsList()
         }
     }

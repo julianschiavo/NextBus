@@ -40,7 +40,7 @@ struct BusDetailHeader: View {
     }
     
     private var title: some View {
-        Text(Localizations.routeTitle(routeName: route.localizedName))
+        Text(Localizable.routeName(route.localizedName))
             .font(.title)
             .fontWeight(.heavy)
     }

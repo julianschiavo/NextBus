@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Main: View {
-    @State private var currentTab = 2
+    @State private var currentTab = 1
     
     var body: some View {
         TabView(selection: $currentTab) {
@@ -17,25 +17,25 @@ struct Main: View {
                 .tag(1)
                 .tabItem {
                     Image(systemName: "rectangle.grid.2x2.fill")
-                    Text("Dashboard")
+                    Text(Localizable.Dashboard.name)
                 }
             DirectionsTab()
                 .tag(2)
                 .tabItem {
                     Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
-                    Text("Directions")
+                    Text(Localizable.Directions.name)
                 }
             RoutesTab()
                 .tag(3)
                 .tabItem {
                     Image(systemName: "bus.fill")
-                    Text("Routes")
+                    Text(Localizable.Routes.name)
                 }
             ScheduleTab()
                 .tag(4)
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("Schedule")
+                    Text(Localizable.Schedule.name)
                 }
         }
     }

@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import Loadability
 import UserNotifications
 
 class NotificationsBuddy: ObservableObject, ThrowsErrors {

@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import Loadability
 import SwiftUI
 
 class LocationTracker: NSObject, ObservableObject, ThrowsErrors, CLLocationManagerDelegate {

@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import Loadability
 import MapKit
 import SwiftUI
 
@@ -26,6 +27,7 @@ class LocationSearchBuddy: NSObject, ObservableObject, ThrowsErrors, MKLocalSear
     override init() {
         super.init()
         completer.delegate = self
+        completer.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.3193, longitude: 114.1694), latitudinalMeters: 28000, longitudinalMeters: 28000)
         completer.resultTypes = [.address, .pointOfInterest]
         
         $searchQuery
@@ -41,10 +43,6 @@ class LocationSearchBuddy: NSObject, ObservableObject, ThrowsErrors, MKLocalSear
     
     func update(fragment: String) {
         completer.queryFragment = fragment
-    }
-    
-    func updateRegion(_ region: CLLocationCoordinate2D) {
-        completer.region = MKCoordinateRegion(center: region, latitudinalMeters: 500, longitudinalMeters: 500)
     }
     
     func search(completion: MKLocalSearchCompletion) {

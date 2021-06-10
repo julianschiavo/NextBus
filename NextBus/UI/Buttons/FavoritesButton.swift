@@ -30,9 +30,9 @@ struct FavoritesButton: View {
     
     @ViewBuilder private func label() -> some View {
         if store.favorites.contains(route: route, stop: stop) {
-            Text("Remove Favorite")
+            Text(Localizable.removeFavorite)
         } else {
-            Text("Add to Favorites")
+            Text(Localizable.addToFavorites)
         }
     }
     

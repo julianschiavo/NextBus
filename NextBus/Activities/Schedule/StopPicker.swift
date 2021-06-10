@@ -6,9 +6,10 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct StopPicker: View, Loadable {
+struct StopPicker: View, LoadableView {
     @Environment(\.presentationMode) private var presentationMode
     
     let route: Route
@@ -22,11 +23,11 @@ struct StopPicker: View, Loadable {
         NavigationView {
             loaderView
                 .macMinFrame(width: 700, height: 500)
-                .navigationTitle("Select Stop")
+                .navigationTitle(Localizable.selectStop)
                 .navigationTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
-                        Button("Done") {
+                        Button(Localizable.done) {
                             presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -61,7 +62,7 @@ struct StopPicker: View, Loadable {
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Stops...")
+        ProgressView(Localizable.loadingStops)
             .padding(10)
             .aligned(to: .center)
     }

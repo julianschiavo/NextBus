@@ -30,7 +30,7 @@ struct DashboardRecentsList: View {
     }
     
     private var placeholder: some View {
-        Label("No Recents", systemImage: "clock.arrow.circlepath")
+        Label(Localizable.Dashboard.noRecents, systemImage: "clock.arrow.circlepath")
             .font(.headline, weight: .semibold)
             .padding(.vertical, 12)
             .padding(.horizontal, 12)

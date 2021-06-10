@@ -48,12 +48,12 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
             }
         default:
             routesLoader = RoutesLoader()
-            routesLoader.getCachedData(key: .all) { [weak self] cached in
+            routesLoader.getCachedData(key: .key) { [weak self] cached in
                 guard let self = self else { return }
                 if let cached = cached {
                     self.sendRouteOptionsCollection(cached, completion: completion)
                 } else {
-                    self.routesLoader.createPublisher(key: .all)?
+                    self.routesLoader.createPublisher(key: .key)?
                         .sink { loaderCompletion in
                             switch loaderCompletion {
                             case let .failure(error):

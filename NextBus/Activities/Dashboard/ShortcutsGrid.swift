@@ -26,7 +26,7 @@ struct ShortcutsGrid: View {
     
     private var favorites: some View {
         NavigationLink(destination: FavoritesList()) {
-            Label("Favorites", systemImage: "heart.fill")
+            Label(Localizable.Dashboard.favorites, systemImage: "heart.fill")
                 .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.primary)
                 .alignedHorizontally(to: .leading)
@@ -42,7 +42,7 @@ struct ShortcutsGrid: View {
         Button {
             currentTab = 3
         } label: {
-            Label("Routes", systemImage: "bus.fill")
+            Label(Localizable.Routes.name, systemImage: "bus.fill")
                 .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.primary)
                 .alignedHorizontally(to: .leading)
@@ -58,7 +58,7 @@ struct ShortcutsGrid: View {
         Button {
             currentTab = 2
         } label: {
-            Label("Directions", systemImage: "arrow.triangle.turn.up.right.diamond.fill")
+            Label(Localizable.Directions.name, systemImage: "arrow.triangle.turn.up.right.diamond.fill")
                 .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.primary)
                 .alignedHorizontally(to: .leading)
@@ -74,7 +74,7 @@ struct ShortcutsGrid: View {
         Button {
             currentTab = 4
         } label: {
-            Label("Schedule", systemImage: "calendar")
+            Label(Localizable.Schedule.name, systemImage: "calendar")
                 .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.primary)
                 .alignedHorizontally(to: .leading)

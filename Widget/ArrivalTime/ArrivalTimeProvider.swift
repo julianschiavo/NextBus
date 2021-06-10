@@ -15,6 +15,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
     private var cancellables = Set<AnyCancellable>()
     private var loaders = [ETALoader]()
     private let store = Store()
+    private let payBuddy = PayBuddy()
     
     init() { }
     
@@ -27,6 +28,18 @@ class ArrivalTimeProvider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (Timeline<ArrivalTimeEntry>) -> ()) {
+        payBuddy.loadStatus { hasPlus in
+            guard hasPlus else {
+                let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorUpgradeRequired)
+                let refreshDate = Date().addingTimeInterval(900)
+                completion(Timeline(entries: [entry], policy: .after(refreshDate)))
+                return
+            }
+            self.createTimeline(for: configuration, in: context, completion: completion)
+        }
+    }
+        
+    private func createTimeline(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (Timeline<ArrivalTimeEntry>) -> ()) {
         let routeStops = routeStopsFromConfiguration(configuration)
         guard !routeStops.isEmpty else {
             let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorNoRoutesSelected)
@@ -35,16 +48,6 @@ class ArrivalTimeProvider: IntentTimelineProvider {
             return
         }
         
-//        createPublisher(for: routeStops.first!).sink { time in
-//        let time = ArrivalTimeEntry.RouteArrival(route: routeStops.first!.route, stop: routeStops.first!.stop, eta: ETA(id: nil, date: Date().addingTimeInterval(600), generated: Date(), remark: LocalizedText(""), message: nil))
-//            let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .arrivals([time]))
-//            let refreshDate = Date().addingTimeInterval(600)
-//            if time.eta != nil {
-//                completion(Timeline(entries: [entry], policy: .after(refreshDate)))
-//            }
-
-//        }
-//        .store(in: &cancellables)
         let count = context.family == .systemSmall ? 1 : 4
         let publishers = routeStops.compactMap(createPublisher).prefix(count)
         Publishers.MergeMany(publishers)

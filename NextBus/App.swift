@@ -8,12 +8,18 @@
 
 import CoreSpotlight
 import SwiftUI
+import Purchases
 
 @main struct App: SwiftUI.App {
     @StateObject private var store = Store()
     @StateObject private var routesPreloader = RoutesLoader()
     
     @State private var experience: Experience?
+    
+    init() {
+        Purchases.debugLogsEnabled = true
+        Purchases.configure(withAPIKey: "bKFVCyRdhomurfBWXgxdRbZOsjkkGjlF", appUserID: nil, observerMode: false, userDefaults: .shared)
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -31,7 +37,7 @@ import SwiftUI
                         }
                     }
                 }
-                .navigationTitle("Next Bus")
+                .navigationTitle(Localizable.appName)
                 .environmentObject(store)
                 .onContinueUserActivity(CSSearchableItemActionType) { userActivity in
                     guard let urlString = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,

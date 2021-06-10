@@ -20,7 +20,7 @@ struct CurrentScheduleCard: View {
     
     var body: some View {
         if let block = currentSchedule {
-            Card("Currently: \(block.name)", systemImage: "calendar") {
+            Card(Localizable.Dashboard.currentSchedule(block.name), systemImage: "calendar") {
                 RouteArrivalRow(routeStop: RouteStop(route: block.route, stop: block.stop))
             }
         }

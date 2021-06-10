@@ -8,11 +8,12 @@
 
 import Combine
 import Foundation
+import Loadability
 
-class RoutesCache: SerializableSingularCache {
-    typealias Key = SimpleKey
+class RoutesCache: SharedSerializableCache {
+    typealias Key = GenericKey
     typealias Value = [CompanyRoutes]
-    static let shared = SerializableCache<SimpleKey, [CompanyRoutes]>.load(name: "Routes")
+    static let shared = SerializableCache<GenericKey, [CompanyRoutes]>.load(name: "Routes", folderURL: Store.appGroupFolderURL)
 }
 
 class RoutesLoader: CachedLoader {
@@ -20,7 +21,7 @@ class RoutesLoader: CachedLoader {
     private let baseURL = URL(string: "https://nextbusapi.schiavo.me")!
     private let urlMethod = "routes"
     
-    typealias Key = SimpleKey
+    typealias Key = GenericKey
     
     @Published var object: [CompanyRoutes]?
     @Published var routes: [Route]?
@@ -43,7 +44,7 @@ class RoutesLoader: CachedLoader {
         cancel()
     }
     
-    func createPublisher(key: SimpleKey) -> AnyPublisher<[CompanyRoutes], Error>? {
+    func createPublisher(key: GenericKey) -> AnyPublisher<[CompanyRoutes], Error>? {
         let publishers = [
             ctbNWFBBuilder.create(),
             gmbBuilder.create(),

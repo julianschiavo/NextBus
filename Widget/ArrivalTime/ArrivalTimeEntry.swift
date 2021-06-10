@@ -22,6 +22,7 @@ struct ArrivalTimeEntry: TimelineEntry {
         case arrivals([RouteArrival])
         case errorNoRoutesSelected
         case errorFailedToLoad
+        case errorUpgradeRequired
     }
     
     let date: Date

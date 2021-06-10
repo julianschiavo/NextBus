@@ -22,23 +22,28 @@ struct DirectionsView: View {
     
     @State private var state = Phase.search
     
-    @State private var origin: MKMapItem?
-    @State private var destination: MKMapItem?
+    @State private var origin: Waypoint?
+    @State private var destination: Waypoint?
     
     @State private var annotations = [MKAnnotation]()
+    @State private var paths = [RoutingPath]()
+    @State private var focusedTrack: RoutingTrack?
     
-    @State private var directions: Directions?
+    @State private var routing: Routing?
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            DirectionsMap(annotations: $annotations, directions: $directions)
+            DirectionsMap(annotations: $annotations, routing: $routing, focusedTrack: $focusedTrack, paths: $paths)
             card
+                .macFrame(width: 350)
+                .iOSMaxFrame(width: .infinity)
+                .alignedHorizontally(to: .trailing)
             cancelButton
         }
         .onChange(of: origin, perform: updateAnnotations)
         .onChange(of: destination, perform: updateAnnotations)
-        .onChange(of: directions) { directions in
-            guard directions != nil else { return }
+        .onChange(of: routing) { routing in
+            guard routing != nil else { return }
             withAnimation {
                 state = .instructions
             }
@@ -52,7 +57,7 @@ struct DirectionsView: View {
         case .selectTrack:
             select
         case .instructions:
-            instructions
+            steps
         }
     }
     
@@ -73,9 +78,11 @@ struct DirectionsView: View {
         }
     }
     
-    private var instructions: some View {
-        Text("guuuuu")
-//        DirectionsSheet(origin: $origin, destination: $destination)
+    @ViewBuilder private var steps: some View {
+        if let routing = routing, let origin = origin, let destination = destination {
+            DirectionsStepsPager(routing: routing, origin: origin, destination: destination, focusedTrack: $focusedTrack, changeRouting: selectTrack)
+                .onChange(of: focusedTrack) { _ in } // removing this breaks track focusing from instructions/steps sheet
+        }
     }
     
     @ViewBuilder private var cancelButton: some View {
@@ -99,8 +106,9 @@ struct DirectionsView: View {
     private func selectTrack() {
         guard let origin = origin, let destination = destination else { return }
         withAnimation {
+//            paths = []
             state = .selectTrack
-            sheet = .pickDirections(origin: origin, destination: destination, selection: $directions)
+            sheet = .pickDirections(origin: origin, destination: destination, selection: $routing)
         }
     }
     
@@ -110,19 +118,20 @@ struct DirectionsView: View {
             origin = nil
             destination = nil
             annotations = []
-            directions = nil
+            routing = nil
+            paths = []
         }
     }
     
-    private func updateAnnotations(_ obj: MKMapItem? = nil) {
+    private func updateAnnotations(_ obj: Waypoint? = nil) {
         withAnimation {
             annotations = [origin, destination]
                 .compactMap { item -> MKPointAnnotation? in
                     guard let item = item else { return nil }
                     let annotation = MKPointAnnotation()
-                    annotation.coordinate = item.placemark.coordinate
+                    annotation.coordinate = item.coordinate
                     annotation.title = item.name
-                    annotation.subtitle = item.placemark.title
+                    annotation.subtitle = item.name
                     return annotation
                 }
         }

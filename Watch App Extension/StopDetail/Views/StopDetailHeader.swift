@@ -20,7 +20,7 @@ struct StopDetailHeader: View {
     }
     
     private var title: some View {
-        Text("Route \(route.localizedName)")
+        Text(Localizable.routeName(route.localizedName))
             .font(.largeHeadline)
             .fontWeight(.heavy)
     }

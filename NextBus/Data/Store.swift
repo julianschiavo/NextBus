@@ -272,8 +272,8 @@ class Store: ObservableObject {
             let stop = try? jsonEncoder.encode(block.stop)
             
             let content = UNMutableNotificationContent()
-            content.title = "It's time for \(block.name)."
-            content.body = "Press and hold to check when the \(block.route.localizedName) will arrive."
+            content.title = Localizable.Notifications.title(block.name)
+            content.body = Localizable.Notifications.description(block.route.localizedName)
             content.categoryIdentifier = "Schedule"
             content.threadIdentifier = block.id.uuidString
             content.userInfo["name"] = block.name

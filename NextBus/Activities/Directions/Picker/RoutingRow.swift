@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RoutingRow: View {
-    let directions: Directions
+    let routing: Routing
     let select: () -> Void
     
     var body: some View {
@@ -30,12 +30,12 @@ struct RoutingRow: View {
     }
     
     private var etaLabel: some View {
-        Text(String(directions.travelTime) + " mins")
+        Text(Localizable.Directions.mins(routing.travelTime))
             .font(.title3, weight: .bold)
     }
     
     private var priceLabel: some View {
-        Text("$" + String(directions.price))
+        Text("$" + String(routing.price))
             .font(.largeHeadline)
             .foregroundColor(.secondary)
     }
@@ -46,7 +46,7 @@ struct RoutingRow: View {
                 Image(systemName: "figure.walk")
                     .font(.callout, weight: .bold)
                 next
-                ForEach(directions.tracks) { track in
+                ForEach(routing.tracks.filter { !$0.isWalking }) { track in
                     label(for: track)
                     next
                 }
@@ -65,16 +65,16 @@ struct RoutingRow: View {
     }
     
     @ViewBuilder private func label(for track: RoutingTrack) -> some View {
-        if let company = Company(rawValue: track.company) {
-            label(systemImage: company.category.iconName, text: track.name.isEmpty ? company.name : track.name, color: company.color, textColor: company.textColor)
-        } else if track.company == "MTR" {
-            label(systemImage: "tram.tunnel.fill", text: track.name, color: Color(red: 152 / 255, green: 45 / 255, blue: 69 / 255, opacity: 1), textColor: .white)
-        } else if track.company == "TRAM" {
-            label(systemImage: "tram.fill", text: track.name, color: Color(red: 6 / 255, green: 105 / 255, blue: 65 / 255, opacity: 1), textColor: .white)
-        } else if track.company == "FERRY" {
-            label(systemImage: "drop.fill", text: track.name, color: Color(red: 13 / 255, green: 68 / 255, blue: 148 / 255, opacity: 1), textColor: .white)
-        } else {
-            label(systemImage: "questionmark", text: "", color: .secondary, textColor: .primary)
+        if let company = track.company {
+            HStack(spacing: 4) {
+                Image(systemName: company.category.iconName)
+                Text(track.name.isEmpty ? company.name : track.name)
+            }
+            .font(.callout, weight: .bold)
+            .foregroundColor(company.textColor)
+            .padding(5)
+            .background(company.color)
+            .cornerRadius(12)
         }
     }
     
@@ -92,7 +92,7 @@ struct RoutingRow: View {
     
     private var goButton: some View {
         Button(action: select) {
-            Text("GO")
+            Text(Localizable.Directions.go.uppercased())
                 .font(.largeHeadline, weight: .heavy)
                 .foregroundColor(.black)
                 .padding(15)

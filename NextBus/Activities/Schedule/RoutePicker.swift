@@ -6,9 +6,10 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct RoutePicker: View, Loadable {
+struct RoutePicker: View, LoadableView {
     @Environment(\.presentationMode) private var presentationMode
     
     @Binding var selection: Route?
@@ -23,11 +24,11 @@ struct RoutePicker: View, Loadable {
         NavigationView {
             loaderView
                 .macMinFrame(width: 700, height: 500)
-                .navigationTitle("Select Route")
+                .navigationTitle(Localizable.selectRoute)
                 .navigationTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
-                        Button("Done") {
+                        Button(Localizable.done) {
                             presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -119,6 +120,6 @@ struct RoutePicker: View, Loadable {
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Routes...")
+        ProgressView(Localizable.loadingRoutes)
     }
 }

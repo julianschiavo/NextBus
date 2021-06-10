@@ -17,7 +17,7 @@ struct NewScheduleButton: View {
         Button {
             sheet = .newSchedule(route: route, stop: stop)
         } label: {
-            Label("New Schedule", systemImage: "calendar")
+            Label(Localizable.Schedule.new, systemImage: "calendar")
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)
                 .iOSPadding(.horizontal, 12)

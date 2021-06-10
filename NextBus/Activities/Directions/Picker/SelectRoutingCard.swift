@@ -25,7 +25,7 @@ struct SelectRoutingCard: View {
     
     private var selectButton: some View {
         Button(action: onClick) {
-            Text("Select Routing")
+            Text(Localizable.Directions.selectRouting)
                 .font(.headline, weight: .bold)
                 .foregroundColor(.primary)
                 .padding(15)
@@ -38,7 +38,7 @@ struct SelectRoutingCard: View {
     
     private var cancelButton: some View {
         Button(action: onCancel) {
-            Text("Cancel")
+            Text(Localizable.cancel)
                 .font(.headline)
                 .foregroundColor(.primary)
                 .padding(10)

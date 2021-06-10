@@ -1,0 +1,326 @@
+"0fayH3" = "Destination";
+
+"0namlS" = "Route ${route.name} from which stop?";
+
+"1HFH3c" = "KMB & Citybus";
+
+"1YRS4H" = "night and special";
+
+"2EA4Ln" = "Which bus route?";
+
+"2YDxIx" = "Next Arrival Time";
+
+"2k2WOb" = "Pick a Stop";
+
+"2wMumX" = "Colorful";
+
+"379GzC" = "Origin";
+
+"4aDAvd" = "Remark";
+
+"4mfq9q" = "Third Stop";
+
+"4qmGu5" = "Pick a Route";
+
+"6RM6b7" = "Service Period";
+
+"6TA84g" = "The route or stop is invalid or missing.";
+
+"7NuNRT" = "l w b c t b";
+
+"7ZloIz" = "There are ${count} options matching ‘${secondStop}’.";
+
+"8CJaZF" = "Just to confirm, you wanted ‘${stop}’?";
+
+"8DBSZD" = "Second Route";
+
+"8KaWqX" = "Favorites";
+
+"8hD7MB" = "Stop";
+
+"8qiH0R" = "Name";
+
+"9ALej2" = "l w b citybus";
+
+"9AcLjw" = "day";
+
+"9CIjuT" = "There are ${count} options matching ‘${secondRoute}’.";
+
+"9CugYQ" = "Route ${route.name} from which stop?";
+
+"9ZJVFz" = "KMB";
+
+"9onEvM" = "Stop";
+
+"9sJ2ai" = "Long Win Bus & Citybus";
+
+"Ak8Nsj" = "Widget Style";
+
+"Asnkzf" = "Pick a Stop";
+
+"BbVlk5" = "Generated";
+
+"BgJAOe" = "Index";
+
+"Bhfw6d" = "Long Win Bus";
+
+"C4UtlQ" = "Third Route";
+
+"Cevqzl-2wMumX" = "Just to confirm, you wanted ‘Colorful’?";
+
+"Cevqzl-fi3TFl" = "Just to confirm, you wanted ‘White/Black’?";
+
+"Cevqzl-oeYzfT" = "Just to confirm, you wanted ‘Gray’?";
+
+"D19Bzo" = "There are ${count} options matching ‘${fourthRoute}’.";
+
+"E6iY8m" = "Date";
+
+"EOGF0B" = "Recents";
+
+"FAphhk" = "Get upcoming buses for ${route} from ${stop}";
+
+"FlqdbU" = "m t r";
+
+"Fw7iAD" = "Pick a Stop";
+
+"FyNmJK" = "There are ${count} options matching ‘${thirdStop}’.";
+
+"GlxO7j" = "Pick a Stop";
+
+"H7FDSR" = "Fourth Route";
+
+"HAw5Km" = "LMC Coach";
+
+"HnMe1v" = "Looks like the route or stop is invalid or missing. Please try again.";
+
+"ID4tD8" = "There are ${count} options matching ‘${firstStop}’.";
+
+"IU0I44" = "Direction";
+
+"Im0WTv" = "Company";
+
+"IoluJL" = "k m b new world first bus";
+
+"JduAmj" = "Company";
+
+"KoSuvW" = "There are ${count} routes matching ‘${route}’.";
+
+"LuPoth" = "Custom";
+
+"MN989p" = "n l b";
+
+"MlgVRO" = "Source";
+
+"NGHE7E" = "Green Minibus";
+
+"OseI58" = "Latitude";
+
+"P84ZnJ-8KaWqX" = "There are ${count} options matching ‘Favorites’.";
+
+"P84ZnJ-EOGF0B" = "There are ${count} options matching ‘Recents’.";
+
+"P84ZnJ-LuPoth" = "There are ${count} options matching ‘Custom’.";
+
+"PyXybY" = "m t r feeder";
+
+"QWVIK2" = "Pick a Route";
+
+"QWgpKI" = "Select Route & Stop";
+
+"QoX3IF" = "Just to confirm, you wanted ‘${secondRoute}’?";
+
+"QsaxNk" = "Just to confirm, you wanted ‘${fourthRoute}’?";
+
+"RPT5kg" = "Citybus";
+
+"RWrSKx" = "Message";
+
+"T62sX5" = "Pick a Route";
+
+"TGl9Jt" = "Second Stop";
+
+"THV3ja" = "l w b";
+
+"UPR2Yh" = "Pick a Stop";
+
+"Ur5YVy" = "NWFB";
+
+"V6P3Mc" = "The next ${route.name} is ${nextArrivalTime} from ${stop.name}. ";
+
+"V906MJ" = "Pick a Route";
+
+"W35w5F" = "Gets upcoming buses for a certain route, direction, and bus stop ordered from nearest to farthest.";
+
+"WRAvi6" = "city bus k m b";
+
+"X0PRul" = "d bay";
+
+"XRYXTd" = "outbound";
+
+"YI9nkN" = "Pick a Route";
+
+"Z86BxF" = "There are ${count} stops matching ‘${stop}’.";
+
+"ZBfbik" = "night";
+
+"Zrk8qe" = "Minibus";
+
+"Zt288l" = "inbound";
+
+"aPN7WT" = "d b bus";
+
+"ai0I2K-2wMumX" = "There are ${count} options matching ‘Colorful’.";
+
+"ai0I2K-fi3TFl" = "There are ${count} options matching ‘White/Black’.";
+
+"ai0I2K-oeYzfT" = "There are ${count} options matching ‘Gray’.";
+
+"bhb17R" = "Which bus?";
+
+"dkUyVV" = "N W F B";
+
+"e3EpaI" = "k m b";
+
+"eAHegs" = "Arrival Times";
+
+"eIm3IP" = "Category";
+
+"eJDPId-8KaWqX" = "Just to confirm, you wanted ‘Favorites’?";
+
+"eJDPId-EOGF0B" = "Just to confirm, you wanted ‘Recents’?";
+
+"eJDPId-LuPoth" = "Just to confirm, you wanted ‘Custom’?";
+
+"ek6oB4" = "Which stop?";
+
+"eky7dz" = "KMB & NWFB";
+
+"f7etAu" = "First Stop";
+
+"fi3TFl" = "White/Black";
+
+"gjt1Zr" = "There are ${count} routes that match ‘${firstRoute}’.";
+
+"gtmPLq" = "Just to confirm, you wanted ‘${secondStop}’?";
+
+"hRrL3b" = "Category";
+
+"hrUZlb" = "Discovery Bay Bus";
+
+"hsmWEf" = "Route";
+
+"hzyrPA" = "Fourth Stop";
+
+"iIS20N" = "d b";
+
+"iVLLmK" = "Stop";
+
+"ir6bSo" = "Ma Wan Bus";
+
+"it5lhP" = "Internal ID";
+
+"jY3Hax" = "Get Upcoming Buses";
+
+"jcyP7b" = "Get upcoming buses for ${route}";
+
+"jpG7nV-8KaWqX" = "There are ${count} options matching ‘Favorites’.";
+
+"jpG7nV-EOGF0B" = "There are ${count} options matching ‘Recents’.";
+
+"jpG7nV-LuPoth" = "There are ${count} options matching ‘Custom’.";
+
+"k3FOGZ" = "Failed to find upcoming buses. This route might not be in service at the moment.";
+
+"kDDRi6" = "all";
+
+"kJCOO5" = "city bus";
+
+"kNiiar" = "kowloon motor bus n w f b";
+
+"kPeh6s" = "ETA";
+
+"kPxYXz" = "mini bus";
+
+"kpohfE" = "Stop";
+
+"ldD1qt" = "Widget Style";
+
+"loKXl2" = "Favorites";
+
+"m3hNVe" = "Fare";
+
+"mNWxoE" = "Direction";
+
+"mbYM2R" = "First Route";
+
+"mjFLIj" = "Route";
+
+"mqa3aX" = "Just to confirm, you wanted ‘${thirdStop}’?";
+
+"nIFxqD" = "Just to confirm, you wanted ‘${firstStop}’?";
+
+"nThEwL" = "Source";
+
+"oeYzfT" = "Gray";
+
+"pbJYMn" = "Longitude";
+
+"qBu3EH-8KaWqX" = "Just to confirm, you wanted ‘Favorites’?";
+
+"qBu3EH-EOGF0B" = "Just to confirm, you wanted ‘Recents’?";
+
+"qBu3EH-LuPoth" = "Just to confirm, you wanted ‘Custom’?";
+
+"qUSMsk" = "Which favorite?";
+
+"rBTFcd" = "Pick a Stop";
+
+"rHbg2M" = "Just to confirm, you wanted Route ‘${firstRoute}’?";
+
+"s3rw9b" = "one way";
+
+"sZ7wTt" = "Which bus?";
+
+"sd0QxJ" = "Just to confirm, you wanted ‘${thirdRoute}’?";
+
+"snp65r" = "Source";
+
+"tSFV6W" = "Bus";
+
+"thHzh0" = "Just to confirm, you wanted ‘${favorites}’?";
+
+"uBELlC" = "There are ${count} options matching ‘${thirdRoute}’.";
+
+"uUU2pw" = "${etas} upcoming buses, with the first one ${nextArrivalTime}. The next bus is ${etas.date}";
+
+"ugSKbv" = "Name";
+
+"ukAYv2" = "New Lantao Bus";
+
+"usaxd7" = "k m b n w f b";
+
+"vBM6Gk" = "Service Period";
+
+"veOiNU" = "Which favorites?";
+
+"vhWxpj" = "Route";
+
+"vvarQ3" = "Route";
+
+"w0iCHS" = "There are ${count} favorites matching ‘${favorites}’.";
+
+"wyXMQK" = "Description";
+
+"xXulOs" = "Sorry about that, we weren't able to find upcoming buses. This route might not be in service at the moment.";
+
+"xtE32y" = "special";
+
+"y6efAf" = "m r t";
+
+"yEgIlO" = "MTR Feeder";
+
+"yurRd8" = "Get upcoming buses for ${route}";
+
+"zLnja9" = "Route & Stop";
+

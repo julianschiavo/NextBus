@@ -11,7 +11,7 @@ import Intents
 extension INShortcut {
     static func getUpcomingBuses() -> INShortcut {
         let intent = GetUpcomingBusesIntent()
-        intent.suggestedInvocationPhrase = "When's the next bus?"
+        intent.suggestedInvocationPhrase = Localizable.Siri.GetUpcomingBuses.phrase
         return INShortcut(intent: intent) ?? INShortcut(userActivity: NSUserActivity(activityType: ""))
     }
     
@@ -19,7 +19,7 @@ extension INShortcut {
         let intent = GetUpcomingBusesIntent()
         intent.source = .custom
         intent.route = route.intent
-        intent.suggestedInvocationPhrase = "When's the next \(route.localizedName)?"
+        intent.suggestedInvocationPhrase = Localizable.Siri.GetUpcomingBuses.Phrase.withRoute(route.localizedName)
         return INShortcut(intent: intent) ?? INShortcut(userActivity: NSUserActivity(activityType: ""))
     }
     
@@ -28,7 +28,7 @@ extension INShortcut {
         intent.source = .custom
         intent.route = route.intent
         intent.stop = stop.intent
-        intent.suggestedInvocationPhrase = "When's the next \(route.localizedName) from \(stop.localizedName)?"
+        intent.suggestedInvocationPhrase = Localizable.Siri.GetUpcomingBuses.Phrase.withRouteStop(route.localizedName, stop.localizedName)
         return INShortcut(intent: intent) ?? INShortcut(userActivity: NSUserActivity(activityType: ""))
     }
 }

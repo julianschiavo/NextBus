@@ -8,3 +8,5 @@
 
 "CFBundleDisplayName" = "Next Bus";
 "CFBundleName" = "Next Bus";
+"NSLocationUsageDescription" = "See nearby bus stops and get directions to the closest stop.";
+"NSLocationWhenInUseUsageDescription" = "See nearby bus stops and get directions to the closest stop.";

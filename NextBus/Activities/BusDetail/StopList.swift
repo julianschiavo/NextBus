@@ -7,9 +7,10 @@
 //
 
 import CoreLocation
+import Loadability
 import SwiftUI
 
-struct StopList: View, Loadable {
+struct StopList: View, LoadableView {
     let route: Route
     
     @Binding var reload: Bool
@@ -44,13 +45,13 @@ struct StopList: View, Loadable {
     
     private func nearbyList(_ stops: [Stop]) -> some View {
         let nearby = nearbyStops(stops: stops)
-        return Section(header: Text(Localizations.nearbyBusStopsHeader)) {
+        return Section(header: Text(Localizable.StopDetail.nearbyBusStops)) {
             list(nearby)
         }
     }
     
     private func completeList(_ stops: [Stop]) -> some View {
-        Section(header: Text(Localizations.allBusStopsHeader),
+        Section(header: Text(Localizable.StopDetail.allBusStops),
                 footer: lastUpdateText(for: stops.last)) {
             list(stops)
         }
@@ -90,13 +91,13 @@ struct StopList: View, Loadable {
     
     @ViewBuilder private func lastUpdateText(for stop: Stop?) -> some View {
         if let stop = stop {
-            Text(Localizations.detailsLastUpdatedFooter(""))
+            Text(Localizable.StopDetail.lastUpdated(""))
                 + Text(stop.lastUpdated, style: .time)
         }
     }
     
     func placeholder() -> some View {
-        ProgressView("Loading Stops...")
+        ProgressView(Localizable.loadingStops)
             .padding(10)
             .aligned(to: .center)
     }

@@ -6,9 +6,10 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct ETALabel: View, Loadable {
+struct ETALabel: View, LoadableView {
     let route: Route
     let stop: Stop
     

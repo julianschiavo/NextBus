@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func showAlert(for error: Error) {
         let alertController = UIAlertController(title: error.userVisibleTitle, message: error.userVisibleOverallDescription, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: Localizable.ok, style: .default, handler: nil))
         present(alertController, animated: true)
     }
 }

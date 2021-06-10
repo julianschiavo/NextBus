@@ -28,7 +28,7 @@ struct SimpleBusInfoView: View {
                     ETAList(route: route, stop: stop, reload: $reload)
                 }
             } else {
-                ProgressView("Loading...")
+                ProgressView(Localizable.loadingRoute)
             }
         }
         .padding(20)

@@ -13,7 +13,7 @@ struct EditScheduleButton: View {
     
     var body: some View {
         Button(action: present) {
-            Label("Edit Schedule", systemImage: "pencil")
+            Label(Localizable.Schedule.edit, systemImage: "pencil")
         }
     }
 }

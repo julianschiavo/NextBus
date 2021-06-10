@@ -19,7 +19,7 @@ struct Clip: App {
         WindowGroup {
             NavigationView {
                 RoutesList()
-                    .navigationTitle("Next Bus")
+                    .navigationTitle(Localizable.appName)
             }
             .sheet(item: $experience) { _ in
                 switch experience {

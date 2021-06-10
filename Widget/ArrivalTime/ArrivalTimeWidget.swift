@@ -16,7 +16,7 @@ struct ArrivalTimeWidget: SwiftUI.Widget {
         IntentConfiguration(kind: kind, intent: SelectRouteStopIntent.self, provider: ArrivalTimeProvider()) { entry in
             ArrivalTimeView(entry: entry)
         }
-        .configurationDisplayName("Live Arrival Time")
+        .configurationDisplayName(Localizable.Widgets.ArrivalTime.name)
         .description("")
     }
 }

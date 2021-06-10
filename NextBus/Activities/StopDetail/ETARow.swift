@@ -46,7 +46,7 @@ struct ETARow: View {
     
     @ViewBuilder private var time: some View {
         if let date = eta.date {
-            (Text(Localizations.detailsAtPrefix) + Text(date, style: .time))
+            (Text(Localizable.StopDetail.at) + Text(date, style: .time))
                 .font(.footnote, withMonospacedDigits: true)
                 .foregroundColor(.secondary)
         }

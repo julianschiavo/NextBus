@@ -16,7 +16,7 @@ struct DirectionsButton: View {
     
     var body: some View {
         Button(action: openInMaps) {
-            Label("Directions", systemImage: "figure.walk.circle.fill")
+            Label(Localizable.directionsButton, systemImage: "figure.walk.circle.fill")
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)
                 .iOSPadding(.horizontal, 12)

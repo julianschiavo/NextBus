@@ -31,7 +31,7 @@ struct DashboardFavoritesList: View {
     }
     
     private var placeholder: some View {
-        Label("No Favorites", systemImage: "heart.fill")
+        Label(Localizable.Dashboard.noFavorites, systemImage: "heart.fill")
             .font(.headline, weight: .semibold)
             .padding(.vertical, 12)
             .padding(.horizontal, 12)

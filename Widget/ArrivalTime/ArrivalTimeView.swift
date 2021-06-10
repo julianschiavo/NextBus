@@ -23,6 +23,8 @@ struct ArrivalTimeView: View {
             NoRoutesError()
         case .errorFailedToLoad:
             FailedToLoadError()
+        case .errorUpgradeRequired:
+            UpgradeRequiredError()
         }
     }
     
@@ -130,7 +132,7 @@ fileprivate struct Small: View {
             Text(date, style: .time)
                 .font(.largeHeadline, weight: .bold, withMonospacedDigits: true)
         } else {
-            Text("No arrival time")
+            Text(Localizable.Widgets.ArrivalTime.notAvailable)
                 .font(.subheadline, weight: .semibold)
         }
     }
@@ -242,9 +244,9 @@ fileprivate struct MediumLarge: View {
 fileprivate struct NoRoutesError: View {
     var body: some View {
         VStack(spacing: 8) {
-            Text("No Routes Selected")
+            Text(Localizable.Widgets.ArrivalTime.noRoutesSelected)
                 .font(.headline)
-            Text("Select a route to see bus arrival times.")
+            Text(Localizable.Widgets.ArrivalTime.noRoutesSelectedDescription)
                 .font(.callout)
                 .foregroundColor(.secondary)
         }
@@ -259,8 +261,22 @@ fileprivate struct FailedToLoadError: View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.title2, weight: .heavy)
                 .foregroundColor(.red)
-            Text("Failed to Load")
+            Text(Localizable.Widgets.ArrivalTime.failedToLoad)
                 .font(.headline)
+        }
+        .multilineTextAlignment(.center)
+        .padding(16)
+    }
+}
+
+fileprivate struct UpgradeRequiredError: View {
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(Localizable.Widgets.ArrivalTime.upgradeRequired)
+                .font(.headline)
+            Text(Localizable.Widgets.ArrivalTime.upgradeRequiredDescription)
+                .font(.callout)
+                .foregroundColor(.secondary)
         }
         .multilineTextAlignment(.center)
         .padding(16)

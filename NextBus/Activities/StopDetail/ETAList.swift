@@ -6,9 +6,10 @@
 //  Copyright © 2020 Julian Schiavo. All rights reserved.
 //
 
+import Loadability
 import SwiftUI
 
-struct ETAList: View, Loadable {
+struct ETAList: View, LoadableView {
     let route: Route
     let stop: Stop
     
@@ -42,7 +43,7 @@ struct ETAList: View, Loadable {
     }
     
     private var error: some View {
-        Label(Localizations.errorArrivalInformationNotAvailable, systemImage: "exclamationmark.triangle.fill")
+        Label(Localizable.StopDetail.arrivalInformationNotCurrentlyAvailable, systemImage: "exclamationmark.triangle.fill")
             .foregroundColor(.red)
             .padding(.vertical, 8)
             .padding(.horizontal, 12)

@@ -19,7 +19,7 @@ struct DirectionsTab: View {
         iOSNavigationView {
             DirectionsView(sheet: $sheet)
                 .macMinFrame(width: 500)
-                .navigationTitle("Directions")
+                .navigationTitle(Localizable.Directions.name)
                 .navigationTitleDisplayMode(.inline)
         }
         .environmentObject(locationTracker)

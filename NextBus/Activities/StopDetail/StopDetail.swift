@@ -35,7 +35,7 @@ struct StopDetail: View {
             info
             map
         }
-        .macMinFrame(width: 300)
+        .macMinFrame(width: 320)
         .navigationTitle(navigationTitle)
         .navigationTitleDisplayMode(.inline)
         .onAppear {
@@ -68,11 +68,11 @@ struct StopDetail: View {
     }
     
     private var etas: some View {
-        Layer(.primary, title: "Arriving Soon", systemImage: "clock.fill") {
+        Layer(.primary, title: Localizable.StopDetail.arrivingSoon, systemImage: "clock.fill") {
             if route.company.supportsETA {
                 ETAList(route: route, stop: stop, reload: $reload)
             } else {
-                Label("Arrival information is not yet available for this route.", systemImage: "exclamationmark.triangle.fill")
+                Label(Localizable.StopDetail.arrivalInformationNotAvailable, systemImage: "exclamationmark.triangle.fill")
                     .foregroundColor(.red)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 12)
@@ -82,7 +82,7 @@ struct StopDetail: View {
     }
     
     private var info: some View {
-        Layer(.secondary, title: "Info", systemImage: "info.circle.fill") {
+        Layer(.secondary, title: Localizable.StopDetail.info, systemImage: "info.circle.fill") {
             VStack(spacing: 0) {
                 #if !APPCLIP
                 FavoritesButton(route: route, stop: stop)
@@ -101,7 +101,7 @@ struct StopDetail: View {
     
     @ViewBuilder private var map: some View {
         if let latitude = stop.latitude, let longitude = stop.longitude {
-            Layer(.tertiary, title: "Map", systemImage: "map.fill") {
+            Layer(.tertiary, title: Localizable.StopDetail.map, systemImage: "map.fill") {
                 VStack(spacing: 0) {
                     StopMap(name: stop.localizedName, latitude: latitude, longitude: longitude)
                     Divider()

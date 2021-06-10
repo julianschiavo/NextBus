@@ -18,11 +18,11 @@ struct DeleteScheduleButton: View {
         Group {
             Menu {
                 Button(action: delete) {
-                    Label("Delete", systemImage: "trash.fill")
+                    Label(Localizable.delete, systemImage: "trash.fill")
                         .foregroundColor(.red)
                 }
             } label: {
-                Label("Delete Schedule", systemImage: "trash.fill")
+                Label(Localizable.Schedule.delete, systemImage: "trash.fill")
                     .foregroundColor(.red)
             }
         }

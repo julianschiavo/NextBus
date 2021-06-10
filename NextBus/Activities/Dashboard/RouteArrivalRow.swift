@@ -67,7 +67,7 @@ struct RouteArrivalRow<Menu: View>: View {
             Text(routeStop.stop.localizedName)
                 .font(.callout)
                 .foregroundColor(.secondary)
-            Text("to " + routeStop.route.localizedDestination)
+            Text(Localizable.to(routeStop.route.localizedDestination))
                 .font(.callout)
                 .foregroundColor(.secondary)
         }

@@ -16,7 +16,7 @@ struct RemoveRecentButton: View {
     
     var body: some View {
         Button(action: remove) {
-            Label("Remove from Recents", systemImage: "eye.slash.fill")
+            Label(Localizable.removeRecent, systemImage: "eye.slash.fill")
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)
                 .iOSPadding(.horizontal, 12)

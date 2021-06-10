@@ -65,8 +65,10 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Next Bus">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9F28E1923B448C9003A35CD"
@@ -74,7 +76,7 @@
             BlueprintName = "Watch App"
             ReferencedContainer = "container:NextBus.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -83,8 +85,10 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Next Bus">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9F28E1923B448C9003A35CD"
@@ -92,7 +96,16 @@
             BlueprintName = "Watch App"
             ReferencedContainer = "container:NextBus.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B9F28E1923B448C9003A35CD"
+            BuildableName = "Watch App.app"
+            BlueprintName = "Watch App"
+            ReferencedContainer = "container:NextBus.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

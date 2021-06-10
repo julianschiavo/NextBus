@@ -13,10 +13,11 @@ enum Sheet: Identifiable {
     case addToSiri(route: Route?, stop: Stop?)
     case editSchedule(block: ScheduleBlock)
     case newSchedule(route: Route?, stop: Stop?)
-    case pickDirections(origin: MKMapItem, destination: MKMapItem, selection: Binding<Routing?>)
+    case pickDirections(origin: Waypoint, destination: Waypoint, selection: Binding<Routing?>)
     case pickRoute(route: Binding<Route?>)
     case pickStop(route: Route, stop: Binding<Stop?>)
     case shareSheet(route: Route, stop: Stop?)
+    case upgrade
     
     var id: String {
         switch self {
@@ -34,6 +35,8 @@ enum Sheet: Identifiable {
             return "pickStop\(route.id)"
         case let .shareSheet(route, stop):
             return "shareSheet\(route.id)\(stop?.id ?? "")"
+        case .upgrade:
+            return "upgrade"
         }
     }
     
@@ -65,6 +68,8 @@ enum Sheet: Identifiable {
             RoutePicker(selection: route)
         case let .pickStop(route, stop):
             StopPicker(route: route, selection: stop)
+        case .upgrade:
+            UpgradeSheet()
         }
     }
     #endif

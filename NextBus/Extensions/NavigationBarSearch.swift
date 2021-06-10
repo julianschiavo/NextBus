@@ -85,8 +85,6 @@ fileprivate struct SearchController: UIViewControllerRepresentable {
     }
     
     class SearchBarWrapperController: UIViewController {
-        private var didShowSearchBar = false
-        
         var searchController: UISearchController? {
             didSet {
                 parent?.navigationItem.searchController = searchController
@@ -102,13 +100,8 @@ fileprivate struct SearchController: UIViewControllerRepresentable {
         }
         
         override func viewDidAppear(_ animated: Bool) {
+            parent?.navigationItem.hidesSearchBarWhenScrolling = false
             parent?.navigationItem.searchController = searchController
-//            guard !didShowSearchBar else { return }
-//            didShowSearchBar = true
-//            UIView.performWithoutAnimation {
-//                searchController?.isActive = true
-//                searchController?.isActive = false
-//            }
         }
     }
 }

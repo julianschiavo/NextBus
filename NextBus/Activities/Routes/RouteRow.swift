@@ -36,7 +36,7 @@ struct RouteRow: View {
     private var info: some View {
         VStack(alignment: .leading) {
             Text(route.localizedOrigin)
-            Text("to " + route.localizedDestination)
+            Text(Localizable.to(route.localizedDestination))
                 .font(.callout, weight: .semibold)
         }
         .lineLimit(1)

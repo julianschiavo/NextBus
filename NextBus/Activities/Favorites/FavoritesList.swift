@@ -16,11 +16,12 @@ struct FavoritesList: View {
         NavigationView {
             contents
                 .macMinFrame(width: 260)
-                .navigationTitle("Favorites")
+                .macMaxFrame(width: 500)
+                .navigationTitle(Localizable.Dashboard.favorites)
         }
         #else
         contents
-            .navigationTitle("Favorites")
+            .navigationTitle(Localizable.Dashboard.favorites)
             .navigationTitleDisplayMode(.inline)
         #endif
     }
@@ -44,7 +45,7 @@ struct FavoritesList: View {
         VStack(alignment: .center, spacing: 15) {
             Image(systemName: "heart.fill")
                 .font(.title2, weight: .heavy)
-            Text("No Favorites")
+            Text(Localizable.Dashboard.noFavorites)
                 .font(.title2, weight: .bold)
         }
     }

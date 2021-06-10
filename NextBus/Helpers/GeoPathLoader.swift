@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import Loadability
 import MapKit
 
 class GeoPathLoader: Loader {
@@ -21,8 +22,8 @@ class GeoPathLoader: Loader {
         
     }
     
-    func createPublisher(key directions: Directions) -> AnyPublisher<[RoutingPath], Error>? {
-        Just(directions.tracks)
+    func createPublisher(key routing: Routing) -> AnyPublisher<[RoutingPath], Error>? {
+        Just(routing.tracks)
             .flatMap { tracks -> AnyPublisher<[RoutingPath], Error> in
                 let publishers = tracks
                     .flatMap { track in
@@ -63,7 +64,7 @@ class GeoPathLoader: Loader {
     
     private func requests(for track: RoutingTrack) -> [MKDirections.Request] {
         guard !track.stops.isEmpty else {
-            return [request(from: origin(for: track), to: destination(for: track), type: track.specialType == 5 ? .walking : .automobile)]
+            return [request(from: track.origin.mapItem, to: track.destination.mapItem, type: track.isWalking ? .walking : .automobile)]
         }
         
         var requests = [MKDirections.Request]()
@@ -73,7 +74,7 @@ class GeoPathLoader: Loader {
             
             let origin = item(latitude: previousStop.latitude, longitude: previousStop.longitude)
             let destination = item(latitude: stop.latitude, longitude: stop.longitude)
-            let request = self.request(from: origin, to: destination)
+            let request = self.request(from: origin, to: destination, type: track.isWalking ? .walking : .automobile)
             requests.append(request)
         }
         return requests
@@ -86,18 +87,6 @@ class GeoPathLoader: Loader {
         request.transportType = type
         request.requestsAlternateRoutes = false
         return request
-    }
-    
-    private func origin(for track: RoutingTrack) -> MKMapItem {
-        let coordinate = CLLocationCoordinate2D(latitude: track.originLatitude, longitude: track.originLongitude)
-        let placemark = MKPlacemark(coordinate: coordinate)
-        return MKMapItem(placemark: placemark)
-    }
-    
-    private func destination(for track: RoutingTrack) -> MKMapItem {
-        let coordinate = CLLocationCoordinate2D(latitude: track.destinationLatitude, longitude: track.destinationLongitude)
-        let placemark = MKPlacemark(coordinate: coordinate)
-        return MKMapItem(placemark: placemark)
     }
     
     private func item(latitude: Double, longitude: Double) -> MKMapItem {

@@ -12,12 +12,14 @@ struct ScheduleTab: View {
     @State private var sheet: Sheet?
     
     @StateObject private var notificationsBuddy = NotificationsBuddy()
+    @StateObject private var payBuddy = PayBuddy()
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 25) {
-                    infoCard
+                    ScheduleInfoCard()
+                    upgradeRequiredCard
                     notificationsSuggestionCard
                     notificationsDisabledCard
                     ScheduleList(sheet: $sheet)
@@ -27,87 +29,39 @@ struct ScheduleTab: View {
                 .padding(.bottom, 15)
             }
             .macMinFrame(width: 260)
+            .macMaxFrame(width: 500)
             .alert(errorBinding: $notificationsBuddy.error)
-            .navigationTitle("Schedule")
+            .navigationTitle(Localizable.Schedule.name)
             .toolbar {
                 ToolbarItemGroup {
-                    Button {
-                        sheet = .newSchedule(route: nil, stop: nil)
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+                    NewScheduleToolbarButton(sheet: $sheet)
                 }
             }
             .globalSheet($sheet)
         }
+        .environmentObject(payBuddy)
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var infoCard: some View {
-        Card {
-            Text("Create Schedules to quickly see your daily routes on Dashboard and receive notifications with bus arrival times.")
-                .padding(.vertical, 8)
-                .padding(.horizontal, 12)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .layoutPriority(1)
-                .background(Color.secondaryBackground)
+        ScheduleInfoCard()
+    }
+    
+    @ViewBuilder private var upgradeRequiredCard: some View {
+        if !payBuddy.hasPlus {
+            UpgradeRequiredCard(sheet: $sheet)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .layoutPriority(1)
     }
     
     @ViewBuilder private var notificationsSuggestionCard: some View {
-        if !notificationsBuddy.hasAuthorization, !notificationsBuddy.didRequestAuthorization {
-            Card {
-                Button {
-                    notificationsBuddy.requestAuthorization()
-                } label: {
-                    Label {
-                        VStack(alignment: .leading) {
-                            Text("Enable Notifications")
-                            Text("Receive notifications with the latest bus arrival time when schedules start.")
-                                .font(.callout)
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    } icon: {
-                        Image(systemName: "app.badge.fill")
-                    }
-                    .font(.largeHeadline)
-                    .alignedHorizontally(to: .leading)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 12)
-                    .background(Color.secondaryBackground)
-                }
-                .macCustomButton()
-            }
+        if !notificationsBuddy.hasAuthorization, !notificationsBuddy.didRequestAuthorization, payBuddy.hasPlus {
+            ScheduleNotificationsCard(notificationsBuddy: notificationsBuddy)
         }
     }
     
     @ViewBuilder private var notificationsDisabledCard: some View {
-        if !notificationsBuddy.hasAuthorization, notificationsBuddy.didRequestAuthorization {
-            Card {
-                Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
-                    Label {
-                        VStack(alignment: .leading) {
-                            Text("Notifications Disabled")
-                            Text("You will not receive notifications when schedules start.")
-                                .font(.callout)
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    } icon: {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                    }
-                    .font(.largeHeadline)
-                    .foregroundColor(.red)
-                    .alignedHorizontally(to: .leading)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 12)
-                    .background(Color.secondaryBackground)
-                }
-                .macCustomButton()
-            }
+        if !notificationsBuddy.hasAuthorization, notificationsBuddy.didRequestAuthorization, payBuddy.hasPlus {
+            ScheduleNotificationsDisabledCard()
         }
     }
 }
