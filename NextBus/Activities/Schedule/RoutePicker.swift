@@ -10,7 +10,7 @@ import Loadability
 import SwiftUI
 
 struct RoutePicker: View, LoadableView {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @Binding var selection: Route?
     
@@ -29,12 +29,12 @@ struct RoutePicker: View, LoadableView {
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
                         Button(Localizable.done) {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }
                     }
                 }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
     
     func body(with companyRoutes: [CompanyRoutes]) -> some View {
@@ -47,10 +47,20 @@ struct RoutePicker: View, LoadableView {
                 }
             }
         }
-        .listStyle(SidebarListStyle())
-        .navigationBarSearch($searchText) {
-            RouteSearchToolbar(searchText: $searchText)
+        .listStyle(.sidebar)
+        .searchable(text: $searchText, prompt: Localizable.search)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                ForEach(["A", "B", "M", "N", "P", "R", "S", "X"], id: \.self) { letter in
+                    Button(letter) {
+                        searchText.append(letter)
+                    }
+                }
+            }
         }
+//        .navigationBarSearch($searchText) {
+//            RouteSearchToolbar(searchText: $searchText)
+//        }
     }
     
     private func sectionList(for group: CompanyRoutes) -> some View {
@@ -78,7 +88,7 @@ struct RoutePicker: View, LoadableView {
     private func row(for route: Route) -> some View {
         Button {
             selection = route
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         } label: {
             HStack {
                 RouteRow(route: route)

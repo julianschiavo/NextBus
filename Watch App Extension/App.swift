@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct App: SwiftUI.App {
-    @StateObject private var store = Store()
+    @ObservedObject private var store = Store.shared
     
     var body: some Scene {
         WindowGroup {

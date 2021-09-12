@@ -12,9 +12,7 @@ import WidgetKit
 
 class ArrivalTimeProvider: IntentTimelineProvider {
     
-    private var cancellables = Set<AnyCancellable>()
     private var loaders = [ETALoader]()
-    private let store = Store()
     private let payBuddy = PayBuddy()
     
     init() { }
@@ -23,73 +21,82 @@ class ArrivalTimeProvider: IntentTimelineProvider {
         .placeholder
     }
     
+    
     func getSnapshot(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (ArrivalTimeEntry) -> ()) {
         completion(.placeholder)
     }
     
     func getTimeline(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (Timeline<ArrivalTimeEntry>) -> ()) {
-        payBuddy.loadStatus { hasPlus in
+        Task {
+            let hasPlus = await payBuddy.loadStatus()
+            
             guard hasPlus else {
-                let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorUpgradeRequired)
-                let refreshDate = Date().addingTimeInterval(900)
+                let entry = ArrivalTimeEntry.upgradeRequired(configuration: configuration)
+                let refreshDate = Date().addingTimeInterval(3600)
                 completion(Timeline(entries: [entry], policy: .after(refreshDate)))
                 return
             }
-            self.createTimeline(for: configuration, in: context, completion: completion)
+            
+            let timeline = await createTimeline(for: configuration, in: context)
+            completion(timeline)
         }
     }
         
-    private func createTimeline(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (Timeline<ArrivalTimeEntry>) -> ()) {
-        let routeStops = routeStopsFromConfiguration(configuration)
+    private func createTimeline(for configuration: SelectRouteStopIntent, in context: Context) async -> Timeline<ArrivalTimeEntry> {
+        let routeStops = await routeStopsFromConfiguration(configuration)
+        
         guard !routeStops.isEmpty else {
-            let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorNoRoutesSelected)
+            let entry = ArrivalTimeEntry.noRoutesSelected(configuration: configuration)
             let refreshDate = Date().addingTimeInterval(900)
-            completion(Timeline(entries: [entry], policy: .after(refreshDate)))
-            return
+            return Timeline(entries: [entry], policy: .after(refreshDate))
         }
         
         let count = context.family == .systemSmall ? 1 : 4
-        let publishers = routeStops.compactMap(createPublisher).prefix(count)
-        Publishers.MergeMany(publishers)
-            .collect()
-            .compactMap {
-                $0
+        
+        return await withTaskGroup(of: ArrivalTimeEntry.RouteArrival?.self) { group -> Timeline<ArrivalTimeEntry> in
+            for routeStop in routeStops.prefix(count) {
+                group.async {
+                    await self.routeArrival(for: routeStop)
+                }
             }
-            .sink { times in
-                let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .arrivals(times))
-                let refreshDate = Date().addingTimeInterval(600)
-                completion(Timeline(entries: [entry], policy: .after(refreshDate)))
+            
+            var times = [ArrivalTimeEntry.RouteArrival]()
+            for await time in group {
+                guard let time = time else { continue }
+                times.append(time)
             }
-            .store(in: &cancellables)
+            
+            let entry = ArrivalTimeEntry(date: Date(), configuration: configuration, data: .arrivals(times))
+            let refreshDate = Date().addingTimeInterval(600)
+            return Timeline(entries: [entry], policy: .after(refreshDate))
+        }
     }
     
-    private func createPublisher(for routeStop: RouteStop) -> AnyPublisher<ArrivalTimeEntry.RouteArrival, Never>? {
+    @MainActor private func routeArrival(for routeStop: RouteStop) async -> ArrivalTimeEntry.RouteArrival? {
         guard routeStop.companyID.supportsETA else { return nil }
         
         let loader = ETALoader()
         loaders.append(loader)
-        return loader.createPublisher(key: routeStop)?
-//            .drop {
-//                $0 == nil
-//            }
-            .first()
-            .replaceError(with: [])
-            .map { etas in
-                ArrivalTimeEntry.RouteArrival(route: routeStop.route, stop: routeStop.stop, etas: etas)
-            }
-            .eraseToAnyPublisher()
+        
+        let _etas = try? await loader
+            .loadData(key: routeStop)
+            .compactMap { $0 }
+        guard let etas = _etas else { return nil }
+        
+        return ArrivalTimeEntry.RouteArrival(route: routeStop.route, stop: routeStop.stop, etas: etas)
     }
     
-    private func routeStopsFromConfiguration(_ configuration: SelectRouteStopIntent) -> [RouteStop] {
+    private func routeStopsFromConfiguration(_ configuration: SelectRouteStopIntent) async -> [RouteStop] {
         var routeStops = [RouteStop]()
         
         if configuration.source == .favorites {
-            let favorites = configuration.favorites?.compactMap(RouteStop.from) ?? store.favorites.load()
+            let storeFavorites = await Store.shared.favorites.load()
+            let favorites = configuration.favorites?.compactMap(RouteStop.from) ?? storeFavorites
             routeStops.append(contentsOf: favorites)
         }
         
         if configuration.source == .recents {
-            let recents = store.recents.load()
+            let recents = await Store.shared.recents.load()
             routeStops.append(contentsOf: recents)
         }
         
@@ -97,6 +104,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
            let inStop = configuration.firstStop,
            let route = Route.from(inRoute),
            let stop = Stop.from(inStop) {
+            
             let routeStop = RouteStop(route: route, stop: stop)
             routeStops.append(routeStop)
         }
@@ -105,6 +113,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
            let inStop = configuration.secondStop,
            let route = Route.from(inRoute),
            let stop = Stop.from(inStop) {
+            
             let routeStop = RouteStop(route: route, stop: stop)
             routeStops.append(routeStop)
         }
@@ -113,6 +122,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
            let inStop = configuration.thirdStop,
            let route = Route.from(inRoute),
            let stop = Stop.from(inStop) {
+            
             let routeStop = RouteStop(route: route, stop: stop)
             routeStops.append(routeStop)
         }
@@ -121,6 +131,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
            let inStop = configuration.fourthStop,
            let route = Route.from(inRoute),
            let stop = Stop.from(inStop) {
+            
             let routeStop = RouteStop(route: route, stop: stop)
             routeStops.append(routeStop)
         }

@@ -28,7 +28,7 @@ struct LocationRequiredSheet: View {
             }
         }
         .padding(10)
-        .background(Color.secondaryBackground)
+        .background(.ultraThinMaterial)
         .roundedBorder(20)
         .padding(9)
     }
@@ -62,12 +62,11 @@ struct LocationRequiredSheet: View {
             locationTracker.requestPermission()
         } label: {
             Text(Localizable.Directions.enable)
-                .foregroundColor(.primary)
-                .padding(10)
                 .frame(maxWidth: .infinity)
-                .background(Color.accent)
-                .cornerRadius(10)
         }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+        .controlProminence(.increased)
         .macCustomButton()
     }
 }

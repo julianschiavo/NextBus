@@ -21,8 +21,8 @@ struct RouteETARow: View {
             }
         }
         .contextMenu {
-            FavoritesButton(route: routeStop.route, stop: routeStop.stop)
             ShareButton($sheet, route: routeStop.route, stop: routeStop.stop)
+            FavoritesButton(route: routeStop.route, stop: routeStop.stop)
         }
         .globalSheet($sheet)
     }

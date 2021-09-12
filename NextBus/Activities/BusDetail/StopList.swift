@@ -12,8 +12,7 @@ import SwiftUI
 
 struct StopList: View, LoadableView {
     let route: Route
-    
-    @Binding var reload: Bool
+    @Binding var shouldRefresh: Bool
     
     var key: Route { route }
     
@@ -30,8 +29,12 @@ struct StopList: View, LoadableView {
             nearbyList(stops)
             completeList(stops)
         }
-        .onChange(of: reload) { _ in
-            loader.load(key: key)
+        .onChange(of: shouldRefresh) { _ in
+            Task {
+                print("[cache] start")
+                await loader.refresh(key: route)
+                print("[cache] end")
+            }
         }
     }
     

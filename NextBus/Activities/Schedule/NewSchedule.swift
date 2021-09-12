@@ -11,7 +11,7 @@ import SwiftUI
 struct NewSchedule: View {
     @EnvironmentObject private var store: Store
     
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @State private var name = ""
     
@@ -42,7 +42,7 @@ struct NewSchedule: View {
             .toolbar {
                 ToolbarItemGroup(placement: .cancellationAction) {
                     Button(Localizable.cancel) {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }
                 }
                 ToolbarItemGroup(placement: .confirmationAction) {
@@ -166,7 +166,7 @@ struct NewSchedule: View {
                 DatePicker("", selection: $endDate, displayedComponents: .hourAndMinute)
             }
         }
-        .datePickerStyle(GraphicalDatePickerStyle())
+        .datePickerStyle(.graphical)
     }
     
     private var settingsSection: some View {
@@ -180,6 +180,6 @@ struct NewSchedule: View {
         guard let route = route, let stop = stop else { return }
         let schedule = ScheduleBlock(name: name, startDate: startDate, endDate: endDate, route: route, stop: stop, showsOnWidget: showsOnWidget, sendsNotifications: sendsNotifications)
         store.schedule.add(schedule)
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
 }

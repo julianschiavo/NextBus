@@ -22,7 +22,7 @@ struct CompanyRoutesList: View {
                 filteredList
             }
         }
-        .listStyle(CarouselListStyle())
+        .listStyle(.carousel)
     }
     
     private var list: some View {

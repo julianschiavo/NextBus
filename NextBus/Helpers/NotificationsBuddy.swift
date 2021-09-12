@@ -11,31 +11,42 @@ import Foundation
 import Loadability
 import UserNotifications
 
-class NotificationsBuddy: ObservableObject, ThrowsErrors {
+@MainActor class NotificationsBuddy: ObservableObject, ThrowsErrors {
     @Published var hasAuthorization = false
     @Published var didRequestAuthorization = false
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     private let center = UNUserNotificationCenter.current()
     
     init() {
-        center.getNotificationSettings { [weak self] settings in
-            DispatchQueue.main.async {
-                self?.hasAuthorization = settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
-                self?.didRequestAuthorization = settings.authorizationStatus != .notDetermined
+        Task {
+            await update()
+        }
+    }
+    
+    private func update() async {
+        let settings = await _getNotificationSettings()
+        hasAuthorization = settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
+        didRequestAuthorization = settings.authorizationStatus != .notDetermined
+    }
+    
+    private func _getNotificationSettings() async -> UNNotificationSettings {
+        await withCheckedContinuation { continuation in
+            center.getNotificationSettings { settings in
+                continuation.resume(returning: settings)
             }
         }
     }
     
-    func requestAuthorization() {
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] granted, error in
-            DispatchQueue.main.async {
-                self?.catchError(error)
-                self?.didRequestAuthorization = true
-                if granted {
-                    self?.hasAuthorization = true
-                }
+    func requestAuthorization() async {
+        didRequestAuthorization = true
+        do {
+            let granted = try await center.requestAuthorization(options: [.alert, .badge, .sound, .providesAppNotificationSettings])
+            if granted {
+                hasAuthorization = true
             }
+        } catch {
+            catchError(error)
         }
     }
 }

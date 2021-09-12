@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B901D2A2267F4D57008F12D4 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = B901D2A1267F4D57008F12D4 /* BottomSheet */; };
 		B906F2FC25BDAA0E008540C0 /* LocationSearchBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B906F2FB25BDAA0E008540C0 /* LocationSearchBuddy.swift */; };
 		B906F30825BDB030008540C0 /* LocationSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B906F30725BDB030008540C0 /* LocationSearchBar.swift */; };
 		B906F31425BDB2C8008540C0 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B906F31325BDB2C8008540C0 /* SearchBar.swift */; };
@@ -75,37 +76,37 @@
 		B906F59725BEE5B9008540C0 /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
 		B906F59825BEE5B9008540C0 /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
 		B906F59925BEE5B9008540C0 /* ETA-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6FE25A8A71400D616F7 /* ETA-GMB.swift */; };
-		B906F59A25BEE5B9008540C0 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B906F59B25BEE5B9008540C0 /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B906F59A25BEE5B9008540C0 /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B906F59B25BEE5B9008540C0 /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B906F59C25BEE5B9008540C0 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
-		B906F59D25BEE5B9008540C0 /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
-		B906F59E25BEE5B9008540C0 /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B906F59D25BEE5B9008540C0 /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
+		B906F59E25BEE5B9008540C0 /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B906F59F25BEE5B9008540C0 /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
 		B906F5AB25BEE5BD008540C0 /* Stop-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660625AAB1AC0058AF17 /* Stop-GMB.swift */; };
 		B906F5AC25BEE5BD008540C0 /* StopRequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B3525A5383F00E7DEE1 /* StopRequest-NLB.swift */; };
-		B906F5AD25BEE5BD008540C0 /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B906F5AD25BEE5BD008540C0 /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B906F5AE25BEE5BD008540C0 /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
 		B906F5AF25BEE5BD008540C0 /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B906F5B025BEE5BD008540C0 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
-		B906F5B125BEE5BD008540C0 /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
+		B906F5B125BEE5BD008540C0 /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
 		B906F5B225BEE5BD008540C0 /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
-		B906F5B325BEE5BD008540C0 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B906F5B425BEE5BD008540C0 /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B906F5B325BEE5BD008540C0 /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B906F5B425BEE5BD008540C0 /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B906F5B525BEE5BD008540C0 /* Stop-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14782334A68E00B85712 /* Stop-CTBNWFB.swift */; };
 		B906F5C125BEE5C1008540C0 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91CDC4825A8916400952FCD /* Direction.swift */; };
 		B906F5C225BEE5C1008540C0 /* Direction-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B0625A52F0600E7DEE1 /* Direction-CTBNWFB.swift */; };
 		B906F5CE25BEE5C5008540C0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B984052825A836AE00F04613 /* Category.swift */; };
 		B906F5CF25BEE5C5008540C0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
-		B906F5D025BEE5C5008540C0 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
+		B906F5D025BEE5C5008540C0 /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
 		B906F5D125BEE5C5008540C0 /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
 		B906F5D225BEE5C5008540C0 /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
-		B906F5D325BEE5C5008540C0 /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
+		B906F5D325BEE5C5008540C0 /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
 		B906F5D425BEE5C5008540C0 /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
 		B906F5D525BEE5C5008540C0 /* Route-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14762334A68300B85712 /* Route-CTBNWFB.swift */; };
 		B906F5D625BEE5C5008540C0 /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
-		B906F5D725BEE5C5008540C0 /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
+		B906F5D725BEE5C5008540C0 /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
 		B906F5D825BEE5C5008540C0 /* ServicePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B984054D25A83A5800F04613 /* ServicePeriod.swift */; };
-		B906F5D925BEE5C5008540C0 /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
+		B906F5D925BEE5C5008540C0 /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
 		B906F5E525BEE5CA008540C0 /* GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D0125AB11E900D3C684 /* GOV.swift */; };
 		B906F5E625BEE5CA008540C0 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B906F5E725BEE5CA008540C0 /* NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166031259C7CB100B50AEE /* NLB.swift */; };
@@ -119,7 +120,6 @@
 		B906F60625BEE5E1008540C0 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927803A25AE80DF00FB883B /* Experience.swift */; };
 		B906F61225BEE604008540C0 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B92F9B25BC17F700F84D19 /* Sheet.swift */; };
 		B906F61E25BEE618008540C0 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
-		B906F62A25BEE61B008540C0 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B90DD48525C0DD5100BE5CAE /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90DD48425C0DD5100BE5CAE /* Routing.swift */; };
 		B90DD49D25C10B6B00BE5CAE /* RoutingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90DD49C25C10B6B00BE5CAE /* RoutingLoader.swift */; };
 		B90DD4AA25C10B7900BE5CAE /* RoutingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90DD4A925C10B7900BE5CAE /* RoutingRequest.swift */; };
@@ -207,37 +207,37 @@
 		B92780EE25AE8CED00FB883B /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
 		B92780EF25AE8CED00FB883B /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
 		B92780F025AE8CED00FB883B /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
-		B92780F125AE8CED00FB883B /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B92780F125AE8CED00FB883B /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B92780F225AE8CED00FB883B /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
 		B92780F325AE8CED00FB883B /* ETARequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916606A259C873A00B50AEE /* ETARequest-NLB.swift */; };
 		B92780F425AE8CED00FB883B /* ETA-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A147A2334A69700B85712 /* ETA-CTBNWFB.swift */; };
-		B92780F525AE8CED00FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B92780F625AE8CED00FB883B /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B92780F525AE8CED00FB883B /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B92780F625AE8CED00FB883B /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B92780F725AE8CED00FB883B /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
 		B92780F825AE8CED00FB883B /* ETA-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6FE25A8A71400D616F7 /* ETA-GMB.swift */; };
-		B92780F925AE8CED00FB883B /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
+		B92780F925AE8CED00FB883B /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
 		B927810325AE8CF000FB883B /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
-		B927810425AE8CF000FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
+		B927810425AE8CF000FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
 		B927810525AE8CF000FB883B /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
-		B927810625AE8CF000FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B927810725AE8CF000FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B927810625AE8CF000FB883B /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B927810725AE8CF000FB883B /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B927810825AE8CF000FB883B /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B927810925AE8CF000FB883B /* Stop-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660625AAB1AC0058AF17 /* Stop-GMB.swift */; };
 		B927810A25AE8CF000FB883B /* StopRequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B3525A5383F00E7DEE1 /* StopRequest-NLB.swift */; };
 		B927810B25AE8CF000FB883B /* Stop-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14782334A68E00B85712 /* Stop-CTBNWFB.swift */; };
 		B927810C25AE8CF000FB883B /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
-		B927810D25AE8CF000FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B927810D25AE8CF000FB883B /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B927812725AE8CF700FB883B /* Direction-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B0625A52F0600E7DEE1 /* Direction-CTBNWFB.swift */; };
 		B927812825AE8CF700FB883B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91CDC4825A8916400952FCD /* Direction.swift */; };
 		B927813225AE8CFB00FB883B /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
-		B927813325AE8CFB00FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
+		B927813325AE8CFB00FB883B /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
 		B927813425AE8CFB00FB883B /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
 		B927813525AE8CFB00FB883B /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
 		B927813625AE8CFB00FB883B /* Route-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14762334A68300B85712 /* Route-CTBNWFB.swift */; };
-		B927813725AE8CFB00FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
+		B927813725AE8CFB00FB883B /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
 		B927813825AE8CFB00FB883B /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
-		B927813925AE8CFB00FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B927813A25AE8CFB00FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
+		B927813925AE8CFB00FB883B /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B927813A25AE8CFB00FB883B /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
 		B927813B25AE8CFB00FB883B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
 		B927814525AE8CFF00FB883B /* CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166010259C799300B50AEE /* CTBNWFB.swift */; };
 		B927814625AE8CFF00FB883B /* NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166031259C7CB100B50AEE /* NLB.swift */; };
@@ -265,59 +265,58 @@
 		B927818C25AE8D5100FB883B /* DateFormatter-Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D38233364DD00F41992 /* DateFormatter-Custom.swift */; };
 		B927818D25AE8D5100FB883B /* Label-AlignedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A655725A9C5010058AF17 /* Label-AlignedText.swift */; };
 		B927818E25AE8D5100FB883B /* Array-Reorderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0F1225ABC72200D3C684 /* Array-Reorderable.swift */; };
-		B927819825AE8D5900FB883B /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B92781A225AE8D6500FB883B /* HasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9165FD8259C752000B50AEE /* HasLogger.swift */; };
 		B927829A25AE9D4000FB883B /* SelectRouteStopIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927829925AE9D4000FB883B /* SelectRouteStopIntentHandler.swift */; };
 		B92782A425AE9DCA00FB883B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70E25A95B6200D616F7 /* Store.swift */; };
 		B92782A525AE9DCA00FB883B /* CompanyRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A05825A8455F00C9F080 /* CompanyRoutes.swift */; };
 		B92782AF25AE9DCB00FB883B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70E25A95B6200D616F7 /* Store.swift */; };
 		B92782B025AE9DCB00FB883B /* CompanyRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A05825A8455F00C9F080 /* CompanyRoutes.swift */; };
-		B92782C925AE9DD500FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
+		B92782C925AE9DD500FB883B /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
 		B92782CA25AE9DD500FB883B /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
-		B92782CB25AE9DD500FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
+		B92782CB25AE9DD500FB883B /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
 		B92782CC25AE9DD500FB883B /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
-		B92782CD25AE9DD500FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
-		B92782CE25AE9DD500FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
+		B92782CD25AE9DD500FB883B /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
+		B92782CE25AE9DD500FB883B /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
 		B92782D825AE9DDE00FB883B /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
-		B92782D925AE9DDE00FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
+		B92782D925AE9DDE00FB883B /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
 		B92782DA25AE9DDE00FB883B /* Route-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14762334A68300B85712 /* Route-CTBNWFB.swift */; };
 		B92782DB25AE9DDE00FB883B /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
 		B92782DC25AE9DDE00FB883B /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
 		B92782DD25AE9DDE00FB883B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
-		B92782DE25AE9DDE00FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
+		B92782DE25AE9DDE00FB883B /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
 		B92782DF25AE9DDE00FB883B /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
-		B92782E025AE9DDE00FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
-		B92782E125AE9DDE00FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B92782EB25AE9DE100FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B92782E025AE9DDE00FB883B /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
+		B92782E125AE9DDE00FB883B /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B92782EB25AE9DE100FB883B /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B92782EC25AE9DE100FB883B /* Stop-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660625AAB1AC0058AF17 /* Stop-GMB.swift */; };
-		B92782ED25AE9DE100FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B92782EE25AE9DE100FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
+		B92782ED25AE9DE100FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B92782EE25AE9DE100FB883B /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
 		B92782EF25AE9DE100FB883B /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
-		B92782F025AE9DE100FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B92782F025AE9DE100FB883B /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B92782F125AE9DE100FB883B /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
-		B92782FB25AE9DE100FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B92782FB25AE9DE100FB883B /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B92782FC25AE9DE100FB883B /* Stop-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660625AAB1AC0058AF17 /* Stop-GMB.swift */; };
-		B92782FD25AE9DE100FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B92782FE25AE9DE100FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
+		B92782FD25AE9DE100FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B92782FE25AE9DE100FB883B /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
 		B92782FF25AE9DE100FB883B /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
-		B927830025AE9DE100FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B927830025AE9DE100FB883B /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B927830125AE9DE100FB883B /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
 		B927830B25AE9DE500FB883B /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B927830C25AE9DE500FB883B /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B927830C25AE9DE500FB883B /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B927830D25AE9DE500FB883B /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
-		B927830E25AE9DE500FB883B /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B927830E25AE9DE500FB883B /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B927830F25AE9DE500FB883B /* ETARequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916606A259C873A00B50AEE /* ETARequest-NLB.swift */; };
-		B927831025AE9DE500FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
+		B927831025AE9DE500FB883B /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
 		B927831125AE9DE500FB883B /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
-		B927831225AE9DE500FB883B /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
+		B927831225AE9DE500FB883B /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
 		B927831C25AE9DE600FB883B /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B927831D25AE9DE600FB883B /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B927831D25AE9DE600FB883B /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B927831E25AE9DE600FB883B /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
-		B927831F25AE9DE600FB883B /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B927831F25AE9DE600FB883B /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B927832025AE9DE600FB883B /* ETARequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916606A259C873A00B50AEE /* ETARequest-NLB.swift */; };
-		B927832125AE9DE600FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
+		B927832125AE9DE600FB883B /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
 		B927832225AE9DE600FB883B /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
-		B927832325AE9DE600FB883B /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
+		B927832325AE9DE600FB883B /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
 		B927834D25AE9DFE00FB883B /* URLRequest-Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166062259C86B600B50AEE /* URLRequest-Post.swift */; };
 		B927835725AE9DFE00FB883B /* URLRequest-Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166062259C86B600B50AEE /* URLRequest-Post.swift */; };
 		B927836125AE9E0700FB883B /* Error-BridgedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9165EF8259C50B700B50AEE /* Error-BridgedInfo.swift */; };
@@ -340,6 +339,7 @@
 		B92A14822335BD7F00B85712 /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
 		B92A14842335C28A00B85712 /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B92ECBA125AC86E000E24BF1 /* RouteSearchToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E785E25AC8631002609C4 /* RouteSearchToolbar.swift */; };
+		B93023FB267B235B00193DE8 /* Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B9F28E1A23B448C9003A35CD /* Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9331C3F25B429400060B06F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49023325D5A00AFE03E /* Assets.xcassets */; };
 		B9331C4A25B429410060B06F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49023325D5A00AFE03E /* Assets.xcassets */; };
 		B9331C5525B429450060B06F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49023325D5A00AFE03E /* Assets.xcassets */; };
@@ -347,20 +347,19 @@
 		B94BA48D23325D0E00AFE03E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA48C23325D0E00AFE03E /* SceneDelegate.swift */; };
 		B94BA49123325D5A00AFE03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49023325D5A00AFE03E /* Assets.xcassets */; };
 		B94BA49723325D5A00AFE03E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49523325D5A00AFE03E /* LaunchScreen.storyboard */; };
-		B94BA4A52332635D00AFE03E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A42332635D00AFE03E /* APIManager.swift */; };
 		B94BA4A72332F34300AFE03E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A62332F34300AFE03E /* UserDefaults.swift */; };
 		B94E77FA25AC691F002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E780425AC695B002609C4 /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B94E780E25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B94E780E25AC69CE002609C4 /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B94E781725AC6A4D002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E782025AC6A4D002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E782125AC6A4E002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E782225AC6A4F002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E782B25AC6A4F002609C4 /* KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E77F925AC691F002609C4 /* KMB.swift */; };
 		B94E783425AC6A54002609C4 /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B94E783525AC6A54002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B94E783525AC6A54002609C4 /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B94E783E25AC6A55002609C4 /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B94E783F25AC6A55002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B94E783F25AC6A55002609C4 /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B94E785F25AC8631002609C4 /* RouteSearchToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E785E25AC8631002609C4 /* RouteSearchToolbar.swift */; };
 		B959F97225D4129C009CD962 /* DirectionsStepsPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F97125D4129C009CD962 /* DirectionsStepsPager.swift */; };
 		B959F98A25D412A1009CD962 /* DirectionsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959F98925D412A1009CD962 /* DirectionsStep.swift */; };
@@ -379,7 +378,6 @@
 		B95C1864233F20D30094B3DF /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
 		B95C1865233F20D30094B3DF /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B95C1866233F20D30094B3DF /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
-		B95C1867233F20D30094B3DF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A42332635D00AFE03E /* APIManager.swift */; };
 		B95C1869233F20D30094B3DF /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
 		B95C186A233F20D30094B3DF /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B95C186B233F20D30094B3DF /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
@@ -388,7 +386,6 @@
 		B95C1870233F20D30094B3DF /* ETA-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A147A2334A69700B85712 /* ETA-CTBNWFB.swift */; };
 		B95C1873233F20D40094B3DF /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B95C1874233F20D40094B3DF /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
-		B95C1875233F20D40094B3DF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A42332635D00AFE03E /* APIManager.swift */; };
 		B95C1878233F20D40094B3DF /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B95C1879233F20D40094B3DF /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
 		B95C187D233F20D40094B3DF /* Stop-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14782334A68E00B85712 /* Stop-CTBNWFB.swift */; };
@@ -416,10 +413,6 @@
 		B964751C23D56D9B00237AA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
 		B964751D23D56D9B00237AA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
 		B964751E23D56D9B00237AA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
-		B964752423D56E7E00237AA5 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
-		B964752523D56E7E00237AA5 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
-		B964752623D56E7E00237AA5 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
-		B964752723D56E7E00237AA5 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B964752923D588E400237AA5 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
 		B964752A23D588E400237AA5 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
 		B964752B23D588E400237AA5 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
@@ -472,7 +465,6 @@
 		B96A64B225A9817E0058AF17 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B96A64BB25A981840058AF17 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70E25A95B6200D616F7 /* Store.swift */; };
 		B96A64BF25A981840058AF17 /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
-		B96A64C125A981840058AF17 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A42332635D00AFE03E /* APIManager.swift */; };
 		B96A64D025A9818E0058AF17 /* ETARow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713CA259C910F00019C32 /* ETARow.swift */; };
 		B96A64D125A9818E0058AF17 /* DirectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713A0259C8E7600019C32 /* DirectionsButton.swift */; };
 		B96A64D225A9818E0058AF17 /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166086259C8D1300B50AEE /* StopMap.swift */; };
@@ -496,7 +488,6 @@
 		B96A64F225A9819B0058AF17 /* DashboardFavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC72225A9637500D616F7 /* DashboardFavoritesList.swift */; };
 		B96A64F325A9819B0058AF17 /* ETALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A641925A966FC0058AF17 /* ETALabel.swift */; };
 		B96A64FB25A981AD0058AF17 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
-		B96A64FC25A981AD0058AF17 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B96A64FD25A981AD0058AF17 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B984050A25A8356A00F04613 /* Main.swift */; };
 		B96A650E25A982540058AF17 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A62332F34300AFE03E /* UserDefaults.swift */; };
 		B96A650F25A982540058AF17 /* URLRequest-Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166062259C86B600B50AEE /* URLRequest-Post.swift */; };
@@ -541,7 +532,6 @@
 		B96A66C925AAFE440058AF17 /* GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6F625A8A6F900D616F7 /* GMB.swift */; };
 		B96A66CA25AAFE440058AF17 /* StopRequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B3525A5383F00E7DEE1 /* StopRequest-NLB.swift */; };
 		B96A66D325AAFE530058AF17 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
-		B96A66DC25AAFE550058AF17 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B96A66E525AAFE5E0058AF17 /* RoutesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A01E25A8410500C9F080 /* RoutesList.swift */; };
 		B96A66E625AAFE5E0058AF17 /* RouteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A05025A8434400C9F080 /* RouteRow.swift */; };
 		B96A66EF25AAFE620058AF17 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B2ECCA25A5F4A40095891E /* LocationTracker.swift */; };
@@ -552,7 +542,6 @@
 		B96A670425AAFE700058AF17 /* BusDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B2ECB125A558400095891E /* BusDetailHeader.swift */; };
 		B96A670525AAFE700058AF17 /* ShowNearbyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A657525A9C8DA0058AF17 /* ShowNearbyButton.swift */; };
 		B96A670E25AAFE720058AF17 /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
-		B96A671725AAFE760058AF17 /* NewScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A643B25A96CE00058AF17 /* NewScheduleButton.swift */; };
 		B96A671825AAFE760058AF17 /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */; };
 		B96A671925AAFE760058AF17 /* StopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713B4259C906200019C32 /* StopDetail.swift */; };
 		B96A671A25AAFE760058AF17 /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166086259C8D1300B50AEE /* StopMap.swift */; };
@@ -593,9 +582,9 @@
 		B96A679025AB067F0058AF17 /* Array-SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A678F25AB067F0058AF17 /* Array-SafeIndex.swift */; };
 		B96A679A25AB07DE0058AF17 /* InvocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A679925AB07DE0058AF17 /* InvocationError.swift */; };
 		B96A67AD25AB0D520058AF17 /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
-		B96A67C525AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
-		B96A67C625AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
-		B96A67C725AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B96A67C525AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
+		B96A67C625AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
+		B96A67C725AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B96F785D23E67DEE004C3EE2 /* Next_Bus_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F785C23E67DEE004C3EE2 /* Next_Bus_UITests.swift */; };
 		B96F786523E67E15004C3EE2 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F786423E67E15004C3EE2 /* SnapshotHelper.swift */; };
 		B975821425C2C97C004D6CF6 /* RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975821325C2C97C004D6CF6 /* RoundedBorder.swift */; };
@@ -618,14 +607,12 @@
 		B979A6CA25AD2E9E00122165 /* DirectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713A0259C8E7600019C32 /* DirectionsButton.swift */; };
 		B979A6CB25AD2E9E00122165 /* ETAList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713BC259C907600019C32 /* ETAList.swift */; };
 		B979A6CC25AD2E9E00122165 /* ETARow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713CA259C910F00019C32 /* ETARow.swift */; };
-		B979A6CE25AD2E9E00122165 /* NewScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A643B25A96CE00058AF17 /* NewScheduleButton.swift */; };
 		B979A6D025AD2E9E00122165 /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */; };
 		B979A6D125AD2E9E00122165 /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166086259C8D1300B50AEE /* StopMap.swift */; };
 		B979A6EA25AD2EA800122165 /* ShowNearbyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A657525A9C8DA0058AF17 /* ShowNearbyButton.swift */; };
 		B979A6EB25AD2EA800122165 /* StopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B2ECB925A5F1690095891E /* StopList.swift */; };
 		B979A6EC25AD2EA800122165 /* StopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B2ECC125A5F2310095891E /* StopRow.swift */; };
 		B979A6F525AD2EAB00122165 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B2ECCA25A5F4A40095891E /* LocationTracker.swift */; };
-		B979A70925AD2EB500122165 /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A65BA25A9F8210058AF17 /* FavoritesList.swift */; };
 		B979A71225AD2EBD00122165 /* RemoveRecentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A661F25AACF450058AF17 /* RemoveRecentButton.swift */; };
 		B979A71325AD2EBD00122165 /* ETALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A641925A966FC0058AF17 /* ETALabel.swift */; };
 		B979A71425AD2EBD00122165 /* RouteArrivalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A642D25A968740058AF17 /* RouteArrivalRow.swift */; };
@@ -637,13 +624,13 @@
 		B979A72B25AD2EE500122165 /* Label-AlignedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A655725A9C5010058AF17 /* Label-AlignedText.swift */; };
 		B979A73525AD2F1000122165 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A73425AD2F1000122165 /* Compatibility.swift */; };
 		B979A73625AD2F1000122165 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A73425AD2F1000122165 /* Compatibility.swift */; };
-		B979A73F25AD2F8E00122165 /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
+		B979A73F25AD2F8E00122165 /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
 		B979A74025AD2F8E00122165 /* ETARequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916606A259C873A00B50AEE /* ETARequest-NLB.swift */; };
 		B979A74125AD2F8E00122165 /* ETALoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916605A259C847E00B50AEE /* ETALoader.swift */; };
-		B979A74225AD2F8E00122165 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B979A74325AD2F8E00122165 /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
+		B979A74225AD2F8E00122165 /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B979A74325AD2F8E00122165 /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
 		B979A74425AD2F8E00122165 /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
-		B979A74525AD2F8E00122165 /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B979A74525AD2F8E00122165 /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B979A74625AD2F8E00122165 /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
 		B979A74F25AD2F9900122165 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9871410259C964900019C32 /* Fonts.swift */; };
 		B979A76725AD2FBC00122165 /* Layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713DB259C942200019C32 /* Layers.swift */; };
@@ -663,17 +650,17 @@
 		B979A7A825AD38E200122165 /* RoutesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A01625A840A700C9F080 /* RoutesTab.swift */; };
 		B979A7B125AD391E00122165 /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
 		B979A7B225AD391E00122165 /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
-		B979A7B325AD391E00122165 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
-		B979A7B425AD391E00122165 /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B979A7B525AD391E00122165 /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
-		B979A7B625AD391E00122165 /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
-		B979A7BF25AD399300122165 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
+		B979A7B325AD391E00122165 /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
+		B979A7B425AD391E00122165 /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B979A7B525AD391E00122165 /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
+		B979A7B625AD391E00122165 /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
+		B979A7BF25AD399300122165 /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
 		B979A7C025AD399300122165 /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
 		B979A7C125AD399300122165 /* Stop-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660625AAB1AC0058AF17 /* Stop-GMB.swift */; };
 		B979A7C225AD399300122165 /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
-		B979A7C325AD399300122165 /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B979A7C425AD399300122165 /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
-		B979A7C525AD399300122165 /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
+		B979A7C325AD399300122165 /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B979A7C425AD399300122165 /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
+		B979A7C525AD399300122165 /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
 		B979A7CE25AD39AA00122165 /* Compatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A73425AD2F1000122165 /* Compatibility.swift */; };
 		B979A81925AD3B9500122165 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A81725AD3B9500122165 /* App.swift */; };
 		B979A83D25AD3C5000122165 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A83B25AD3C5000122165 /* Main.swift */; };
@@ -722,7 +709,6 @@
 		B98EFFE723C495BF00B664B2 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
 		B98EFFE823C495BF00B664B2 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B98EFFE923C495BF00B664B2 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
-		B98EFFEA23C495BF00B664B2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94BA4A42332635D00AFE03E /* APIManager.swift */; };
 		B98EFFEC23C495BF00B664B2 /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
 		B98EFFED23C495BF00B664B2 /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B98EFFEE23C495BF00B664B2 /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
@@ -766,7 +752,6 @@
 		B98F130625B3E27A0072628F /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */; };
 		B98F130725B3E27A0072628F /* ETAList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713BC259C907600019C32 /* ETAList.swift */; };
 		B98F130825B3E27A0072628F /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166086259C8D1300B50AEE /* StopMap.swift */; };
-		B98F130925B3E27A0072628F /* NewScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A643B25A96CE00058AF17 /* NewScheduleButton.swift */; };
 		B98F130A25B3E27A0072628F /* LastUpdatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B979A92025AD4B7D00122165 /* LastUpdatedText.swift */; };
 		B98F130B25B3E27A0072628F /* DirectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713A0259C8E7600019C32 /* DirectionsButton.swift */; };
 		B98F132025B3E3190072628F /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
@@ -774,11 +759,11 @@
 		B98F132225B3E3190072628F /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176D34233342EB00F41992 /* ETA.swift */; };
 		B98F132325B3E3190072628F /* ETA-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780325AC695B002609C4 /* ETA-KMB.swift */; };
 		B98F132425B3E3190072628F /* ETA-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A147A2334A69700B85712 /* ETA-CTBNWFB.swift */; };
-		B98F132525B3E3190072628F /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B98F132625B3E3190072628F /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
+		B98F132525B3E3190072628F /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B98F132625B3E3190072628F /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
 		B98F132725B3E3190072628F /* ETARequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916606A259C873A00B50AEE /* ETARequest-NLB.swift */; };
-		B98F132825B3E3190072628F /* ETAPublisherBuilder-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */; };
-		B98F132925B3E3190072628F /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B98F132825B3E3190072628F /* ETALoader-KMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */; };
+		B98F132925B3E3190072628F /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B98F132A25B3E3190072628F /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
 		B98F132B25B3E3190072628F /* ETA-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6FE25A8A71400D616F7 /* ETA-GMB.swift */; };
 		B98F133625B3E31F0072628F /* Stop-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14782334A68E00B85712 /* Stop-CTBNWFB.swift */; };
@@ -786,23 +771,23 @@
 		B98F133825B3E31F0072628F /* Stop-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14832335C28A00B85712 /* Stop-NLB.swift */; };
 		B98F133925B3E31F0072628F /* StopRequest-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B3525A5383F00E7DEE1 /* StopRequest-NLB.swift */; };
 		B98F133A25B3E31F0072628F /* RouteStopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */; };
-		B98F133B25B3E31F0072628F /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B98F133C25B3E31F0072628F /* RouteStopsPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */; };
-		B98F133D25B3E31F0072628F /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B98F133E25B3E31F0072628F /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B98F133B25B3E31F0072628F /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B98F133C25B3E31F0072628F /* RouteStopsLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */; };
+		B98F133D25B3E31F0072628F /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B98F133E25B3E31F0072628F /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B98F133F25B3E31F0072628F /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9922878233318C200512933 /* Stop.swift */; };
 		B98F134025B3E31F0072628F /* Stop-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */; };
 		B98F134B25B3E3250072628F /* Direction-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9607B0625A52F0600E7DEE1 /* Direction-CTBNWFB.swift */; };
 		B98F135625B3E3290072628F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91CDC4825A8916400952FCD /* Direction.swift */; };
 		B98F136125B3E3340072628F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B984052825A836AE00F04613 /* Category.swift */; };
-		B98F136225B3E3340072628F /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
-		B98F136325B3E3340072628F /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
-		B98F136425B3E3340072628F /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
+		B98F136225B3E3340072628F /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
+		B98F136325B3E3340072628F /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
+		B98F136425B3E3340072628F /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
 		B98F136525B3E3340072628F /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
 		B98F136625B3E3340072628F /* Route-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14812335BD7F00B85712 /* Route-NLB.swift */; };
 		B98F136725B3E3340072628F /* ServicePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B984054D25A83A5800F04613 /* ServicePeriod.swift */; };
 		B98F136825B3E3340072628F /* Route-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */; };
-		B98F136925B3E3340072628F /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
+		B98F136925B3E3340072628F /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
 		B98F136A25B3E3340072628F /* RoutesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98404FC25A7CFE500F04613 /* RoutesLoader.swift */; };
 		B98F136B25B3E3340072628F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FB542332FD390072DCCF /* Route.swift */; };
 		B98F136C25B3E3340072628F /* Route-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A14762334A68300B85712 /* Route-CTBNWFB.swift */; };
@@ -826,7 +811,6 @@
 		B98F13B025B3E35B0072628F /* TokenBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9871451259D7FEE00019C32 /* TokenBadge.swift */; };
 		B98F13B125B3E35B0072628F /* TokenStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987143D259CC39E00019C32 /* TokenStack.swift */; };
 		B98F13CD25B3E4140072628F /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752823D588E400237AA5 /* LocalizedText.swift */; };
-		B98F13CE25B3E4140072628F /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964752323D56E7E00237AA5 /* Localizations.swift */; };
 		B98F13D925B3E41C0072628F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9871402259C949200019C32 /* Colors.swift */; };
 		B98F13EF25B3E4310072628F /* HasLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9165FD8259C752000B50AEE /* HasLogger.swift */; };
 		B990A01725A840A700C9F080 /* RoutesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B990A01625A840A700C9F080 /* RoutesTab.swift */; };
@@ -918,18 +902,18 @@
 		B9ABC70725A9581B00D616F7 /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */; };
 		B9ABC70F25A95B6200D616F7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70E25A95B6200D616F7 /* Store.swift */; };
 		B9ABC72325A9637500D616F7 /* DashboardFavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC72225A9637500D616F7 /* DashboardFavoritesList.swift */; };
-		B9AD0CE825AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
+		B9AD0CE825AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
 		B9AD0D0225AB11E900D3C684 /* GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D0125AB11E900D3C684 /* GOV.swift */; };
 		B9AD0D0B25AB120300D3C684 /* GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D0125AB11E900D3C684 /* GOV.swift */; };
 		B9AD0D0C25AB120400D3C684 /* GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D0125AB11E900D3C684 /* GOV.swift */; };
-		B9AD0D1625AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
-		B9AD0D2025AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B9AD0D3925AB14C100D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B9AD0D3A25AB14C100D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0D3B25AB14C100D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
-		B9AD0D4425AB14C200D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */; };
-		B9AD0D4525AB14C200D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0D4625AB14C200D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */; };
+		B9AD0D1625AB132100D3C684 /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
+		B9AD0D2025AB13DE00D3C684 /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B9AD0D3925AB14C100D3C684 /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B9AD0D3A25AB14C100D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B9AD0D3B25AB14C100D3C684 /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
+		B9AD0D4425AB14C200D3C684 /* RouteStopsLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */; };
+		B9AD0D4525AB14C200D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */; };
+		B9AD0D4625AB14C200D3C684 /* RouteStopsLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */; };
 		B9AD0D6925AB17BD00D3C684 /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
 		B9AD0D6A25AB17BD00D3C684 /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
 		B9AD0D6B25AB17BD00D3C684 /* Route-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A660F25AAB3BC0058AF17 /* Route-GMB.swift */; };
@@ -946,29 +930,29 @@
 		B9AD0DE025AB194800D3C684 /* ETA-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6FE25A8A71400D616F7 /* ETA-GMB.swift */; };
 		B9AD0DE125AB194800D3C684 /* ETA-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC6FE25A8A71400D616F7 /* ETA-GMB.swift */; };
 		B9AD0E2E25AB19CA00D3C684 /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
-		B9AD0E3825AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0E4225AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
-		B9AD0E4C25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B9AD0E3825AB19DB00D3C684 /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B9AD0E4225AB1ABE00D3C684 /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
+		B9AD0E4C25AB1AE600D3C684 /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B9AD0E5525AB1B3E00D3C684 /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
-		B9AD0E5625AB1B3E00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0E5725AB1B3E00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
-		B9AD0E5825AB1B3E00D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
+		B9AD0E5625AB1B3E00D3C684 /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B9AD0E5725AB1B3E00D3C684 /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
+		B9AD0E5825AB1B3E00D3C684 /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
 		B9AD0E6125AB1B3F00D3C684 /* ETARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */; };
-		B9AD0E6225AB1B3F00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0E6325AB1B3F00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */; };
-		B9AD0E6425AB1B3F00D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */; };
-		B9AD0E6E25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B9AD0E7825AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0E8A25AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
-		B9AD0E9425AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
-		B9AD0E9D25AB222400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B9AD0E9E25AB222400D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
-		B9AD0E9F25AB222400D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
-		B9AD0EA025AB222400D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
-		B9AD0EA925AB222400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */; };
-		B9AD0EAA25AB222400D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */; };
-		B9AD0EAB25AB222400D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */; };
-		B9AD0EAC25AB222400D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */; };
+		B9AD0E6225AB1B3F00D3C684 /* ETALoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */; };
+		B9AD0E6325AB1B3F00D3C684 /* ETALoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */; };
+		B9AD0E6425AB1B3F00D3C684 /* ETALoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */; };
+		B9AD0E6E25AB1EC400D3C684 /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B9AD0E7825AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
+		B9AD0E8A25AB20EB00D3C684 /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
+		B9AD0E9425AB214700D3C684 /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
+		B9AD0E9D25AB222400D3C684 /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B9AD0E9E25AB222400D3C684 /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
+		B9AD0E9F25AB222400D3C684 /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
+		B9AD0EA025AB222400D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
+		B9AD0EA925AB222400D3C684 /* RoutesLoader-GOV.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */; };
+		B9AD0EAA25AB222400D3C684 /* RoutesLoader-GMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */; };
+		B9AD0EAB25AB222400D3C684 /* RoutesLoader-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */; };
+		B9AD0EAC25AB222400D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */; };
 		B9AD0EB625AB4B6F00D3C684 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0EB525AB4B6F00D3C684 /* ShareButton.swift */; };
 		B9AD0EB725AB4B6F00D3C684 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0EB525AB4B6F00D3C684 /* ShareButton.swift */; };
 		B9AD0EB825AB4B6F00D3C684 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD0EB525AB4B6F00D3C684 /* ShareButton.swift */; };
@@ -1014,7 +998,6 @@
 		B9AD442C25B0380900A1E5CC /* FavoritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */; };
 		B9AD442D25B0380900A1E5CC /* DirectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713A0259C8E7600019C32 /* DirectionsButton.swift */; };
 		B9AD442E25B0380900A1E5CC /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166086259C8D1300B50AEE /* StopMap.swift */; };
-		B9AD442F25B0380900A1E5CC /* NewScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A643B25A96CE00058AF17 /* NewScheduleButton.swift */; };
 		B9AD445F25B03B4B00A1E5CC /* ETAList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98713BC259C907600019C32 /* ETAList.swift */; };
 		B9AD446925B03C0800A1E5CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94BA49023325D5A00AFE03E /* Assets.xcassets */; };
 		B9AD44C525B10EA000A1E5CC /* ScheduleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD44C425B10EA000A1E5CC /* ScheduleBlock.swift */; };
@@ -1120,6 +1103,15 @@
 		B9CF9A1625C4567700FC4E21 /* RoutingTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF99E225C4566E00FC4E21 /* RoutingTrack.swift */; };
 		B9CF9A1725C4567800FC4E21 /* RoutingTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF99E225C4566E00FC4E21 /* RoutingTrack.swift */; };
 		B9CF9A1825C4567800FC4E21 /* RoutingTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF99E225C4566E00FC4E21 /* RoutingTrack.swift */; };
+		B9DDDBBC267CE29700C2EB98 /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A65BA25A9F8210058AF17 /* FavoritesList.swift */; };
+		B9E45F54267321E3001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F55267321E3001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F56267321E4001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F57267321E4001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F58267321E5001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F59267321E6001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F5A267321E6001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
+		B9E45F5B267321E7001BB836 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
 		B9E6D68D25D5331A0018F5D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
 		B9E6D69925D5331B0018F5D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
 		B9E6D6A525D5331B0018F5D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B964752023D56D9B00237AA5 /* Localizable.strings */; };
@@ -1155,6 +1147,7 @@
 		B9E6D84225D78AC60018F5D3 /* PreviousStepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6D83925D78AC60018F5D3 /* PreviousStepButton.swift */; };
 		B9E979F425AED5B0000EB623 /* ArrivalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E979F325AED5B0000EB623 /* ArrivalTimeView.swift */; };
 		B9E979FE25AED796000EB623 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9871410259C964900019C32 /* Fonts.swift */; };
+		B9EC15BE267319A7001481E8 /* SpecificLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC15BD267319A7001481E8 /* SpecificLoader.swift */; };
 		B9F014C723388B3700442C53 /* ETA-NLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F014C623388B3700442C53 /* ETA-NLB.swift */; };
 		B9F28E2023B448CC003A35CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F28E1F23B448CC003A35CD /* Assets.xcassets */; };
 		B9F28E2723B448CC003A35CD /* Watch App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9F28E2623B448CC003A35CD /* Watch App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -1162,9 +1155,7 @@
 		B9F28E3223B448CD003A35CD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F28E3123B448CD003A35CD /* NotificationController.swift */; };
 		B9F28E3423B448CD003A35CD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F28E3323B448CD003A35CD /* NotificationView.swift */; };
 		B9F28E3923B448CD003A35CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F28E3823B448CD003A35CD /* Preview Assets.xcassets */; };
-		B9F28E3E23B448CD003A35CD /* Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B9F28E1A23B448C9003A35CD /* Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9F5E07423D58E9A00AED605 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9F5E07623D58E9A00AED605 /* InfoPlist.strings */; };
-		B9F5E07F23D5DD2400AED605 /* FeedbackAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F5E07E23D5DD2400AED605 /* FeedbackAssistant.swift */; };
 		B9FDC9E925C8C65D0063EFA3 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDC9E825C8C65D0063EFA3 /* Waypoint.swift */; };
 		B9FDC9F525C8C7F30063EFA3 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDC9E825C8C65D0063EFA3 /* Waypoint.swift */; };
 		B9FDCA0125C8C80E0063EFA3 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDC9E825C8C65D0063EFA3 /* Waypoint.swift */; };
@@ -1285,7 +1276,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				B9F28E3E23B448CD003A35CD /* Watch App.app in Embed Watch Content */,
+				B93023FB267B235B00193DE8 /* Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1366,11 +1357,10 @@
 		B94BA48A23325D0E00AFE03E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94BA48C23325D0E00AFE03E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B94BA49023325D5A00AFE03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B94BA4A42332635D00AFE03E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		B94BA4A62332F34300AFE03E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		B94E77F925AC691F002609C4 /* KMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMB.swift; sourceTree = "<group>"; };
 		B94E780325AC695B002609C4 /* ETA-KMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETA-KMB.swift"; sourceTree = "<group>"; };
-		B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETAPublisherBuilder-KMB.swift"; sourceTree = "<group>"; };
+		B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETALoader-KMB.swift"; sourceTree = "<group>"; };
 		B94E785E25AC8631002609C4 /* RouteSearchToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchToolbar.swift; sourceTree = "<group>"; };
 		B959F97125D4129C009CD962 /* DirectionsStepsPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsStepsPager.swift; sourceTree = "<group>"; };
 		B959F98925D412A1009CD962 /* DirectionsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsStep.swift; sourceTree = "<group>"; };
@@ -1392,7 +1382,6 @@
 		B964751F23D56D9B00237AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B964752123D56DA900237AA5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B964752223D56DAF00237AA5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		B964752323D56E7E00237AA5 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		B964752823D588E400237AA5 /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		B96A641925A966FC0058AF17 /* ETALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETALabel.swift; sourceTree = "<group>"; };
 		B96A642D25A968740058AF17 /* RouteArrivalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteArrivalRow.swift; sourceTree = "<group>"; };
@@ -1420,7 +1409,7 @@
 		B96A678F25AB067F0058AF17 /* Array-SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-SafeIndex.swift"; sourceTree = "<group>"; };
 		B96A679925AB07DE0058AF17 /* InvocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvocationError.swift; sourceTree = "<group>"; };
 		B96A67AC25AB0D520058AF17 /* Stop-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stop-GOV.swift"; sourceTree = "<group>"; };
-		B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsPublisherBuilder-GOV.swift"; sourceTree = "<group>"; };
+		B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsLoader-GOV.swift"; sourceTree = "<group>"; };
 		B96F785A23E67DEE004C3EE2 /* Next Bus UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Next Bus UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96F785C23E67DEE004C3EE2 /* Next_Bus_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Next_Bus_UITests.swift; sourceTree = "<group>"; };
 		B96F785E23E67DEE004C3EE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1493,19 +1482,19 @@
 		B9ABC70625A9581B00D616F7 /* FavoritesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesButton.swift; sourceTree = "<group>"; };
 		B9ABC70E25A95B6200D616F7 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		B9ABC72225A9637500D616F7 /* DashboardFavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFavoritesList.swift; sourceTree = "<group>"; };
-		B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsPublisherBuilder-CTBNWFB.swift"; sourceTree = "<group>"; };
+		B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsLoader-CTBNWFB.swift"; sourceTree = "<group>"; };
 		B9AD0D0125AB11E900D3C684 /* GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOV.swift; sourceTree = "<group>"; };
-		B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsPublisherBuilder-NLB.swift"; sourceTree = "<group>"; };
-		B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsPublisherBuilder-GMB.swift"; sourceTree = "<group>"; };
+		B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsLoader-NLB.swift"; sourceTree = "<group>"; };
+		B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteStopsLoader-GMB.swift"; sourceTree = "<group>"; };
 		B9AD0DA425AB17EA00D3C684 /* Route-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route-GOV.swift"; sourceTree = "<group>"; };
 		B9AD0E2D25AB19CA00D3C684 /* ETARequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETARequest.swift; sourceTree = "<group>"; };
-		B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETAPublisherBuilder-CTBNWFB.swift"; sourceTree = "<group>"; };
-		B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETAPublisherBuilder-GMB.swift"; sourceTree = "<group>"; };
-		B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETAPublisherBuilder-NLB.swift"; sourceTree = "<group>"; };
-		B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesPublisherBuilder-GOV.swift"; sourceTree = "<group>"; };
-		B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesPublisherBuilder-CTBNWFB.swift"; sourceTree = "<group>"; };
-		B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesPublisherBuilder-GMB.swift"; sourceTree = "<group>"; };
-		B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesPublisherBuilder-NLB.swift"; sourceTree = "<group>"; };
+		B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETALoader-CTBNWFB.swift"; sourceTree = "<group>"; };
+		B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETALoader-GMB.swift"; sourceTree = "<group>"; };
+		B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETALoader-NLB.swift"; sourceTree = "<group>"; };
+		B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesLoader-GOV.swift"; sourceTree = "<group>"; };
+		B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesLoader-CTBNWFB.swift"; sourceTree = "<group>"; };
+		B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesLoader-GMB.swift"; sourceTree = "<group>"; };
+		B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoutesLoader-NLB.swift"; sourceTree = "<group>"; };
 		B9AD0EB525AB4B6F00D3C684 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		B9AD0EE625AB4BCF00D3C684 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		B9AD0F1225ABC72200D3C684 /* Array-Reorderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-Reorderable.swift"; sourceTree = "<group>"; };
@@ -1560,6 +1549,7 @@
 		B9E6D83925D78AC60018F5D3 /* PreviousStepButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousStepButton.swift; sourceTree = "<group>"; };
 		B9E979A125AED409000EB623 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		B9E979F325AED5B0000EB623 /* ArrivalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalTimeView.swift; sourceTree = "<group>"; };
+		B9EC15BD267319A7001481E8 /* SpecificLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificLoader.swift; sourceTree = "<group>"; };
 		B9F014C623388B3700442C53 /* ETA-NLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ETA-NLB.swift"; sourceTree = "<group>"; };
 		B9F28E1A23B448C9003A35CD /* Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F28E1F23B448CC003A35CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1575,7 +1565,6 @@
 		B9F5E07723D58E9B00AED605 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B9F5E07823D58E9C00AED605 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B9F5E07C23D58F1200AED605 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9F5E07E23D5DD2400AED605 /* FeedbackAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAssistant.swift; sourceTree = "<group>"; };
 		B9FDC9E825C8C65D0063EFA3 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1606,6 +1595,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B901D2A2267F4D57008F12D4 /* BottomSheet in Frameworks */,
 				B906F35425BDC4E9008540C0 /* MapKit.framework in Frameworks */,
 				B9AEFA1725D93F1E000EF9DE /* Loadability in Frameworks */,
 				B9AEFA5725D95886000EF9DE /* Purchases in Frameworks */,
@@ -1745,6 +1735,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B92D4B25BAEB0300F84D19 /* PublisherBuilder.swift */,
+				B9EC15BD267319A7001481E8 /* SpecificLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1784,7 +1775,6 @@
 			children = (
 				B9ABC70E25A95B6200D616F7 /* Store.swift */,
 				B910FC1623C9F5EC0053105D /* WatchSessionManager.swift */,
-				B94BA4A42332635D00AFE03E /* APIManager.swift */,
 				B990A05825A8455F00C9F080 /* CompanyRoutes.swift */,
 				B91AF3B223CDE50B0052A30B /* RouteStop.swift */,
 				B9AD44C425B10EA000A1E5CC /* ScheduleBlock.swift */,
@@ -1836,6 +1826,7 @@
 		B9176D4B23349BBA00F41992 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B9E45F5E26732943001BB836 /* Concurrency */,
 				B9AD0F1225ABC72200D3C684 /* Array-Reorderable.swift */,
 				B96A678F25AB067F0058AF17 /* Array-SafeIndex.swift */,
 				B979A73425AD2F1000122165 /* Compatibility.swift */,
@@ -1910,9 +1901,7 @@
 				B984050A25A8356A00F04613 /* Main.swift */,
 				B9871402259C949200019C32 /* Colors.swift */,
 				B9871410259C964900019C32 /* Fonts.swift */,
-				B964752323D56E7E00237AA5 /* Localizations.swift */,
 				B964752823D588E400237AA5 /* LocalizedText.swift */,
-				B9F5E07E23D5DD2400AED605 /* FeedbackAssistant.swift */,
 				B9E6D6F725D57C4B0018F5D3 /* Strings+Generated.swift */,
 				B9165FE1259C753F00B50AEE /* Activities */,
 				B991136D25AF21E80083F431 /* Experiences */,
@@ -2032,10 +2021,10 @@
 				B92A14832335C28A00B85712 /* Stop-NLB.swift */,
 				B9607B3525A5383F00E7DEE1 /* StopRequest-NLB.swift */,
 				B9607B2D25A5320100E7DEE1 /* RouteStopsLoader.swift */,
-				B9AD0CE725AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift */,
-				B9AD0D1F25AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift */,
-				B96A67C425AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift */,
-				B9AD0D1525AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift */,
+				B9AD0CE725AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift */,
+				B9AD0D1F25AB13DE00D3C684 /* RouteStopsLoader-GMB.swift */,
+				B96A67C425AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift */,
+				B9AD0D1525AB132100D3C684 /* RouteStopsLoader-NLB.swift */,
 			);
 			path = Stop;
 			sourceTree = "<group>";
@@ -2207,10 +2196,10 @@
 				B984052825A836AE00F04613 /* Category.swift */,
 				B984054D25A83A5800F04613 /* ServicePeriod.swift */,
 				B98404FC25A7CFE500F04613 /* RoutesLoader.swift */,
-				B9AD0E7725AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift */,
-				B9AD0E8925AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift */,
-				B9AD0E6D25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift */,
-				B9AD0E9325AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift */,
+				B9AD0E7725AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift */,
+				B9AD0E8925AB20EB00D3C684 /* RoutesLoader-GMB.swift */,
+				B9AD0E6D25AB1EC400D3C684 /* RoutesLoader-GOV.swift */,
+				B9AD0E9325AB214700D3C684 /* RoutesLoader-NLB.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -2226,10 +2215,10 @@
 				B94E780325AC695B002609C4 /* ETA-KMB.swift */,
 				B9F014C623388B3700442C53 /* ETA-NLB.swift */,
 				B916605A259C847E00B50AEE /* ETALoader.swift */,
-				B9AD0E3725AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift */,
-				B9AD0E4125AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift */,
-				B94E780D25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift */,
-				B9AD0E4B25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift */,
+				B9AD0E3725AB19DB00D3C684 /* ETALoader-CTBNWFB.swift */,
+				B9AD0E4125AB1ABE00D3C684 /* ETALoader-GMB.swift */,
+				B94E780D25AC69CE002609C4 /* ETALoader-KMB.swift */,
+				B9AD0E4B25AB1AE600D3C684 /* ETALoader-NLB.swift */,
 			);
 			path = ETA;
 			sourceTree = "<group>";
@@ -2331,6 +2320,13 @@
 				B9AEFA7025D9590D000EF9DE /* PayBuddy.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B9E45F5E26732943001BB836 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Concurrency;
 			sourceTree = "<group>";
 		};
 		B9E9799725AECF5F000EB623 /* ArrivalTime */ = {
@@ -2454,6 +2450,7 @@
 			packageProductDependencies = (
 				B9AEFA1625D93F1E000EF9DE /* Loadability */,
 				B9AEFA5625D95886000EF9DE /* Purchases */,
+				B901D2A1267F4D57008F12D4 /* BottomSheet */,
 			);
 			productName = NextBus;
 			productReference = B94BA48723325D0E00AFE03E /* NextBus.app */;
@@ -2628,7 +2625,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Julian Schiavo";
 				TargetAttributes = {
 					B906F46025BEE4C5008540C0 = {
@@ -2681,6 +2678,7 @@
 			packageReferences = (
 				B9AEFA1525D93F1E000EF9DE /* XCRemoteSwiftPackageReference "loadability" */,
 				B9AEFA5525D95886000EF9DE /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				B901D2A0267F4D57008F12D4 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = B94BA48823325D0E00AFE03E /* Products */;
 			projectDirPath = "";
@@ -2823,13 +2821,12 @@
 				B906F5CE25BEE5C5008540C0 /* Category.swift in Sources */,
 				B906F4E325BEE569008540C0 /* Error-Description.swift in Sources */,
 				B906F56A25BEE59F008540C0 /* HasLogger.swift in Sources */,
-				B906F5B425BEE5BD008540C0 /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B906F5B425BEE5BD008540C0 /* RouteStopsLoader-GOV.swift in Sources */,
 				B906F5F725BEE5D9008540C0 /* CompanyRoutes.swift in Sources */,
-				B906F62A25BEE61B008540C0 /* Localizations.swift in Sources */,
 				B906F4E425BEE569008540C0 /* Switch-ArrayMatch.swift in Sources */,
 				B906F51525BEE57B008540C0 /* OrderedSet.swift in Sources */,
 				B906F5E525BEE5CA008540C0 /* GOV.swift in Sources */,
-				B906F59A25BEE5B9008540C0 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B906F59A25BEE5B9008540C0 /* ETALoader-CTBNWFB.swift in Sources */,
 				B906F55225BEE59A008540C0 /* ShareSheet.swift in Sources */,
 				B9E6D70025D57C4B0018F5D3 /* Strings+Generated.swift in Sources */,
 				B906F5FA25BEE5D9008540C0 /* ScheduleBlock.swift in Sources */,
@@ -2841,7 +2838,7 @@
 				B9E6D84225D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
 				B906F4F025BEE56E008540C0 /* Array-Reorderable.swift in Sources */,
 				B906F5AB25BEE5BD008540C0 /* Stop-GMB.swift in Sources */,
-				B906F59B25BEE5B9008540C0 /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B906F59B25BEE5B9008540C0 /* ETALoader-NLB.swift in Sources */,
 				B906F51425BEE57B008540C0 /* Label-AlignedText.swift in Sources */,
 				B906F5D225BEE5C5008540C0 /* Route-GOV.swift in Sources */,
 				B994FF3225DBC22100852B1D /* PayBuddy.swift in Sources */,
@@ -2863,22 +2860,23 @@
 				B906F5E925BEE5CA008540C0 /* Company.swift in Sources */,
 				B906F59725BEE5B9008540C0 /* ETA-KMB.swift in Sources */,
 				B906F59525BEE5B9008540C0 /* ETARequest.swift in Sources */,
-				B906F59D25BEE5B9008540C0 /* ETAPublisherBuilder-GMB.swift in Sources */,
-				B906F5D925BEE5C5008540C0 /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B906F59D25BEE5B9008540C0 /* ETALoader-GMB.swift in Sources */,
+				B906F5D925BEE5C5008540C0 /* RoutesLoader-NLB.swift in Sources */,
 				B906F4C925BEE55C008540C0 /* CustomAssistedError.swift in Sources */,
 				B906F5D425BEE5C5008540C0 /* Route-NLB.swift in Sources */,
 				B906F5E725BEE5CA008540C0 /* NLB.swift in Sources */,
 				B906F5F625BEE5D9008540C0 /* RouteStop.swift in Sources */,
+				B9E45F5B267321E7001BB836 /* SpecificLoader.swift in Sources */,
 				B99B5AF825C2FB0300FCE41A /* RoutingStopsRequest.swift in Sources */,
-				B906F5D325BEE5C5008540C0 /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B906F5D325BEE5C5008540C0 /* RoutesLoader-GMB.swift in Sources */,
 				B906F5D825BEE5C5008540C0 /* ServicePeriod.swift in Sources */,
 				B906F50825BEE574008540C0 /* Compatibility.swift in Sources */,
-				B906F5B325BEE5BD008540C0 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B906F5B325BEE5BD008540C0 /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B906F54625BEE595008540C0 /* Fonts.swift in Sources */,
 				B906F51725BEE57B008540C0 /* DateFormatter-Custom.swift in Sources */,
 				B99B5AF925C2FB0300FCE41A /* RoutingStop.swift in Sources */,
-				B906F5B125BEE5BD008540C0 /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
-				B906F59E25BEE5B9008540C0 /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B906F5B125BEE5BD008540C0 /* RouteStopsLoader-GMB.swift in Sources */,
+				B906F59E25BEE5B9008540C0 /* ETALoader-KMB.swift in Sources */,
 				B906F4FC25BEE571008540C0 /* Array-SafeIndex.swift in Sources */,
 				B906F52325BEE587008540C0 /* URLRequest-Post.swift in Sources */,
 				B906F49325BEE53B008540C0 /* ArrivalTimeWidget.swift in Sources */,
@@ -2893,8 +2891,8 @@
 				B906F5CF25BEE5C5008540C0 /* Route.swift in Sources */,
 				B906F52F25BEE58A008540C0 /* UserDefaults.swift in Sources */,
 				B99B5AFA25C2FB0300FCE41A /* RoutingStopsResponse.swift in Sources */,
-				B906F5D725BEE5C5008540C0 /* RoutesPublisherBuilder-GOV.swift in Sources */,
-				B906F5D025BEE5C5008540C0 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B906F5D725BEE5C5008540C0 /* RoutesLoader-GOV.swift in Sources */,
+				B906F5D025BEE5C5008540C0 /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B906F5EA25BEE5CA008540C0 /* CTBNWFB.swift in Sources */,
 				B906F58625BEE5B5008540C0 /* PublisherBuilder.swift in Sources */,
 				B906F49525BEE53B008540C0 /* ArrivalTimeView.swift in Sources */,
@@ -2903,7 +2901,7 @@
 				B90DD4DC25C1163E00BE5CAE /* RoutingLoader.swift in Sources */,
 				B906F5F825BEE5D9008540C0 /* Store.swift in Sources */,
 				B906F59425BEE5B9008540C0 /* ETA-CTBNWFB.swift in Sources */,
-				B906F5AD25BEE5BD008540C0 /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B906F5AD25BEE5BD008540C0 /* RouteStopsLoader-NLB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2912,19 +2910,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B927810B25AE8CF000FB883B /* Stop-CTBNWFB.swift in Sources */,
-				B927813925AE8CFB00FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B927813925AE8CFB00FB883B /* RoutesLoader-GOV.swift in Sources */,
 				B9CF9A0925C4567600FC4E21 /* RoutingTrack.swift in Sources */,
 				B92780E325AE8BCA00FB883B /* ArrivalTimeWidget.swift in Sources */,
 				B927815725AE8D0600FB883B /* ServicePeriod.swift in Sources */,
 				B927817C25AE8D4000FB883B /* AssistedError.swift in Sources */,
 				B927812725AE8CF700FB883B /* Direction-CTBNWFB.swift in Sources */,
 				B92780F425AE8CED00FB883B /* ETA-CTBNWFB.swift in Sources */,
+				B9E45F58267321E5001BB836 /* SpecificLoader.swift in Sources */,
 				B927810925AE8CF000FB883B /* Stop-GMB.swift in Sources */,
-				B92780F625AE8CED00FB883B /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B92780F625AE8CED00FB883B /* ETALoader-KMB.swift in Sources */,
 				B991150025B0262A0083F431 /* Store.swift in Sources */,
 				B9E979FE25AED796000EB623 /* Fonts.swift in Sources */,
 				B9CB54FF25C2C8F7009D4F89 /* SpotlightBuddy.swift in Sources */,
-				B927810D25AE8CF000FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B927810D25AE8CF000FB883B /* RouteStopsLoader-NLB.swift in Sources */,
 				B927814925AE8CFF00FB883B /* KMB.swift in Sources */,
 				B92780F325AE8CED00FB883B /* ETARequest-NLB.swift in Sources */,
 				B927814825AE8CFF00FB883B /* Company.swift in Sources */,
@@ -2937,10 +2936,10 @@
 				B9AD43C425B035B400A1E5CC /* UIFont-Improved.swift in Sources */,
 				B92780E425AE8BCA00FB883B /* ArrivalTimeEntry.swift in Sources */,
 				B927813225AE8CFB00FB883B /* Route-NLB.swift in Sources */,
-				B927810625AE8CF000FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B927810625AE8CF000FB883B /* RouteStopsLoader-GMB.swift in Sources */,
 				B92780F025AE8CED00FB883B /* ETALoader.swift in Sources */,
 				B99B5AD825C2FAFF00FCE41A /* RoutingStopsRequest.swift in Sources */,
-				B927810725AE8CF000FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B927810725AE8CF000FB883B /* RouteStopsLoader-GOV.swift in Sources */,
 				B927815625AE8D0600FB883B /* CompanyRoutes.swift in Sources */,
 				B975826725C2D03A004D6CF6 /* RoundedBorder.swift in Sources */,
 				B9E979F425AED5B0000EB623 /* ArrivalTimeView.swift in Sources */,
@@ -2950,10 +2949,9 @@
 				B90DD50425C1164000BE5CAE /* Routing.swift in Sources */,
 				B9E6D7E225D669010018F5D3 /* Intents.intentdefinition in Sources */,
 				B991135825AF0D960083F431 /* Aligned.swift in Sources */,
-				B927819825AE8D5900FB883B /* Localizations.swift in Sources */,
 				B991140025AFBD130083F431 /* Colors.swift in Sources */,
 				B9B92FAB25BC189800F84D19 /* Sheet.swift in Sources */,
-				B92780F525AE8CED00FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B92780F525AE8CED00FB883B /* ETALoader-CTBNWFB.swift in Sources */,
 				B92780EE25AE8CED00FB883B /* ETA-KMB.swift in Sources */,
 				B927813825AE8CFB00FB883B /* Route-GOV.swift in Sources */,
 				B99B5ADA25C2FAFF00FCE41A /* RoutingStopsResponse.swift in Sources */,
@@ -2969,10 +2967,10 @@
 				B927810A25AE8CF000FB883B /* StopRequest-NLB.swift in Sources */,
 				B927814625AE8CFF00FB883B /* NLB.swift in Sources */,
 				B9B92D5C25BAEBE900F84D19 /* PublisherBuilder.swift in Sources */,
-				B92780F125AE8CED00FB883B /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B92780F125AE8CED00FB883B /* ETALoader-NLB.swift in Sources */,
 				B927810825AE8CF000FB883B /* Stop.swift in Sources */,
 				B927817B25AE8D4000FB883B /* CustomAssistedError.swift in Sources */,
-				B927813325AE8CFB00FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B927813325AE8CFB00FB883B /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B927818D25AE8D5100FB883B /* Label-AlignedText.swift in Sources */,
 				B92780F225AE8CED00FB883B /* ETA.swift in Sources */,
 				B9B92FB925BC18D400F84D19 /* ShareSheet.swift in Sources */,
@@ -2981,13 +2979,13 @@
 				B927813625AE8CFB00FB883B /* Route-CTBNWFB.swift in Sources */,
 				B927817A25AE8D4000FB883B /* Errors.swift in Sources */,
 				B927816B25AE8D2400FB883B /* LocalizedText.swift in Sources */,
-				B927813725AE8CFB00FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B927813725AE8CFB00FB883B /* RoutesLoader-GMB.swift in Sources */,
 				B927813425AE8CFB00FB883B /* RoutesLoader.swift in Sources */,
 				B9AD451C25B1A77C00A1E5CC /* ScheduleBlock.swift in Sources */,
 				B99B5AD925C2FAFF00FCE41A /* RoutingStop.swift in Sources */,
 				B927818C25AE8D5100FB883B /* DateFormatter-Custom.swift in Sources */,
-				B927813A25AE8CFB00FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */,
-				B927810425AE8CF000FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B927813A25AE8CFB00FB883B /* RoutesLoader-NLB.swift in Sources */,
+				B927810425AE8CF000FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B92780C725AE8BC600FB883B /* ArrivalTimeProvider.swift in Sources */,
 				B927813525AE8CFB00FB883B /* Route-GMB.swift in Sources */,
 				B92780F725AE8CED00FB883B /* ETARequest.swift in Sources */,
@@ -3003,7 +3001,7 @@
 				B9E6D83F25D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
 				B927812825AE8CF700FB883B /* Direction.swift in Sources */,
 				B927818E25AE8D5100FB883B /* Array-Reorderable.swift in Sources */,
-				B92780F925AE8CED00FB883B /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B92780F925AE8CED00FB883B /* ETALoader-GMB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3049,14 +3047,14 @@
 				B991136F25AF21F90083F431 /* InvocationError.swift in Sources */,
 				B9B2ECCB25A5F4A40095891E /* LocationTracker.swift in Sources */,
 				B98713A1259C8E7600019C32 /* DirectionsButton.swift in Sources */,
-				B9AD0E6E25AB1EC400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B9AD0E6E25AB1EC400D3C684 /* RoutesLoader-GOV.swift in Sources */,
 				B98713BD259C907600019C32 /* ETAList.swift in Sources */,
 				B9165F3B259C517700B50AEE /* Errors.swift in Sources */,
 				B9B2ECAA25A558220095891E /* BusDetail.swift in Sources */,
 				B9CB546B25C2C72C009D4F89 /* LocationCompletionRow.swift in Sources */,
-				B9AD0D2025AB13DE00D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B9AD0D2025AB13DE00D3C684 /* RouteStopsLoader-GMB.swift in Sources */,
 				B9AD0EE725AB4BCF00D3C684 /* ShareSheet.swift in Sources */,
-				B9AD0D1625AB132100D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B9AD0D1625AB132100D3C684 /* RouteStopsLoader-NLB.swift in Sources */,
 				B9B92EF925BBFA8B00F84D19 /* EditSchedule.swift in Sources */,
 				B9B9311325BC2E8D00F84D19 /* DirectionsMap.swift in Sources */,
 				B94E780425AC695B002609C4 /* ETA-KMB.swift in Sources */,
@@ -3084,7 +3082,7 @@
 				B9B2ECB225A558400095891E /* BusDetailHeader.swift in Sources */,
 				B9165F4B259C519A00B50AEE /* CustomAssistedError.swift in Sources */,
 				B9AD44D225B10F0300A1E5CC /* ScheduleTab.swift in Sources */,
-				B9AD0E4C25AB1AE600D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B9AD0E4C25AB1AE600D3C684 /* ETALoader-NLB.swift in Sources */,
 				B9B92F5425BC05CC00F84D19 /* DeleteScheduleButton.swift in Sources */,
 				B99B5ABF25C2EE3000FCE41A /* RoutingStopsRequest.swift in Sources */,
 				B94BA48D23325D0E00AFE03E /* SceneDelegate.swift in Sources */,
@@ -3100,13 +3098,11 @@
 				B9E6D83A25D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
 				B9BD09A525D96A13001E8E38 /* UpgradeList.swift in Sources */,
 				B9BD09B225D96A1A001E8E38 /* UpgradeListItem.swift in Sources */,
-				B964752423D56E7E00237AA5 /* Localizations.swift in Sources */,
-				B94BA4A52332635D00AFE03E /* APIManager.swift in Sources */,
 				B98713D3259C921700019C32 /* StopDetailHeader.swift in Sources */,
 				B990A05125A8434400C9F080 /* RouteRow.swift in Sources */,
 				B9ABC70725A9581B00D616F7 /* FavoritesButton.swift in Sources */,
 				B9FDC9E925C8C65D0063EFA3 /* Waypoint.swift in Sources */,
-				B94E780E25AC69CE002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B94E780E25AC69CE002609C4 /* ETALoader-KMB.swift in Sources */,
 				B9AD450725B13BFB00A1E5CC /* RoutePicker.swift in Sources */,
 				B9AEFA7125D9590D000EF9DE /* PayBuddy.swift in Sources */,
 				B90DD48525C0DD5100BE5CAE /* Routing.swift in Sources */,
@@ -3126,11 +3122,12 @@
 				B9AD0D0225AB11E900D3C684 /* GOV.swift in Sources */,
 				B9E6D6F825D57C4B0018F5D3 /* Strings+Generated.swift in Sources */,
 				B98713B5259C906200019C32 /* StopDetail.swift in Sources */,
+				B9EC15BE267319A7001481E8 /* SpecificLoader.swift in Sources */,
 				B9607B2E25A5320100E7DEE1 /* RouteStopsLoader.swift in Sources */,
 				B96A65BB25A9F8210058AF17 /* FavoritesList.swift in Sources */,
 				B90DD49D25C10B6B00BE5CAE /* RoutingLoader.swift in Sources */,
 				B92A147B2334A69700B85712 /* ETA-CTBNWFB.swift in Sources */,
-				B9AD0CE825AB11D000D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0CE825AB11D000D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B9B0403725C406EC00120089 /* SelectRoutingCard.swift in Sources */,
 				B9ABC70F25A95B6200D616F7 /* Store.swift in Sources */,
 				B9165FD9259C752000B50AEE /* HasLogger.swift in Sources */,
@@ -3145,13 +3142,13 @@
 				B9AD458825B1DD8600A1E5CC /* CurrentScheduleCard.swift in Sources */,
 				B98713CB259C910F00019C32 /* ETARow.swift in Sources */,
 				B9166032259C7CB100B50AEE /* NLB.swift in Sources */,
-				B9AD0E3825AB19DB00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
-				B9AD0E8A25AB20EB00D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B9AD0E3825AB19DB00D3C684 /* ETALoader-CTBNWFB.swift in Sources */,
+				B9AD0E8A25AB20EB00D3C684 /* RoutesLoader-GMB.swift in Sources */,
 				B9607B0725A52F0600E7DEE1 /* Direction-CTBNWFB.swift in Sources */,
 				B9165F07259C50D100B50AEE /* Error-Description.swift in Sources */,
 				B990A01725A840A700C9F080 /* RoutesTab.swift in Sources */,
 				B990A01F25A8410500C9F080 /* RoutesList.swift in Sources */,
-				B96A67C525AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B96A67C525AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */,
 				B9176D432333978800F41992 /* List-RemoveDuplicates.swift in Sources */,
 				B9ABC72325A9637500D616F7 /* DashboardFavoritesList.swift in Sources */,
 				B9166011259C799300B50AEE /* CTBNWFB.swift in Sources */,
@@ -3169,15 +3166,14 @@
 				B9922879233318C200512933 /* Stop.swift in Sources */,
 				B9AD454725B1A96900A1E5CC /* ScheduleList.swift in Sources */,
 				B991136325AF21600083F431 /* App.swift in Sources */,
-				B9F5E07F23D5DD2400AED605 /* FeedbackAssistant.swift in Sources */,
-				B9AD0E4225AB1ABE00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B9AD0E4225AB1ABE00D3C684 /* ETALoader-GMB.swift in Sources */,
 				B94E77FA25AC691F002609C4 /* KMB.swift in Sources */,
 				B9AD0F1325ABC72200D3C684 /* Array-Reorderable.swift in Sources */,
 				B916606B259C873A00B50AEE /* ETARequest-NLB.swift in Sources */,
 				B9BD099825D96869001E8E38 /* RestorePurchasesButton.swift in Sources */,
 				B9176D35233342EB00F41992 /* ETA.swift in Sources */,
 				B994FECC25DAB32D00852B1D /* NewScheduleToolbarButton.swift in Sources */,
-				B9AD0E9425AB214700D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B9AD0E9425AB214700D3C684 /* RoutesLoader-NLB.swift in Sources */,
 				B99B5A8025C2E6D700FCE41A /* RoutingTrackRow.swift in Sources */,
 				B959F98A25D412A1009CD962 /* DirectionsStep.swift in Sources */,
 				B994FF0325DBC00400852B1D /* UpgradeCard.swift in Sources */,
@@ -3190,7 +3186,7 @@
 				B98713EA259C943100019C32 /* Layer.swift in Sources */,
 				B92A14792334A68E00B85712 /* Stop-CTBNWFB.swift in Sources */,
 				B96A67AD25AB0D520058AF17 /* Stop-GOV.swift in Sources */,
-				B9AD0E7825AB1FCA00D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0E7825AB1FCA00D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B92053D425A86F130027EF0D /* NavigationBarSearch.swift in Sources */,
 				B975821425C2C97C004D6CF6 /* RoundedBorder.swift in Sources */,
 				B98713F2259C943F00019C32 /* LayerDepth.swift in Sources */,
@@ -3207,12 +3203,11 @@
 				B90DD51925C1164100BE5CAE /* RoutingRequest.swift in Sources */,
 				B95C186E233F20D30094B3DF /* Route-CTBNWFB.swift in Sources */,
 				B99114A525B0057F0083F431 /* Experience.swift in Sources */,
-				B92782CE25AE9DD500FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */,
-				B95C1867233F20D30094B3DF /* APIManager.swift in Sources */,
+				B92782CE25AE9DD500FB883B /* RoutesLoader-GOV.swift in Sources */,
 				B92782FC25AE9DE100FB883B /* Stop-GMB.swift in Sources */,
 				B99B5AEE25C2FB0000FCE41A /* RoutingStopsResponse.swift in Sources */,
 				B9AD0DCB25AB182E00D3C684 /* GOV.swift in Sources */,
-				B92782C925AE9DD500FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B92782C925AE9DD500FB883B /* RoutesLoader-NLB.swift in Sources */,
 				B95C1870233F20D30094B3DF /* ETA-CTBNWFB.swift in Sources */,
 				B95C1864233F20D30094B3DF /* Route.swift in Sources */,
 				B9607B2525A5318500E7DEE1 /* Direction-CTBNWFB.swift in Sources */,
@@ -3228,6 +3223,7 @@
 				B9AD43D225B035B500A1E5CC /* Compatibility.swift in Sources */,
 				B95C187F233F20E60094B3DF /* UIFont-Improved.swift in Sources */,
 				B95C186B233F20D30094B3DF /* ETA-NLB.swift in Sources */,
+				B9E45F55267321E3001BB836 /* SpecificLoader.swift in Sources */,
 				B9607B3D25A5386400E7DEE1 /* StopRequest-NLB.swift in Sources */,
 				B9AD0D6B25AB17BD00D3C684 /* Route-GMB.swift in Sources */,
 				B9CB54E625C2C8F6009D4F89 /* SpotlightBuddy.swift in Sources */,
@@ -3236,19 +3232,19 @@
 				B927830125AE9DE100FB883B /* Stop-GOV.swift in Sources */,
 				B92782A525AE9DCA00FB883B /* CompanyRoutes.swift in Sources */,
 				B927829A25AE9D4000FB883B /* SelectRouteStopIntentHandler.swift in Sources */,
-				B92782FB25AE9DE100FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B92782FB25AE9DE100FB883B /* RouteStopsLoader-NLB.swift in Sources */,
 				B95C186A233F20D30094B3DF /* Stop-NLB.swift in Sources */,
 				B94E782B25AC6A4F002609C4 /* KMB.swift in Sources */,
 				B9E6D83C25D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
-				B927830025AE9DE100FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B927830025AE9DE100FB883B /* RouteStopsLoader-GOV.swift in Sources */,
 				B991143825AFFA890083F431 /* GetUpcomingBusesIntentHandler.swift in Sources */,
 				B964752A23D588E400237AA5 /* LocalizedText.swift in Sources */,
-				B927831D25AE9DE600FB883B /* ETAPublisherBuilder-KMB.swift in Sources */,
-				B92782CB25AE9DD500FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B927831D25AE9DE600FB883B /* ETALoader-KMB.swift in Sources */,
+				B92782CB25AE9DD500FB883B /* RoutesLoader-GMB.swift in Sources */,
 				B984055525A83AE200F04613 /* ServicePeriod.swift in Sources */,
 				B994FF7C25DBC26400852B1D /* PayBuddy.swift in Sources */,
 				B9B92FA825BC189600F84D19 /* Sheet.swift in Sources */,
-				B92782FE25AE9DE100FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B92782FE25AE9DE100FB883B /* RouteStopsLoader-GMB.swift in Sources */,
 				B927831E25AE9DE600FB883B /* ETARequest.swift in Sources */,
 				B927836D25AE9E0700FB883B /* Error-BridgedInfo.swift in Sources */,
 				B9AD0DE025AB194800D3C684 /* ETA-GMB.swift in Sources */,
@@ -3258,7 +3254,7 @@
 				B95C1881233F20E60094B3DF /* UserDefaults.swift in Sources */,
 				B92782CA25AE9DD500FB883B /* RoutesLoader.swift in Sources */,
 				B916604B259C7DD800B50AEE /* NLB.swift in Sources */,
-				B927831F25AE9DE600FB883B /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B927831F25AE9DE600FB883B /* ETALoader-NLB.swift in Sources */,
 				B92782FF25AE9DE100FB883B /* RouteStopsLoader.swift in Sources */,
 				B92782CC25AE9DD500FB883B /* Route-GOV.swift in Sources */,
 				B916601F259C79C100B50AEE /* CTBNWFB.swift in Sources */,
@@ -3267,20 +3263,19 @@
 				B91CDC5725A8918700952FCD /* Direction.swift in Sources */,
 				B927831C25AE9DE600FB883B /* ETA-KMB.swift in Sources */,
 				B9FDCA0625C8C8110063EFA3 /* Waypoint.swift in Sources */,
-				B92782FD25AE9DE100FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B92782FD25AE9DE100FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B927839225AE9E0E00FB883B /* AssistedError.swift in Sources */,
 				B9AD43D325B035B500A1E5CC /* Label-AlignedText.swift in Sources */,
 				B9AD0DCA25AB182E00D3C684 /* GMB.swift in Sources */,
 				B927839025AE9E0E00FB883B /* CustomAssistedError.swift in Sources */,
 				B927836E25AE9E0700FB883B /* Error-Description.swift in Sources */,
 				B90DD51825C1164100BE5CAE /* Routing.swift in Sources */,
-				B92782CD25AE9DD500FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B92782CD25AE9DD500FB883B /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B9E6D6FA25D57C4B0018F5D3 /* Strings+Generated.swift in Sources */,
-				B927832125AE9DE600FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
-				B964752523D56E7E00237AA5 /* Localizations.swift in Sources */,
+				B927832125AE9DE600FB883B /* ETALoader-CTBNWFB.swift in Sources */,
 				B92782A425AE9DCA00FB883B /* Store.swift in Sources */,
 				B927836F25AE9E0700FB883B /* Switch-ArrayMatch.swift in Sources */,
-				B927832325AE9DE600FB883B /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B927832325AE9DE600FB883B /* ETALoader-GMB.swift in Sources */,
 				B927838F25AE9E0E00FB883B /* Errors.swift in Sources */,
 				B92783A925AE9E1B00FB883B /* HasLogger.swift in Sources */,
 				B927832025AE9DE600FB883B /* ETARequest-NLB.swift in Sources */,
@@ -3306,13 +3301,13 @@
 				B9AD43ED25B035C400A1E5CC /* Layer.swift in Sources */,
 				B9E6D7E025D669010018F5D3 /* Intents.intentdefinition in Sources */,
 				B9AD440325B035D000A1E5CC /* ETARow.swift in Sources */,
+				B9E45F57267321E4001BB836 /* SpecificLoader.swift in Sources */,
 				B984055C25A83AE300F04613 /* ServicePeriod.swift in Sources */,
 				B9AD43BA25B035AC00A1E5CC /* UIViewController-ErrorAlert.swift in Sources */,
-				B95C1875233F20D40094B3DF /* APIManager.swift in Sources */,
 				B9B92D5A25BAEBE700F84D19 /* PublisherBuilder.swift in Sources */,
 				B9AD433325B0317600A1E5CC /* ArrivalTimeView.swift in Sources */,
 				B92782B025AE9DCB00FB883B /* CompanyRoutes.swift in Sources */,
-				B927830C25AE9DE500FB883B /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B927830C25AE9DE500FB883B /* ETALoader-KMB.swift in Sources */,
 				B95C187E233F20D40094B3DF /* ETA-CTBNWFB.swift in Sources */,
 				B90DD51525C1164100BE5CAE /* Routing.swift in Sources */,
 				B9CF9A1625C4567700FC4E21 /* RoutingTrack.swift in Sources */,
@@ -3325,12 +3320,11 @@
 				B92782EC25AE9DE100FB883B /* Stop-GMB.swift in Sources */,
 				B92782EF25AE9DE100FB883B /* RouteStopsLoader.swift in Sources */,
 				B9AD43CF25B035B400A1E5CC /* Compatibility.swift in Sources */,
-				B964752623D56E7E00237AA5 /* Localizations.swift in Sources */,
 				B927830D25AE9DE500FB883B /* ETARequest.swift in Sources */,
 				B95C187D233F20D40094B3DF /* Stop-CTBNWFB.swift in Sources */,
 				B92782DB25AE9DDE00FB883B /* RoutesLoader.swift in Sources */,
 				B910FC1A23C9F7440053105D /* WatchSessionManager.swift in Sources */,
-				B92782ED25AE9DE100FB883B /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B92782ED25AE9DE100FB883B /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B9AD43EB25B035C400A1E5CC /* Layers.swift in Sources */,
 				B91AF3B623CDE65E0052A30B /* RouteStop.swift in Sources */,
 				B92782DD25AE9DDE00FB883B /* Route.swift in Sources */,
@@ -3338,26 +3332,25 @@
 				B9AD43DF25B035BE00A1E5CC /* CornerRadius-Corners.swift in Sources */,
 				B927836225AE9E0700FB883B /* Error-Description.swift in Sources */,
 				B95C1885233F20E70094B3DF /* DateFormatter-Custom.swift in Sources */,
-				B927831025AE9DE500FB883B /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B927831025AE9DE500FB883B /* ETALoader-CTBNWFB.swift in Sources */,
 				B95C1884233F20E70094B3DF /* UIFont-Improved.swift in Sources */,
 				B9AD452625B1A77C00A1E5CC /* ScheduleBlock.swift in Sources */,
 				B95C1879233F20D40094B3DF /* ETA-NLB.swift in Sources */,
 				B9AD442C25B0380900A1E5CC /* FavoritesButton.swift in Sources */,
 				B927839D25AE9E0E00FB883B /* CustomAssistedError.swift in Sources */,
 				B99B5AEA25C2FB0000FCE41A /* RoutingStop.swift in Sources */,
-				B92782EE25AE9DE100FB883B /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B92782EE25AE9DE100FB883B /* RouteStopsLoader-GMB.swift in Sources */,
 				B9AD435025B031BB00A1E5CC /* ArrivalTimeEntry.swift in Sources */,
 				B9AD0DCD25AB182E00D3C684 /* GOV.swift in Sources */,
 				B9AD437925B031E500A1E5CC /* Fonts.swift in Sources */,
 				B994FF6425DBC25E00852B1D /* PayBuddy.swift in Sources */,
-				B927831225AE9DE500FB883B /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B927831225AE9DE500FB883B /* ETALoader-GMB.swift in Sources */,
 				B9AD0F2825ABC93D00D3C684 /* Array-Reorderable.swift in Sources */,
 				B9B92FA925BC189700F84D19 /* Sheet.swift in Sources */,
 				B9AD440E25B035DB00A1E5CC /* LastUpdatedText.swift in Sources */,
-				B92782D925AE9DDE00FB883B /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B92782D925AE9DDE00FB883B /* RoutesLoader-GMB.swift in Sources */,
 				B9AD43E025B035BE00A1E5CC /* ShareSheet.swift in Sources */,
 				B9607B1E25A5318500E7DEE1 /* Direction-CTBNWFB.swift in Sources */,
-				B9AD442F25B0380900A1E5CC /* NewScheduleButton.swift in Sources */,
 				B9AD43EC25B035C400A1E5CC /* LayerDepth.swift in Sources */,
 				B9607B4425A5386400E7DEE1 /* StopRequest-NLB.swift in Sources */,
 				B92782DF25AE9DDE00FB883B /* Route-GMB.swift in Sources */,
@@ -3376,14 +3369,14 @@
 				B9CB54F225C2C8F6009D4F89 /* SpotlightBuddy.swift in Sources */,
 				B95C1851233F20BE0094B3DF /* IntentViewController.swift in Sources */,
 				B9166027259C79C200B50AEE /* CTBNWFB.swift in Sources */,
-				B92782F025AE9DE100FB883B /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B92782F025AE9DE100FB883B /* RouteStopsLoader-GOV.swift in Sources */,
 				B9AD435B25B031C300A1E5CC /* ArrivalTimeWidget.swift in Sources */,
 				B9AD438325B031EC00A1E5CC /* Array-SafeIndex.swift in Sources */,
-				B92782EB25AE9DE100FB883B /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B92782EB25AE9DE100FB883B /* RouteStopsLoader-NLB.swift in Sources */,
 				B95C1873233F20D40094B3DF /* Stop.swift in Sources */,
 				B9AD43F825B035C700A1E5CC /* Token.swift in Sources */,
 				B927839F25AE9E0E00FB883B /* AssistedError.swift in Sources */,
-				B92782E025AE9DDE00FB883B /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B92782E025AE9DDE00FB883B /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B9AD43F925B035C700A1E5CC /* TokenStack.swift in Sources */,
 				B92783B325AE9E1B00FB883B /* HasLogger.swift in Sources */,
 				B9AD43EA25B035C400A1E5CC /* Card.swift in Sources */,
@@ -3392,9 +3385,9 @@
 				B95C1887233F20E70094B3DF /* OrderedSet.swift in Sources */,
 				B975826525C2D03A004D6CF6 /* RoundedBorder.swift in Sources */,
 				B9E6D83D25D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
-				B927830E25AE9DE500FB883B /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B927830E25AE9DE500FB883B /* ETALoader-NLB.swift in Sources */,
 				B9AD436525B031D500A1E5CC /* Colors.swift in Sources */,
-				B92782DE25AE9DDE00FB883B /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B92782DE25AE9DDE00FB883B /* RoutesLoader-NLB.swift in Sources */,
 				B984053825A8391D00F04613 /* Company.swift in Sources */,
 				B9AD442D25B0380900A1E5CC /* DirectionsButton.swift in Sources */,
 				B927836125AE9E0700FB883B /* Error-BridgedInfo.swift in Sources */,
@@ -3407,7 +3400,7 @@
 				B9AD442E25B0380900A1E5CC /* StopMap.swift in Sources */,
 				B9E6D6FB25D57C4B0018F5D3 /* Strings+Generated.swift in Sources */,
 				B927836325AE9E0700FB883B /* Switch-ArrayMatch.swift in Sources */,
-				B92782E125AE9DDE00FB883B /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B92782E125AE9DDE00FB883B /* RoutesLoader-GOV.swift in Sources */,
 				B92782AF25AE9DCB00FB883B /* Store.swift in Sources */,
 				B90DD51725C1164100BE5CAE /* RoutingLoader.swift in Sources */,
 				B95C1888233F20E70094B3DF /* List-RemoveDuplicates.swift in Sources */,
@@ -3437,6 +3430,7 @@
 				B906F39A25BE82F5008540C0 /* EditSchedule.swift in Sources */,
 				B96A64E725A9819B0058AF17 /* StopList.swift in Sources */,
 				B96A649625A9817A0058AF17 /* NLB.swift in Sources */,
+				B9E45F5A267321E6001BB836 /* SpecificLoader.swift in Sources */,
 				B994FEF025DAB3CA00852B1D /* UpgradeButton.swift in Sources */,
 				B96A647F25A981690058AF17 /* TokenBadge.swift in Sources */,
 				B9B92F7525BC162C00F84D19 /* SpotlightBuddy.swift in Sources */,
@@ -3445,22 +3439,21 @@
 				B96A647125A981600058AF17 /* HasLogger.swift in Sources */,
 				B96A649525A9817A0058AF17 /* Stop-CTBNWFB.swift in Sources */,
 				B99B5AF225C2FB0200FCE41A /* RoutingStopsRequest.swift in Sources */,
-				B96A64C125A981840058AF17 /* APIManager.swift in Sources */,
 				B96A64B125A9817E0058AF17 /* Company.swift in Sources */,
 				B96A644A25A980E60058AF17 /* MacApp.swift in Sources */,
 				B959F99625D412F8009CD962 /* DirectionsStepsPager.swift in Sources */,
 				B906F39F25BE82F5008540C0 /* DeleteScheduleButton.swift in Sources */,
-				B9AD0D4425AB14C200D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B9AD0D4425AB14C200D3C684 /* RouteStopsLoader-GMB.swift in Sources */,
 				B96A650F25A982540058AF17 /* URLRequest-Post.swift in Sources */,
 				B991136E25AF21F90083F431 /* InvocationError.swift in Sources */,
 				B9B92D5725BAEBE600F84D19 /* PublisherBuilder.swift in Sources */,
 				B906F39E25BE82F5008540C0 /* NewSchedule.swift in Sources */,
 				B96A651125A982540058AF17 /* List-RemoveDuplicates.swift in Sources */,
-				B9AD0E9F25AB222400D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B9AD0E9F25AB222400D3C684 /* RoutesLoader-NLB.swift in Sources */,
 				B994FEF425DAB3CA00852B1D /* UpgradeList.swift in Sources */,
 				B96A647A25A981690058AF17 /* CornerRadius-Corners.swift in Sources */,
 				B9AD0D0C25AB120400D3C684 /* GOV.swift in Sources */,
-				B9AD0EA025AB222400D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0EA025AB222400D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B906F39B25BE82F5008540C0 /* EditScheduleButton.swift in Sources */,
 				B96A64BF25A981840058AF17 /* RoutesLoader.swift in Sources */,
 				B991137125AF21F90083F431 /* InvocatedStatusExperience.swift in Sources */,
@@ -3474,7 +3467,7 @@
 				B90DD55925C1252D00BE5CAE /* RoutingRow.swift in Sources */,
 				B906F3AC25BE82FA008540C0 /* NotificationsBuddy.swift in Sources */,
 				B96A649B25A9817A0058AF17 /* StopRequest-NLB.swift in Sources */,
-				B9AD0E6425AB1B3F00D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B9AD0E6425AB1B3F00D3C684 /* ETALoader-NLB.swift in Sources */,
 				B96A651225A982540058AF17 /* DateFormatter-Custom.swift in Sources */,
 				B96A647D25A981690058AF17 /* Layer.swift in Sources */,
 				B965E71925C4038800CFE15C /* RoutingTrackRow.swift in Sources */,
@@ -3493,7 +3486,7 @@
 				B9AD0D6925AB17BD00D3C684 /* Route-GMB.swift in Sources */,
 				B90DD55A25C1252D00BE5CAE /* RoutingPicker.swift in Sources */,
 				B9AD0EB725AB4B6F00D3C684 /* ShareButton.swift in Sources */,
-				B94E783F25AC6A55002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B94E783F25AC6A55002609C4 /* ETALoader-KMB.swift in Sources */,
 				B96A64AE25A9817E0058AF17 /* Category.swift in Sources */,
 				B9B0404E25C4079100120089 /* SelectRoutingCard.swift in Sources */,
 				B96A647B25A981690058AF17 /* Token.swift in Sources */,
@@ -3511,16 +3504,15 @@
 				B96A64F225A9819B0058AF17 /* DashboardFavoritesList.swift in Sources */,
 				B99B5AF325C2FB0200FCE41A /* RoutingStop.swift in Sources */,
 				B96A64AF25A9817E0058AF17 /* CompanyRoutes.swift in Sources */,
-				B96A67C625AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B96A67C625AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */,
 				B906F3EE25BE85EC008540C0 /* AllFavoritesButton.swift in Sources */,
-				B96A64FC25A981AD0058AF17 /* Localizations.swift in Sources */,
 				B906F41B25BEB5F1008540C0 /* Sidebar.swift in Sources */,
 				B906F3B725BE845F008540C0 /* LastUpdatedText.swift in Sources */,
 				B96A64D525A9818E0058AF17 /* NewScheduleButton.swift in Sources */,
 				B906F3F925BE8668008540C0 /* DashboardRecentsList.swift in Sources */,
 				B96A64AD25A9817E0058AF17 /* ETA.swift in Sources */,
 				B96A646125A981580058AF17 /* Switch-ArrayMatch.swift in Sources */,
-				B9AD0E6225AB1B3F00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0E6225AB1B3F00D3C684 /* ETALoader-CTBNWFB.swift in Sources */,
 				B994FEA525DAB29900852B1D /* ScheduleNotificationsCard.swift in Sources */,
 				B99B5A7325C2E4A700FCE41A /* LocationRequiredSheet.swift in Sources */,
 				B96A64F125A9819B0058AF17 /* StopRow.swift in Sources */,
@@ -3528,12 +3520,12 @@
 				B96A64F325A9819B0058AF17 /* ETALabel.swift in Sources */,
 				B96A64FD25A981AD0058AF17 /* Main.swift in Sources */,
 				B96A649E25A9817A0058AF17 /* ETA-NLB.swift in Sources */,
-				B9AD0D4625AB14C200D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B9AD0D4625AB14C200D3C684 /* RouteStopsLoader-NLB.swift in Sources */,
 				B9C8350925DBC8710092AFFB /* ScheduleNotificationsDisabledCard.swift in Sources */,
 				B96A651025A982540058AF17 /* OrderedSet.swift in Sources */,
 				B90DD4E825C1163E00BE5CAE /* Routing.swift in Sources */,
 				B94E781725AC6A4D002609C4 /* KMB.swift in Sources */,
-				B9AD0E6325AB1B3F00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B9AD0E6325AB1B3F00D3C684 /* ETALoader-GMB.swift in Sources */,
 				B99B5A6725C2E42A00FCE41A /* LocationCompletionRow.swift in Sources */,
 				B994FEF625DAB3CA00852B1D /* UpgradeButtons.swift in Sources */,
 				B906F40425BE867A008540C0 /* ShowNearbyButton.swift in Sources */,
@@ -3580,8 +3572,8 @@
 				B994FEF225DAB3CA00852B1D /* UpgradeListItem.swift in Sources */,
 				B96A649F25A9817A0058AF17 /* Route-NLB.swift in Sources */,
 				B959F9BB25D4C6AD009CD962 /* CurrentLocationButton.swift in Sources */,
-				B9AD0D4525AB14C200D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
-				B9AD0E9E25AB222400D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B9AD0D4525AB14C200D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */,
+				B9AD0E9E25AB222400D3C684 /* RoutesLoader-GMB.swift in Sources */,
 				B96A647925A981690058AF17 /* Aligned.swift in Sources */,
 				B96A646425A981580058AF17 /* Errors.swift in Sources */,
 				B96A64B225A9817E0058AF17 /* Stop.swift in Sources */,
@@ -3593,7 +3585,7 @@
 				B9B0407225C417AA00120089 /* RoutingPath.swift in Sources */,
 				B906F38A25BE82EE008540C0 /* DirectionsMap.swift in Sources */,
 				B906F40F25BE8687008540C0 /* RemoveRecentButton.swift in Sources */,
-				B9AD0E9D25AB222400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B9AD0E9D25AB222400D3C684 /* RoutesLoader-GOV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3602,18 +3594,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96A66E625AAFE5E0058AF17 /* RouteRow.swift in Sources */,
-				B94E783525AC6A54002609C4 /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B94E783525AC6A54002609C4 /* ETALoader-KMB.swift in Sources */,
 				B979A7CE25AD39AA00122165 /* Compatibility.swift in Sources */,
-				B96A671725AAFE760058AF17 /* NewScheduleButton.swift in Sources */,
 				B96A66D325AAFE530058AF17 /* LocalizedText.swift in Sources */,
 				B96A675325AAFEAD0058AF17 /* CornerRadius-Corners.swift in Sources */,
 				B96A674325AAFEAD0058AF17 /* TokenStack.swift in Sources */,
 				B96A66BD25AAFE440058AF17 /* ETA-NLB.swift in Sources */,
 				B96A675225AAFEAD0058AF17 /* Aligned.swift in Sources */,
 				B96A66C925AAFE440058AF17 /* GMB.swift in Sources */,
-				B9AD0D3B25AB14C100D3C684 /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B9AD0D3B25AB14C100D3C684 /* RouteStopsLoader-NLB.swift in Sources */,
 				B9AD0EB825AB4B6F00D3C684 /* ShareButton.swift in Sources */,
-				B9AD0EAC25AB222400D3C684 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0EAC25AB222400D3C684 /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B96A66BA25AAFE440058AF17 /* Company.swift in Sources */,
 				B9B92F8425BC162E00F84D19 /* SpotlightBuddy.swift in Sources */,
 				B9FDCA0725C8C8120063EFA3 /* Waypoint.swift in Sources */,
@@ -3632,6 +3623,7 @@
 				B96A66B825AAFE440058AF17 /* Route-NLB.swift in Sources */,
 				B96A66EF25AAFE620058AF17 /* LocationTracker.swift in Sources */,
 				B96A66C225AAFE440058AF17 /* Category.swift in Sources */,
+				B9E45F54267321E3001BB836 /* SpecificLoader.swift in Sources */,
 				B96A674D25AAFEAD0058AF17 /* Layers.swift in Sources */,
 				B90DD51C25C1164200BE5CAE /* RoutingRequest.swift in Sources */,
 				B96A66B925AAFE440058AF17 /* ETARequest-NLB.swift in Sources */,
@@ -3654,7 +3646,7 @@
 				B96A673F25AAFEAD0058AF17 /* AssistedError.swift in Sources */,
 				B92ECBA125AC86E000E24BF1 /* RouteSearchToolbar.swift in Sources */,
 				B96A672825AAFE920058AF17 /* RoutesLoader.swift in Sources */,
-				B9AD0E5625AB1B3E00D3C684 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0E5625AB1B3E00D3C684 /* ETALoader-CTBNWFB.swift in Sources */,
 				B96A66B625AAFE440058AF17 /* Route-CTBNWFB.swift in Sources */,
 				B96A670325AAFE700058AF17 /* BusDetail.swift in Sources */,
 				B96A679A25AB07DE0058AF17 /* InvocationError.swift in Sources */,
@@ -3672,11 +3664,10 @@
 				B96A66C025AAFE440058AF17 /* NLB.swift in Sources */,
 				B96A674025AAFEAD0058AF17 /* Fonts.swift in Sources */,
 				B9E6D6F925D57C4B0018F5D3 /* Strings+Generated.swift in Sources */,
-				B96A66DC25AAFE550058AF17 /* Localizations.swift in Sources */,
 				B96A675925AAFEAD0058AF17 /* DateFormatter-Custom.swift in Sources */,
 				B96A671925AAFE760058AF17 /* StopDetail.swift in Sources */,
 				B96A675625AAFEAD0058AF17 /* Colors.swift in Sources */,
-				B9AD0EAA25AB222400D3C684 /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B9AD0EAA25AB222400D3C684 /* RoutesLoader-GMB.swift in Sources */,
 				B96A66C425AAFE440058AF17 /* ServicePeriod.swift in Sources */,
 				B9AD0F1525ABC72200D3C684 /* Array-Reorderable.swift in Sources */,
 				B96A675025AAFEAD0058AF17 /* CustomAssistedError.swift in Sources */,
@@ -3690,18 +3681,18 @@
 				B9AD0EE925AB4BCF00D3C684 /* ShareSheet.swift in Sources */,
 				B96A675B25AAFEAD0058AF17 /* Label-AlignedText.swift in Sources */,
 				B90DD51D25C1164200BE5CAE /* RoutingLoader.swift in Sources */,
-				B9AD0E5725AB1B3E00D3C684 /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B9AD0E5725AB1B3E00D3C684 /* ETALoader-GMB.swift in Sources */,
 				B94E783425AC6A54002609C4 /* ETA-KMB.swift in Sources */,
 				B90DD51B25C1164200BE5CAE /* Routing.swift in Sources */,
 				B96A66BF25AAFE440058AF17 /* Stop-GMB.swift in Sources */,
-				B9AD0E5825AB1B3E00D3C684 /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B9AD0E5825AB1B3E00D3C684 /* ETALoader-NLB.swift in Sources */,
 				B96A674525AAFEAD0058AF17 /* NavigationBarSearch.swift in Sources */,
 				B96A671A25AAFE760058AF17 /* StopMap.swift in Sources */,
 				B96A674C25AAFEAD0058AF17 /* Layer.swift in Sources */,
 				B9AD0E5525AB1B3E00D3C684 /* ETARequest.swift in Sources */,
 				B96A66BC25AAFE440058AF17 /* Direction-CTBNWFB.swift in Sources */,
-				B9AD0EAB25AB222400D3C684 /* RoutesPublisherBuilder-NLB.swift in Sources */,
-				B9AD0D3A25AB14C100D3C684 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B9AD0EAB25AB222400D3C684 /* RoutesLoader-NLB.swift in Sources */,
+				B9AD0D3A25AB14C100D3C684 /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B99B5AF125C2FB0100FCE41A /* RoutingStopsResponse.swift in Sources */,
 				B979A92B25AD4BB300122165 /* LastUpdatedText.swift in Sources */,
 				B96A674B25AAFEAD0058AF17 /* OrderedSet.swift in Sources */,
@@ -3711,12 +3702,12 @@
 				B96A671E25AAFE760058AF17 /* DirectionsButton.swift in Sources */,
 				B96A66F825AAFE6A0058AF17 /* RouteStopsLoader.swift in Sources */,
 				B96A674E25AAFEAD0058AF17 /* Switch-ArrayMatch.swift in Sources */,
-				B9AD0EA925AB222400D3C684 /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B9AD0EA925AB222400D3C684 /* RoutesLoader-GOV.swift in Sources */,
 				B96A668A25AADD850058AF17 /* Clip.swift in Sources */,
 				B96A66CA25AAFE440058AF17 /* StopRequest-NLB.swift in Sources */,
 				B96A66C825AAFE440058AF17 /* CompanyRoutes.swift in Sources */,
-				B9AD0D3925AB14C100D3C684 /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
-				B96A67C725AB0E3E0058AF17 /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B9AD0D3925AB14C100D3C684 /* RouteStopsLoader-GMB.swift in Sources */,
+				B96A67C725AB0E3E0058AF17 /* RouteStopsLoader-GOV.swift in Sources */,
 				B96A670E25AAFE720058AF17 /* ETALoader.swift in Sources */,
 				B96A671825AAFE760058AF17 /* FavoritesButton.swift in Sources */,
 			);
@@ -3736,12 +3727,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B98F138825B3E33E0072628F /* ScheduleBlock.swift in Sources */,
-				B98F132625B3E3190072628F /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B98F132625B3E3190072628F /* ETALoader-GMB.swift in Sources */,
 				B9B92F9025BC16F000F84D19 /* Experience.swift in Sources */,
 				B98F12C225B3E25A0072628F /* AssistedError.swift in Sources */,
 				B98F137C25B3E3390072628F /* NLB.swift in Sources */,
 				B98F130B25B3E27A0072628F /* DirectionsButton.swift in Sources */,
-				B98F132525B3E3190072628F /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
+				B98F132525B3E3190072628F /* ETALoader-CTBNWFB.swift in Sources */,
 				B98F12C425B3E25A0072628F /* CustomAssistedError.swift in Sources */,
 				B98F12B125B3E2530072628F /* Error-BridgedInfo.swift in Sources */,
 				B98F130A25B3E27A0072628F /* LastUpdatedText.swift in Sources */,
@@ -3764,22 +3755,21 @@
 				B98F139525B3E3540072628F /* Layers.swift in Sources */,
 				B98F133825B3E31F0072628F /* Stop-NLB.swift in Sources */,
 				B98F132325B3E3190072628F /* ETA-KMB.swift in Sources */,
-				B98F136325B3E3340072628F /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B98F136325B3E3340072628F /* RoutesLoader-GMB.swift in Sources */,
 				B9B92FBA25BC18D500F84D19 /* ShareSheet.swift in Sources */,
 				B98F130625B3E27A0072628F /* FavoritesButton.swift in Sources */,
 				B9CB54F325C2C8F7009D4F89 /* SpotlightBuddy.swift in Sources */,
 				B99B5AE725C2FB0000FCE41A /* RoutingStop.swift in Sources */,
 				B98F13A325B3E3580072628F /* Aligned.swift in Sources */,
 				B98F12E225B3E2630072628F /* UserDefaults.swift in Sources */,
-				B98F133E25B3E31F0072628F /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B98F133E25B3E31F0072628F /* RouteStopsLoader-NLB.swift in Sources */,
 				B98F137925B3E3390072628F /* GMB.swift in Sources */,
 				B98F12DC25B3E2630072628F /* Label-AlignedText.swift in Sources */,
-				B98F136225B3E3340072628F /* RoutesPublisherBuilder-NLB.swift in Sources */,
-				B98F130925B3E27A0072628F /* NewScheduleButton.swift in Sources */,
+				B98F136225B3E3340072628F /* RoutesLoader-NLB.swift in Sources */,
 				B98F138925B3E33E0072628F /* Store.swift in Sources */,
 				B9B92D5B25BAEBE800F84D19 /* PublisherBuilder.swift in Sources */,
 				B98F12B325B3E2530072628F /* Error-Description.swift in Sources */,
-				B98F133C25B3E31F0072628F /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
+				B98F133C25B3E31F0072628F /* RouteStopsLoader-GOV.swift in Sources */,
 				B98F12E125B3E2630072628F /* NavigationBarSearch.swift in Sources */,
 				B98F136125B3E3340072628F /* Category.swift in Sources */,
 				B98F13CD25B3E4140072628F /* LocalizedText.swift in Sources */,
@@ -3794,7 +3784,7 @@
 				B98F136625B3E3340072628F /* Route-NLB.swift in Sources */,
 				B98F12C125B3E25A0072628F /* UIViewController-ErrorAlert.swift in Sources */,
 				B98F13B025B3E35B0072628F /* TokenBadge.swift in Sources */,
-				B98F136925B3E3340072628F /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B98F136925B3E3340072628F /* RoutesLoader-CTBNWFB.swift in Sources */,
 				B98F139825B3E3540072628F /* Card.swift in Sources */,
 				B9E6D7E125D669010018F5D3 /* Intents.intentdefinition in Sources */,
 				B90DD50825C1164100BE5CAE /* RoutingRequest.swift in Sources */,
@@ -3806,16 +3796,15 @@
 				B98F12DF25B3E2630072628F /* UIFont-Improved.swift in Sources */,
 				B98F128525B3E2200072628F /* NotificationViewController.swift in Sources */,
 				B98F139725B3E3540072628F /* LayerDepth.swift in Sources */,
-				B98F132925B3E3190072628F /* ETAPublisherBuilder-NLB.swift in Sources */,
-				B98F133B25B3E31F0072628F /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B98F132925B3E3190072628F /* ETALoader-NLB.swift in Sources */,
+				B98F133B25B3E31F0072628F /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B98F136525B3E3340072628F /* Route-GMB.swift in Sources */,
 				B98F12DD25B3E2630072628F /* List-RemoveDuplicates.swift in Sources */,
 				B98F12DA25B3E2630072628F /* OrderedSet.swift in Sources */,
 				B9E6D83E25D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
 				B99B5AE625C2FB0000FCE41A /* RoutingStopsRequest.swift in Sources */,
-				B98F133D25B3E31F0072628F /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
-				B98F13CE25B3E4140072628F /* Localizations.swift in Sources */,
-				B98F136425B3E3340072628F /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B98F133D25B3E31F0072628F /* RouteStopsLoader-GMB.swift in Sources */,
+				B98F136425B3E3340072628F /* RoutesLoader-GOV.swift in Sources */,
 				B98F12E325B3E2630072628F /* Compatibility.swift in Sources */,
 				B98F132025B3E3190072628F /* ETA-NLB.swift in Sources */,
 				B98F129C25B3E2390072628F /* SimpleBusInfoView.swift in Sources */,
@@ -3831,8 +3820,9 @@
 				B98F13A425B3E3580072628F /* CornerRadius-Corners.swift in Sources */,
 				B98F12E025B3E2630072628F /* Array-Reorderable.swift in Sources */,
 				B994FF7D25DBC26500852B1D /* PayBuddy.swift in Sources */,
+				B9E45F56267321E4001BB836 /* SpecificLoader.swift in Sources */,
 				B98F12DB25B3E2630072628F /* DateFormatter-Custom.swift in Sources */,
-				B98F132825B3E3190072628F /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B98F132825B3E3190072628F /* ETALoader-KMB.swift in Sources */,
 				B98F132225B3E3190072628F /* ETA.swift in Sources */,
 				B98F136825B3E3340072628F /* Route-GOV.swift in Sources */,
 				B98F138725B3E33E0072628F /* RouteStop.swift in Sources */,
@@ -3859,10 +3849,9 @@
 				B979A69025AD2E4200122165 /* CustomAssistedError.swift in Sources */,
 				B979A6CC25AD2E9E00122165 /* ETARow.swift in Sources */,
 				B979A8E325AD423C00122165 /* StopDetail.swift in Sources */,
-				B964752723D56E7E00237AA5 /* Localizations.swift in Sources */,
 				B9B92F8025BC162C00F84D19 /* SpotlightBuddy.swift in Sources */,
 				B979A8B625AD415B00122165 /* BusDetailHeader.swift in Sources */,
-				B979A7C425AD399300122165 /* RouteStopsPublisherBuilder-NLB.swift in Sources */,
+				B979A7C425AD399300122165 /* RouteStopsLoader-NLB.swift in Sources */,
 				B9AD452925B1A77E00A1E5CC /* ScheduleBlock.swift in Sources */,
 				B98EFFE823C495BF00B664B2 /* Stop.swift in Sources */,
 				B979A76925AD2FBC00122165 /* TokenStack.swift in Sources */,
@@ -3876,18 +3865,17 @@
 				B979A71625AD2EBD00122165 /* DashboardRecentsList.swift in Sources */,
 				B979A73625AD2F1000122165 /* Compatibility.swift in Sources */,
 				B979A6CB25AD2E9E00122165 /* ETAList.swift in Sources */,
-				B979A7C525AD399300122165 /* RouteStopsPublisherBuilder-GOV.swift in Sources */,
-				B98EFFEA23C495BF00B664B2 /* APIManager.swift in Sources */,
+				B979A7C525AD399300122165 /* RouteStopsLoader-GOV.swift in Sources */,
 				B979A7C125AD399300122165 /* Stop-GMB.swift in Sources */,
 				B979A89025AD400A00122165 /* CompanyRoutesList.swift in Sources */,
-				B979A7B625AD391E00122165 /* RoutesPublisherBuilder-NLB.swift in Sources */,
+				B979A7B625AD391E00122165 /* RoutesLoader-NLB.swift in Sources */,
 				B9B930F025BC2AFB00F84D19 /* ShortcutsGrid.swift in Sources */,
 				B984054025A8391E00F04613 /* Company.swift in Sources */,
 				B91AF3B423CDE5850052A30B /* RouteStop.swift in Sources */,
-				B979A73F25AD2F8E00122165 /* ETAPublisherBuilder-GMB.swift in Sources */,
+				B979A73F25AD2F8E00122165 /* ETALoader-GMB.swift in Sources */,
 				B979A7C225AD399300122165 /* Stop-GOV.swift in Sources */,
 				B98EFFE923C495BF00B664B2 /* ETA.swift in Sources */,
-				B979A74525AD2F8E00122165 /* ETAPublisherBuilder-NLB.swift in Sources */,
+				B979A74525AD2F8E00122165 /* ETALoader-NLB.swift in Sources */,
 				B979A83D25AD3C5000122165 /* Main.swift in Sources */,
 				B9E6D84025D78AC60018F5D3 /* PreviousStepButton.swift in Sources */,
 				B979A71725AD2EBD00122165 /* DashboardFavoritesList.swift in Sources */,
@@ -3900,15 +3888,15 @@
 				B979A6F525AD2EAB00122165 /* LocationTracker.swift in Sources */,
 				B979A86225AD3F6B00122165 /* RouteRow.swift in Sources */,
 				B979A69125AD2E4200122165 /* AssistedError.swift in Sources */,
-				B979A7C325AD399300122165 /* RouteStopsPublisherBuilder-GMB.swift in Sources */,
+				B979A7C325AD399300122165 /* RouteStopsLoader-GMB.swift in Sources */,
 				B979A8FE25AD427400122165 /* StopDetailHeader.swift in Sources */,
 				B98EFFF823C495C200B664B2 /* List-RemoveDuplicates.swift in Sources */,
 				B979A72125AD2ECC00122165 /* Store.swift in Sources */,
 				B984055D25A83AE400F04613 /* ServicePeriod.swift in Sources */,
-				B979A74325AD2F8E00122165 /* ETAPublisherBuilder-KMB.swift in Sources */,
+				B979A74325AD2F8E00122165 /* ETALoader-KMB.swift in Sources */,
 				B979A7A825AD38E200122165 /* RoutesTab.swift in Sources */,
 				B98EFFEE23C495BF00B664B2 /* ETA-NLB.swift in Sources */,
-				B979A7BF25AD399300122165 /* RouteStopsPublisherBuilder-CTBNWFB.swift in Sources */,
+				B979A7BF25AD399300122165 /* RouteStopsLoader-CTBNWFB.swift in Sources */,
 				B979A74F25AD2F9900122165 /* Fonts.swift in Sources */,
 				B9166029259C79C300B50AEE /* CTBNWFB.swift in Sources */,
 				B979A71225AD2EBD00122165 /* RemoveRecentButton.swift in Sources */,
@@ -3950,7 +3938,8 @@
 				B979A76B25AD2FBC00122165 /* LayerDepth.swift in Sources */,
 				B99B5AF725C2FB0200FCE41A /* RoutingStopsResponse.swift in Sources */,
 				B94E782125AC6A4E002609C4 /* KMB.swift in Sources */,
-				B979A7B325AD391E00122165 /* RoutesPublisherBuilder-CTBNWFB.swift in Sources */,
+				B979A7B325AD391E00122165 /* RoutesLoader-CTBNWFB.swift in Sources */,
+				B9E45F59267321E6001BB836 /* SpecificLoader.swift in Sources */,
 				B979A71325AD2EBD00122165 /* ETALabel.swift in Sources */,
 				B98EFFF323C495BF00B664B2 /* ETA-CTBNWFB.swift in Sources */,
 				B9FDCA0225C8C80F0063EFA3 /* Waypoint.swift in Sources */,
@@ -3960,8 +3949,8 @@
 				B979A76825AD2FBC00122165 /* HasLogger.swift in Sources */,
 				B979A68F25AD2E4200122165 /* Errors.swift in Sources */,
 				B979A76725AD2FBC00122165 /* Layers.swift in Sources */,
-				B979A74225AD2F8E00122165 /* ETAPublisherBuilder-CTBNWFB.swift in Sources */,
-				B979A7B525AD391E00122165 /* RoutesPublisherBuilder-GMB.swift in Sources */,
+				B979A74225AD2F8E00122165 /* ETALoader-CTBNWFB.swift in Sources */,
+				B979A7B525AD391E00122165 /* RoutesLoader-GMB.swift in Sources */,
 				B979A81925AD3B9500122165 /* App.swift in Sources */,
 				B9AD0DE125AB194800D3C684 /* ETA-GMB.swift in Sources */,
 				B979A6C125AD2E5B00122165 /* Label-AlignedText.swift in Sources */,
@@ -3972,15 +3961,14 @@
 				B9B92D5825BAEBE700F84D19 /* PublisherBuilder.swift in Sources */,
 				B979A6AE25AD2E4F00122165 /* Switch-ArrayMatch.swift in Sources */,
 				B979A76A25AD2FBC00122165 /* Token.swift in Sources */,
-				B979A6CE25AD2E9E00122165 /* NewScheduleButton.swift in Sources */,
 				B979A7B225AD391E00122165 /* RoutesLoader.swift in Sources */,
 				B979A6B825AD2E5600122165 /* URLRequest-Post.swift in Sources */,
-				B979A70925AD2EB500122165 /* FavoritesList.swift in Sources */,
 				B979A87525AD3FDA00122165 /* RoutesList.swift in Sources */,
 				B979A7C025AD399300122165 /* RouteStopsLoader.swift in Sources */,
 				B979A72225AD2ECC00122165 /* CompanyRoutes.swift in Sources */,
-				B979A7B425AD391E00122165 /* RoutesPublisherBuilder-GOV.swift in Sources */,
+				B979A7B425AD391E00122165 /* RoutesLoader-GOV.swift in Sources */,
 				B9AD45A525B1DE4300A1E5CC /* CurrentScheduleCard.swift in Sources */,
+				B9DDDBBC267CE29700C2EB98 /* FavoritesList.swift in Sources */,
 				B979A74125AD2F8E00122165 /* ETALoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4086,8 +4074,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtensionMac/WidgetExtensionMac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = WidgetExtensionMac/Info.plist;
@@ -4096,7 +4085,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.formac.WidgetExtensionMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4112,8 +4101,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtensionMac/WidgetExtensionMac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = WidgetExtensionMac/Info.plist;
@@ -4122,7 +4112,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.formac.WidgetExtensionMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4138,11 +4128,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4151,6 +4142,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -4165,11 +4157,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4178,6 +4171,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -4314,11 +4308,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "NextBus/Next Bus.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NextBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4341,11 +4335,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "NextBus/Next Bus.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NextBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4365,10 +4359,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = IntentsExtension/IntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = IntentsExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4389,10 +4383,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = IntentsExtension/IntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = IntentsExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4414,10 +4408,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IntentsExtensionUI/IntentsExtensionUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = IntentsExtensionUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4439,10 +4433,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IntentsExtensionUI/IntentsExtensionUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = IntentsExtensionUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4465,9 +4459,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mac/Mac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_ASSET_PATHS = "\"Mac/Preview Content\"";
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4477,7 +4472,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.formac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4494,9 +4489,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mac/Mac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_ASSET_PATHS = "\"Mac/Preview Content\"";
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -4506,7 +4502,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.formac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4523,11 +4519,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Clip/Clip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Clip/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4548,11 +4544,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Clip/Clip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Clip/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4612,10 +4608,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = NotificationContent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4637,10 +4633,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				INFOPLIST_FILE = NotificationContent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4664,7 +4660,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Watch App/Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				IBSC_MODULE = Watch_App_Extension;
 				INFOPLIST_FILE = "Watch App/Info.plist";
@@ -4675,7 +4671,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -4687,7 +4683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Watch App/Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				IBSC_MODULE = Watch_App_Extension;
 				INFOPLIST_FILE = "Watch App/Info.plist";
@@ -4698,7 +4694,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -4708,8 +4704,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Watch App Extension/Watch App Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_ASSET_PATHS = "\"Watch App Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
@@ -4722,11 +4719,12 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -4736,8 +4734,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Watch App Extension/Watch App Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_ASSET_PATHS = "\"Watch App Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 74N8K5J2N7;
 				ENABLE_PREVIEWS = YES;
@@ -4750,11 +4749,12 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianschiavo.nextbus.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -4872,12 +4872,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B901D2A0267F4D57008F12D4 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamfootdev/BottomSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.6;
+			};
+		};
 		B9AEFA1525D93F1E000EF9DE /* XCRemoteSwiftPackageReference "loadability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/julianschiavo/loadability";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.0;
+				branch = ios15;
+				kind = branch;
 			};
 		};
 		B9AEFA5525D95886000EF9DE /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
@@ -4891,6 +4899,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B901D2A1267F4D57008F12D4 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B901D2A0267F4D57008F12D4 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
 		B994FF3E25DBC22F00852B1D /* Purchases */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B9AEFA5525D95886000EF9DE /* XCRemoteSwiftPackageReference "purchases-ios" */;

@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct RestorePurchasesButton: View {
-    let restore: () -> Void
+    let restore: () async -> Void
     
     var body: some View {
-        Button(action: restore) {
+        Button {
+            Task {
+                await restore()
+            }
+        } label: {
             Text(Localizable.Upgrade.restorePurchases)
                 .foregroundColor(.accent)
         }

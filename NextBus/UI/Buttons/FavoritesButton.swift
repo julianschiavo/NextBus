@@ -15,7 +15,7 @@ struct FavoritesButton: View {
     let stop: Stop
     
     var body: some View {
-        Button(action: add) {
+        Button(role: store.favorites.contains(route: route, stop: stop) ? .destructive : .cancel, action: add) {
             Label(title: label, icon: icon)
                 .alignedHorizontally(to: .leading)
                 .iOSPadding(.vertical, 10)

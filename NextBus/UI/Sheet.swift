@@ -6,6 +6,9 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+#if canImport(BottomSheet)
+import BottomSheet
+#endif
 import MapKit
 import SwiftUI
 
@@ -24,7 +27,7 @@ enum Sheet: Identifiable {
         case let .addToSiri(route, stop):
             return "addToSiri\(route?.id ?? "")\(stop?.id ?? "")"
         case let .editSchedule(block):
-            return "newSchedule\(block.id)"
+            return "editSchedule\(block.id)"
         case let .newSchedule(route, stop):
             return "newSchedule\(route?.id ?? "")\(stop?.id ?? "")"
         case .pickDirections:
@@ -37,6 +40,24 @@ enum Sheet: Identifiable {
             return "shareSheet\(route.id)\(stop?.id ?? "")"
         case .upgrade:
             return "upgrade"
+        }
+    }
+    
+    var isFullScreen: Bool {
+        switch self {
+        case .pickDirections, .pickRoute, .pickStop, .shareSheet:
+            return false
+        default:
+            return true
+        }
+    }
+    
+    var interactiveDismissDisabled: Bool {
+        switch self {
+        case .newSchedule, .pickDirections, .upgrade:
+            return true
+        default:
+            return false
         }
     }
     
@@ -94,9 +115,40 @@ enum Sheet: Identifiable {
 //}
 
 extension View {
-    func globalSheet(_ sheet: Binding<Sheet?>) -> some View {
+    @ViewBuilder func globalSheet(_ sheet: Binding<Sheet?>) -> some View {
+        #if MAIN
+        if sheet.wrappedValue?.isFullScreen == true {
+            self.sheet(item: sheet) { sheet in
+                sheet.content
+                    .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
+            }
+        } else {
+            self.bottomSheet(item: sheet) {
+                __BottomSheetView(value: sheet) { sheet in
+                    sheet.content
+                        .ignoresSafeArea()
+                        .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
+                }
+            }
+        }
+        #else
         self.sheet(item: sheet) { sheet in
             sheet.content
+                .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
+        }
+        #endif
+    }
+}
+
+private struct __BottomSheetView<Value, Content: View>: View {
+    @Binding var value: Value?
+    @ViewBuilder var content: (Value) -> Content
+    
+    var body: some View {
+        if let value = value {
+            content(value)
+        } else {
+            Text("fatalError would go here lmao")
         }
     }
 }
@@ -106,7 +158,7 @@ struct RouteShareSheet: View {
     var stop: Stop?
     
     private var shareURL: URL {
-        StatusExperience(company: route.company, routeID: route.id, stopID: stop?.id).toURL() ?? URL(fileURLWithPath: "")
+        Experience.status(company: route.company, routeID: route.id, stopID: stop?.id).toURL() ?? URL(fileURLWithPath: "")
     }
     
     var body: some View {

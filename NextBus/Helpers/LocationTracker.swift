@@ -10,10 +10,11 @@ import CoreLocation
 import Loadability
 import SwiftUI
 
+@MainActor
 class LocationTracker: NSObject, ObservableObject, ThrowsErrors, CLLocationManagerDelegate {
     @Published var location = CLLocation(latitude: 0, longitude: 0)
     @Published var hasPermission = true
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     var hasRequestedPermission: Bool {
         locationManager.authorizationStatus != .notDetermined
@@ -25,7 +26,9 @@ class LocationTracker: NSObject, ObservableObject, ThrowsErrors, CLLocationManag
         super.init()
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        updatePermissionState()
+        Task {
+            await updatePermissionState()
+        }
     }
     
     deinit {
@@ -41,23 +44,19 @@ class LocationTracker: NSObject, ObservableObject, ThrowsErrors, CLLocationManag
     }
     
     private func updatePermissionState() {
-        DispatchQueue.main.async {
-            withAnimation {
-                #if os(macOS)
-                self.hasPermission = true
-                #else
-                self.hasPermission = self.locationManager.authorizationStatus == .authorized
-                #endif
-            }
+        withAnimation {
+            #if os(macOS)
+            hasPermission = true
+            #else
+            hasPermission = locationManager.authorizationStatus == .authorized
+            #endif
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let mostRecentLocation = locations.last else { return }
-        DispatchQueue.main.async {
-            withAnimation {
-                self.location = mostRecentLocation
-            }
+        withAnimation {
+            location = mostRecentLocation
         }
     }
     

@@ -11,10 +11,11 @@ import Foundation
 import SwiftUI
 import UserNotifications
 
+@MainActor
 class Store: ObservableObject {
-    @Published var favorites: Favorites
-    @Published var recents: Recents
-    @Published var schedule: Schedule
+    @Published var favorites = Favorites()
+    @Published var recents = Recents()
+    @Published var schedule = Schedule()
     
     @Published var __favorites: [RouteStop]?
     @Published var __recents: [RouteStop]?
@@ -27,37 +28,43 @@ class Store: ObservableObject {
     }()
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    static var shared = Store()
+    
+    private init() {
         guard let folder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.julianschiavo.nextbus") else {
             fatalError("Failed to find app group folder")
         }
         Store.appGroupFolderURL = folder
-        self.favorites = Favorites(appGroupFolderURL: Store.appGroupFolderURL)
-        self.recents = Recents(appGroupFolderURL: Store.appGroupFolderURL)
-        self.schedule = Schedule(appGroupFolderURL: Store.appGroupFolderURL)
         
-        self.favorites.$all
-            .receive(on: DispatchQueue.main)
-            .sink { all in
-                self.__favorites = all
-            }
-            .store(in: &cancellables)
-        self.recents.$all
-            .receive(on: DispatchQueue.main)
-            .sink { all in
-                self.__recents = all
-            }
-            .store(in: &cancellables)
-        self.schedule.$all
-            .receive(on: DispatchQueue.main)
-            .sink { all in
-                self.__scheduleBlocks = all
-            }
-            .store(in: &cancellables)
+        Task {
+            self.favorites = await Favorites(appGroupFolderURL: Store.appGroupFolderURL)
+            self.recents = await Recents(appGroupFolderURL: Store.appGroupFolderURL)
+            self.schedule = await Schedule(appGroupFolderURL: Store.appGroupFolderURL)
+            
+            self.favorites.$all
+                .receive(on: DispatchQueue.main)
+                .sink { all in
+                    self.__favorites = all
+                }
+                .store(in: &cancellables)
+            self.recents.$all
+                .receive(on: DispatchQueue.main)
+                .sink { all in
+                    self.__recents = all
+                }
+                .store(in: &cancellables)
+            self.schedule.$all
+                .receive(on: DispatchQueue.main)
+                .sink { all in
+                    self.__scheduleBlocks = all
+                }
+                .store(in: &cancellables)
+        }
     }
     
     // MARK: - Favorites
     
+    @MainActor
     class Favorites: ObservableObject {
         @Published private(set) var all = [RouteStop]() {
             didSet {
@@ -69,16 +76,15 @@ class Store: ObservableObject {
         private let encoder = JSONEncoder()
         private let url: URL
         
-        fileprivate init(appGroupFolderURL: URL) {
-            self.url = appGroupFolderURL
+        fileprivate init() {
+            url = appGroupFolderURL
+        }
+        
+        fileprivate init(appGroupFolderURL: URL) async {
+            url = appGroupFolderURL
                 .appendingPathComponent("UserFavorites")
                 .appendingPathExtension("json")
-            DispatchQueue.global(qos: .userInteractive).async {
-                let all = self.load()
-                DispatchQueue.main.async {
-                    self.all = all
-                }
-            }
+            all = await load()
         }
         
         func contains(route: Route, stop: Stop) -> Bool {
@@ -103,27 +109,34 @@ class Store: ObservableObject {
             }
         }
         
-        func load() -> [RouteStop] {
-            guard let data = FileManager.default.contents(atPath: url.path),
-                  let favorites = try? decoder.decode([RouteStop].self, from: data)
-            else { return [] }
-            return favorites
-                .removingDuplicates()
-                .sorted {
-                    $0.route.localizedName.localizedStandardCompare(
-                        $1.route.localizedName
-                    ) == .orderedAscending
-                }
+        func load() async -> [RouteStop] {
+            let task = Task { () -> [RouteStop] in
+                guard let data = FileManager.default.contents(atPath: url.path),
+                      let favorites = try? decoder.decode([RouteStop].self, from: data)
+                else { return [] }
+                
+                return favorites
+                    .removingDuplicates()
+                    .sorted {
+                        $0.route.localizedName.localizedStandardCompare(
+                            $1.route.localizedName
+                        ) == .orderedAscending
+                    }
+            }
+            return await task.value
         }
         
         private func save() {
-            guard let data = try? encoder.encode(all) else { return }
-            try? data.write(to: url, options: [.atomic])
+            Task {
+                guard let data = try? encoder.encode(all) else { return }
+                try? data.write(to: url, options: [.atomic])
+            }
         }
     }
     
     // MARK: - Recently Viewed
     
+    @MainActor
     class Recents: ObservableObject {
         @Published private(set) var all = [RouteStop]() {
             didSet {
@@ -135,16 +148,15 @@ class Store: ObservableObject {
         private let encoder = JSONEncoder()
         private let url: URL
         
-        fileprivate init(appGroupFolderURL: URL) {
+        fileprivate init() {
+            url = appGroupFolderURL
+        }
+        
+        fileprivate init(appGroupFolderURL: URL) async {
             self.url = appGroupFolderURL
                 .appendingPathComponent("RecentlyViewed")
                 .appendingPathExtension("json")
-            DispatchQueue.global(qos: .userInteractive).async {
-                let all = self.load()
-                DispatchQueue.main.async {
-                    self.all = all
-                }
-            }
+            all = await load()
         }
         
         func add(route: Route, stop: Stop) {
@@ -180,21 +192,27 @@ class Store: ObservableObject {
             }
         }
         
-        func load() -> [RouteStop] {
-            guard let data = FileManager.default.contents(atPath: url.path),
-                  let all = try? decoder.decode([RouteStop].self, from: data)
-            else { return [] }
-            return all.removingDuplicates()
+        func load() async -> [RouteStop] {
+            let task = Task { () -> [RouteStop] in
+                guard let data = FileManager.default.contents(atPath: url.path),
+                      let all = try? decoder.decode([RouteStop].self, from: data)
+                else { return [] }
+                return all.removingDuplicates()
+            }
+            return await task.value
         }
         
         private func save() {
-            guard let data = try? encoder.encode(all) else { return }
-            try? data.write(to: url, options: [.atomic])
+            Task {
+                guard let data = try? encoder.encode(all) else { return }
+                try? data.write(to: url, options: [.atomic])
+            }
         }
     }
     
     // MARK: - Schedule
     
+    @MainActor
     class Schedule: ObservableObject {
         @Published private(set) var all = [ScheduleBlock]() {
             didSet {
@@ -206,22 +224,22 @@ class Store: ObservableObject {
         private let encoder = JSONEncoder()
         private let url: URL
         
-        fileprivate init(appGroupFolderURL: URL) {
-            self.url = appGroupFolderURL
+        fileprivate init() {
+            url = appGroupFolderURL
+        }
+        
+        fileprivate init(appGroupFolderURL: URL) async {
+            url = appGroupFolderURL
                 .appendingPathComponent("Schedule")
                 .appendingPathExtension("json")
-            DispatchQueue.global(qos: .userInteractive).async {
-                let all = self.load()
-                DispatchQueue.main.async {
-                    self.all = all
-                }
-            }
+            all = await load()
         }
         
         func add(_ block: ScheduleBlock) {
             withAnimation {
                 all.insert(block, at: 0)
             }
+            scheduleNotifications(for: block)
         }
         
         func update(_ block: ScheduleBlock) {
@@ -243,23 +261,28 @@ class Store: ObservableObject {
             }
         }
         
-        func load() -> [ScheduleBlock] {
-            guard let data = FileManager.default.contents(atPath: url.path),
-                  let blocks = try? decoder.decode([ScheduleBlock].self, from: data)
-            else { return [] }
-            blocks.forEach {
-                scheduleNotifications(for: $0)
-            }
-            return blocks
-                .removingDuplicates()
-                .sorted {
-                    $0.startDate < $1.startDate
+        func load() async -> [ScheduleBlock] {
+            let task = Task { () -> [ScheduleBlock] in
+                guard let data = FileManager.default.contents(atPath: url.path),
+                      let blocks = try? decoder.decode([ScheduleBlock].self, from: data)
+                else { return [] }
+                blocks.forEach {
+                    scheduleNotifications(for: $0)
                 }
+                return blocks
+                    .removingDuplicates()
+                    .sorted {
+                        $0.startDate < $1.startDate
+                    }
+            }
+            return await task.value
         }
         
         private func save() {
-            guard let data = try? encoder.encode(all) else { return }
-            try? data.write(to: url, options: [.atomic])
+            Task {
+                guard let data = try? encoder.encode(all) else { return }
+                try? data.write(to: url, options: [.atomic])
+            }
         }
         
         // MARK: - Notifications
@@ -275,6 +298,7 @@ class Store: ObservableObject {
             content.title = Localizable.Notifications.title(block.name)
             content.body = Localizable.Notifications.description(block.route.localizedName)
             content.categoryIdentifier = "Schedule"
+            content.interruptionLevel = .timeSensitive
             content.threadIdentifier = block.id.uuidString
             content.userInfo["name"] = block.name
             content.userInfo["route"] = route

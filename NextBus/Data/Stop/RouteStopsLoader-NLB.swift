@@ -10,23 +10,17 @@ import Combine
 import Foundation
 
 extension NLB {
-    class RouteStopsPublisherBuilder: PublisherBuilder, RouteStopsLoader.PublisherBuilder {
+    class RouteStopsLoader: SpecificLoader, RouteStopsSpecificLoader {
         private let route: Route
         
         required init(key route: Route) {
             self.route = route
         }
         
-        func create() -> AnyPublisher<[Stop], Error> {
-            let urlRequest = createRequest(for: route)
-            
-            return URLSession.shared
-                .dataTaskPublisher(for: urlRequest)
-                .retry(3)
-                .tryMap { data, response in
-                    try self.decode(data)
-                }
-                .eraseToAnyPublisher()
+        func load() async throws -> [Stop] {
+            let request = createRequest(for: route)
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return try await decode(data)
         }
         
         private func createRequest(for route: Route) -> URLRequest {
@@ -42,11 +36,14 @@ extension NLB {
             return .postRequest(url: url, body: requestData)
         }
         
-        func decode(_ data: Data) throws -> [Stop] {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .formatted(.dateSpaceTime)
-            let rawStop = try decoder.decode(RawStop.self, from: data)
-            return rawStop.stops
+        private func decode(_ data: Data) async throws -> [Stop] {
+            let task = Task { () -> [Stop] in
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(.dateSpaceTime)
+                let rawStop = try decoder.decode(RawStop.self, from: data)
+                return rawStop.stops
+            }
+            return try await task.value
         }
     }
 }

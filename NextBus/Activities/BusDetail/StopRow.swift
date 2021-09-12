@@ -21,10 +21,10 @@ struct StopRow: View {
         }
         .globalSheet($sheet)
         .contextMenu {
+            ShareButton($sheet, route: route, stop: stop)
             #if !APPCLIP
             FavoritesButton(route: route, stop: stop)
             #endif
-            ShareButton($sheet, route: route, stop: stop)
         }
     }
     

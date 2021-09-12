@@ -29,7 +29,7 @@ struct RecentsList: View {
         List(store.recents.all) { routeStop in
             RouteETARow(routeStop: routeStop)
         }
-        .listStyle(CarouselListStyle())
+        .listStyle(.carousel)
     }
     
     private var placeholder: some View {

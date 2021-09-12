@@ -16,48 +16,50 @@ class ETALoaderVariant {
     func decode(_ data: Data) throws -> [ETA] { [] }
 }
 
-protocol ETAPublisherBuilder {
+@MainActor
+protocol ETASpecificLoader {
     init(key: RouteStop)
-    func create() -> AnyPublisher<[ETA], Error>
+    func load() async throws -> [ETA]
 }
 
 class ETALoader: Loader {
     typealias Key = RouteStop
-    typealias PublisherBuilder = ETAPublisherBuilder
+    typealias SpecificLoader = ETASpecificLoader
     
     @Published var object: [ETA]?
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     var cancellable: AnyCancellable?
+    var task: Task<[ETA], Error>?
     
-    private var builder: ETAPublisherBuilder?
+    private var loader: SpecificLoader?
     
     required init() {
         
     }
     
-    deinit {
-        cancel()
+    func refresh(key: Key) async {
+        await load(key: key)
     }
     
     private func createVariantIfNeeded(for routeStop: RouteStop) {
-        guard builder == nil else { return }
+        guard loader == nil else { return }
         switch routeStop.route.company {
         case .ctb, .nwfb:
-            builder = CTBNWFB.ETAPublisherBuilder(key: routeStop)
+            loader = CTBNWFB.ETALoader(key: routeStop)
         case .gmb:
-            builder = GMB.ETAPublisherBuilder(key: routeStop)
+            loader = GMB.ETALoader(key: routeStop)
         case .kmb, .kmbCTB, .kmbNWFB, .lwb, .lwbCTB:
-            builder = KMB.ETAPublisherBuilder(key: routeStop)
+            loader = KMB.ETALoader(key: routeStop)
         case .nlb:
-            builder = NLB.ETAPublisherBuilder(key: routeStop)
+            loader = NLB.ETALoader(key: routeStop)
         default:
             return
         }
     }
     
-    func createPublisher(key routeStop: RouteStop) -> AnyPublisher<[ETA], Error>? {
+    func loadData(key routeStop: RouteStop) async throws -> [ETA] {
         createVariantIfNeeded(for: routeStop)
-        return builder?.create()
+        return try await loader?.load() ?? []
     }
 }

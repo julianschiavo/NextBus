@@ -15,9 +15,17 @@ struct RoutesList: View, LoadableView {
     @State private var searchText = ""
     
     @State private var companyState = [Company: Bool]()
+    @State private var filteredCompanyState = [Company: Bool]()
     
     var body: some View {
         loaderView
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    Button("FUVFUFUDFUF") {
+                        
+                    }
+                }
+            }
     }
     
     func body(with companyRoutes: [CompanyRoutes]) -> some View {
@@ -32,14 +40,37 @@ struct RoutesList: View, LoadableView {
         }
         .macMinFrame(width: 260)
         .macMaxFrame(width: 500)
-        .listStyle(SidebarListStyle())
-        .navigationBarSearch($searchText) {
-            RouteSearchToolbar(searchText: $searchText)
+        .listStyle(.sidebar)
+        .searchable(text: $searchText, prompt: Localizable.search)
+        .onChange(of: searchText) { _ in
+            Task {
+                await updateRoutes()
+            }
         }
+        .toolbar {
+            ToolbarItem(placement: .keyboard) {
+                Button("FUVFUFUDFUF") {
+                    
+                }
+            }
+//            ToolbarItemGroup(placement: .keyboard) {
+//                ForEach(["A", "B", "M", "N", "P", "R", "S", "X"], id: \.self) { letter in
+//                    Button(letter) {
+//                        searchText.append(letter)
+//                    }
+//                }
+//            }
+        }
+        .task {
+            await updateRoutes()
+        }
+//        .navigationBarSearch($searchText) {
+//            RouteSearchToolbar(searchText: $searchText)
+//        }
     }
     
     private func sectionList(for group: CompanyRoutes) -> some View {
-        DisclosureGroup {
+        DisclosureGroup(isExpanded: expansionBinding(for: group.company)) {
             ForEach(group.routes) { route in
                 NavigationLink(destination: BusDetail(route: route)) {
                     RouteRow(route: route)
@@ -48,12 +79,13 @@ struct RoutesList: View, LoadableView {
         } label: {
             companyLabel(group.company)
         }
+        .tint(group.company.color)
     }
     
     @ViewBuilder private func filteredList(for group: CompanyRoutes) -> some View {
-        if !filteredRoutes(group.routes).isEmpty {
-            DisclosureGroup(isExpanded: expansionBinding(for: group.company)) {
-                ForEach(filteredRoutes(group.routes)) { route in
+        if let routes = loader.filteredRoutes[group.company], !routes.isEmpty {
+            DisclosureGroup(isExpanded: filteredExpansionBinding(for: group.company)) {
+                ForEach(routes) { route in
                     NavigationLink(destination: BusDetail(route: route)) {
                         RouteRow(route: route)
                     }
@@ -61,32 +93,62 @@ struct RoutesList: View, LoadableView {
             } label: {
                 companyLabel(group.company)
             }
+            .tint(group.company.color)
         }
     }
     
     private func companyLabel(_ company: Company) -> some View {
-        Label(
-            title: {
-                Text(company.name)
-            },
-            icon: {
-                Image(systemName: company.category.iconName)
-                    .foregroundColor(company.color)
+        Button {
+            withAnimation {
+                companyState[company] = !companyState[company, default: false]
             }
-        )
-        .accentColor(company.color)
-        .font(.largeHeadline, weight: .medium)
+        } label: {
+            Label(
+                title: {
+                    Text(company.name)
+                },
+                icon: {
+                    Image(systemName: company.category.iconName)
+                        .foregroundColor(company.color)
+                }
+            )
+            .tint(company.color)
+            .font(.largeHeadline, weight: .medium)
+        }
+        .buttonStyle(.plain)
     }
     
     private func expansionBinding(for company: Company) -> Binding<Bool> {
         Binding {
-            companyState[company, default: true]
-        } set: { _,_ in
-            companyState[company] = !companyState[company, default: true]
+            companyState[company, default: false]
+        } set: { _, _ in
+            companyState[company] = !companyState[company, default: false]
         }
     }
     
-    private func filteredRoutes(_ routes: [Route]) -> [Route] {
+    private func filteredExpansionBinding(for company: Company) -> Binding<Bool> {
+        Binding {
+            filteredCompanyState[company, default: true]
+        } set: { _, _ in
+            filteredCompanyState[company] = !filteredCompanyState[company, default: true]
+        }
+    }
+    
+    private func updateRoutes() async {
+        guard let companyRoutes = loader.object else { return }
+        await withTaskGroup(of: Void.self) { group in
+            for cGroup in companyRoutes {
+                group.async {
+                    let routes = await searchText.isEmpty ? cGroup.routes : filteredRoutes(cGroup.routes)
+                    DispatchQueue.main.async {
+                        self.loader.filteredRoutes[cGroup.company] = routes
+                    }
+                }
+            }
+        }
+    }
+    
+    private func filteredRoutes(_ routes: [Route]) async -> [Route] {
         routes.filter {
             $0.localizedName.lowercased().hasPrefix(searchText.lowercased())
         }

@@ -38,7 +38,9 @@ struct ETAList: View, LoadableView {
         }
         .background(Color.tertiaryBackground)
         .onChange(of: reload) { _ in
-            loader.load(key: key)
+            Task {
+                await loader.refresh(key: key)
+            }
         }
     }
     

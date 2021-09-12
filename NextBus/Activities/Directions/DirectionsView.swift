@@ -6,6 +6,9 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
+#if canImport(BottomSheet)
+import BottomSheet
+#endif
 import MapKit
 import SwiftUI
 
@@ -106,7 +109,6 @@ struct DirectionsView: View {
     private func selectTrack() {
         guard let origin = origin, let destination = destination else { return }
         withAnimation {
-//            paths = []
             state = .selectTrack
             sheet = .pickDirections(origin: origin, destination: destination, selection: $routing)
         }

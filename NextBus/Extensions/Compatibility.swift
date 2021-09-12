@@ -50,8 +50,12 @@ typealias iOSNavigationView = Group
 /// A `TabViewStyle` that implements a paged scrolling `TabView`.
 typealias PageTabViewStyle = DefaultTabViewStyle
 
-/// A navigation view style represented by a view stack that only shows a single top view at a time.
-typealias StackNavigationViewStyle = DoubleColumnNavigationViewStyle
+extension NavigationViewStyle where Self == ColumnNavigationViewStyle {
+    /// A navigation view style represented by a view stack that only shows a single top view at a time.
+    static var stacks: ColumnNavigationViewStyle {
+        .columns
+    }
+}
 
 /// A configuration for a navigation bar that represents a view at the top of a navigation stack.
 struct NavigationBarItem {
@@ -83,6 +87,15 @@ extension CLAuthorizationStatus {
 /// A view for presenting a stack of views representing a visible path in a
 /// navigation hierarchy.
 typealias iOSNavigationView = NavigationView
+#endif
+
+#if !os(macOS)
+extension NavigationViewStyle where Self == StackNavigationViewStyle {
+    /// A navigation view style represented by a view stack that only shows a single top view at a time.
+    static var stacks: StackNavigationViewStyle {
+        .stack
+    }
+}
 #endif
 
 // MARK: - Watch Only
@@ -165,7 +178,7 @@ extension View {
     /// custom appearance and custom interaction behavior.
     @ViewBuilder func macCustomButton() -> some View {
         #if os(macOS)
-        buttonStyle(PlainButtonStyle())
+        buttonStyle(.plain)
         #else
         self
         #endif

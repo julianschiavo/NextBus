@@ -40,7 +40,9 @@ struct ShortcutsGrid: View {
     
     private var routes: some View {
         Button {
-            currentTab = 3
+            withAnimation {
+                currentTab = 3
+            }
         } label: {
             Label(Localizable.Routes.name, systemImage: "bus.fill")
                 .font(.largeHeadline, weight: .bold)
@@ -56,7 +58,9 @@ struct ShortcutsGrid: View {
     
     private var directions: some View {
         Button {
-            currentTab = 2
+            withAnimation {
+                currentTab = 2
+            }
         } label: {
             Label(Localizable.Directions.name, systemImage: "arrow.triangle.turn.up.right.diamond.fill")
                 .font(.largeHeadline, weight: .bold)
@@ -72,7 +76,9 @@ struct ShortcutsGrid: View {
     
     private var schedule: some View {
         Button {
-            currentTab = 4
+            withAnimation {
+                currentTab = 4
+            }
         } label: {
             Label(Localizable.Schedule.name, systemImage: "calendar")
                 .font(.largeHeadline, weight: .bold)

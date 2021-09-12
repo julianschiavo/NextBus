@@ -15,7 +15,9 @@ struct ScheduleNotificationsCard: View {
     var body: some View {
         Card {
             Button {
-                notificationsBuddy.requestAuthorization()
+                Task {
+                    await notificationsBuddy.requestAuthorization()
+                }
             } label: {
                 Label {
                     VStack(alignment: .leading) {

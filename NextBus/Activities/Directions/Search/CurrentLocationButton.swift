@@ -23,7 +23,6 @@ struct CurrentLocationButton: View {
             searchText = Localizable.Directions.currentLocation
         } label: {
             Image(systemName: "location.fill")
-                .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.red)
                 .padding(5)
                 .background(Color.background.opacity(0.001))

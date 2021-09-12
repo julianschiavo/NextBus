@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct UpgradeSheet: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @StateObject private var payBuddy = PayBuddy()
+    @State private var isErrorAlertPresented = false
     
     var body: some View {
         iOSNavigationView {
@@ -21,13 +22,13 @@ struct UpgradeSheet: View {
                 Spacer()
                 UpgradeButtons(payBuddy: payBuddy)
             }
-            .alert(errorBinding: $payBuddy.error)
+            .errorAlert(isPresented: $isErrorAlertPresented, error: payBuddy.error, dismiss: payBuddy.dismissError)
             .padding()
             .navigationTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .cancellationAction) {
                     Button(Localizable.cancel) {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }
                 }
             }
@@ -35,7 +36,7 @@ struct UpgradeSheet: View {
         .macMinFrame(width: 400, height: 400)
         .onChange(of: payBuddy.hasPlus) { hasPlus in
             if hasPlus {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }
         }
     }

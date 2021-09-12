@@ -31,6 +31,6 @@ struct Sidebar: View {
             }
         }
         .frame(minWidth: 100)
-        .listStyle(SidebarListStyle())
+        .listStyle(.sidebar)
     }
 }

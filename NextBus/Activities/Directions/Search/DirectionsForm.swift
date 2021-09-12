@@ -20,14 +20,15 @@ struct DirectionsForm: View {
     @State private var destinationMapItem: MKMapItem?
     
     var body: some View {
-        VStack {
-            originTextField
-            destinationTextField
-            Spacer().frame(height: 10)
+        VStack(spacing: 10) {
+            VStack {
+                originTextField
+                destinationTextField
+            }
             button
         }
         .padding(10)
-        .background(Color.secondaryBackground)
+        .background(.ultraThinMaterial)
         .overlay(disabledOverlay)
         .roundedBorder(20)
         .padding(8)
@@ -36,35 +37,46 @@ struct DirectionsForm: View {
     
     private var originTextField: some View {
         LocationSearchBar(mapItem: $originMapItem, placeholder: Localizable.fromPlaceholder)
-            .background(Color.tertiaryBackground)
-            .roundedBorder(10)
             .onChange(of: originMapItem) { mapItem in
                 guard let mapItem = mapItem else { return }
-                origin = Waypoint(id: UUID().uuidString, index: 0, name: mapItem.name ?? "", latitude: mapItem.placemark.coordinate.latitude, longitude: mapItem.placemark.coordinate.longitude, mapItem: mapItem)
+                origin = Waypoint(
+                    id: UUID().uuidString,
+                    index: 0,
+                    name: mapItem.name ?? "",
+                    latitude: mapItem.placemark.coordinate.latitude,
+                    longitude: mapItem.placemark.coordinate.longitude,
+                    mapItem: mapItem
+                )
             }
     }
     
     private var destinationTextField: some View {
         LocationSearchBar(mapItem: $destinationMapItem, placeholder: Localizable.toPlaceholder, onSearch: calculate)
-            .background(Color.tertiaryBackground)
-            .roundedBorder(10)
             .onChange(of: destinationMapItem) { mapItem in
                 guard let mapItem = mapItem else { return }
-                destination = Waypoint(id: UUID().uuidString, index: 0, name: mapItem.name ?? "", latitude: mapItem.placemark.coordinate.latitude, longitude: mapItem.placemark.coordinate.longitude, mapItem: mapItem)
+                destination = Waypoint(
+                    id: UUID().uuidString,
+                    index: 0,
+                    name: mapItem.name ?? "",
+                    latitude: mapItem.placemark.coordinate.latitude,
+                    longitude: mapItem.placemark.coordinate.longitude,
+                    mapItem: mapItem
+                )
             }
     }
     
     private var button: some View {
         Button(action: calculate) {
             Text(Localizable.Directions.go)
-                .font(.headline, weight: .bold)
-                .foregroundColor(.primary)
-                .padding(10)
+                .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color.accent)
                 .cornerRadius(10)
         }
+        .foregroundColor(.primary)
+        .font(.largeHeadline, weight: .bold)
         .disabled(origin == nil || destination == nil)
+        .opacity(origin == nil || destination == nil ? 0.5 : 1)
         .macCustomButton()
     }
     

@@ -29,7 +29,7 @@ struct CustomAddToSiriButton: View {
 }
 
 struct AddVoiceShortcutViewController: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     let route: Route?
     let stop: Stop?
     

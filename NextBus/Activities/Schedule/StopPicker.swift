@@ -10,7 +10,7 @@ import Loadability
 import SwiftUI
 
 struct StopPicker: View, LoadableView {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     let route: Route
     @Binding var selection: Stop?
@@ -28,12 +28,12 @@ struct StopPicker: View, LoadableView {
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
                         Button(Localizable.done) {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }
                     }
                 }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
     
     func body(with stops: [Stop]) -> some View {
@@ -47,7 +47,7 @@ struct StopPicker: View, LoadableView {
     private func row(for stop: Stop) -> some View {
         Button {
             selection = stop
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         } label: {
             HStack {
                 StopRow(route: route, stop: stop)

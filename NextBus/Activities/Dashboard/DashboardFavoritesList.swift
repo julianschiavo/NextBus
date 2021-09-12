@@ -25,7 +25,9 @@ struct DashboardFavoritesList: View {
                 RouteArrivalRow(routeStop: favorite)
                 Divider()
             }
-            AllFavoritesButton()
+            if store.favorites.all.count > 2 {
+                AllFavoritesButton()
+            }
         }
         .background(Color.secondaryBackground)
     }

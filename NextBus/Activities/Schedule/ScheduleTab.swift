@@ -14,6 +14,8 @@ struct ScheduleTab: View {
     @StateObject private var notificationsBuddy = NotificationsBuddy()
     @StateObject private var payBuddy = PayBuddy()
     
+    @State private var isErrorAlertPresented = false
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -30,17 +32,15 @@ struct ScheduleTab: View {
             }
             .macMinFrame(width: 260)
             .macMaxFrame(width: 500)
-            .alert(errorBinding: $notificationsBuddy.error)
+            .errorAlert(isPresented: $isErrorAlertPresented, error: notificationsBuddy.error, dismiss: notificationsBuddy.dismissError)
             .navigationTitle(Localizable.Schedule.name)
             .toolbar {
-                ToolbarItemGroup {
-                    NewScheduleToolbarButton(sheet: $sheet)
-                }
+                NewScheduleToolbarButton(sheet: $sheet)
             }
             .globalSheet($sheet)
         }
         .environmentObject(payBuddy)
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
     
     private var infoCard: some View {

@@ -57,4 +57,16 @@ struct ArrivalTimeEntry: TimelineEntry {
         ]
         return ArrivalTimeEntry(date: Date(), configuration: SelectRouteStopIntent(), data: .arrivals(arrivals))
     }
+    
+    static func noRoutesSelected(configuration: SelectRouteStopIntent) -> Self {
+        ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorNoRoutesSelected)
+    }
+    
+    static func failedToLoad(configuration: SelectRouteStopIntent) -> Self {
+        ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorFailedToLoad)
+    }
+    
+    static func upgradeRequired(configuration: SelectRouteStopIntent) -> Self {
+        ArrivalTimeEntry(date: Date(), configuration: configuration, data: .errorUpgradeRequired)
+    }
 }

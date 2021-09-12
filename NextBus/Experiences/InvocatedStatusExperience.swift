@@ -10,9 +10,11 @@ import Loadability
 import SwiftUI
 
 struct InvocatedStatusExperience: View, LoadableView {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
-    let experience: StatusExperience
+    let company: Company
+    let routeID: String
+    let stopID: String?
     
     @StateObject var loader = RoutesLoader()
     
@@ -21,7 +23,7 @@ struct InvocatedStatusExperience: View, LoadableView {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(Localizable.done) {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }
                 }
             }
@@ -29,8 +31,8 @@ struct InvocatedStatusExperience: View, LoadableView {
     
     @ViewBuilder func body(with companyRoutes: [CompanyRoutes]) -> some View {
         if let routes = loader.routes, let route = route(from: routes) {
-            if experience.stopID != nil {
-                InvocatedStatusExperienceStop(experience: experience, route: route)
+            if let stopID = stopID {
+                InvocatedStatusExperienceStop(route: route, stopID: stopID)
             } else {
                 BusDetail(route: route, navigationTitle: Localizable.appName)
             }
@@ -40,7 +42,7 @@ struct InvocatedStatusExperience: View, LoadableView {
     }
     
     private func route(from routes: [Route]) -> Route? {
-        routes.first { $0.company == experience.company && $0.id == experience.routeID }
+        routes.first { $0.company == company && $0.id == routeID }
     }
     
     func placeholder() -> some View {
@@ -49,8 +51,8 @@ struct InvocatedStatusExperience: View, LoadableView {
 }
 
 private struct InvocatedStatusExperienceStop: View, LoadableView {
-    let experience: StatusExperience
     let route: Route
+    let stopID: String
     
     @StateObject var loader = RouteStopsLoader()
     
@@ -69,7 +71,7 @@ private struct InvocatedStatusExperienceStop: View, LoadableView {
     }
     
     private func stop(from stops: [Stop]) -> Stop? {
-        stops.first { $0.id == experience.stopID }
+        stops.first { $0.id == stopID }
     }
     
     func placeholder() -> some View {

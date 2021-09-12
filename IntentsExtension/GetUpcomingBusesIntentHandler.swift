@@ -11,11 +11,6 @@ import Intents
 
 class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
     
-    private let store = Store()
-    private var routesLoader = RoutesLoader()
-    private var stopsLoader = RouteStopsLoader()
-    private var etaLoader = ETALoader()
-    
     private let formatter = RelativeDateTimeFormatter()
     
     override init() {
@@ -24,6 +19,8 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
     }
     
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Source
     
     func resolveSource(for intent: GetUpcomingBusesIntent, with completion: @escaping (INSourceResolutionResult) -> Void) {
         guard intent.source != .unknown else {
@@ -34,50 +31,63 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
         completion(.success(with: intent.source))
     }
     
+    // MARK: - Route
+    
     func provideRouteOptionsCollection(for intent: GetUpcomingBusesIntent, with completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
         switch intent.source {
         case .favorites:
-            DispatchQueue.global(qos: .userInteractive).async {
-                let favorites = self.store.favorites.load()
-                completion(INObjectCollection(items: favorites.map(\.route).map(\.intent)), nil)
-            }
+            provideFavoritesOptionsCollection(with: completion)
         case .recents:
-            DispatchQueue.global(qos: .userInteractive).async {
-                let recents = self.store.recents.load()
-                completion(INObjectCollection(items: recents.map(\.route).map(\.intent)), nil)
-            }
+            provideRecentsOptionsCollection(with: completion)
         default:
-            routesLoader = RoutesLoader()
-            routesLoader.getCachedData(key: .key) { [weak self] cached in
-                guard let self = self else { return }
-                if let cached = cached {
-                    self.sendRouteOptionsCollection(cached, completion: completion)
-                } else {
-                    self.routesLoader.createPublisher(key: .key)?
-                        .sink { loaderCompletion in
-                            switch loaderCompletion {
-                            case let .failure(error):
-                                completion(nil, error)
-                            default: return
-                            }
-                        } receiveValue: { companyRoutes in
-                            self.sendRouteOptionsCollection(companyRoutes, completion: completion)
-                        }
-                        .store(in: &self.cancellables)
-                }
+            provideRouteOptionsCollection(with: completion)
+        }
+    }
+    
+    private func provideFavoritesOptionsCollection(with completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
+        Task {
+            let favorites = await Store.shared.favorites.load()
+            let collection = INObjectCollection(items: favorites.map(\.route).map(\.intent))
+            completion(collection, nil)
+        }
+    }
+    
+    private func provideRecentsOptionsCollection(with completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
+        Task {
+            let recents = await Store.shared.recents.load()
+            let collection = INObjectCollection(items: recents.map(\.route).map(\.intent))
+            completion(collection, nil)
+        }
+    }
+    
+    private func provideRouteOptionsCollection(with completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
+        Task {
+            do {
+                let collection = try await routeCollection()
+                completion(collection, nil)
+            } catch {
+                completion(nil, error)
             }
         }
     }
     
-    func sendRouteOptionsCollection(_ companyRoutes: [CompanyRoutes], completion: @escaping (INObjectCollection<INRoute>?, Error?) -> Void) {
+    private func routeCollection() async throws -> INObjectCollection<INRoute>? {
+        let loader = await RoutesLoader()
+        guard let companyRoutes = await loader.load() else {
+            if let error = await loader.error {
+                throw error
+            }
+            return nil
+        }
+        
         var sections = [INObjectSection<INRoute>]()
         for company in companyRoutes where company.company.supportsETA {
             let routes = company.routes.map(\.intent)
             let section = INObjectSection(title: company.company.name, items: routes)
             sections.append(section)
         }
-        let collection = INObjectCollection(sections: sections)
-        completion(collection, nil)
+        
+        return INObjectCollection(sections: sections)
     }
     
     func resolveRoute(for intent: GetUpcomingBusesIntent, with completion: @escaping (INRouteResolutionResult) -> Void) {
@@ -89,29 +99,30 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
         completion(.success(with: route))
     }
     
+    // MARK: - Stop
+    
     func provideStopOptionsCollection(for intent: GetUpcomingBusesIntent, with completion: @escaping (INObjectCollection<INStop>?, Error?) -> Void) {
         guard let inRoute = intent.route, let route = Route.from(inRoute) else { return }
-        stopsLoader = RouteStopsLoader()
-        stopsLoader.getCachedData(key: route) { [weak self] cached in
-            guard let self = self else { return }
-            if let cached = cached {
-                let collection = INObjectCollection(items: cached.map(\.intent))
+        Task {
+            do {
+                let collection = try await stopCollection(for: route)
                 completion(collection, nil)
-            } else {
-                self.stopsLoader.createPublisher(key: route)?
-                    .sink { loaderCompletion in
-                        switch loaderCompletion {
-                        case let .failure(error):
-                            completion(nil, error)
-                        default: return
-                        }
-                    } receiveValue: { stops in
-                        let collection = INObjectCollection(items: stops.map(\.intent))
-                        completion(collection, nil)
-                    }
-                    .store(in: &self.cancellables)
+            } catch {
+                completion(nil, error)
             }
         }
+    }
+    
+    private func stopCollection(for route: Route) async throws -> INObjectCollection<INStop>? {
+        let loader = await RouteStopsLoader()
+        guard let stops = await loader.load(key: route) else {
+            if let error = await loader.error {
+                throw error
+            }
+            return nil
+        }
+        
+        return INObjectCollection(items: stops.map(\.intent))
     }
     
     func resolveStop(for intent: GetUpcomingBusesIntent, with completion: @escaping (INStopResolutionResult) -> Void) {
@@ -122,6 +133,8 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
         
         completion(.success(with: stop))
     }
+    
+    // MARK: - Handle
     
     func handle(intent: GetUpcomingBusesIntent, completion: @escaping (GetUpcomingBusesIntentResponse) -> Void) {
         guard let inRoute = intent.route,
@@ -134,34 +147,45 @@ class GetUpcomingBusesIntentHandler: NSObject, GetUpcomingBusesIntentHandling {
         }
         
         let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        userActivity.webpageURL = StatusExperience(company: route.company, routeID: route.id, stopID: stop.id).toURL()
+        userActivity.webpageURL = Experience.status(company: route.company, routeID: route.id, stopID: stop.id).toURL()
         
         let response = GetUpcomingBusesIntentResponse(code: .success, userActivity: userActivity)
+        response.route = inRoute
+        response.stop = inStop
+        
         let failure = GetUpcomingBusesIntentResponse(code: .failure, userActivity: userActivity)
         
-        let routeStop = RouteStop(route: route, stop: stop)
-        etaLoader = ETALoader()
-        etaLoader.createPublisher(key: routeStop)?
-//            .first()
-            .sink { publisherCompletion in
-                switch publisherCompletion {
-                case .failure:
-                    completion(failure)
-                default: return
-                }
-            } receiveValue: { etas in
-                guard !etas.isEmpty else {
+        Task {
+            do {
+                let etas = try await etas(for: route, from: stop)
+                guard let etas = etas, !etas.isEmpty else {
                     completion(failure)
                     return
                 }
-                response.route = inRoute
-                response.stop = inStop
+                
                 response.etas = etas.map(\.intent)
+                
                 if let next = etas.first?.date {
                     response.nextArrivalTime = self.formatter.string(for: next)
                 }
+                
                 completion(response)
+            } catch {
+                completion(failure)
             }
-            .store(in: &cancellables)
+        }
+    }
+    
+    private func etas(for route: Route, from stop: Stop) async throws -> [ETA]? {
+        let routeStop = RouteStop(route: route, stop: stop)
+        let loader = await ETALoader()
+        guard let etas = await loader.load(key: routeStop) else {
+            if let error = await loader.error {
+                throw error
+            }
+            return nil
+        }
+        
+        return etas
     }
 }

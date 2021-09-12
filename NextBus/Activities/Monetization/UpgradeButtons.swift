@@ -24,9 +24,14 @@ struct UpgradeButtons: View {
         if let packages = payBuddy.packages {
             HStack {
                 ForEach(packages) { package in
-                    UpgradeButton(name: package.product.localizedTitle,
-                                  price: package.localizedPriceString) {
-                        payBuddy.purchase(package)
+                    UpgradeButton(
+                        name: package.product.localizedTitle,
+                        price: package.localizedPriceString
+                    )
+                    {
+                        Task {
+                            await payBuddy.purchase(package)
+                        }
                     }
                 }
             }

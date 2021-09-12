@@ -32,7 +32,7 @@ struct ArrivalTimeView: View {
         switch widgetFamily {
         case .systemSmall:
             Small(source: entry.configuration.source, widgetStyle: entry.configuration.widgetStyle, arrivals: arrivals)
-        case .systemMedium, .systemLarge:
+        case .systemMedium, .systemLarge, .systemExtraLarge:
             MediumLarge(source: entry.configuration.source, widgetStyle: entry.configuration.widgetStyle,arrivals: arrivals)
         @unknown default:
             fatalError("Unknown Widget Family")
@@ -94,7 +94,7 @@ fileprivate struct Small: View {
     }
     
     private func shareURL(for arrival: ArrivalTimeEntry.RouteArrival) -> URL? {
-        StatusExperience(company: arrival.route.company, routeID: arrival.route.id, stopID: arrival.stop.id).toURL()
+        Experience.status(company: arrival.route.company, routeID: arrival.route.id, stopID: arrival.stop.id).toURL()
     }
     
     private func routeLabel(for arrival: ArrivalTimeEntry.RouteArrival) -> some View {
@@ -204,7 +204,7 @@ fileprivate struct MediumLarge: View {
     }
     
     private func shareURL(for arrival: ArrivalTimeEntry.RouteArrival) -> URL? {
-        StatusExperience(company: arrival.route.company, routeID: arrival.route.id, stopID: arrival.stop.id).toURL()
+        Experience.status(company: arrival.route.company, routeID: arrival.route.id, stopID: arrival.stop.id).toURL()
     }
     
     private func routeLabel(for arrival: ArrivalTimeEntry.RouteArrival) -> some View {

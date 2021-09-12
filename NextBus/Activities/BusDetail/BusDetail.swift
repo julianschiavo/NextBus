@@ -12,7 +12,7 @@ struct BusDetail: View {
     let route: Route
     var navigationTitle: String? = nil
     
-    @State private var reload = false
+    @State private var shouldRefresh = false
     @State private var sheet: Sheet?
     
     var body: some View {
@@ -32,7 +32,9 @@ struct BusDetail: View {
             header
             list
         }
-        .listStyle(InsetGroupedListStyle())
+        .refreshable {
+            shouldRefresh.toggle()
+        }
         .navigationTitle(navigationTitle ?? Localizable.routeName(route.localizedName))
         .navigationTitleDisplayMode(.inline)
         .globalSheet($sheet)
@@ -40,14 +42,8 @@ struct BusDetail: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 #if !os(watchOS)
                 ShareButton($sheet, route: route)
-                Button(action: reloadWithAnimation) {
-                    Image(systemName: "arrow.clockwise")
-                }
                 #endif
             }
-        }
-        .onChange(of: reload) { _ in
-            return
         }
     }
     
@@ -58,12 +54,6 @@ struct BusDetail: View {
     }
     
     private var list: some View {
-        StopList(route: route, reload: $reload)
-    }
-    
-    private func reloadWithAnimation() {
-        withAnimation {
-            reload.toggle()
-        }
+        StopList(route: route, shouldRefresh: $shouldRefresh)
     }
 }

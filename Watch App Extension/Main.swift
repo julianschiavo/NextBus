@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Main: View {
-    @StateObject private var store = Store()
+    @ObservedObject private var store = Store.shared
     
     var body: some View {
         VStack {

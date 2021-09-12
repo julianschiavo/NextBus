@@ -18,7 +18,7 @@ struct SelectRoutingCard: View {
             cancelButton
         }
         .padding(10)
-        .background(Color.secondaryBackground)
+        .background(.ultraThinMaterial)
         .roundedBorder(20)
         .padding(8)
     }
@@ -26,13 +26,16 @@ struct SelectRoutingCard: View {
     private var selectButton: some View {
         Button(action: onClick) {
             Text(Localizable.Directions.selectRouting)
-                .font(.headline, weight: .bold)
-                .foregroundColor(.primary)
-                .padding(15)
+//                .foregroundColor(.primary)
+//                .padding(15)
                 .frame(maxWidth: .infinity)
-                .background(Color.accent)
-                .cornerRadius(10)
+//                .background(Color.accent)
+//                .cornerRadius(10)
         }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+        .controlProminence(.increased)
+        .font(.headline, weight: .bold)
         .macCustomButton()
     }
     

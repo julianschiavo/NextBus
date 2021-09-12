@@ -10,26 +10,24 @@ import SwiftUI
 
 struct DeleteScheduleButton: View {
     @EnvironmentObject private var store: Store
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     let block: ScheduleBlock
     
     var body: some View {
         Group {
             Menu {
-                Button(action: delete) {
+                Button(role: .destructive, action: delete) {
                     Label(Localizable.delete, systemImage: "trash.fill")
-                        .foregroundColor(.red)
                 }
             } label: {
                 Label(Localizable.Schedule.delete, systemImage: "trash.fill")
-                    .foregroundColor(.red)
             }
         }
     }
     
     func delete() {
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
         store.schedule.delete(block)
     }
 }

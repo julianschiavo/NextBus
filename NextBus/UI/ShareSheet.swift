@@ -23,7 +23,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 }
 #elseif os(macOS)
 struct ShareSheet: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     let items: [Any]
     let activities: [Any]?
@@ -32,7 +32,7 @@ struct ShareSheet: View {
         VStack {
             _ShareSheet(items: items, activities: activities)
             Button(Localizable.done) {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }
         }
         .frame(minWidth: 200, minHeight: 200)
@@ -40,7 +40,7 @@ struct ShareSheet: View {
 }
 
 struct _ShareSheet: NSViewRepresentable {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     let items: [Any]
     let activities: [Any]?
@@ -50,7 +50,6 @@ struct _ShareSheet: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSView, context: Context) {
-        guard presentationMode.wrappedValue.isPresented else { return }
         let picker = NSSharingServicePicker(items: items)
         DispatchQueue.main.async {
             picker.show(relativeTo: .zero, of: nsView, preferredEdge: .minY)
@@ -69,7 +68,7 @@ struct _ShareSheet: NSViewRepresentable {
         }
         
         func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
-            parent.presentationMode.wrappedValue.dismiss()
+            parent.dismiss()
         }
     }
 }

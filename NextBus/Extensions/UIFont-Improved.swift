@@ -32,8 +32,8 @@ extension UIFont {
     
     var smallCaps: UIFont {
         let featureKeys: [UIFontDescriptor.FeatureKey: Int] = [
-            .featureIdentifier: kUpperCaseType,
-            .typeIdentifier: kUpperCaseSmallCapsSelector
+            .type: kUpperCaseType,
+            .selector: kUpperCaseSmallCapsSelector
         ]
         let attributes: [UIFontDescriptor.AttributeName: Any] = [
             .featureSettings: featureKeys

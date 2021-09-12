@@ -17,6 +17,7 @@ struct DashboardTab: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 25) {
+                    GreetingLabel()
                     ShortcutsGrid(currentTab: $currentTab)
                     UpgradeCard(sheet: $sheet)
                     #if os(iOS)
@@ -27,15 +28,17 @@ struct DashboardTab: View {
                     recentsCard
                 }
                 .padding(.horizontal, 12)
-                .padding(.top, 10)
+                .padding(.top, 50)
                 .padding(.bottom, 15)
             }
             .macMinFrame(width: 260)
             .macMaxFrame(width: 500)
-            .navigationTitle(Localizable.Dashboard.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
+//            .navigationTitle(Localizable.Dashboard.name)
             .globalSheet($sheet)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
     
     private var favoritesCard: some View {

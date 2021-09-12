@@ -11,7 +11,7 @@ import MapKit
 import SwiftUI
 
 struct RoutingPicker: View, LoadableView {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     let origin: Waypoint
     let destination: Waypoint
@@ -31,18 +31,20 @@ struct RoutingPicker: View, LoadableView {
                 .toolbar {
                     ToolbarItemGroup(placement: .confirmationAction) {
                         Button(Localizable.done) {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }
                     }
                 }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
     
     func body(with options: [Routing]) -> some View {
         List {
             ForEach(options) { directions in
-                group(for: directions)
+                Section {
+                    group(for: directions)
+                }
             }
         }
     }
@@ -50,7 +52,7 @@ struct RoutingPicker: View, LoadableView {
     private func group(for routing: Routing) -> some View {
         RoutingRowGroup(routing: routing) {
             selection = routing
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
     

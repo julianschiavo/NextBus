@@ -12,22 +12,21 @@ import CoreSpotlight
 import Foundation
 
 class SpotlightBuddy {
-    func index(routes: [Route]) {
+    func index(routes: [Route]) async {
         #if !os(watchOS)
         let items = routes.compactMap(item)
-        CSSearchableIndex.default().indexSearchableItems(items) { error in
-            if let error = error {
-                print("Indexing error: \(error.localizedDescription)")
-            } else {
-                print("\(items.count) Search items successfully indexed!")
-            }
+        do {
+            try await CSSearchableIndex.default().indexSearchableItems(items)
+            print("\(items.count) Search items successfully indexed!")
+        } catch {
+            print("Indexing error: \(error.localizedDescription)")
         }
         #endif
     }
     
     #if !os(watchOS)
     private func item(for route: Route) -> CSSearchableItem? {
-        guard let url = StatusExperience(company: route.company, routeID: route.id, stopID: nil).toURL() else { return nil }
+        guard let url = Experience.status(company: route.company, routeID: route.id, stopID: nil).toURL() else { return nil }
         let attributeSet = CSSearchableItemAttributeSet(contentType: .item)
         attributeSet.title = route.localizedName
         attributeSet.contentDescription = route.localizedName + " " + Localizable.to(route.localizedDestination)

@@ -22,7 +22,7 @@ struct StopDetailHeader: View {
     
     private var icon: some View {
         Image(systemName: route.company.category.iconName)
-            .font(.largeTitle)
+            .font(.largeTitle, weight: .black)
             .foregroundColor(route.company.color)
     }
     

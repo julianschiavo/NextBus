@@ -10,28 +10,30 @@ import Combine
 import Foundation
 import Loadability
 
-class StopsCache: SharedSerializableCache {
+@MainActor class StopsCache: SharedSerializableCache {
     typealias Key = Route
     typealias Value = [Stop]
     static let shared = SerializableCache<Route, [Stop]>.load(name: "RouteStops", folderURL: Store.appGroupFolderURL)
 }
 
-protocol RouteStopsPublisherBuilder {
+@MainActor
+protocol RouteStopsSpecificLoader {
     init(key: Route)
-    func create() -> AnyPublisher<[Stop], Error>
+    func load() async throws -> [Stop]
 }
 
 class RouteStopsLoader: CachedLoader {
     typealias Key = Route
-    typealias PublisherBuilder = RouteStopsPublisherBuilder
+    typealias SpecificLoader = RouteStopsSpecificLoader
     
     @Published var object: [Stop]?
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     var cache = StopsCache.self
     var cancellable: AnyCancellable?
-
-    private var builder: RouteStopsPublisherBuilder?
+    var task: Task<[Stop], Error>?
+    
+    private var loader: SpecificLoader?
     private var currentRoute: Route?
     
     required init() {
@@ -39,26 +41,26 @@ class RouteStopsLoader: CachedLoader {
     }
     
     private func createVariantIfNeeded(route: Route) {
-        guard builder == nil || currentRoute != route else { return }
+        guard loader == nil || currentRoute != route else { return }
         
-        let builderType: RouteStopsPublisherBuilder.Type
+        let loaderType: SpecificLoader.Type
         switch route.company {
         case .gmb:
-            builderType = GMB.RouteStopsPublisherBuilder.self
+            loaderType = GMB.RouteStopsLoader.self
         case .ctb, .nwfb:
-            builderType = CTBNWFB.RouteStopsPublisherBuilder.self
+            loaderType = CTBNWFB.RouteStopsLoader.self
         case .nlb:
-            builderType = NLB.RouteStopsPublisherBuilder.self
+            loaderType = NLB.RouteStopsLoader.self
         default:
-            builderType = GOV.RouteStopsPublisherBuilder.self
+            loaderType = GOV.RouteStopsLoader.self
         }
         
-        builder = builderType.init(key: route)
+        loader = loaderType.init(key: route)
         currentRoute = route
     }
     
-    func createPublisher(key route: Route) -> AnyPublisher<[Stop], Error>? {
+    func loadData(key route: Route) async throws -> [Stop] {
         createVariantIfNeeded(route: route)
-        return builder?.create()
+        return try await loader?.load() ?? []
     }
 }

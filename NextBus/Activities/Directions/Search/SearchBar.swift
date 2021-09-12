@@ -82,7 +82,7 @@ struct SearchBar: View {
         }
         .padding(5)
         .cornerRadius(10)
-        .textFieldStyle(PlainTextFieldStyle())
+        .textFieldStyle(.plain)
     }
 }
 

@@ -35,21 +35,21 @@ struct DirectionsMap: ViewRepresentable {
     }
     
     func updateView(_ mapView: MKMapView, context: Context) {
-        DispatchQueue.main.async {
-            focus(mapView: mapView)
-            if paths.isEmpty {
-                mapView.removeAnnotations(mapView.annotations)
-                mapView.removeOverlays(mapView.overlays)
-                mapView.addAnnotations(annotations)
-                loadPath(view: mapView)
-                #if os(iOS)
-                loadStopCircles(view: mapView)
-                #endif
+        focus(mapView: mapView)
+        if paths.isEmpty {
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.removeOverlays(mapView.overlays)
+            mapView.addAnnotations(annotations)
+            Task {
+                await loadPath(view: mapView)
             }
+            #if os(iOS)
+            loadStopCircles(view: mapView)
+            #endif
         }
     }
     
-    private func focus(mapView: MKMapView) {
+    @MainActor private func focus(mapView: MKMapView) {
         if let track = focusedTrack, let path = paths.first(where: { $0.track.id == track.id }) {
             #if os(iOS)
             mapView.setVisibleMapRect(mapRect(for: path.polylines), edgePadding: UIEdgeInsets(top: 60, left: 60, bottom: 200, right: 60), animated: true)
@@ -70,30 +70,26 @@ struct DirectionsMap: ViewRepresentable {
         return rect
     }
     
-    private func loadPath(view: MKMapView) {
+    private func loadPath(view: MKMapView) async {
         guard let routing = routing, !isLoadingPath else { return }
         isLoadingPath = true
-        pathLoader.createPublisher(key: routing)?
-            .sink { _ in
-                return
-            } receiveValue: { paths in
-                isLoadingPath = false
-                
-                let paths = paths
-                    .map { path -> RoutingPath in
-                        path.polylines = path.polylines.map { polyline -> MKPolyline in
-                            polyline.title = String(path.track.isWalking)
-                            polyline.subtitle = path.track.company?.rawValue
-                            return polyline
-                        }
-                        return path
-                    }
-                self.paths = paths
-                
-                let polylines = paths.flatMap(\.polylines)
-                view.addOverlays(polylines, level: .aboveRoads)
+        
+        guard let paths = await pathLoader.load(key: routing) else { return }
+        isLoadingPath = false
+        
+        let routingPaths = paths
+            .map { path -> RoutingPath in
+                path.polylines = path.polylines.map { polyline -> MKPolyline in
+                    polyline.title = String(path.track.isWalking)
+                    polyline.subtitle = path.track.company?.rawValue
+                    return polyline
+                }
+                return path
             }
-            .store(in: &pathLoader.cancellables)
+        self.paths = routingPaths
+        
+        let polylines = routingPaths.flatMap(\.polylines)
+        view.addOverlays(polylines, level: .aboveRoads)
     }
     
     #if os(iOS)
@@ -140,7 +136,9 @@ struct DirectionsMap: ViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-            parent.focus(mapView: mapView)
+            Task {
+                await parent.focus(mapView: mapView)
+            }
         }
         
         #if os(iOS)

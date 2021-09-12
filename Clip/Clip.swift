@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct Clip: App {
     
-    @StateObject private var store = Store()
+    @ObservedObject private var store = Store.shared
     
     @State private var experience: Experience?
     
@@ -25,46 +25,21 @@ struct Clip: App {
                 switch experience {
                 case .list:
                     RoutesList()
-                case let .status(status):
-                    InvocatedStatusExperience(experience: status)
+                case let .status(company, routeID, stopID):
+                    InvocatedStatusExperience(company: company, routeID: routeID, stopID: stopID)
                 default:
                     EmptyView()
                 }
             }
             .environmentObject(store)
-            .navigationViewStyle(StackNavigationViewStyle())
+            .navigationViewStyle(.stacks)
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { userActivity in
                 guard let url = userActivity.webpageURL else { return }
-                handleInvocation(url: url)
+                experience = Experience.for(url: url)
             }
             .onOpenURL { url in
-                handleInvocation(url: url)
+                experience = Experience.for(url: url)
             }
         }
-    }
-    
-    private func handleInvocation(url: URL) {
-        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-              let method = components.path.split(separator: "/").first else { return }
-        
-        switch method {
-        case "list":
-            experience = .list
-        case "status":
-            experience = createStatusExperience(components: components) ?? .list
-        default:
-            return
-        }
-    }
-    
-    private func createStatusExperience(components: URLComponents) -> Experience? {
-        guard let queryItems = components.queryItems,
-              let companyItem = queryItems[safe: 0]?.value,
-              let company = Company(rawValue: companyItem),
-              let routeID = queryItems[safe: 1]?.value else { return nil }
-        
-        let stopID = queryItems[safe: 2]?.value
-        let status = StatusExperience(company: company, routeID: routeID, stopID: stopID)
-        return .status(status)
     }
 }

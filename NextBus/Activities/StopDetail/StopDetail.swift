@@ -19,7 +19,7 @@ struct StopDetail: View {
     @State private var sheet: Sheet?
     
     @State private var reload = false
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     init(route: Route, stop: Stop, navigationTitle: String? = nil) {
         self.route = route
@@ -41,18 +41,12 @@ struct StopDetail: View {
         .onAppear {
             store.recents.add(route: route, stop: stop)
         }
-        .onChange(of: reload) { _ in
-            return
-        }
         .onReceive(timer) { _ in
             reloadWithAnimation()
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 ShareButton($sheet, route: route, stop: stop)
-                Button(action: reloadWithAnimation) {
-                    Image(systemName: "arrow.clockwise")
-                }
             }
         }
         .globalSheet($sheet)

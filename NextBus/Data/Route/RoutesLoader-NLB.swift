@@ -1,5 +1,5 @@
 //
-//  RoutesPublisherBuilder-NLB.swift
+//  RoutesLoader-NLB.swift
 //  NextBus
 //
 //  Created by Julian Schiavo on 10/1/2021.
@@ -10,20 +10,15 @@ import Combine
 import Foundation
 
 extension NLB {
-    class RoutesPublisherBuilder: PublisherBuilder {
+    class RoutesLoader: SpecificLoader {
         required init(key category: Category) {
             
         }
         
-        func create() -> AnyPublisher<[Route], Error> {
+        func load() async throws -> [Route] {
             let request = createRequest()
-            return URLSession.shared
-                .dataTaskPublisher(for: request)
-                .retry(3)
-                .tryMap { data, response in
-                    try self.decode(data)
-                }
-                .eraseToAnyPublisher()
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return try await decode(data)
         }
         
         private func createRequest() -> URLRequest {
@@ -36,10 +31,13 @@ extension NLB {
             return URLRequest(url: url)
         }
         
-        private func decode(_ data: Data) throws -> [Route] {
-            let decoder = JSONDecoder()
-            let rawRoutes = try decoder.decode(NLB.RawRoute.self, from: data)
-            return rawRoutes.routes
+        private func decode(_ data: Data) async throws -> [Route] {
+            let task = Task { () -> [Route] in
+                let decoder = JSONDecoder()
+                let rawRoutes = try decoder.decode(NLB.RawRoute.self, from: data)
+                return rawRoutes.routes
+            }
+            return try await task.value
         }
     }
 }

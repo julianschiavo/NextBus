@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Localizable = L10n.Localizable
+
 enum LanguageCode: CaseIterable {
     case english
     case simplifiedChinese

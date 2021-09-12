@@ -12,13 +12,14 @@ import Loadability
 import MapKit
 import SwiftUI
 
+@MainActor
 class LocationSearchBuddy: NSObject, ObservableObject, ThrowsErrors, MKLocalSearchCompleterDelegate {
     
     @Published var searchQuery = ""
     @Published var completions = [MKLocalSearchCompletion]()
     @Published var mapItem: MKMapItem?
     @Published var isSearching = false
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     private let completer = MKLocalSearchCompleter()
     private var cancellables = Set<AnyCancellable>()
@@ -30,22 +31,26 @@ class LocationSearchBuddy: NSObject, ObservableObject, ThrowsErrors, MKLocalSear
         completer.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.3193, longitude: 114.1694), latitudinalMeters: 28000, longitudinalMeters: 28000)
         completer.resultTypes = [.address, .pointOfInterest]
         
-        $searchQuery
-            .sink { [weak self] query in
-                guard let self = self else { return }
-                self.search?.cancel()
-                self.mapItem = nil
-                self.isSearching = false
-                self.completer.queryFragment = query
+        Task {
+            await MainActor.run {
+                $searchQuery
+                    .sink { [weak self] query in
+                        guard let self = self else { return }
+                        self.search?.cancel()
+                        self.mapItem = nil
+                        self.isSearching = false
+                        self.completer.queryFragment = query
+                    }
+                    .store(in: &cancellables)
             }
-            .store(in: &cancellables)
+        }
     }
     
     func update(fragment: String) {
         completer.queryFragment = fragment
     }
     
-    func search(completion: MKLocalSearchCompletion) {
+    func search(completion: MKLocalSearchCompletion) async {
         completer.queryFragment = ""
         completions = []
         search?.cancel()
@@ -53,18 +58,19 @@ class LocationSearchBuddy: NSObject, ObservableObject, ThrowsErrors, MKLocalSear
         isSearching = true
         
         let request = MKLocalSearch.Request(completion: completion)
-        search = MKLocalSearch(request: request)
-        search?.start { [weak self] response, error in
-            guard let response = response else {
-                self?.isSearching = false
-                self?.catchError(error)
-                return
+        let search = MKLocalSearch(request: request)
+        self.search = search
+        
+        do {
+            let response = try await search.start()
+            withAnimation {
+                isSearching = false
+                mapItem = response.mapItems.first
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                withAnimation {
-                    self?.isSearching = false
-                    self?.mapItem = response.mapItems.first
-                }
+        } catch {
+            withAnimation {
+                isSearching = false
+                catchError(error)
             }
         }
     }

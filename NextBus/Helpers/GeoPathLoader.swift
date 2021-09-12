@@ -13,53 +13,55 @@ import MapKit
 
 class GeoPathLoader: Loader {
     @Published var object: [RoutingPath]?
-    @Published var error: IdentifiableError?
+    @Published var error: Error?
     
     var cancellable: AnyCancellable?
     var cancellables = Set<AnyCancellable>()
+    var task: Task<[RoutingPath], Error>?
     
     required init() {
         
     }
     
-    func createPublisher(key routing: Routing) -> AnyPublisher<[RoutingPath], Error>? {
-        Just(routing.tracks)
-            .flatMap { tracks -> AnyPublisher<[RoutingPath], Error> in
-                let publishers = tracks
-                    .flatMap { track in
-                        self.requests(for: track)
-                            .map { request in
-                                self.createPathPublisher(for: track, request: request)
-                            }
+    func loadData(key routing: Routing) async throws -> [RoutingPath] {
+        try await withThrowingTaskGroup(of: (track: RoutingTrack, polyline: MKPolyline).self) { group -> [RoutingPath] in
+            let tracks = routing.tracks
+            
+            for track in tracks {
+                let task = Task { () -> [MKDirections.Request] in
+                    self.requests(for: track)
+                }
+                let requests = await task.value
+                for request in requests {
+                    group.async {
+                        try await self.path(for: track, request: request)
                     }
-                return Publishers.MergeMany(publishers)
-                    .collect()
-                    .map { paths in
-                        Dictionary(grouping: paths, by: \.track)
-                            .map { track, path in
-                                RoutingPath(track: track, polylines: path.map(\.polyline))
-                            }
-                    }
-                    .eraseToAnyPublisher()
+                }
             }
-            .eraseToAnyPublisher()
+            
+            var paths = [(track: RoutingTrack, polyline: MKPolyline)]()
+
+            for try await path in group {
+                paths.append(path)
+            }
+            
+            return Dictionary(grouping: paths, by: \.track)
+                .map { track, path in
+                    RoutingPath(track: track, polylines: path.map(\.polyline))
+                }
+        }
     }
     
-    func createPathPublisher(for track: RoutingTrack, request: MKDirections.Request) -> AnyPublisher<(track: RoutingTrack, polyline: MKPolyline), Error> {
-        Future { promise in
-            let directions = MKDirections(request: request)
-            directions.calculate { response, error in
-                guard let route = response?.routes.first else {
-                    promise(.failure(error ?? Errors.unknown))
-                    return
-                }
-                
-                let polyline = route.polyline
-                let response = (track: track, polyline: polyline)
-                promise(.success(response))
-            }
+    private func path(for track: RoutingTrack, request: MKDirections.Request) async throws -> (track: RoutingTrack, polyline: MKPolyline) {
+        let directions = MKDirections(request: request)
+        let response = try await directions.calculate()
+        
+        guard let route = response.routes.first else {
+            throw error ?? Errors.unknown
         }
-        .eraseToAnyPublisher()
+        
+        let polyline = route.polyline
+        return (track: track, polyline: polyline)
     }
     
     private func requests(for track: RoutingTrack) -> [MKDirections.Request] {

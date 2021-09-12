@@ -93,12 +93,17 @@ struct RoutingRow: View {
     private var goButton: some View {
         Button(action: select) {
             Text(Localizable.Directions.go.uppercased())
-                .font(.largeHeadline, weight: .heavy)
-                .foregroundColor(.black)
-                .padding(15)
-                .background(Color.green)
-                .cornerRadius(20)
+//                .font(.largeHeadline, weight: .heavy)
+//                .foregroundColor(.black)
+//                .padding(15)
+//                .background(Color.green)
+//                .cornerRadius(20)
         }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+        .font(.largeHeadline, weight: .heavy)
+        .foregroundColor(.black)
+        
         .macCustomButton()
     }
 }

@@ -42,12 +42,12 @@ struct RouteArrivalRow<Menu: View>: View {
     }
     
     @ViewBuilder private var menu: some View {
+        ShareButton($sheet, route: routeStop.route, stop: routeStop.stop)
+        extraMenu
         FavoritesButton(route: routeStop.route, stop: routeStop.stop)
         if store.recents.contains(routeStop) {
             RemoveRecentButton(route: routeStop.route, stop: routeStop.stop)
         }
-        ShareButton($sheet, route: routeStop.route, stop: routeStop.stop)
-        extraMenu
     }
     
     private var name: some View {

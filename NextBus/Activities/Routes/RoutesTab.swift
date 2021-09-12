@@ -14,6 +14,6 @@ struct RoutesTab: View {
             RoutesList()
                 .navigationTitle(Localizable.Routes.name)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
 }

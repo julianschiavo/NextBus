@@ -1,5 +1,5 @@
 //
-//  ETAPublisherBuilder-KMB.swift
+//  ETALoader-KMB.swift
 //  NextBus
 //
 //  Created by Julian Schiavo on 11/1/2021.
@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 extension KMB {
-    class ETAPublisherBuilder: PublisherBuilder, ETALoader.PublisherBuilder {
+    class ETALoader: SpecificLoader, ETASpecificLoader {
         private let route: Route
         private let stop: Stop
         
@@ -19,15 +19,10 @@ extension KMB {
             self.stop = routeStop.stop
         }
         
-        func create() -> AnyPublisher<[ETA], Error> {
+        func load() async throws -> [ETA] {
             let request = createRequest()
-            return URLSession.shared
-                .dataTaskPublisher(for: request)
-                .retry(3)
-                .tryMap { data, response in
-                    try self.decode(data)
-                }
-                .eraseToAnyPublisher()
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return try await decode(data)
         }
         
         private func createRequest() -> URLRequest {
@@ -42,11 +37,14 @@ extension KMB {
             return URLRequest(url: url)
         }
         
-        private func decode(_ data: Data) throws -> [ETA] {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601FractionalSeconds
-            let rawETA = try decoder.decode([_ETA].self, from: data)
-            return rawETA.map(ETA.from)
+        private func decode(_ data: Data) async throws -> [ETA] {
+            let task = Task { () -> [ETA] in
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601FractionalSeconds
+                let rawETA = try decoder.decode([_ETA].self, from: data)
+                return rawETA.map(ETA.from)
+            }
+            return try await task.value
         }
     }
 }

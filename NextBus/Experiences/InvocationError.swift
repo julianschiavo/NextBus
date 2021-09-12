@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct InvocationError: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(spacing: 30) {
             message
             Button {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             } label: {
                 continueButton
             }

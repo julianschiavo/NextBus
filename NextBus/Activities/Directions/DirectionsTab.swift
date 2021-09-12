@@ -24,6 +24,6 @@ struct DirectionsTab: View {
         }
         .environmentObject(locationTracker)
         .globalSheet($sheet)
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stacks)
     }
 }

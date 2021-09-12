@@ -33,7 +33,7 @@ struct DirectionsStepsPager: View {
                 .layoutPriority(1)
             pager
                 .padding(10)
-                .background(Color.secondaryBackground)
+                .background(.ultraThinMaterial)
                 .roundedBorder(20)
             changeRoutingButton
         }
@@ -47,16 +47,19 @@ struct DirectionsStepsPager: View {
                     DirectionsStep(track: track)
                     #if os(iOS)
                     Spacer()
-                        .frame(minHeight: 50)
+                        .frame(minHeight: 50, maxHeight: .infinity)
                     #endif
                 }
+                .frame(maxHeight: .infinity)
                 .tag(track)
                 .tabItem {
                     Text(track.name)
                 }
+                .frame(maxHeight: .infinity)
             }
         }
         .tabViewStyle(PageTabViewStyle())
+        .frame(maxHeight: .infinity)
         .onChange(of: selectedTrack) { track in
             focusedTrack = track
         }
@@ -69,7 +72,7 @@ struct DirectionsStepsPager: View {
                 .foregroundColor(.primary)
                 .padding(12)
                 .frame(maxWidth: .infinity)
-                .background(Color.secondaryBackground)
+                .background(.ultraThinMaterial)
                 .roundedBorder(12)
         }
         .macCustomButton()

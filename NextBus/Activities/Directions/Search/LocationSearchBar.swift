@@ -16,20 +16,15 @@ struct LocationSearchBar: View {
     var onSearch: () -> Void = { }
     
     @State private var text = ""
-    @State private var isFocused = false
     @State private var wasCompletionTapped = false
     
     @StateObject private var searchBuddy = LocationSearchBuddy()
     
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
-        VStack {
-            SearchBar(text: $text, placeholder: placeholder, isFocused: $isFocused, onEnter: onSearch)
-                .overlay(
-                    CurrentLocationButton(searchText: $text, mapItem: $mapItem)
-                        .aligned(to: .trailing)
-                        .padding(15)
-                        .padding(.trailing, text.isEmpty ? 0 : 25)
-                )
+        VStack(spacing: 0) {
+            searchBar
             if isFocused, !wasCompletionTapped, !searchBuddy.completions.isEmpty {
                 completions
             }
@@ -38,7 +33,8 @@ struct LocationSearchBar: View {
                     .padding(6)
             }
         }
-        .background(Color.tertiaryBackground)
+        .background(.regularMaterial)
+        .roundedBorder(8)
 //        .alert(errorBinding: $searchBuddy.error)
         .onChange(of: text) { query in
             if wasCompletionTapped {
@@ -58,17 +54,35 @@ struct LocationSearchBar: View {
         }
     }
     
+    private var searchBar: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .font(.largeHeadline, weight: .bold)
+            TextField(placeholder, text: $text)
+            CurrentLocationButton(searchText: $text, mapItem: $mapItem)
+        }
+        .font(.largeHeadline)
+        .padding(8)
+        .submitLabel(.search)
+        .focused($isFocused)
+    }
+    
     private var completions: some View {
         List {
             ForEach(searchBuddy.completions) { completion in
                 LocationCompletionRow(completion: completion) {
                     wasCompletionTapped = true
                     text = completion.title
-                    searchBuddy.search(completion: completion)
+                    Task {
+                        await searchBuddy.search(completion: completion)
+                    }
                 }
             }
-            .listRowBackground(Color.tertiaryBackground)
+            .listRowBackground(Color.clear)
         }
+        .background(Material.ultraThin)
+        .listRowBackground(Color.clear)
         .frame(maxHeight: 200)
+        .listStyle(.plain)
     }
 }

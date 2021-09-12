@@ -13,7 +13,6 @@ struct GreetingLabel: View {
         Label(text, systemImage: iconName)
             .font(.title2, weight: .bold)
             .alignedHorizontally(to: .leading)
-            .padding(.horizontal, 5)
     }
     
     private var text: String {

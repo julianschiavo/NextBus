@@ -9,13 +9,19 @@
 import SwiftUI
 
 struct NewScheduleButton: View {
+    @EnvironmentObject private var payBuddy: PayBuddy
+    
     @Binding var sheet: Sheet?
-    let route: Route
-    let stop: Stop
+    var route: Route?
+    var stop: Stop?
     
     var body: some View {
         Button {
-            sheet = .newSchedule(route: route, stop: stop)
+            if payBuddy.hasPlus {
+                sheet = .newSchedule(route: route, stop: stop)
+            } else {
+                sheet = .upgrade
+            }
         } label: {
             Label(Localizable.Schedule.new, systemImage: "calendar")
                 .alignedHorizontally(to: .leading)

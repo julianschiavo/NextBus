@@ -27,7 +27,7 @@ struct RoutesList: View, LoadableView {
                 }
             }
         }
-        .listStyle(CarouselListStyle())
+        .listStyle(.carousel)
     }
     
     func placeholder() -> some View {
