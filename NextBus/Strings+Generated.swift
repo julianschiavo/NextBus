@@ -43,6 +43,8 @@ internal enum L10n {
     internal static let done = L10n.tr("Localizable", "DONE")
     /// Ends
     internal static let ends = L10n.tr("Localizable", "ENDS")
+    /// Every Day
+    internal static let everyday = L10n.tr("Localizable", "EVERYDAY")
     /// from %@
     internal static func from(_ p1: Any) -> String {
       return L10n.tr("Localizable", "FROM %@", String(describing: p1))
@@ -77,6 +79,8 @@ internal enum L10n {
     internal static let removeFavorite = L10n.tr("Localizable", "REMOVE_FAVORITE")
     /// Remove from Recents
     internal static let removeRecent = L10n.tr("Localizable", "REMOVE_RECENT")
+    /// Repeats
+    internal static let repeats = L10n.tr("Localizable", "REPEATS")
     /// Route
     internal static let route = L10n.tr("Localizable", "ROUTE")
     /// Route %@
@@ -95,6 +99,8 @@ internal enum L10n {
     internal static let settings = L10n.tr("Localizable", "SETTINGS")
     /// Share
     internal static let share = L10n.tr("Localizable", "SHARE")
+    /// Some Days
+    internal static let someDays = L10n.tr("Localizable", "SOME_DAYS")
     /// Starts
     internal static let starts = L10n.tr("Localizable", "STARTS")
     /// Stop

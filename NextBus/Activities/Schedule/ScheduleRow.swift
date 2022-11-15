@@ -15,11 +15,13 @@ struct ScheduleRow: View {
     
     var body: some View {
         Card(block.name) {
-            RouteArrivalRow(routeStop: RouteStop(route: block.route, stop: block.stop)) {
-                EditScheduleButton {
-                    sheet = .editSchedule(block: block)
+            ForEach(block.routeStops) { routeStop in
+                RouteArrivalRow(routeStop: routeStop) {
+                    EditScheduleButton {
+                        sheet = .editSchedule(block: block)
+                    }
+                    DeleteScheduleButton(block: block)
                 }
-                DeleteScheduleButton(block: block)
             }
         }
     }

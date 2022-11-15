@@ -18,14 +18,14 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     func didReceive(_ notification: UNNotification) {
         let userInfo = notification.request.content.userInfo
         let decoder = JSONDecoder()
-        guard let encodedRoute = userInfo["route"] as? Data,
-              let route = try? decoder.decode(Route.self, from: encodedRoute),
-              let encodedStop = userInfo["stop"] as? Data,
-              let stop = try? decoder.decode(Stop.self, from: encodedStop) else { return }
+        guard let encodedRouteStops = userInfo["routeStops"] as? Data,
+              let routeStops = try? decoder.decode([RouteStop].self, from: encodedRouteStops),
+              let routeStop = routeStops.first
+        else { return }
         
         let info = SimpleBusInfo()
-        info.route = route
-        info.stop = stop
+        info.route = routeStop.route
+        info.stop = routeStop.stop
         
         let view = SimpleBusInfoView(info: info)
         let hostingController = UIHostingController(rootView: view)
@@ -35,13 +35,13 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     private func attachChild(_ viewController: UIViewController) {
         addChild(viewController)
         
-        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 350).isActive = true
         
         if let subview = viewController.view {
             view.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
             
-                // Set the child controller's view to be the exact same size as the parent controller's view.
+            // Set the child controller's view to be the exact same size as the parent controller's view.
             subview.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
             subview.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
             subview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

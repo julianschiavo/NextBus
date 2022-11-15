@@ -13,7 +13,7 @@ struct ScheduleInfoCard: View {
         Card {
             Text(Localizable.Schedule.description)
                 .padding(.vertical, 8)
-                .padding(.horizontal, 12)
+                .padding(.horizontal)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .layoutPriority(1)
                 .background(Color.secondaryBackground)

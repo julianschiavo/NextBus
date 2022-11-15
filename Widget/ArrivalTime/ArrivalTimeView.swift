@@ -122,7 +122,7 @@ fileprivate struct Small: View {
     }
     
     private func destinationLabel(for arrival: ArrivalTimeEntry.RouteArrival) -> some View {
-        Text("to " + arrival.route.localizedDestination)
+        Text(Localizable.to(arrival.route.localizedDestination))
             .font(.caption)
             .foregroundColor(foregroundColor(for: arrival).opacity(0.8))
     }
@@ -217,7 +217,7 @@ fileprivate struct MediumLarge: View {
     }
     
     private func infoLabel(for arrival: ArrivalTimeEntry.RouteArrival) -> some View {
-        (Text(arrival.stop.localizedName) + (Text(" to ") + Text(arrival.route.localizedDestination)).fontWeight(.bold))
+        (Text(arrival.stop.localizedName + " ") + Text(Localizable.to(arrival.route.localizedDestination)).fontWeight(.bold))
             .font(.caption)
             .foregroundColor(foregroundColor(for: arrival).opacity(0.8))
     }
@@ -227,7 +227,7 @@ fileprivate struct MediumLarge: View {
             Text(date, style: .time)
                 .font(.largeHeadline, weight: .bold, withMonospacedDigits: true)
         } else {
-            Text("No arrival time")
+            Text(Localizable.Widgets.ArrivalTime.notAvailable)
                 .font(.footnote, weight: .medium)
         }
     }

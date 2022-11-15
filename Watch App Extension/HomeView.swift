@@ -38,14 +38,14 @@ enum ViewType: String, Identifiable, CaseIterable {
         }
     }
     
-    var view: some View {
+    @ViewBuilder var view: some View {
         switch self {
         case .allRoutes:
-            return Erase { AllRoutesView() }
+            return AllRoutesView()
         case .favorites:
-            return Erase { FavoritesView() }
+            return FavoritesView()
         case .search:
-            return Erase { SearchView() }
+            return SearchView()
         }
     }
 }

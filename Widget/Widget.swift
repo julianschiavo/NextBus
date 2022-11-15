@@ -9,13 +9,13 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import Purchases
+import RevenueCat
 
 @main
 struct Widget: WidgetBundle {
     init() {
         WidgetCenter.shared.reloadAllTimelines()
-        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "bKFVCyRdhomurfBWXgxdRbZOsjkkGjlF", appUserID: nil, observerMode: false, userDefaults: .shared)
     }
     

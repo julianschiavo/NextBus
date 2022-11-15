@@ -22,6 +22,7 @@ struct ScheduleNotificationsCard: View {
                 Label {
                     VStack(alignment: .leading) {
                         Text(Localizable.Schedule.enableNotificationsTitle)
+                            .bold()
                         Text(Localizable.Schedule.enableNotificationsDescription)
                             .font(.callout)
                             .foregroundColor(.secondary)

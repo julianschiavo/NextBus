@@ -19,13 +19,6 @@ struct RoutesList: View, LoadableView {
     
     var body: some View {
         loaderView
-            .toolbar {
-                ToolbarItem(placement: .keyboard) {
-                    Button("FUVFUFUDFUF") {
-                        
-                    }
-                }
-            }
     }
     
     func body(with companyRoutes: [CompanyRoutes]) -> some View {
@@ -41,32 +34,26 @@ struct RoutesList: View, LoadableView {
         .macMinFrame(width: 260)
         .macMaxFrame(width: 500)
         .listStyle(.sidebar)
-        .searchable(text: $searchText, prompt: Localizable.search)
         .onChange(of: searchText) { _ in
             Task {
                 await updateRoutes()
             }
         }
         .toolbar {
-            ToolbarItem(placement: .keyboard) {
-                Button("FUVFUFUDFUF") {
-                    
+            ToolbarItemGroup(placement: .keyboard) {
+                ForEach(["A", "B", "M", "N", "P", "R", "S", "X"], id: \.self) { letter in
+                    Button(letter) {
+                        searchText.append(letter)
+                    }
                 }
             }
-//            ToolbarItemGroup(placement: .keyboard) {
-//                ForEach(["A", "B", "M", "N", "P", "R", "S", "X"], id: \.self) { letter in
-//                    Button(letter) {
-//                        searchText.append(letter)
-//                    }
-//                }
-//            }
         }
         .task {
             await updateRoutes()
         }
-//        .navigationBarSearch($searchText) {
-//            RouteSearchToolbar(searchText: $searchText)
-//        }
+        .navigationBarSearch($searchText) {
+            RouteSearchToolbar(searchText: $searchText)
+        }
     }
     
     private func sectionList(for group: CompanyRoutes) -> some View {
@@ -108,7 +95,7 @@ struct RoutesList: View, LoadableView {
                     Text(company.name)
                 },
                 icon: {
-                    Image(systemName: company.category.iconName)
+                    company.category.image
                         .foregroundColor(company.color)
                 }
             )
@@ -138,7 +125,7 @@ struct RoutesList: View, LoadableView {
         guard let companyRoutes = loader.object else { return }
         await withTaskGroup(of: Void.self) { group in
             for cGroup in companyRoutes {
-                group.async {
+                group.addTask {
                     let routes = await searchText.isEmpty ? cGroup.routes : filteredRoutes(cGroup.routes)
                     DispatchQueue.main.async {
                         self.loader.filteredRoutes[cGroup.company] = routes

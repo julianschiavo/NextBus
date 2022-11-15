@@ -22,7 +22,7 @@ struct RoutingTrackRow: View {
     @ViewBuilder private var name: some View {
         if let company = track.company {
             HStack(spacing: 4) {
-                Image(systemName: company.category.iconName)
+                company.category.image
                 Text(track.name.isEmpty ? company.name : track.name)
             }
             .font(.callout, weight: .bold)

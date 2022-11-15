@@ -23,7 +23,7 @@ extension GMB {
         private func loadRoutes(unknownRoutes: [UnknownRoute]) async throws -> [Route] {
             try await withThrowingTaskGroup(of: [Route].self) { group in
                 unknownRoutes.forEach { unknownRoute in
-                    group.async {
+                    group.addTask {
                         let request = await self.createRequest(route: unknownRoute)
                         let (data, _) = try await URLSession.shared.data(for: request)
                         var routes = try await self.decode(data)

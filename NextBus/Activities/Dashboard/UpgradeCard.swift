@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct UpgradeCard: View {
+    @EnvironmentObject private var payBuddy: PayBuddy
+    
     @AppStorage("UpgradeCardDismissed") private var wasDismissed = false
     @Binding var sheet: Sheet?
-    
-    @StateObject private var payBuddy = PayBuddy()
     
     var body: some View {
         if !payBuddy.hasPlus, !wasDismissed {

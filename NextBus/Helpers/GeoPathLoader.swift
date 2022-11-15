@@ -33,7 +33,7 @@ class GeoPathLoader: Loader {
                 }
                 let requests = await task.value
                 for request in requests {
-                    group.async {
+                    group.addTask {
                         try await self.path(for: track, request: request)
                     }
                 }

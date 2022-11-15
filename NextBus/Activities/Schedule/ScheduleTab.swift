@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct ScheduleTab: View {
+    @EnvironmentObject private var payBuddy: PayBuddy
+    
     @State private var sheet: Sheet?
     
     @StateObject private var notificationsBuddy = NotificationsBuddy()
-    @StateObject private var payBuddy = PayBuddy()
     
     @State private var isErrorAlertPresented = false
     

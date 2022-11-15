@@ -35,3 +35,23 @@ struct ShareButton: View {
     }
 }
 
+struct PlainShareButton: View {
+    @Binding var sheet: Sheet?
+    let route: Route
+    let stop: Stop?
+    
+    init(_ sheet: Binding<Sheet?>, route: Route, stop: Stop? = nil) {
+        self._sheet = sheet
+        self.route = route
+        self.stop = stop
+    }
+    
+    var body: some View {
+        Button {
+            sheet = .shareSheet(route: route, stop: stop)
+        } label: {
+            Label(Localizable.share, systemImage: "square.and.arrow.up")
+        }
+    }
+}
+

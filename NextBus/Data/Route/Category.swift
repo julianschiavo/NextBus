@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Category: Int, CaseIterable, Codable {
     case bus = 1
@@ -30,18 +31,18 @@ enum Category: Int, CaseIterable, Codable {
         }
     }
     
-    var iconName: String {
+    var image: Image {
         switch self {
         case .bus:
-            return "bus.doubledecker.fill"
+            return Image("bus.doubledecker.hk.fill")
         case .minibus:
-            return "bus.fill"
+            return Image(systemName: "bus.fill")
         case .train:
-            return "tram.tunnel.fill"
+            return Image(systemName: "tram.tunnel.fill")
         case .tram:
-            return "tram.fill"
+            return Image(systemName: "tram.fill")
         case .ferry:
-            return "drop.fill"
+            return Image(systemName: "drop.fill")
         }
     }
     

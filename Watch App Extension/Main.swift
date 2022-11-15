@@ -12,7 +12,7 @@ struct Main: View {
     @ObservedObject private var store = Store.shared
     
     var body: some View {
-        VStack {
+        ScrollView {
             NavigationLink(destination: RoutesList()) {
                 Label(Localizable.Routes.name, systemImage: "bus.doubledecker.fill")
                     .alignedHorizontally(to: .leading)
@@ -30,7 +30,6 @@ struct Main: View {
                     .alignedHorizontally(to: .leading)
             }
             .foregroundColor(.blue)
-            .foregroundColor(.primary)
         }
         .navigationTitle(Localizable.appName)
     }

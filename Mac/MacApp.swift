@@ -8,7 +8,7 @@
 
 import CoreSpotlight
 import SwiftUI
-import Purchases
+import RevenueCat
 
 @main
 struct MacApp: App {

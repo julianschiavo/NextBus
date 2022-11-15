@@ -22,8 +22,12 @@ struct RoutesList: View, LoadableView {
         List {
             ForEach(companyRoutes) { group in
                 NavigationLink(destination: CompanyRoutesList(routes: group.routes, searchText: $searchText)) {
-                    Label(group.company.name, systemImage: group.company.category.iconName)
-                        .foregroundColor(group.company.color)
+                    Label {
+                        Text(group.company.name)
+                    } icon: {
+                        group.company.category.image
+                    }
+                    .foregroundColor(group.company.color)
                 }
             }
         }

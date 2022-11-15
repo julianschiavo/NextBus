@@ -117,20 +117,20 @@ enum Sheet: Identifiable {
 extension View {
     @ViewBuilder func globalSheet(_ sheet: Binding<Sheet?>) -> some View {
         #if MAIN
-        if sheet.wrappedValue?.isFullScreen == true {
+//        if sheet.wrappedValue?.isFullScreen == true {
             self.sheet(item: sheet) { sheet in
                 sheet.content
                     .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
             }
-        } else {
-            self.bottomSheet(item: sheet) {
-                __BottomSheetView(value: sheet) { sheet in
-                    sheet.content
-                        .ignoresSafeArea()
-                        .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
-                }
-            }
-        }
+//        } else {
+//            self.bottomSheet(item: sheet) {
+//                __BottomSheetView(value: sheet) { sheet in
+//                    sheet.content
+//                        .ignoresSafeArea()
+//                        .interactiveDismissDisabled(sheet.interactiveDismissDisabled)
+//                }
+//            }
+//        }
         #else
         self.sheet(item: sheet) { sheet in
             sheet.content

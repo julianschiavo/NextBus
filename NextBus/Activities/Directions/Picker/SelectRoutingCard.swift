@@ -32,9 +32,8 @@ struct SelectRoutingCard: View {
 //                .background(Color.accent)
 //                .cornerRadius(10)
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(.borderedProminent)
         .controlSize(.large)
-        .controlProminence(.increased)
         .font(.headline, weight: .bold)
         .macCustomButton()
     }

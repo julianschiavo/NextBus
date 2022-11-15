@@ -28,7 +28,8 @@ struct Main: View {
             RoutesTab()
                 .tag(3)
                 .tabItem {
-                    Image(systemName: "bus.fill")
+                    Image("bus.doubledecker.hk.fill")
+                        .imageScale(.large)
                     Text(Localizable.Routes.name)
                 }
             ScheduleTab()

@@ -48,7 +48,6 @@ struct RoutePicker: View, LoadableView {
             }
         }
         .listStyle(.sidebar)
-        .searchable(text: $searchText, prompt: Localizable.search)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 ForEach(["A", "B", "M", "N", "P", "R", "S", "X"], id: \.self) { letter in
@@ -58,9 +57,9 @@ struct RoutePicker: View, LoadableView {
                 }
             }
         }
-//        .navigationBarSearch($searchText) {
-//            RouteSearchToolbar(searchText: $searchText)
-//        }
+        .navigationBarSearch($searchText) {
+            RouteSearchToolbar(searchText: $searchText)
+        }
     }
     
     private func sectionList(for group: CompanyRoutes) -> some View {
@@ -108,7 +107,7 @@ struct RoutePicker: View, LoadableView {
                 Text(company.name)
             },
             icon: {
-                Image(systemName: company.category.iconName)
+                company.category.image
                     .foregroundColor(company.color)
             }
         )

@@ -30,7 +30,7 @@ struct DirectionsStep: View {
                 .font(.title3, weight: .bold)
         } else if let company = track.company {
             HStack(spacing: 4) {
-                Image(systemName: company.category.iconName)
+                company.category.image
                 Text(track.name.isEmpty ? company.name : track.name)
             }
             .font(.title3, weight: .bold)

@@ -31,7 +31,7 @@ class RoutingLoader: Loader {
         
         var routings = try await withThrowingTaskGroup(of: Routing.self) { group -> [Routing] in
             rawRoutings.forEach { rawRouting in
-                group.async {
+                group.addTask {
                     var rawRouting = rawRouting
                     
                     let stopsRequest = RoutingStopsRequest(routing: rawRouting)

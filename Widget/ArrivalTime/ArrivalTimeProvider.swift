@@ -28,7 +28,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
     
     func getTimeline(for configuration: SelectRouteStopIntent, in context: Context, completion: @escaping (Timeline<ArrivalTimeEntry>) -> ()) {
         Task {
-            let hasPlus = await payBuddy.loadStatus()
+            let hasPlus = await payBuddy.loadCurrentStatus()
             
             guard hasPlus else {
                 let entry = ArrivalTimeEntry.upgradeRequired(configuration: configuration)
@@ -55,7 +55,7 @@ class ArrivalTimeProvider: IntentTimelineProvider {
         
         return await withTaskGroup(of: ArrivalTimeEntry.RouteArrival?.self) { group -> Timeline<ArrivalTimeEntry> in
             for routeStop in routeStops.prefix(count) {
-                group.async {
+                group.addTask {
                     await self.routeArrival(for: routeStop)
                 }
             }

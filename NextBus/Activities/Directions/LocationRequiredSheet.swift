@@ -64,9 +64,8 @@ struct LocationRequiredSheet: View {
             Text(Localizable.Directions.enable)
                 .frame(maxWidth: .infinity)
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(.borderedProminent)
         .controlSize(.large)
-        .controlProminence(.increased)
         .macCustomButton()
     }
 }

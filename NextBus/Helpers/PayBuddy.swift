@@ -8,107 +8,164 @@
 
 import Foundation
 import Loadability
-import Purchases
+import StoreKit
+import RevenueCat
 
-class PayBuddy: ObservableObject, ThrowsErrors {
+class PayBuddy: NSObject, ObservableObject, ThrowsErrors, PurchasesDelegate {
+    private struct PurchaseResult {
+        let transaction: SKPaymentTransaction?
+        let purchaserInfo: PurchaserInfo?
+        let wasUserCancelled: Bool
+    }
     
-    @Published var packages: [Purchases.Package]?
-    @Published var hasPlus = false
+    @Published var hasPlus = false {
+        didSet {
+            UserDefaults.shared.set(hasPlus, forKey: "PayBuddy_HasPlus_Cached")
+        }
+    }
     @Published var expirationDate: Date?
+    
+    @Published var packages: [Package]?
     
     @Published var error: Error?
     
-    init() {
+    private var purchaserInfo: PurchaserInfo?
+    
+    override init() {
+        super.init()
+        
+        Purchases.shared.delegate = self
+        
+        hasPlus = UserDefaults.shared.bool(forKey: "PayBuddy_HasPlus_Cached")
+        
         Task {
             await loadPackages()
-            await updateStatus()
+            await refresh()
         }
     }
     
-    func purchase(_ package: Purchases.Package) async {
+    func purchase(_ package: Package) async {
         do {
-            let (_, purchaserInfo, _) = try await Purchases.shared.purchasePackage(package)
-            await updateStatus(purchaserInfo: purchaserInfo)
+            let result = try await _purchase(package: package)
+            await updatePurchaserInfo(result.purchaserInfo)
         } catch {
             await catchError(error)
         }
         await loadPackages()
     }
     
-    private func _purchasePackage(_ package: Purchases.Package) async throws -> (transaction: SKPaymentTransaction?, purchaserInfo: Purchases.PurchaserInfo?, userCancelled: Bool) {
-        try await withCheckedThrowingContinuation { continuation in
-            Purchases.shared.purchasePackage(package) { transaction, purchaserInfo, error, userCancelled in
-                if let error = error, !userCancelled {
-                    continuation.resume(throwing: error)
-                } else {
-                    continuation.resume(returning: (transaction, purchaserInfo, userCancelled))
-                }
-            }
-        }
-    }
-    
     func restorePurchases() async {
         do {
-            let purchaserInfo = try await Purchases.shared.restoreTransactions()
-            await updateStatus(purchaserInfo: purchaserInfo)
-            await loadPackages()
+            let purchaserInfo = try await _restore()
+            await updatePurchaserInfo(purchaserInfo)
         } catch {
             await catchError(error)
         }
-    }
-    
-    @discardableResult func loadStatus() async -> Bool {
-        do {
-            let info = try await Purchases.shared.purchaserInfo()
-            Task {
-                await updateStatus()
-            }
-            return status(for: info)
-        } catch {
-            await catchError(error)
-        }
-        return false
     }
     
     @MainActor private func loadPackages() async {
         do {
-            let offerings = try await Purchases.shared.offerings()
-            packages = offerings.current?.availablePackages
+            let offerings = try await _offerings()
+            packages = offerings.current?.availablePackages ?? []
         } catch {
             catchError(error)
         }
     }
     
-    private func updateStatus() async {
+    func refresh() async {
         do {
-            let purchaserInfo = try await Purchases.shared.purchaserInfo()
-            await updateStatus(purchaserInfo: purchaserInfo)
+            let purchaserInfo = try await _purchaserInfo()
+            await updatePurchaserInfo(purchaserInfo)
         } catch {
             await catchError(error)
         }
     }
     
-    @MainActor private func updateStatus(purchaserInfo: Purchases.PurchaserInfo) {
-        let plusEntitlementName = "plus"
-        if let entitlement = purchaserInfo.entitlements.active[plusEntitlementName] {
+    func loadCurrentStatus() async -> Bool {
+        await refresh()
+        return hasPlus
+    }
+    
+    private func updatePurchaserInfo(_ purchaserInfo: PurchaserInfo?) async {
+        print("[RC]", "Updating Purchaser Info")
+        guard let purchaserInfo = purchaserInfo else { return }
+        self.purchaserInfo = purchaserInfo
+        
+        await MainActor.run {
+            print("[RC]", "Updating Status")
+            guard let entitlement = purchaserInfo.entitlements.active["plus"] else {
+                print("[RC]", "No Entitlement Found")
+                hasPlus = false
+                expirationDate = nil
+                return
+            }
+            
+            print("[RC]", "Entitlement Found — Active?", entitlement.isActive, "Expiring?", entitlement.expirationDate)
             hasPlus = entitlement.isActive
             expirationDate = entitlement.expirationDate
-        } else {
-            hasPlus = false
-            expirationDate = nil
         }
     }
     
-    private func status(for purchaserInfo: Purchases.PurchaserInfo) -> Bool {
-        let plusEntitlementName = "plus"
-        if let entitlement = purchaserInfo.entitlements.active[plusEntitlementName] {
-            return entitlement.isActive
-        } else {
-            return false
+    // MARK: - RevenueCat Async Support
+    
+    private func _purchase(package: Package) async throws -> PurchaseResult {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.purchase(package: package) { transaction, purchaserInfo, error, userCancelled in
+                if let error = error, !userCancelled {
+                    continuation.resume(throwing: error)
+                } else {
+                    let result = PurchaseResult(transaction: transaction, purchaserInfo: purchaserInfo, wasUserCancelled: userCancelled)
+                    continuation.resume(returning: result)
+                }
+            }
+        }
+    }
+    
+    private func _restore() async throws -> PurchaserInfo {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.restoreTransactions { purchaserInfo, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let purchaserInfo = purchaserInfo {
+                    continuation.resume(returning: purchaserInfo)
+                }
+            }
+        }
+    }
+    
+    private func _purchaserInfo() async throws -> PurchaserInfo {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.purchaserInfo { purchaserInfo, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let purchaserInfo = purchaserInfo {
+                    continuation.resume(returning: purchaserInfo)
+                }
+            }
+        }
+    }
+    
+    private func _offerings() async throws -> Offerings {
+        try await withCheckedThrowingContinuation { continuation in
+            Purchases.shared.offerings { offerings, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let offerings = offerings {
+                    continuation.resume(returning: offerings)
+                }
+            }
+        }
+    }
+    
+    // MARK: - PurchasesDelegate
+    
+    func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: PurchaserInfo) {
+        Task {
+            await updatePurchaserInfo(purchaserInfo)
         }
     }
 }
 
-extension Purchases.Package: Identifiable {
+extension Package: Identifiable {
     public var id: String { identifier }
 }

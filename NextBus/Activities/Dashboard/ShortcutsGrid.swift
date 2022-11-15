@@ -44,7 +44,7 @@ struct ShortcutsGrid: View {
                 currentTab = 3
             }
         } label: {
-            Label(Localizable.Routes.name, systemImage: "bus.fill")
+            Label(Localizable.Routes.name, image: "bus.doubledecker.hk.fill")
                 .font(.largeHeadline, weight: .bold)
                 .foregroundColor(.primary)
                 .alignedHorizontally(to: .leading)

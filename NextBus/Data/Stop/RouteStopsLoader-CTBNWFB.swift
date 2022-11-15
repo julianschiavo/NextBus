@@ -52,7 +52,7 @@ extension CTBNWFB {
             let idOrder = unknownStops.map(\.id)
             var stops = try await withThrowingTaskGroup(of: [Stop].self) { group -> [Stop] in
                 unknownStops.forEach { unknownStop in
-                    group.async {
+                    group.addTask {
                         [try await self.loadStop(for: unknownStop)]
                     }
                 }

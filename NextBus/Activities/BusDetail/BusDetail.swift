@@ -16,7 +16,7 @@ struct BusDetail: View {
     @State private var sheet: Sheet?
     
     var body: some View {
-        #if os(iOS)
+        #if os(iOS) || os(watchOS)
         contents
         #elseif os(macOS)
         NavigationView {
@@ -41,7 +41,7 @@ struct BusDetail: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 #if !os(watchOS)
-                ShareButton($sheet, route: route)
+                PlainShareButton($sheet, route: route)
                 #endif
             }
         }

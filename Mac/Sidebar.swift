@@ -24,7 +24,7 @@ struct Sidebar: View {
                 Label(Localizable.Directions.name, systemImage: "arrow.triangle.turn.up.right.diamond.fill")
             }
             NavigationLink(destination: RoutesTab(), tag: 3, selection: $current) {
-                Label(Localizable.Routes.name, systemImage: "bus.fill")
+                Label(Localizable.Routes.name, image: "bus.doubledecker.hk.fill")
             }
             NavigationLink(destination: ScheduleTab(), tag: 4, selection: $current) {
                 Label(Localizable.Schedule.name, systemImage: "calendar")

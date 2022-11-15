@@ -32,7 +32,7 @@ struct SimpleBusInfoView: View {
             }
         }
         .padding(20)
-//        .frame(height: 300)
+        .frame(height: 300)
         .onChange(of: reload) { _ in
             return
         }

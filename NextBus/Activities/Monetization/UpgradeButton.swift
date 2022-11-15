@@ -6,7 +6,7 @@
 //  Copyright © 2021 Julian Schiavo. All rights reserved.
 //
 
-import Purchases
+import RevenueCat
 import SwiftUI
 
 struct UpgradeButton: View {

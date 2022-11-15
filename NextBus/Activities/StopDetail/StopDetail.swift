@@ -46,7 +46,7 @@ struct StopDetail: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ShareButton($sheet, route: route, stop: stop)
+                PlainShareButton($sheet, route: route, stop: stop)
             }
         }
         .globalSheet($sheet)

@@ -8,15 +8,16 @@
 
 import CoreSpotlight
 import SwiftUI
-import Purchases
+import RevenueCat
 
 @main struct App: SwiftUI.App {
     @ObservedObject private var store = Store.shared
     
+    @StateObject private var payBuddy = PayBuddy()
     @State private var experience: Experience?
     
     init() {
-        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "bKFVCyRdhomurfBWXgxdRbZOsjkkGjlF", appUserID: nil, observerMode: false, userDefaults: .shared)
     }
     
@@ -35,6 +36,7 @@ import Purchases
                 }
                 .navigationTitle(Localizable.appName)
                 .environmentObject(store)
+                .environmentObject(payBuddy)
                 .onContinueUserActivity(CSSearchableItemActionType) { userActivity in
                     guard let urlString = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
                           let url = URL(string: urlString) else { return }

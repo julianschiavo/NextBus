@@ -17,9 +17,10 @@ struct EditSchedule: View {
     
     @State private var name = ""
     
-    @State private var route: Route?
-    @State private var stop: Stop?
+    @State private var routeStops = [RouteStop]()
+    @State private var newRouteStop: RouteStop?
     
+    @State private var days = [String]()
     @State private var startDate = Date()
     @State private var endDate = Date()
     
@@ -31,8 +32,8 @@ struct EditSchedule: View {
     init(_ schedule: ScheduleBlock) {
         self.block = schedule
         _name = State(initialValue: schedule.name)
-        _route = State(initialValue: schedule.route)
-        _stop = State(initialValue: schedule.stop)
+        _routeStops = State(initialValue: schedule.routeStops)
+        _days = State(initialValue: schedule.days ?? [])
         _startDate = State(initialValue: schedule.startDate)
         _endDate = State(initialValue: schedule.endDate)
         _showsOnWidget = State(initialValue: schedule.showsOnWidget)
@@ -43,6 +44,7 @@ struct EditSchedule: View {
         iOSNavigationView {
             Form {
                 mainSection
+                routesSection
                 timeSection
                 settingsSection
                 deleteSection
@@ -56,14 +58,11 @@ struct EditSchedule: View {
                 }
                 ToolbarItemGroup(placement: .confirmationAction) {
                     Button(Localizable.save, action: save)
-                        .disabled(name.isEmpty || route == nil || stop == nil)
+                        .disabled(name.isEmpty || routeStops.isEmpty)
                 }
             }
             .macMinFrame(width: 700, height: 600)
             .globalSheet($sheet)
-        }
-        .onChange(of: route) { _ in
-            stop = nil
         }
         .onChange(of: startDate) { startDate in
             if endDate <= startDate {
@@ -75,95 +74,32 @@ struct EditSchedule: View {
     private var mainSection: some View {
         Section {
             TextField(Localizable.name, text: $name)
-            routePicker
-            if route != nil {
-                stopPicker
-            }
+                .font(.title3, weight: .medium)
         }
     }
     
-    @ViewBuilder private var routePicker: some View {
-        if let route = route {
-            HStack {
-                RouteRow(route: route)
-                Spacer()
-                changeRouteButton
-            }
-        } else {
-            selectRouteButton
-        }
-    }
-    
-    private var selectRouteButton: some View {
-        Button {
-            sheet = .pickRoute(route: $route)
-        } label: {
-            HStack {
-                Text(Localizable.route)
-                    .foregroundColor(.primary)
-                Spacer()
-                Text(Localizable.choose)
+    @ViewBuilder private var routesSection: some View {
+        ForEach($routeStops) { $routeStop in
+            Section {
+                ScheduleRoutePicker(routeStop: Binding($routeStop), sheet: $sheet) {
+                    routeStops.removeAll { $0.id == $routeStop.wrappedValue.id }
+                }
             }
         }
-        .macCustomButton()
-    }
-    
-    private var changeRouteButton: some View {
-        Button {
-            sheet = .pickRoute(route: $route)
-        } label: {
-            Text(Localizable.change)
-                .padding(6)
-                .background(Color.quaternaryBackground)
-                .cornerRadius(6)
+        Section(header: Text(Localizable.selectRoute)) {
+            ScheduleRoutePicker(routeStop: $newRouteStop, sheet: $sheet)
+                .onChange(of: newRouteStop) { newRouteStop in
+                    guard let newRouteStop = newRouteStop else { return }
+                    routeStops.append(newRouteStop)
+                    self.newRouteStop = nil
+                }
         }
-        .macCustomButton()
-    }
-    
-    @ViewBuilder private var stopPicker: some View {
-        if let route = route, let stop = stop {
-            HStack {
-                StopRow(route: route, stop: stop)
-                Spacer()
-                changeStopButton
-            }
-        } else {
-            chooseStopButton
-        }
-    }
-    
-    private var chooseStopButton: some View {
-        Button {
-            if let route = route {
-                sheet = .pickStop(route: route, stop: $stop)
-            }
-        } label: {
-            HStack {
-                Text(Localizable.stop)
-                    .foregroundColor(.primary)
-                Spacer()
-                Text(Localizable.choose)
-            }
-        }
-        .macCustomButton()
-    }
-    
-    private var changeStopButton: some View {
-        Button {
-            if let route = route {
-                sheet = .pickStop(route: route, stop: $stop)
-            }
-        } label: {
-            Text(Localizable.change)
-                .padding(6)
-                .background(Color.quaternaryBackground)
-                .cornerRadius(6)
-        }
-        .macCustomButton()
     }
     
     private var timeSection: some View {
         Section(header: Text(Localizable.time)) {
+            DaysPicker(days: $days)
+                .buttonStyle(.plain)
             HStack {
                 Text(Localizable.starts)
                 Spacer()
@@ -192,8 +128,7 @@ struct EditSchedule: View {
     }
     
     private func save() {
-        guard let route = route, let stop = stop else { return }
-        var schedule = ScheduleBlock(name: name, startDate: startDate, endDate: endDate, route: route, stop: stop, showsOnWidget: showsOnWidget, sendsNotifications: sendsNotifications)
+        var schedule = ScheduleBlock(name: name, days: days, startDate: startDate, endDate: endDate, routeStops: routeStops, showsOnWidget: showsOnWidget, sendsNotifications: sendsNotifications)
         schedule.id = self.block.id
         store.schedule.update(schedule)
         dismiss()

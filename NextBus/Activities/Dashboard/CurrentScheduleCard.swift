@@ -21,7 +21,9 @@ struct CurrentScheduleCard: View {
     var body: some View {
         if let block = currentSchedule {
             Card(Localizable.Dashboard.currentSchedule(block.name), systemImage: "calendar") {
-                RouteArrivalRow(routeStop: RouteStop(route: block.route, stop: block.stop))
+                ForEach(block.routeStops) { routeStop in
+                    RouteArrivalRow(routeStop: routeStop)
+                }
             }
         }
     }

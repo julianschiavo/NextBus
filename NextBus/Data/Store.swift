@@ -8,6 +8,9 @@
 
 import Combine
 import Foundation
+#if !os(watchOS)
+import NiceNotifications
+#endif
 import SwiftUI
 import UserNotifications
 
@@ -239,7 +242,7 @@ class Store: ObservableObject {
             withAnimation {
                 all.insert(block, at: 0)
             }
-            scheduleNotifications(for: block)
+            scheduleNotifications()
         }
         
         func update(_ block: ScheduleBlock) {
@@ -266,9 +269,7 @@ class Store: ObservableObject {
                 guard let data = FileManager.default.contents(atPath: url.path),
                       let blocks = try? decoder.decode([ScheduleBlock].self, from: data)
                 else { return [] }
-                blocks.forEach {
-                    scheduleNotifications(for: $0)
-                }
+                scheduleNotifications()
                 return blocks
                     .removingDuplicates()
                     .sorted {
@@ -282,37 +283,25 @@ class Store: ObservableObject {
             Task {
                 guard let data = try? encoder.encode(all) else { return }
                 try? data.write(to: url, options: [.atomic])
+                scheduleNotifications()
             }
         }
         
         // MARK: - Notifications
         
-        func scheduleNotifications(for block: ScheduleBlock) {
-            guard block.sendsNotifications else { return }
-            
-            let jsonEncoder = JSONEncoder()
-            let route = try? jsonEncoder.encode(block.route)
-            let stop = try? jsonEncoder.encode(block.stop)
-            
-            let content = UNMutableNotificationContent()
-            content.title = Localizable.Notifications.title(block.name)
-            content.body = Localizable.Notifications.description(block.route.localizedName)
-            content.categoryIdentifier = "Schedule"
-            content.interruptionLevel = .timeSensitive
-            content.threadIdentifier = block.id.uuidString
-            content.userInfo["name"] = block.name
-            content.userInfo["route"] = route
-            content.userInfo["stop"] = stop
-            
-            let date = Calendar.current.dateComponents([.hour, .minute, .second], from: block.startDate)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-            
-            let request = UNNotificationRequest(identifier: block.id.uuidString, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) { _ in }
+        private func scheduleNotifications() {
+            #if !os(watchOS)
+            _scheduleNotifications()
+            #endif
         }
         
-        func cancelNotifications(for block: ScheduleBlock) {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [block.id.uuidString])
+        #if !os(watchOS)
+        private func _scheduleNotifications() {
+            Task {
+                let group = ScheduleNotificationsGroup()
+                LocalNotifications.reschedule(group: group, permissionStrategy: .askSystemPermissionIfNeeded)
+            }
         }
+        #endif
     }
 }

@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct UpgradeSheet: View {
+    @EnvironmentObject private var payBuddy: PayBuddy
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject private var payBuddy = PayBuddy()
     @State private var isErrorAlertPresented = false
     
     var body: some View {

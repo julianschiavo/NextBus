@@ -6,26 +6,44 @@
         "repositoryURL": "https://github.com/adamfootdev/BottomSheet.git",
         "state": {
           "branch": null,
-          "revision": "40b8fbdd676b0d6b76643feccbeb645e97df9fb4",
-          "version": "0.1.6"
+          "revision": "916bc4b4a3cff449deb0a3f01fdf4736295cd506",
+          "version": "0.2.2"
         }
       },
       {
-        "package": "loadability",
+        "package": "DateBuilder",
+        "repositoryURL": "https://github.com/nicephoton/DateBuilder",
+        "state": {
+          "branch": null,
+          "revision": "3cb1361a7c4c6564b8e6c8e4c2a7767ea8808c8a",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "Loadability",
         "repositoryURL": "https://github.com/julianschiavo/loadability",
         "state": {
           "branch": "ios15",
-          "revision": "5f883d439ecdd4c797e2997c0505a151cdc4c403",
+          "revision": "56ca5f5c03489658a8e2396c538f50c429b5af99",
           "version": null
         }
       },
       {
-        "package": "purchases-ios",
+        "package": "NiceNotifications",
+        "repositoryURL": "http://github.com/nicephoton/NiceNotifications.git",
+        "state": {
+          "branch": "main",
+          "revision": "ea753d0c2cc83a96bb297e25aed9ce3d92be63e6",
+          "version": null
+        }
+      },
+      {
+        "package": "RevenueCat",
         "repositoryURL": "https://github.com/RevenueCat/purchases-ios.git",
         "state": {
           "branch": null,
-          "revision": "2811b25d8f275429e5d001e3990426ebba5147f4",
-          "version": "3.11.1"
+          "revision": "efb0c10cc07ac04b462bb38312b0a55450740994",
+          "version": "4.0.0-beta.3"
         }
       }
     ]

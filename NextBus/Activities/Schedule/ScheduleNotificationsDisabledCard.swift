@@ -15,6 +15,7 @@ struct ScheduleNotificationsDisabledCard: View {
                 Label {
                     VStack(alignment: .leading) {
                         Text(Localizable.Schedule.notificationsDisabledTitle)
+                            .bold()
                         Text(Localizable.Schedule.notificationsDisabledDescription)
                             .font(.callout)
                             .foregroundColor(.secondary)
